@@ -1,8 +1,15 @@
 // HomeHeroSlider.tsx
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+
+// remplace ces lignes
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+
+// par cette ligne plus “générique”
+import 'swiper/swiper-bundle.css';
 
 import { Autoplay, Pagination } from 'swiper/modules';
+
 
 
 import intro1 from '../assets/intro/intro1.png';

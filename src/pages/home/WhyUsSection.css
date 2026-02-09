@@ -1,0 +1,121 @@
+/* src/pages/home/WhyUsSection.css */
+
+.whyus-section {
+  padding: 3.2rem 1.25rem 3.4rem;
+  color: var(--text-main);
+}
+
+.whyus-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.8rem;
+}
+
+@media (min-width: 900px) {
+  .whyus-shell {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr);
+    align-items: flex-start;
+  }
+}
+
+.whyus-intro {
+  max-width: 560px;
+}
+
+/* Grille des raisons */
+
+.whyus-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+@media (min-width: 640px) {
+  .whyus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.reason-card {
+  position: relative;
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(230, 57, 50, 0.18),
+    rgba(10, 10, 12, 0.98)
+  );
+  border: 1px solid rgba(250, 250, 249, 0.16);
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.8),
+    0 0 26px rgba(230, 57, 50, 0.35);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  overflow: hidden;
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    border-color 0.16s ease;
+}
+
+/* petit accent rouge à gauche */
+
+.reason-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14%;
+  bottom: 14%;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, #e63932, rgba(230, 57, 50, 0.08));
+  opacity: 0.9;
+}
+
+.reason-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-left: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.reason-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-left: 0.35rem;
+}
+
+/* liens internes */
+
+.reason-link {
+  color: var(--text-main);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.reason-link:hover {
+  color: var(--accent, #e63932);
+}
+
+/* hover desktop */
+
+@media (hover: hover) and (pointer: fine) {
+  .reason-card:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 28px rgba(0, 0, 0, 0.95),
+      0 0 32px rgba(230, 57, 50, 0.6);
+    border-color: rgba(250, 250, 249, 0.3);
+  }
+}
+
+/* mobile */
+
+@media (max-width: 480px) {
+  .whyus-section {
+    padding: 2.6rem 1.1rem 3rem;
+  }
+}

@@ -1,5 +1,5 @@
 // src/components/BeforeAfterSlider.tsx
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 
 type BeforeAfterSliderProps = {
   beforeSrc: string; // AVANT (au-dessus, masqué)

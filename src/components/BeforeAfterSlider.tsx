@@ -1,9 +1,9 @@
 // src/components/BeforeAfterSlider.tsx
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 type BeforeAfterSliderProps = {
-  beforeSrc: string;      // AVANT (en dessous)
-  afterSrc: string;       // APRÈS (au dessus)
+  beforeSrc: string; // AVANT (au-dessus, masqué)
+  afterSrc: string;  // APRÈS (en dessous, fixe)
   alt?: string;
   initialPosition?: number; // 0–100, par défaut 50
 };
@@ -53,10 +53,12 @@ export function BeforeAfterSlider({
     }
   };
 
+  // style de clip-path calculé
+  const beforeClip = `inset(0 ${100 - position}% 0 0)`;
+
   return (
     <div
       ref={containerRef}
-      className="before-after-wrapper"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onTouchStart={handleTouchStart}
@@ -65,15 +67,15 @@ export function BeforeAfterSlider({
         position: 'relative',
         width: '100%',
         maxWidth: '960px',
-        aspectRatio: '16 / 9', // ✅ ratio commun, plus de height fixe
+        aspectRatio: '16 / 9',
         overflow: 'hidden',
-        cursor: 'ew-resize',
         borderRadius: '0.75rem',
+        cursor: 'ew-resize',
       }}
     >
-      {/* AVANT en dessous */}
+      {/* APRÈS : image fixe en fond */}
       <img
-        src={beforeSrc}
+        src={afterSrc}
         alt={alt}
         style={{
           position: 'absolute',
@@ -84,29 +86,19 @@ export function BeforeAfterSlider({
         }}
       />
 
-      {/* APRÈS au-dessus, recadré */}
-      <div
+      {/* AVANT : superposée, masquée avec clip-path */}
+      <img
+        src={beforeSrc}
+        alt={alt}
         style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
-          width: `${position}%`,
+          inset: 0,
+          width: '100%',
           height: '100%',
-          overflow: 'hidden',
+          objectFit: 'cover',
+          clipPath: beforeClip,
         }}
-      >
-        <img
-          src={afterSrc}
-          alt={alt}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
-        />
-      </div>
+      />
 
       {/* Barre centrale */}
       <div
@@ -118,10 +110,11 @@ export function BeforeAfterSlider({
           width: '2px',
           height: '100%',
           backgroundColor: 'rgba(255,255,255,0.9)',
+          zIndex: 10,
         }}
       />
 
-      {/* Poignée accessible */}
+      {/* Poignée */}
       <button
         type="button"
         onKeyDown={handleKeyDown}
@@ -140,8 +133,10 @@ export function BeforeAfterSlider({
           justifyContent: 'center',
           boxShadow: '0 2px 6px rgba(15, 23, 42, 0.35)',
           cursor: 'grab',
+          pointerEvents: 'none',
+          zIndex: 11,
         }}
-        aria-label="Faire glisser pour comparer avant et après"
+        aria-hidden="true"
       >
         <span style={{ fontSize: '16px', lineHeight: 1 }}>{'↔'}</span>
       </button>

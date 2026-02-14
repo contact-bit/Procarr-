@@ -1,0 +1,335 @@
+/* src/pages/PrestationsPage.css */
+
+.prestations-page {
+  padding-bottom: 4rem;
+  color: #f9fafb;
+}
+
+/* Hero */
+.prestations-hero {
+  padding: 3.5rem 0 2.5rem;
+}
+
+.prestations-hero .container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+
+.prestations-kicker {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fecaca; /* rouge clair */
+  margin-bottom: 0.5rem;
+}
+
+.prestations-hero h1 {
+  font-size: 2.1rem;
+  line-height: 1.25;
+  margin-bottom: 0.9rem;
+  color: #ffffff;
+}
+
+.prestations-hero-text {
+  max-width: 46rem;
+  margin: 0 auto 1.6rem;
+  color: #e5e7eb;
+  font-size: 1.02rem;
+}
+
+.prestations-hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.prestations-hero-note {
+  font-size: 0.9rem;
+  color: #d1d5db;
+}
+
+/* Section générique */
+.prestations-section {
+  padding: 2.5rem 0 3rem;
+}
+
+.prestations-section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.prestations-section h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.prestations-section-intro {
+  max-width: 52rem;
+  font-size: 0.98rem;
+  color: #e5e7eb;
+  margin-bottom: 2rem;
+}
+
+/* Grille services */
+.prestations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+/* Cartes floutées, sans fond opaque */
+.service-card {
+  border-radius: 16px;
+  padding: 1.8rem 1.6rem;
+  border: 1px solid rgba(248, 250, 252, 0.16);
+  background: rgba(15, 23, 42, 0.32);           /* translucide */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.service-card p {
+  font-size: 0.96rem;
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+.service-list {
+  padding-left: 1.1rem;
+  margin: 0.3rem 0 0.9rem;
+  list-style: disc;
+  color: #e5e7eb;
+  font-size: 0.93rem;
+}
+
+.service-list li + li {
+  margin-top: 0.15rem;
+}
+
+/* Carte large */
+.service-card-wide {
+  margin-top: 1.5rem;
+}
+
+.service-card-wide-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Process */
+.prestations-process {
+  padding: 2.5rem 0 3rem;
+}
+
+.prestations-process .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.prestations-process h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.process-step {
+  border-radius: 14px;
+  padding: 1.6rem 1.4rem;
+  border: 1px solid rgba(248, 250, 252, 0.18);
+  background: rgba(15, 23, 42, 0.32);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.process-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid #fecaca;
+  color: #fecaca;
+  margin-bottom: 0.5rem;
+}
+
+.process-step h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: #ffffff;
+}
+
+.process-step p {
+  font-size: 0.94rem;
+  color: #e5e7eb;
+}
+
+/* Bloc local */
+.prestations-local {
+  padding: 2.5rem 0 3rem;
+}
+
+.prestations-local .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.prestations-local h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.prestations-local p {
+  font-size: 0.95rem;
+  color: #e5e7eb;
+}
+
+.prestations-local-links a {
+  color: #fca5a5;
+}
+
+/* CTA final */
+.prestations-final-cta {
+  padding: 2.5rem 0 0;
+}
+
+.prestations-final-cta .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.2rem 1.4rem 0;
+  text-align: center;
+}
+
+.prestations-final-cta h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+  color: #ffffff;
+}
+
+.prestations-final-cta p {
+  max-width: 36rem;
+  margin: 0 auto 1.4rem;
+  font-size: 0.96rem;
+  color: #e5e7eb;
+}
+
+.prestations-final-cta-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .prestations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-card-wide-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .prestations-hero {
+    padding: 2.8rem 0 2.1rem;
+  }
+
+  .prestations-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .prestations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prestations-section,
+  .prestations-process,
+  .prestations-local {
+    padding: 2.2rem 0;
+  }
+}
+/* Bouton secondaire Prestations */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 250, 252, 0.35);
+  color: #f9fafb;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.btn-secondary:hover {
+  background: #b91c1c;
+  border-color: #fecaca;
+  color: #fef2f2;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 35px rgba(185, 28, 28, 0.5);
+}
+
+.service-card .btn-secondary {
+  margin-top: auto;
+  padding-inline: 1.2rem;
+}
+
+.prestations-final-cta-actions .btn-primary.btn-large {
+  box-shadow: 0 18px 45px rgba(185, 28, 28, 0.55);
+}
+
+.prestations-final-cta-actions .btn-primary.btn-large:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .prestations-final-cta-actions .btn-primary,
+  .prestations-final-cta-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

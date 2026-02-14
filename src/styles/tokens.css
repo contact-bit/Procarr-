@@ -10,9 +10,9 @@
   --color-accent-soft: #ffb3a7; /* rouge pâle, hover / halo */
 
   /* Texte */
-  --color-text: #f5f5f5;
-  --color-text-muted: #b3b3c0;
-  --color-text-soft: #8b8b96;
+  --color-text: #ffffff;
+  --color-text-muted: #ffffff;
+  --color-text-soft: #ffffff;
 
   /* Typo */
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text',

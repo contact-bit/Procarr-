@@ -28,22 +28,24 @@ export function Navbar() {
         {/* Logo + baseline courte */}
         <div className="navbar-left">
           <div className="navbar-logo">
-            <Link to="/" className="brand-logo" aria-label="Procarré & Fils - Carreleur à Manosque">
+            <Link
+              to="/"
+              className="brand-logo"
+              aria-label="Procarré & Fils - Carreleur à Manosque"
+            >
               <span className="brand-pro">PRO</span>
               <span className="brand-carre">CARRÉ</span>
               <span className="brand-separator">|</span>
               <span className="brand-fils">&amp; Fils</span>
             </Link>
           </div>
-<p className="navbar-baseline">
-  Pose de carrelage intérieur / extérieur, salles de bain & piscines à Manosque et en Alpes-de-Haute-Provence
-</p>
-
-
-
+          <p className="navbar-baseline">
+            Pose de carrelage intérieur / extérieur, salles de bain & piscines à Manosque
+            et en Alpes-de-Haute-Provence
+          </p>
         </div>
 
-        {/* Nav principale desktop : courte et lisible */}
+        {/* Nav principale desktop */}
         <nav
           className="navbar-desktop"
           aria-label="Navigation principale Procarré & Fils"
@@ -57,8 +59,8 @@ export function Navbar() {
           <NavLink to="/realisations" style={linkStyle}>
             Réalisations
           </NavLink>
-          <NavLink to="/contact" style={linkStyle} className="navbar-cta-link">
-            Devis carrelage
+          <NavLink to="/devis" style={linkStyle} className="navbar-cta-link">
+            Demander un devis
           </NavLink>
 
           <div className="navbar-social">
@@ -103,7 +105,7 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Sous-nav SEO avec toutes les pages structurées */}
+      {/* Sous-nav SEO */}
       <nav
         className="navbar-sub"
         aria-label="Navigation secondaire Procarré & Fils"
@@ -124,10 +126,11 @@ export function Navbar() {
           <NavLink to="/prestations/salles-de-bain" style={linkStyle}>
             Salles de bain & douches à l&apos;italienne
           </NavLink>
+
         </div>
       </nav>
 
-      {/* Menu mobile : tout en colonne */}
+      {/* Menu mobile */}
       {open && (
         <nav
           className="navbar-mobile"
@@ -142,10 +145,18 @@ export function Navbar() {
           <NavLink to="/prestations" onClick={close} style={linkStyle}>
             Prestations
           </NavLink>
-          <NavLink to="/prestations/sols-murs" onClick={close} style={linkStyle}>
+          <NavLink
+            to="/prestations/sols-murs"
+            onClick={close}
+            style={linkStyle}
+          >
             Carrelage sols & murs
           </NavLink>
-          <NavLink to="/prestations/salles-de-bain" onClick={close} style={linkStyle}>
+          <NavLink
+            to="/prestations/salles-de-bain"
+            onClick={close}
+            style={linkStyle}
+          >
             Salles de bain & douches
           </NavLink>
           <NavLink to="/realisations" onClick={close} style={linkStyle}>
@@ -157,8 +168,13 @@ export function Navbar() {
           <NavLink to="/zone-intervention" onClick={close} style={linkStyle}>
             Zone d&apos;intervention
           </NavLink>
-          <NavLink to="/contact" onClick={close} style={linkStyle} className="navbar-cta-link">
-            Devis carrelage
+          <NavLink
+            to="/devis"
+            onClick={close}
+            style={linkStyle}
+            className="navbar-cta-link"
+          >
+            Demander un devis
           </NavLink>
 
           <div className="navbar-mobile-social">

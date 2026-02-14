@@ -6,7 +6,7 @@ export function HeroSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="hero">
+    <section className="hero hero--center">
       <p className="hero-kicker">Artisan carreleur à Manosque (04)</p>
 
       <h1 className="hero-title">
@@ -22,14 +22,14 @@ export function HeroSection() {
         </p>
       </div>
 
-      <div className="hero-actions">
-<button
-  onClick={() => navigate('/devis')}
-  className="btn btn-primary"
->
-  Demander un devis gratuit
-</button>
-
+      <div className="hero-actions hero-actions--center">
+        <button
+          type="button"
+          onClick={() => navigate('/devis')}
+          className="btn btn-primary hero-cta"
+        >
+          Demander un devis gratuit
+        </button>
 
         <p className="hero-note">
           Devis gratuit et sans engagement pour vos projets de carrelage, salle de bain,

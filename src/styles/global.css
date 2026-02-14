@@ -1,6 +1,5 @@
 @import './tokens.css';
 
-
 /* ========== Reset / base ========== */
 
 *,
@@ -269,7 +268,7 @@ section,
 /* ========== Hero slider ========== */
 
 .hero-slider-wrapper {
-  position: relative;
+  position: relative;             /* important pour l’overlay */
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
@@ -306,6 +305,70 @@ section,
 .hero-slider-wrapper .swiper-pagination-bullet-active {
   background: var(--color-accent);
   box-shadow: 0 0 0 3px rgba(230, 57, 50, 0.3);
+}
+
+/* CTA centré sur le slider home */
+.hero-slider-cta-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 2.2rem;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hero-slider-cta-overlay .hero-slider-cta {
+  pointer-events: auto;
+  padding: 0.75rem 1.9rem;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 113, 113, 0.9); /* rouge clair */
+  background: radial-gradient(circle at 0 0, rgba(24, 6, 6, 0.96), rgba(15, 6, 6, 0.9));
+  color: #f9fafb;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow:
+    0 0 0 1px rgba(15, 15, 18, 0.9),
+    0 16px 32px rgba(0, 0, 0, 0.85),
+    0 0 24px rgba(230, 57, 50, 0.6); /* glow rouge */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+/* petit rond lumineux rouge à gauche du texte */
+.hero-slider-cta::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #fecaca, #ef4444);
+  box-shadow: 0 0 14px rgba(248, 113, 113, 0.9);
+}
+
+.hero-slider-cta:hover {
+  transform: translateY(-1px);
+  border-color: #fca5a5;
+  background: radial-gradient(circle at 0 0, rgba(30, 7, 7, 0.98), rgba(15, 6, 6, 0.96));
+  box-shadow:
+    0 0 0 1px rgba(248, 113, 113, 0.95),
+    0 20px 44px rgba(0, 0, 0, 0.95),
+    0 0 30px rgba(248, 113, 113, 0.95);
+}
+
+/* mobile : un peu plus haut pour ne pas coller au bord */
+@media (max-width: 767px) {
+  .hero-slider-cta-overlay {
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-slider-cta-overlay .hero-slider-cta {
+    padding: 0.7rem 1.6rem;
+    font-size: 0.9rem;
+  }
 }
 
 /* ========== Logo texte ========== */
@@ -573,7 +636,6 @@ brand-carre {
     0 0 26px rgba(230, 57, 50, 0.6);
   transform: translateY(-1px);
 }
-
 
 /* Icônes réseaux desktop dans la navbar */
 .navbar-social {

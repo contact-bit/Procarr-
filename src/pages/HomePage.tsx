@@ -1,6 +1,4 @@
 // src/pages/HomePage.tsx
-import { useState } from 'react';
-import { DevisForm } from '../components/DevisForm';
 import { HomeHeroSlider } from '../components/HomeHeroSlider';
 
 import { HeroSection } from './home/HeroSection';
@@ -13,30 +11,26 @@ import { ReviewsSection } from './home/ReviewsSection';
 import { FaqSection } from './home/FaqSection';
 import { TeamSection } from './home/TeamSection';
 
-// si tu as déplacé tous les styles par composant, tu peux supprimer cette ligne
-// import '../styles/homepage.css';
-
 export function HomePage() {
-  const [openDevis, setOpenDevis] = useState(false);
-
-  const openDevisForm = () => setOpenDevis(true);
-  const closeDevisForm = () => setOpenDevis(false);
-
   return (
     <div className="home-page">
+      {/* Slider visuel avec chantiers de carrelage réalisés */}
       <HomeHeroSlider />
 
-      <HeroSection onOpenDevis={openDevisForm} />
+      {/* Bloc d’intro SEO : carreleur à Manosque */}
+      <HeroSection />
+
+      {/* Preuve sociale et éléments de réassurance */}
       <TrustStrip />
+
+      {/* Sections de contenu optimisées SEO (services, process, etc.) */}
       <ServicesSection />
       <ProcessSection />
       <WhyUsSection />
       <TeamSection />
-      <ZoneSection onOpenDevis={openDevisForm} />
+      <ZoneSection />
       <ReviewsSection />
       <FaqSection />
-
-      {openDevis && <DevisForm onClose={closeDevisForm} />}
     </div>
   );
 }

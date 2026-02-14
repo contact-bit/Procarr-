@@ -1,0 +1,64 @@
+/* src/pages/ReseauxPage.css */
+.reseaux-page {
+  color: #f9fafb;
+  padding-bottom: 3rem;
+}
+
+.reseaux-hero .container {
+  max-width: 900px;
+  margin: 2.5rem auto 1.5rem;
+  padding: 0 1.25rem;
+}
+
+.reseaux-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.reseaux-hero p {
+  max-width: 42rem;
+  font-size: 0.98rem;
+  color: #e5e7eb;
+}
+
+.reseaux-grid-section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem 2.5rem;
+}
+
+.reseaux-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.reseaux-card {
+  border-radius: 18px;
+  border: 1px solid rgba(248, 250, 252, 0.16);
+  background: rgba(15, 23, 42, 0.32);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.reseaux-card .fb-video,
+.reseaux-card .fb-post {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .reseaux-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .reseaux-grid {
+    grid-template-columns: 1fr;
+  }
+}

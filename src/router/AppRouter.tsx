@@ -13,6 +13,7 @@ import { SolsMursPage } from '../pages/SolsMursPage';
 import { SallesBainPage } from '../pages/SallesBainPage';
 import { TerrassesPage } from '../pages/TerrassesPage';
 import { PreparationSupportsPage } from '../pages/PreparationSupportsPage';
+import { ReseauxPage } from '../pages/ReseauxPage';
 import { ScrollToTop } from './ScrollToTop';
 
 export function AppRouter() {
@@ -29,13 +30,13 @@ export function AppRouter() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/devis" element={<DevisPage />} />
 
-        {/* Sous-pages Prestations */}
         <Route path="/prestations/sols-murs" element={<SolsMursPage />} />
         <Route path="/prestations/salles-de-bain" element={<SallesBainPage />} />
         <Route path="/prestations/terrasses" element={<TerrassesPage />} />
         <Route path="/prestations/preparation-supports" element={<PreparationSupportsPage />} />
 
-        {/* 404 simple */}
+        <Route path="/reseaux" element={<ReseauxPage />} />
+
         <Route
           path="*"
           element={

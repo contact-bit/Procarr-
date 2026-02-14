@@ -59,13 +59,16 @@ export function Navbar() {
           <NavLink to="/realisations" style={linkStyle}>
             Réalisations
           </NavLink>
+          <NavLink to="/reseaux" style={linkStyle}>
+            Réseaux sociaux
+          </NavLink>
           <NavLink to="/devis" style={linkStyle} className="navbar-cta-link">
             Demander un devis
           </NavLink>
 
           <div className="navbar-social">
             <a
-              href="https://www.facebook.com/"
+              href="https://www.facebook.com/procarre/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook Procarré & Fils"
@@ -126,7 +129,9 @@ export function Navbar() {
           <NavLink to="/prestations/salles-de-bain" style={linkStyle}>
             Salles de bain & douches à l&apos;italienne
           </NavLink>
-
+          <NavLink to="/reseaux" style={linkStyle}>
+            Actualités Facebook
+          </NavLink>
         </div>
       </nav>
 
@@ -168,6 +173,9 @@ export function Navbar() {
           <NavLink to="/zone-intervention" onClick={close} style={linkStyle}>
             Zone d&apos;intervention
           </NavLink>
+          <NavLink to="/reseaux" onClick={close} style={linkStyle}>
+            Réseaux sociaux
+          </NavLink>
           <NavLink
             to="/devis"
             onClick={close}
@@ -183,7 +191,7 @@ export function Navbar() {
             </a>
             <div className="navbar-mobile-social-icons">
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/procarre/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook Procarré & Fils"

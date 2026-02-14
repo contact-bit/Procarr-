@@ -12,14 +12,14 @@
   gap: 2rem;
 }
 
-/* intro centrée réutilise ta DA section-header-center */
+/* intro */
 
 .services-intro {
   max-width: 720px;
   margin: 0 auto;
 }
 
-/* grille de services */
+/* grille */
 
 .services-grid {
   display: grid;
@@ -32,7 +32,7 @@
   }
 }
 
-/* carte de service */
+/* carte */
 
 .service-card {
   position: relative;
@@ -57,7 +57,7 @@
     background 0.18s ease;
 }
 
-/* filet lumineux à gauche pour se démarquer */
+/* filet gauche */
 
 .service-card::before {
   content: '';
@@ -74,12 +74,11 @@
   );
 }
 
-/* header de carte : tag + titre */
+/* header : pastille + titre */
 
 .service-card-header {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.4rem;
 }
@@ -96,6 +95,7 @@
   box-shadow:
     0 0 0 1px rgba(250, 250, 249, 0.5),
     0 8px 18px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
 }
 
 .service-title {
@@ -126,7 +126,7 @@
   color: var(--accent, #e63932);
 }
 
-/* hover premium */
+/* hover */
 
 @media (hover: hover) and (pointer: fine) {
   .service-card:hover {
@@ -151,14 +151,24 @@
   text-align: center;
 }
 
-/* mobile */
+/* mobile : titre sous la pastille */
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .services-section {
     padding: 2.9rem 1.1rem 3.1rem;
   }
 
   .service-card {
     border-radius: 1rem;
+  }
+
+  .service-card-header {
+    flex-direction: column;      /* pastille puis titre en dessous */
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .service-title {
+    font-size: 0.95rem;
   }
 }

@@ -9,7 +9,7 @@ export function ServicesSection() {
         <header className="services-intro section-header-center">
           <span className="section-kicker">Nos expertises</span>
           <h2 id="services-title" className="section-title">
-            Carrelage spécialiste et rénovation intérieure à Manosque (04)
+            Spécialiste carrelage et rénovation intérieure à Manosque (04)
           </h2>
           <p className="section-subtitle">
             Procarré &amp; Fils est une entreprise familiale spécialisée dans la pose de carrelage

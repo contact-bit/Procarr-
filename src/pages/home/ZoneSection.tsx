@@ -1,12 +1,22 @@
 // src/pages/home/ZoneSection.tsx
 import './ZoneSection.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type ZoneSectionProps = {
-  onOpenDevis: () => void;
+  onOpenDevis?: () => void;
 };
 
 export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (onOpenDevis) {
+      onOpenDevis();
+    } else {
+      navigate('/devis');
+    }
+  };
+
   return (
     <section className="zone-section" aria-labelledby="zone-title">
       <div className="zone-shell">
@@ -28,16 +38,23 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
             <Link to="/contact" className="zone-link">
               contact
             </Link>
-            &nbsp;ou de demander un devis de carrelage dès maintenant.
+            &nbsp;ou de&nbsp;
+            <Link to="/devis" className="zone-link">
+              demander un devis de carrelage
+            </Link>
+            &nbsp;dès maintenant.
           </p>
         </div>
 
         {/* Colonne “carte des villes” */}
-        <aside className="zone-card" aria-label="Communes où Procarré & Fils intervient">
+        <aside
+          className="zone-card"
+          aria-label="Communes où Procarré & Fils intervient en carrelage"
+        >
           <div className="zone-card-header">
             <span className="zone-chip">Bassin manosquin</span>
             <p className="zone-card-title">
-              Villes et secteurs régulièrement desservis par Procarré &amp; Fils
+              Villes et secteurs régulièrement desservis par Procarré &amp; Fils pour vos travaux de carrelage
             </p>
           </div>
 
@@ -131,7 +148,8 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
           </ul>
 
           <button
-            onClick={onOpenDevis}
+            type="button"
+            onClick={handleClick}
             className="btn btn-outline-light zone-cta"
           >
             Vérifier si nous intervenons chez vous
@@ -140,10 +158,9 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
           <p className="zone-note">
             Vous pouvez aussi consulter nos&nbsp;
             <Link to="/realisations" className="zone-link">
-              réalisations
+              réalisations de carrelage à Manosque et alentours
             </Link>
-            &nbsp;pour voir des exemples de chantiers de carrelage effectués à Manosque et dans
-            les communes environnantes.
+            &nbsp;pour voir des exemples de chantiers effectués dans les communes environnantes.
           </p>
         </aside>
       </div>

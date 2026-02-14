@@ -1,31 +1,29 @@
-// src/pages/home/ZoneSection.tsx
-import { useNavigate } from 'react-router-dom';
+// src/pages/HomePage.tsx
+import { HomeHeroSlider } from '../components/HomeHeroSlider';
 
-export type ZoneSectionProps = {
-  onOpenDevis?: () => void;
-};
+import { HeroSection } from './home/HeroSection';
+import { TrustStrip } from './home/TrustStrip';
+import { ServicesSection } from './home/ServicesSection';
+import { ProcessSection } from './home/ProcessSection';
+import { WhyUsSection } from './home/WhyUsSection';
+import { ZoneSection } from './home/ZoneSection';
+import { ReviewsSection } from './home/ReviewsSection';
+import { FaqSection } from './home/FaqSection';
+import { TeamSection } from './home/TeamSection';
 
-export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    if (onOpenDevis) {
-      onOpenDevis();
-    } else {
-      navigate('/devis');
-    }
-  };
-
+export function HomePage() {
   return (
-    <section className="zone-section">
-      <h2>Zones d’intervention</h2>
-      <p>
-        Nous intervenons à Manosque, Digne-les-Bains, Aix-en-Provence et dans
-        tout le secteur des Alpes-de-Haute-Provence.
-      </p>
-      <button type="button" onClick={handleClick}>
-        Demander un devis pour votre projet
-      </button>
-    </section>
+    <div className="home-page">
+      <HomeHeroSlider />
+      <HeroSection />
+      <TrustStrip />
+      <ServicesSection />
+      <ProcessSection />
+      <WhyUsSection />
+      <TeamSection />
+      <ZoneSection />
+      <ReviewsSection />
+      <FaqSection />
+    </div>
   );
 }

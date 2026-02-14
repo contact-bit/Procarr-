@@ -1,36 +1,31 @@
-// src/pages/HomePage.tsx
-import { HomeHeroSlider } from '../components/HomeHeroSlider';
+// src/pages/home/ZoneSection.tsx
+import { useNavigate } from 'react-router-dom';
 
-import { HeroSection } from './home/HeroSection';
-import { TrustStrip } from './home/TrustStrip';
-import { ServicesSection } from './home/ServicesSection';
-import { ProcessSection } from './home/ProcessSection';
-import { WhyUsSection } from './home/WhyUsSection';
-import { ZoneSection } from './home/ZoneSection';
-import { ReviewsSection } from './home/ReviewsSection';
-import { FaqSection } from './home/FaqSection';
-import { TeamSection } from './home/TeamSection';
+export type ZoneSectionProps = {
+  onOpenDevis?: () => void;
+};
 
-export function HomePage() {
+export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (onOpenDevis) {
+      onOpenDevis();
+    } else {
+      navigate('/devis');
+    }
+  };
+
   return (
-    <div className="home-page">
-      {/* Slider visuel avec chantiers de carrelage réalisés */}
-      <HomeHeroSlider />
-
-      {/* Bloc d’intro SEO : carreleur à Manosque */}
-      <HeroSection />
-
-      {/* Preuve sociale et éléments de réassurance */}
-      <TrustStrip />
-
-      {/* Sections de contenu optimisées SEO (services, process, etc.) */}
-      <ServicesSection />
-      <ProcessSection />
-      <WhyUsSection />
-      <TeamSection />
-      <ZoneSection />
-      <ReviewsSection />
-      <FaqSection />
-    </div>
+    <section className="zone-section">
+      <h2>Zones d’intervention</h2>
+      <p>
+        Nous intervenons à Manosque, Digne-les-Bains, Aix-en-Provence et dans
+        tout le secteur des Alpes-de-Haute-Provence.
+      </p>
+      <button type="button" onClick={handleClick}>
+        Demander un devis pour votre projet
+      </button>
+    </section>
   );
 }

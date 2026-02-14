@@ -15,6 +15,7 @@
   width: 100%;
   border-radius: 1.25rem;
   display: block;
+  object-fit: cover;
 }
 
 /* Hero texte */
@@ -25,18 +26,46 @@
   text-align: left;
 }
 
+.apropos-kicker {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fecaca;
+  margin-bottom: 0.4rem;
+}
+
 .apropos-hero h1 {
   font-size: 2rem;
   line-height: 1.25;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.8rem;
   color: #ffffff;
 }
 
 .apropos-hero p {
-  max-width: 42rem;
+  max-width: 44rem;
   color: #e5e7eb;
   font-size: 0.98rem;
   line-height: 1.7;
+}
+
+/* Tags / chips sous le texte */
+.apropos-tags {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.apropos-tags span {
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 250, 252, 0.18);
+  font-size: 0.8rem;
+  color: #f9fafb;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Contenu */
@@ -48,24 +77,65 @@
   gap: 2rem;
 }
 
-.apropos-content article h2 {
+.apropos-block {
+  border-radius: 1.1rem;
+  padding: 1.6rem 1.5rem;
+  border: 1px solid rgba(248, 250, 252, 0.14);
+  background: rgba(15, 23, 42, 0.32);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.apropos-block h2 {
   font-size: 1.35rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   color: #ffffff;
 }
 
-.apropos-content article p {
-  max-width: 42rem;
+.apropos-block p {
+  max-width: 44rem;
   color: #e5e7eb;
   font-size: 0.96rem;
   line-height: 1.7;
 }
 
-.apropos-content article p + p {
+.apropos-block p + p {
   margin-top: 0.75rem;
 }
 
+/* Bloc réseau artisans en mode grid + pills */
+.apropos-block-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.apropos-pills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.apropos-pills li {
+  font-size: 0.86rem;
+  color: #fee2e2;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 250, 252, 0.2);
+  background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.16), transparent 55%)
+    rgba(15, 23, 42, 0.6);
+}
+
 /* Responsive */
+@media (max-width: 900px) {
+  .apropos-block-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 767px) {
   .apropos-hero h1 {
     font-size: 1.7rem;
@@ -74,4 +144,29 @@
   .apropos-content {
     padding-bottom: 2rem;
   }
+}
+.apropos-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Header d’article avec icône */
+.apropos-block-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.apropos-icon {
+  font-size: 1.4rem;
+  color: #fecaca;
+}
+
+/* Pills avec icônes */
+.apropos-pills li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }

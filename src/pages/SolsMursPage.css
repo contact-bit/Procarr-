@@ -1,0 +1,153 @@
+/* src/pages/prestations/SolsMursPage.css */
+
+/* plus de fond spécifique sur la page */
+.sols-murs-page {
+  min-height: 100vh;
+  /* on laisse la couleur / image définie par le layout global */
+  color: #f5f5f7;
+}
+
+/* container standard */
+.sols-murs-page .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* HERO – sans fond, juste spacing */
+.sols-murs-page .page-hero {
+  padding: 4.5rem 0 3.5rem;
+}
+
+.sols-murs-page .page-hero-inner {
+  /* on enlève les backgrounds/blur */
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.sols-murs-page .page-kicker {
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 247, 0.7);
+  margin-bottom: 0.75rem;
+}
+
+.sols-murs-page h1 {
+  font-size: clamp(2.1rem, 4.2vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 1.3rem;
+}
+
+.sols-murs-page h1 strong {
+  color: #ffb3b3;
+}
+
+/* sections génériques, sans fond ni bordure */
+.sols-murs-page section {
+  padding: 3.5rem 0;
+  border: none;
+}
+
+/* blocs “inner” sans carte ni blur */
+.sols-murs-page .inner,
+.sols-murs-page .cta-box {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* texte / listes / CTA gardés */
+.sols-murs-page h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 1.2rem;
+}
+
+.sols-murs-page h2 strong {
+  color: #ff8686;
+}
+
+.sols-murs-page p {
+  line-height: 1.6;
+  color: rgba(245, 245, 247, 0.9);
+}
+
+.sols-murs-page .hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.sols-murs-page .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all 0.18s ease-out;
+  cursor: pointer;
+}
+
+.sols-murs-page .btn-primary {
+  background: #ff4d4d;
+  border-color: #ff4d4d;
+  color: #050509;
+}
+
+.sols-murs-page .btn-secondary {
+  background: transparent;
+  color: #f5f5f7;
+  border-color: rgba(245, 245, 247, 0.4);
+}
+
+/* listes */
+.sols-murs-page .bullets {
+  margin-top: 1.4rem;
+  padding-left: 1.4rem;
+  list-style: none;
+}
+
+.sols-murs-page .bullets li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.98rem;
+}
+
+.sols-murs-page .bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff4d4d;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .sols-murs-page .page-hero {
+    padding: 3.5rem 0 2.8rem;
+  }
+
+  .sols-murs-page .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sols-murs-page .btn {
+    width: 100%;
+  }
+}

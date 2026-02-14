@@ -1,6 +1,6 @@
-// src/pages/ReseauxPage.tsx
+// src/pages/ActualitesPage.tsx
 import { useEffect } from 'react';
-import './ReseauxPage.css';
+import './ActualitesPage.css'; // ou renomme le fichier CSS aussi
 
 const FB_SCRIPT_ID = 'facebook-jssdk';
 
@@ -16,7 +16,7 @@ function loadFacebookSdk() {
   document.body.appendChild(script);
 }
 
-export function ReseauxPage() {
+export function ActualitesPage() {
   useEffect(() => {
     loadFacebookSdk();
     if ((window as any).FB?.XFBML?.parse) {
@@ -38,7 +38,6 @@ export function ReseauxPage() {
 
       <section className="reseaux-grid-section">
         <div className="container reseaux-grid">
-          {/* Vidéo 1 */}
           <article className="reseaux-card">
             <div
               className="fb-video"
@@ -56,17 +55,6 @@ export function ReseauxPage() {
               </blockquote>
             </div>
           </article>
-
-          {/* Tu peux dupliquer ce bloc pour d’autres posts/vidéos */}
-          {/*
-          <article className="reseaux-card">
-            <div
-              className="fb-post"
-              data-href="https://www.facebook.com/procarre/posts/ID_DU_POST"
-              data-width="350"
-            />
-          </article>
-          */}
         </div>
       </section>
     </div>

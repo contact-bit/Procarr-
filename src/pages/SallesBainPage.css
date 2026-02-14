@@ -1,0 +1,177 @@
+/* src/pages/prestations/SallesBainPage.css */
+
+/* pas de fond, on garde celui de l’app */
+.salles-bain-page {
+  min-height: 100vh;
+  color: #f5f5f7;
+}
+
+/* container aligné avec le reste du site */
+.salles-bain-page .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* HERO */
+.salles-bain-page .page-hero {
+  padding: 4.5rem 0 3.5rem;
+}
+
+.salles-bain-page .page-kicker {
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 247, 0.7);
+  margin-bottom: 0.75rem;
+}
+
+.salles-bain-page h1 {
+  font-size: clamp(2.1rem, 4.2vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 1.3rem;
+}
+
+.salles-bain-page h1 strong {
+  color: #ffb3b3;
+}
+
+.salles-bain-page .page-hero p {
+  max-width: 720px;
+  font-size: 1.05rem;
+  color: rgba(245, 245, 247, 0.9);
+}
+
+.salles-bain-page .hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* boutons */
+.salles-bain-page .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all 0.18s ease-out;
+  cursor: pointer;
+}
+
+.salles-bain-page .btn-primary {
+  background: #ff4d4d;
+  border-color: #ff4d4d;
+  color: #050509;
+}
+
+.salles-bain-page .btn-primary:hover {
+  background: #ff6666;
+  border-color: #ff6666;
+  transform: translateY(-1px);
+}
+
+.salles-bain-page .btn-secondary {
+  background: transparent;
+  color: #f5f5f7;
+  border-color: rgba(245, 245, 247, 0.4);
+}
+
+.salles-bain-page .btn-secondary:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* sections */
+.salles-bain-page section {
+  padding: 3.5rem 0;
+}
+
+.salles-bain-page h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin-bottom: 1.2rem;
+}
+
+.salles-bain-page h2 strong {
+  color: #ff8686;
+}
+
+.salles-bain-page p {
+  line-height: 1.6;
+  color: rgba(245, 245, 247, 0.9);
+}
+
+/* listes à puces */
+.salles-bain-page .bullets {
+  margin-top: 1.4rem;
+  padding-left: 1.4rem;
+  list-style: none;
+}
+
+.salles-bain-page .bullets li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.98rem;
+}
+
+.salles-bain-page .bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff4d4d;
+}
+
+/* CTA finale */
+.salles-bain-page .section-cta {
+  text-align: center;
+}
+
+.salles-bain-page .section-cta h2 {
+  margin-bottom: 1rem;
+}
+
+.salles-bain-page .section-cta .cta-text {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.02rem;
+}
+
+/* liens */
+.salles-bain-page a {
+  color: #ff9a9a;
+  text-decoration: none;
+}
+
+.salles-bain-page a:hover {
+  text-decoration: underline;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .salles-bain-page .page-hero {
+    padding: 3.5rem 0 2.8rem;
+  }
+
+  .salles-bain-page .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .salles-bain-page .btn {
+    width: 100%;
+  }
+
+  .salles-bain-page section {
+    padding: 3rem 0;
+  }
+}

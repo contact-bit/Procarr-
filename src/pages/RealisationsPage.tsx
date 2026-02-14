@@ -38,9 +38,7 @@ const REALISATIONS: Realisation[] = [
 ];
 
 export function RealisationsPage() {
-  const [openId, setOpenId] = useState<number | null>(
-    REALISATIONS[0]?.id ?? null,
-  );
+  const [openId, setOpenId] = useState<number | null>(REALISATIONS[0]?.id ?? null);
 
   const [lightboxState, setLightboxState] = useState<{
     reaId: number | null;
@@ -69,13 +67,16 @@ export function RealisationsPage() {
       {/* Intro */}
       <section className="section">
         <header className="section-header">
-          <h1 className="section-title">
+          <h1
+            className="section-title"
+            style={{ color: '#ffffff' }}
+          >
             Nos réalisations en carrelage et rénovation
           </h1>
           <p className="section-paragraph">
             Découvrez un chantier de terrasse carrelée réalisé par Procarré &amp; Fils
-            autour d’une piscine, en Alpes-de-Haute-Provence. D’autres projets
-            viendront enrichir cette page au fil des réalisations.
+            autour d’une piscine, en Alpes-de-Haute-Provence. Cliquez sur les fiches
+            ci-dessous pour déplier le détail des chantiers et parcourir les photos.
           </p>
         </header>
       </section>
@@ -102,6 +103,7 @@ export function RealisationsPage() {
                     gap: '0.5rem',
                     border: 'none',
                     background: 'transparent',
+                    cursor: 'pointer',
                   }}
                 >
                   {/* Image de couverture */}
@@ -134,6 +136,7 @@ export function RealisationsPage() {
                           fontSize: '1.1rem',
                           margin: 0,
                           marginBottom: '0.25rem',
+                          color: '#ffffff',
                         }}
                       >
                         {rea.title}
@@ -141,7 +144,7 @@ export function RealisationsPage() {
                       <p
                         style={{
                           fontSize: '0.9rem',
-                          color: 'var(--color-text-muted)',
+                          color: '#ffffff',
                           margin: 0,
                         }}
                       >
@@ -149,27 +152,46 @@ export function RealisationsPage() {
                         {rea.surface ? ` – ${rea.surface}` : ''}
                       </p>
                     </div>
-                    <span
+
+                    {/* Indication "dépliable" */}
+                    <div
                       style={{
-                        fontSize: '1.2rem',
-                        transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
-                        transition: 'transform 0.15s ease-out',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        fontSize: '0.8rem',
+                        color: '#ffffff',
                       }}
                     >
-                      &gt;
-                    </span>
+                      <span>{isOpen ? 'Masquer le chantier' : 'Voir le chantier'}</span>
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: '1.6rem',
+                          height: '1.6rem',
+                          borderRadius: '999px',
+                          border: '1px solid rgba(248,250,252,0.35)',
+                          fontSize: '0.9rem',
+                          transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                          transition: 'transform 0.15s ease-out, background-color 0.15s ease-out',
+                        }}
+                      >
+                        &gt;
+                      </span>
+                    </div>
                   </div>
                 </button>
 
                 {/* Zone dépliée animée */}
-                <div
-                  className={`rea-details ${isOpen ? 'rea-open' : 'rea-closed'}`}
-                >
+                <div className={`rea-details ${isOpen ? 'rea-open' : 'rea-closed'}`}>
                   <div className="rea-details-inner">
                     <p
                       style={{
                         fontSize: '0.95rem',
-                        color: 'var(--color-text-muted)',
+                        color: '#ffffff',
                         marginBottom: '1rem',
                       }}
                     >
@@ -207,7 +229,7 @@ export function RealisationsPage() {
                             <figcaption
                               style={{
                                 fontSize: '0.8rem',
-                                color: 'var(--color-text-soft)',
+                                color: '#ffffff',
                                 marginTop: '0.25rem',
                               }}
                             >

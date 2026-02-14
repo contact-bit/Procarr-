@@ -14,9 +14,9 @@ export function TeamSection() {
           Procarré &amp; Fils, carreleurs à Manosque en famille
         </h2>
         <p className="section-subtitle">
-          Denis Dussert et ses fils Sébastien et Laurent, artisans carreleurs à Manosque,
-          interviennent ensemble sur vos chantiers de carrelage et de rénovation
-          en Alpes-de-Haute-Provence.
+          Denis Dussert et ses fils Sébastien et Laurent, artisans carreleurs basés à Manosque,
+          interviennent ensemble sur vos chantiers de carrelage, de rénovation de salle de bain,
+          de terrasses et de rénovation intérieure en Alpes-de-Haute-Provence.
         </p>
       </div>
 
@@ -34,8 +34,8 @@ export function TeamSection() {
           <div className="team-person">
             <h3>Denis Dussert</h3>
             <p>
-              Artisan carreleur, fondateur de Procarré &amp; Fils, Denis pilote les chantiers
-              de carrelage et développe aussi le projet&nbsp;
+              Artisan carreleur et fondateur de Procarré &amp; Fils, Denis pilote les chantiers
+              de carrelage et de rénovation et développe aussi le projet&nbsp;
               <a
                 href="https://www.luminescence-carrelage.fr/"
                 target="_blank"
@@ -44,11 +44,12 @@ export function TeamSection() {
               >
                 Luminescence Carrelage
               </a>
-              , autour de solutions lumineuses pour le carrelage.
+              , autour de solutions de carrelage lumineux à fibre optique, alliant innovation
+              et savoir-faire artisanal à Manosque.
             </p>
             <div className="team-socials">
               <a
-                href="https://www.linkedin.com/in/denis-dussert" // remplace par le vrai lien
+                href="https://www.linkedin.com/in/denis-dussert"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Profil LinkedIn de Denis Dussert"
@@ -62,12 +63,14 @@ export function TeamSection() {
           <div className="team-person">
             <h3>Sébastien Dussert</h3>
             <p>
-              Artisan carreleur, Sébastien intervient sur les chantiers intérieurs et extérieurs
-              et prend en charge une partie de l&apos;administratif et des devis clients.
+              Artisan carreleur, Sébastien intervient sur les chantiers intérieurs et extérieurs :
+              carrelage de sols et murs, salles de bain, terrasses. Il prend également en charge
+              une partie de l&apos;organisation des chantiers, du suivi client et de la préparation
+              des devis.
             </p>
             <div className="team-socials">
               <a
-                href="https://www.linkedin.com/in/sebastien-dussert" // remplace par le vrai lien
+                href="https://www.linkedin.com/in/sebastien-dussert"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Profil LinkedIn de Sébastien Dussert"
@@ -82,11 +85,13 @@ export function TeamSection() {
             <h3>Laurent Dussert</h3>
             <p>
               Artisan carreleur, Laurent travaille sur les mêmes chantiers de sols, murs et terrasses
-              et s&apos;occupe en plus de l&apos;animation des réseaux sociaux de l&apos;entreprise.
+              et participe à la coordination avec les autres corps de métier lorsque les projets
+              incluent de la rénovation complète. Il s&apos;occupe également de l&apos;animation des
+              réseaux sociaux et de la mise en avant des réalisations de l&apos;entreprise.
             </p>
             <div className="team-socials">
               <a
-                href="https://www.linkedin.com/in/laurent-dussert" // remplace par le vrai lien
+                href="https://www.linkedin.com/in/laurent-dussert"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Profil LinkedIn de Laurent Dussert"
@@ -94,7 +99,7 @@ export function TeamSection() {
                 <img src={linkedinIcon} alt="LinkedIn Laurent Dussert" />
               </a>
               <a
-                href="https://www.facebook.com/ton-facebook" // remplace par le vrai lien
+                href="https://www.facebook.com/procarre"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Page Facebook Procarré & Fils"
@@ -102,7 +107,7 @@ export function TeamSection() {
                 <img src={facebookIcon} alt="Facebook Procarré & Fils" />
               </a>
               <a
-                href="https://www.instagram.com/ton-instagram" // remplace par le vrai lien
+                href="https://www.instagram.com/procarre_carrelage"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Compte Instagram Procarré & Fils"

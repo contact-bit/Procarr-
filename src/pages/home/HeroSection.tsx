@@ -7,18 +7,18 @@ export function HeroSection() {
 
   return (
     <section className="hero hero--center">
-      <p className="hero-kicker">Artisan carreleur à Manosque (04)</p>
+      <p className="hero-kicker">Carreleur spécialiste à Manosque (04)</p>
 
       <h1 className="hero-title">
-        Carreleur à Manosque pour vos travaux de carrelage et rénovation intérieure
+        Procarré : votre carreleur expert pour tous vos travaux de rénovation intérieure
       </h1>
 
       <div className="hero-lead-wrapper">
         <p className="hero-lead">
-          Procarré &amp; Fils est une entreprise familiale de carrelage basée à Manosque.
-          Nous accompagnons les particuliers et professionnels pour tous leurs travaux de
-          carrelage et de rénovation : sols intérieurs, murs, salles de bain, douches à
-          l’italienne, cuisines et terrasses dans tout le secteur des Alpes-de-Haute-Provence.
+          Procarré &amp; Fils est une entreprise familiale spécialisée dans le carrelage basée à Manosque.
+          Grâce à notre réseau d’artisans qualifiés, nous vous accompagnons pour tous vos projets de
+          rénovation : carrelage sols/murs, salles de bain, cuisines, terrasses, mais aussi gros œuvre,
+          placo, plomberie et électricité dans les Alpes-de-Haute-Provence.
         </p>
       </div>
 
@@ -32,8 +32,8 @@ export function HeroSection() {
         </button>
 
         <p className="hero-note">
-          Devis gratuit et sans engagement pour vos projets de carrelage, salle de bain,
-          cuisine, terrasse ou rénovation complète autour de Manosque.
+          Devis gratuit pour carrelage, salle de bain, cuisine, terrasse ou rénovation complète
+          autour de Manosque. Un interlocuteur pour tout votre chantier.
         </p>
       </div>
     </section>

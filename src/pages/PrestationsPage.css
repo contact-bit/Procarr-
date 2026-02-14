@@ -1,11 +1,13 @@
 /* src/pages/PrestationsPage.css */
 
+/* Page */
 .prestations-page {
   padding-bottom: 4rem;
   color: #f9fafb;
 }
 
-/* Hero */
+/* HERO
+-------------------------------------------------- */
 .prestations-hero {
   padding: 3.5rem 0 2.5rem;
 }
@@ -22,12 +24,12 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fecaca; /* rouge clair */
+  color: #fecaca;
   margin-bottom: 0.5rem;
 }
 
 .prestations-hero h1 {
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   line-height: 1.25;
   margin-bottom: 0.9rem;
   color: #ffffff;
@@ -43,8 +45,45 @@
 .prestations-hero-cta {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.7rem;
   align-items: center;
+}
+
+/* VRAI bouton moderne arrondi */
+.btn-primary.btn-large {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.9rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: #fef2f2;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 18px 45px rgba(185, 28, 28, 0.55);
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    background 140ms ease,
+    filter 140ms ease;
+}
+
+.btn-primary.btn-large:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 22px 55px rgba(185, 28, 28, 0.7);
+}
+
+.btn-primary.btn-large:active {
+  transform: translateY(0);
+  box-shadow: 0 12px 30px rgba(185, 28, 28, 0.55);
+}
+
+.prestations-hero-btn {
+  /* spécifique au bouton du hero si tu veux le cibler en plus */
 }
 
 .prestations-hero-note {
@@ -52,7 +91,23 @@
   color: #d1d5db;
 }
 
-/* Section générique */
+.prestations-hero-links {
+  margin-top: 1.4rem;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.prestations-hero-links a {
+  color: #fecaca;
+  text-decoration: none;
+}
+
+.prestations-hero-links a:hover {
+  text-decoration: underline;
+}
+
+/* SECTION GÉNÉRIQUE
+-------------------------------------------------- */
 .prestations-section {
   padding: 2.5rem 0 3rem;
 }
@@ -76,7 +131,8 @@
   margin-bottom: 2rem;
 }
 
-/* Grille services */
+/* GRILLE SERVICES
+-------------------------------------------------- */
 .prestations-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -84,12 +140,13 @@
   margin-bottom: 2rem;
 }
 
-/* Cartes floutées, sans fond opaque */
+/* Cartes floutées glassmorphism */
 .service-card {
   border-radius: 16px;
   padding: 1.8rem 1.6rem;
   border: 1px solid rgba(248, 250, 252, 0.16);
-  background: rgba(15, 23, 42, 0.32);           /* translucide */
+  background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.08), transparent 55%)
+    rgba(15, 23, 42, 0.32);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: flex;
@@ -132,7 +189,8 @@
   gap: 1.5rem;
 }
 
-/* Process */
+/* PROCESS
+-------------------------------------------------- */
 .prestations-process {
   padding: 2.5rem 0 3rem;
 }
@@ -189,7 +247,8 @@
   color: #e5e7eb;
 }
 
-/* Bloc local */
+/* BLOC LOCAL
+-------------------------------------------------- */
 .prestations-local {
   padding: 2.5rem 0 3rem;
 }
@@ -215,7 +274,8 @@
   color: #fca5a5;
 }
 
-/* CTA final */
+/* CTA FINAL
+-------------------------------------------------- */
 .prestations-final-cta {
   padding: 2.5rem 0 0;
 }
@@ -247,42 +307,7 @@
   gap: 0.85rem;
 }
 
-/* Responsive */
-@media (max-width: 960px) {
-  .prestations-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .service-card-wide-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .process-steps {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 767px) {
-  .prestations-hero {
-    padding: 2.8rem 0 2.1rem;
-  }
-
-  .prestations-hero h1 {
-    font-size: 1.8rem;
-  }
-
-  .prestations-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .prestations-section,
-  .prestations-process,
-  .prestations-local {
-    padding: 2.2rem 0;
-  }
-}
-/* Bouton secondaire Prestations */
+/* Bouton secondaire */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -318,17 +343,47 @@
   padding-inline: 1.2rem;
 }
 
-.prestations-final-cta-actions .btn-primary.btn-large {
-  box-shadow: 0 18px 45px rgba(185, 28, 28, 0.55);
+/* RESPONSIVE
+-------------------------------------------------- */
+@media (max-width: 960px) {
+  .prestations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-card-wide-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
 }
 
-.prestations-final-cta-actions .btn-primary.btn-large:hover {
-  transform: translateY(-1px);
+@media (max-width: 767px) {
+  .prestations-hero {
+    padding: 2.8rem 0 2.1rem;
+  }
+
+  .prestations-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .prestations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prestations-section,
+  .prestations-process,
+  .prestations-local {
+    padding: 2.2rem 0;
+  }
 }
 
 @media (max-width: 640px) {
   .prestations-final-cta-actions .btn-primary,
-  .prestations-final-cta-actions .btn-secondary {
+  .prestations-final-cta-actions .btn-secondary,
+  .prestations-hero-btn {
     width: 100%;
     justify-content: center;
   }

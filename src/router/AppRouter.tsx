@@ -13,9 +13,8 @@ import { SolsMursPage } from '../pages/SolsMursPage';
 import { SallesBainPage } from '../pages/SallesBainPage';
 import { TerrassesPage } from '../pages/TerrassesPage';
 import { PreparationSupportsPage } from '../pages/PreparationSupportsPage';
-import { ReseauxPage } from '../pages/ReseauxPage';
 import { ScrollToTop } from './ScrollToTop';
-
+import { ActualitesPage } from '../pages/ActualitesPage';
 export function AppRouter() {
   return (
     <Layout>
@@ -35,7 +34,8 @@ export function AppRouter() {
         <Route path="/prestations/terrasses" element={<TerrassesPage />} />
         <Route path="/prestations/preparation-supports" element={<PreparationSupportsPage />} />
 
-        <Route path="/reseaux" element={<ReseauxPage />} />
+        {/* Actualités */}
+        <Route path="/actualites" element={<ActualitesPage />} />
 
         <Route
           path="*"

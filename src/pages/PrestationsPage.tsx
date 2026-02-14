@@ -8,30 +8,34 @@ export function PrestationsPage() {
       {/* HERO */}
       <section className="prestations-hero">
         <div className="container">
-          <p className="prestations-kicker">Carreleur à Manosque – Procarré &amp; Fils</p>
+          <p className="prestations-kicker">Carreleur spécialiste & rénovation à Manosque – Procarré &amp; Fils</p>
           <h1>
-            Prestations de carrelage intérieur, salles de bain, terrasses et piscines
-            en Alpes-de-Haute-Provence
+            Prestations de carrelage intérieur, salles de bain, terrasses, piscines et rénovation intérieure
+            en Alpes-de-Haute-Provence (04)
           </h1>
           <p className="prestations-hero-text">
-            Procarré &amp; Fils est une entreprise familiale de carreleurs à Manosque (04).
+            Procarré &amp; Fils est une entreprise familiale de carreleurs basée à Manosque (04).
             Nous réalisons des travaux de carrelage intérieur, de rénovation de salles de bain,
-            de douches à l’italienne, de terrasses carrelées et de préparation de supports
+            de douches à l’italienne, de terrasses carrelées et de préparation de supports,
+            et nous coordonnons également des rénovations intérieures plus complètes grâce à
+            un réseau d’artisans partenaires sélectionnés (maçonnerie, placo, plomberie, électricité)
             dans tout le bassin manosquin.
           </p>
+
           <div className="prestations-hero-cta">
-            <Link to="/devis" className="btn-primary btn-large">
-              Demander un devis de carrelage à Manosque
+            <Link to="/devis" className="btn-primary btn-large prestations-hero-btn">
+              Demander un devis gratuit de carrelage ou de rénovation à Manosque
             </Link>
             <p className="prestations-hero-note">
               Devis gratuit et sans engagement pour vos projets de carrelage intérieur, salle de bain,
-              terrasse, piscine ou rénovation complète.
+              terrasse, piscine ou rénovation complète d’appartement et de maison.
             </p>
           </div>
+
           <p className="prestations-hero-links">
             Découvrez aussi nos pages&nbsp;
             <Link to="/a-propos">À propos de Procarré &amp; Fils</Link>,&nbsp;
-            <Link to="/realisations">réalisations de chantiers de carrelage</Link>&nbsp;et&nbsp;
+            <Link to="/realisations">réalisations de chantiers de carrelage et rénovation</Link>&nbsp;et&nbsp;
             <Link to="/zone-intervention">zone d’intervention autour de Manosque</Link>.
           </p>
         </div>
@@ -43,9 +47,11 @@ export function PrestationsPage() {
           <h2>Travaux de carrelage réalisés par Procarré &amp; Fils à Manosque</h2>
           <p className="prestations-section-intro">
             Basée à Manosque, l’entreprise Procarré &amp; Fils intervient pour des chantiers de carrelage
-            de A à Z, sans sous-traitance : préparation des supports, pose du carrelage, joints et finitions.
-            Nous accompagnons les particuliers, les professionnels et les architectes pour des projets
-            de rénovation et de construction neuve en Alpes-de-Haute-Provence.
+            de A à Z : préparation des supports, pose du carrelage, joints et finitions. La partie
+            carrelage est réalisée sans sous-traitance, directement par notre équipe. Pour les projets
+            de rénovation plus globaux, nous pouvons également coordonner d’autres corps de métier
+            (maçonnerie, placo, plomberie, électricité) via des artisans partenaires sélectionnés,
+            afin de vous proposer des rénovations complètes et clé en main en Alpes-de-Haute-Provence.
           </p>
 
           <div className="prestations-grid">
@@ -55,12 +61,12 @@ export function PrestationsPage() {
               <p>
                 Nous posons du carrelage pour salons, séjours, cuisines, couloirs, pièces de vie
                 et locaux professionnels. Procarré &amp; Fils travaille sur des projets neufs
-                et en rénovation, avec un calepinage soigné et des finitions propres.
+                et en rénovation, avec un calepinage soigné, des découpes précises et des finitions propres.
               </p>
               <ul className="service-list">
                 <li>Carrelage grand format, imitation parquet, béton ou pierre naturelle.</li>
                 <li>Rénovation de carrelage existant, reprise de niveaux et ragréages.</li>
-                <li>Solutions adaptées aux zones de passage intensif et aux locaux pros.</li>
+                <li>Solutions adaptées aux zones de passage intensif et aux locaux professionnels.</li>
               </ul>
               <Link to="/prestations/sols-murs" className="btn-secondary">
                 En savoir plus sur le carrelage intérieur
@@ -73,7 +79,8 @@ export function PrestationsPage() {
               <p>
                 Procarré &amp; Fils réalise la création et la rénovation complète de salles de bain :
                 préparation des supports, étanchéité, faïence murale et carrelage au sol.
-                Nous concevons des douches à l’italienne modernes, pratiques et faciles d’entretien.
+                Nous concevons des douches à l’italienne modernes, pratiques et faciles d’entretien,
+                en coordination avec des plombiers partenaires pour la partie plomberie et robinetterie.
               </p>
               <ul className="service-list">
                 <li>Étanchéité sous carrelage (pièces d’eau, douches à l’italienne).</li>
@@ -91,7 +98,8 @@ export function PrestationsPage() {
               <p>
                 Nous posons carrelage, dalles et pierres naturelles pour vos terrasses,
                 escaliers extérieurs, balcons et plages de piscine. Les matériaux sont choisis
-                pour résister au gel et au climat des Alpes-de-Haute-Provence.
+                pour résister au gel, aux intempéries et au climat des Alpes-de-Haute-Provence,
+                avec des finitions adaptées pour limiter le risque de glissance.
               </p>
               <ul className="service-list">
                 <li>Terrasses carrelées, dalles sur plots et margelles de piscine.</li>
@@ -112,7 +120,8 @@ export function PrestationsPage() {
                 <p>
                   Un carrelage durable commence par un support bien préparé. Procarré &amp; Fils
                   réalise les travaux de préparation nécessaires avant la pose : ragréages, chapes,
-                  reprises de niveaux et petites démolitions.
+                  reprises de niveaux et petites démolitions, afin d’obtenir des surfaces planes
+                  et adaptées à la pose de carrelage.
                 </p>
                 <ul className="service-list">
                   <li>Ragréages pour rattraper les défauts de planéité des sols.</li>
@@ -127,40 +136,67 @@ export function PrestationsPage() {
               </div>
             </div>
           </article>
+
+          {/* Rénovation complète */}
+          <article className="service-card service-card-wide">
+            <div className="service-card-wide-content">
+              <div>
+                <h3>Rénovation intérieure complète coordonnée par Procarré &amp; Fils</h3>
+                <p>
+                  Pour les projets de rénovation intérieure plus importants (redistribution de pièces,
+                  ouverture de cloisons, création de nouvelles salles de bain, modernisation globale
+                  d’un appartement ou d’une maison), Procarré &amp; Fils reste votre interlocuteur unique.
+                  Nous réalisons nous-mêmes la partie carrelage et coordonnons un réseau d’artisans
+                  partenaires sélectionnés (maçons, plaquistes, plombiers, électriciens), sous-traitants
+                  de confiance avec lesquels nous avons l’habitude de travailler.
+                </p>
+                <ul className="service-list">
+                  <li>Organisation et planification des différents corps de métier.</li>
+                  <li>Suivi du chantier, respect des délais et coordination sur place.</li>
+                  <li>Finitions de carrelage pour un rendu cohérent dans l’ensemble du logement.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
       {/* DÉROULEMENT D’UN CHANTIER */}
       <section className="prestations-process">
         <div className="container">
-          <h2>Comment se déroule un chantier de carrelage avec Procarré &amp; Fils ?</h2>
+          <h2>Comment se déroule un chantier de carrelage ou de rénovation avec Procarré &amp; Fils ?</h2>
           <div className="process-steps">
             <article className="process-step">
               <span className="process-number">01</span>
-              <h3>Prise de contact &amp; devis de carrelage</h3>
+              <h3>Prise de contact &amp; devis</h3>
               <p>
-                Vous nous présentez votre projet de carrelage (sols, salle de bain, terrasse, piscine)
-                par téléphone ou via la page&nbsp;
+                Vous nous présentez votre projet de carrelage ou de rénovation (sols, salle de bain,
+                terrasse, rénovation intérieure) par téléphone ou via la page&nbsp;
                 <Link to="/contact">contact</Link>. Nous convenons ensuite d’un rendez-vous à Manosque
-                ou dans les communes voisines pour prendre les mesures et établir un devis détaillé.
+                ou dans les communes voisines pour prendre les mesures, comprendre vos besoins
+                et établir un devis détaillé.
               </p>
             </article>
             <article className="process-step">
               <span className="process-number">02</span>
-              <h3>Conseils, choix du carrelage &amp; planning</h3>
+              <h3>Conseils, choix des matériaux &amp; planning</h3>
               <p>
                 Nous vous guidons sur le choix du carrelage (format, couleur, finition), en fonction
-                de votre usage (intérieur, salle de bain, extérieur) et de votre budget. Nous définissons
-                avec vous le planning des travaux et les étapes du chantier.
+                de votre usage (intérieur, salle de bain, extérieur) et de votre budget. Pour les
+                rénovations complètes, nous planifions également les interventions des autres corps
+                de métier (maçonnerie, placo, plomberie, électricité) et définissons avec vous le
+                planning des travaux.
               </p>
             </article>
             <article className="process-step">
               <span className="process-number">03</span>
-              <h3>Préparation des supports, pose &amp; finitions</h3>
+              <h3>Préparation des supports, pose, finitions &amp; réception</h3>
               <p>
-                Nous réalisons la préparation des supports, la pose du carrelage, les joints et les finitions,
-                puis nettoyons le chantier avant la réception avec vous. L’ensemble du projet est suivi par
-                la même équipe Procarré &amp; Fils, sans sous-traitance.
+                Nous réalisons la préparation des supports, la pose du carrelage, les joints
+                et les finitions, puis nettoyons le chantier avant la réception avec vous.
+                Sur les chantiers de rénovation globale, nous coordonnons aussi les artisans
+                partenaires sélectionnés pour livrer un projet clé en main, avec un rendu final
+                cohérent et soigné.
               </p>
             </article>
           </div>
@@ -170,22 +206,23 @@ export function PrestationsPage() {
       {/* BLOC LOCAL / ZONE */}
       <section className="prestations-local">
         <div className="container">
-          <h2>Carrelage à Manosque, Volx, Oraison, Forcalquier et communes voisines</h2>
+          <h2>Carrelage et rénovation à Manosque, Volx, Oraison, Forcalquier et communes voisines</h2>
           <p>
-            Procarré &amp; Fils réalise des chantiers de carrelage à Manosque et dans plusieurs communes
-            des Alpes-de-Haute-Provence (04) : Volx, Oraison, Forcalquier, Sainte-Tulle et les villages
-            du bassin manosquin. Nous intervenons sur des projets de rénovation et de construction neuve.
+            Procarré &amp; Fils réalise des chantiers de carrelage et de rénovation intérieure à Manosque
+            et dans plusieurs communes des Alpes-de-Haute-Provence (04) : Volx, Oraison, Forcalquier,
+            Sainte-Tulle et les villages du bassin manosquin. Nous intervenons sur des projets de
+            rénovation et de construction neuve pour les particuliers et les professionnels.
           </p>
           <p>
             Pour un projet en dehors de ces secteurs, nous étudions chaque demande au cas par cas.
             Le plus simple est de nous décrire votre chantier via la page&nbsp;
             <Link to="/contact">contact</Link>&nbsp;ou de&nbsp;
-            <Link to="/devis">demander un devis de carrelage en ligne</Link>.
+            <Link to="/devis">demander un devis gratuit de carrelage ou de rénovation en ligne</Link>.
           </p>
           <p className="prestations-local-links">
             Vous pouvez également consulter nos&nbsp;
-            <Link to="/realisations">réalisations de carrelage à Manosque et alentours</Link>&nbsp;pour voir
-            des exemples de salles de bain, terrasses et pièces de vie déjà rénovées.
+            <Link to="/realisations">réalisations de carrelage et rénovation à Manosque et alentours</Link>
+            &nbsp;pour voir des exemples de salles de bain, terrasses et pièces de vie déjà rénovées.
           </p>
         </div>
       </section>
@@ -195,13 +232,13 @@ export function PrestationsPage() {
         <div className="container">
           <h2>Un projet de carrelage ou de rénovation à Manosque ?</h2>
           <p>
-            Décrivez votre chantier de carrelage intérieur, de salle de bain ou de terrasse, et recevez
-            un devis personnalisé établi par Procarré &amp; Fils, entreprise familiale de carreleurs
-            basée à Manosque en Alpes-de-Haute-Provence.
+            Décrivez votre chantier de carrelage intérieur, de salle de bain, de terrasse ou votre
+            projet de rénovation intérieure complète, et recevez un devis gratuit personnalisé établi par
+            Procarré &amp; Fils, entreprise familiale de carreleurs basée à Manosque en Alpes-de-Haute-Provence.
           </p>
           <div className="prestations-final-cta-actions">
-            <Link to="/devis" className="btn-primary btn-large">
-              Demander un devis de carrelage
+            <Link to="/devis" className="btn-primary btn-large prestations-hero-btn">
+              Demander un devis gratuit de carrelage ou rénovation
             </Link>
             <Link to="/contact" className="btn-secondary">
               Contacter Procarré &amp; Fils

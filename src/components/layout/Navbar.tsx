@@ -59,8 +59,8 @@ export function Navbar() {
           <NavLink to="/realisations" style={linkStyle}>
             Réalisations
           </NavLink>
-          <NavLink to="/reseaux" style={linkStyle}>
-            Réseaux sociaux
+          <NavLink to="/actualites" style={linkStyle}>
+            Actualités
           </NavLink>
           <NavLink to="/devis" style={linkStyle} className="navbar-cta-link">
             Demander un devis
@@ -129,9 +129,6 @@ export function Navbar() {
           <NavLink to="/prestations/salles-de-bain" style={linkStyle}>
             Salles de bain & douches à l&apos;italienne
           </NavLink>
-          <NavLink to="/reseaux" style={linkStyle}>
-            Actualités Facebook
-          </NavLink>
         </div>
       </nav>
 
@@ -173,8 +170,8 @@ export function Navbar() {
           <NavLink to="/zone-intervention" onClick={close} style={linkStyle}>
             Zone d&apos;intervention
           </NavLink>
-          <NavLink to="/reseaux" onClick={close} style={linkStyle}>
-            Réseaux sociaux
+          <NavLink to="/actualites" onClick={close} style={linkStyle}>
+            Actualités
           </NavLink>
           <NavLink
             to="/devis"

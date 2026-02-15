@@ -42,13 +42,16 @@ export function TrustStrip() {
             </p>
           </div>
 
-          <div className="trust-card">
-            <p className="trust-card-label">Zone d’intervention</p>
-            <p className="trust-card-main">Manosque &amp; 04</p>
-            <p className="trust-card-detail">
-              Alpes-de-Haute-Provence : Manosque, autour de Manosque et environs.
-            </p>
-          </div>
+         <div className="trust-card">
+  <p className="trust-card-label">Zone d’intervention</p>
+  <p className="trust-card-main">Manosque, 04 &amp; environs</p>
+  <p className="trust-card-detail">
+    Alpes-de-Haute-Provence et projets possibles dans le 83, 84 et 05.
+  </p>
+</div>
+
+
+
         </div>
       </div>
     </section>

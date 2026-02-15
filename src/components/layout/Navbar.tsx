@@ -58,7 +58,7 @@ export function Navbar() {
               <span className="brand-fils">&amp; Fils</span>
             </Link>
 
-            {/* 2. Tomette Carreleur Blanc à droite */}
+            {/* 2. Tomette Carreleur Blanc à droite (optionnel) */}
             <Link
               to="/carreleur-blanc"
               className="brand-logo-tomete"
@@ -71,7 +71,8 @@ export function Navbar() {
 
           {/* Baseline édito */}
           <p className="navbar-baseline">
-            Procarré &amp; Fils, carreleurs spécialistes en rénovation à Manosque et en Alpes-de-Haute-Provence (04).
+            Procarré &amp; Fils, carreleurs spécialistes en rénovation à Manosque
+            et en Alpes-de-Haute-Provence (04).
           </p>
         </div>
 
@@ -159,6 +160,9 @@ export function Navbar() {
           <NavLink to="/prestations/salles-de-bain" style={linkStyle}>
             Salles de bain &amp; douches à l'italienne
           </NavLink>
+          <NavLink to="/prestations/preparation-supports" style={linkStyle}>
+            Préparation supports
+          </NavLink>
         </div>
       </nav>
 
@@ -190,6 +194,13 @@ export function Navbar() {
             style={linkStyle}
           >
             Salles de bain &amp; douches
+          </NavLink>
+          <NavLink
+            to="/prestations/preparation-supports"
+            onClick={close}
+            style={linkStyle}
+          >
+            Préparation supports &amp; petite maçonnerie
           </NavLink>
           <NavLink to="/realisations" onClick={close} style={linkStyle}>
             Réalisations

@@ -53,12 +53,10 @@ export function Footer() {
           <h3 className="footer-heading">Services de carrelage</h3>
           <ul className="footer-links">
             <li>
-              <Link to="/carreleur-blanc">
-                Carreleur Blanc &amp; Tomettes hexagonales
-              </Link>
+
             </li>
             <li>
-              <Link to="/prestations/sols-interieurs">
+              <Link to="/prestations/sols-murs">
                 Carrelage de sols et murs intérieurs
               </Link>
             </li>

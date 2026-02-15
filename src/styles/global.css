@@ -38,10 +38,10 @@ body {
 .glow-layer {
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(40px);
+  z-index: -1;  /* Sous tout */
+  pointer-events: none;  /* N'interfère pas avec clics/touch */
 }
+
 
 /* Liens */
 
@@ -530,10 +530,10 @@ brand-carre {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: url('../assets/back.png');
+  background-image: url('../assets/back3.png');
   background-repeat: no-repeat;
   background-position: top right;
-  background-size: 480px auto;
+  background-size:  auto;
   opacity: 0.6;
   pointer-events: none;
 

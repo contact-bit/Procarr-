@@ -26,7 +26,7 @@ body {
 body {
   font-family: var(--font-sans);
   line-height: 1.5;
-  color: var(--color-text); /* doit être blanc ou très clair dans tokens.css */
+  color: var(--color-text); /* blanc ou très clair dans tokens.css */
   /* Fond global unique */
   background: radial-gradient(circle at top, #1b0b0c 0, #050608 42%, #050608 100%);
   -webkit-font-smoothing: antialiased;
@@ -89,6 +89,7 @@ header .inner {
   max-width: var(--max-width);
 }
 
+/* Layout desktop / tablette */
 main {
   flex: 1;
   max-width: var(--max-width);
@@ -97,7 +98,6 @@ main {
 }
 
 /* Sécurisation mobile globale */
-
 .app,
 main,
 section,
@@ -268,7 +268,7 @@ section,
 /* ========== Hero slider ========== */
 
 .hero-slider-wrapper {
-  position: relative;             /* important pour l’overlay */
+  position: relative; /* important pour l’overlay */
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
@@ -292,7 +292,7 @@ section,
   display: block;
 }
 
-/* Pagination Swiper dans la DA */
+/* Pagination Swiper */
 .hero-slider-wrapper .swiper-pagination {
   bottom: 12px;
 }
@@ -336,7 +336,11 @@ section,
     0 0 24px rgba(230, 57, 50, 0.6); /* glow rouge */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
 /* petit rond lumineux rouge à gauche du texte */
@@ -605,7 +609,7 @@ brand-carre {
 /* ========== Home layout (container) ========== */
 
 .home-page {
-  max-width: 80rem;      /* ~1280px */
+  max-width: 80rem; /* ~1280px */
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -629,7 +633,7 @@ brand-carre {
 }
 
 .btn-outline-light:hover {
-  color: #f9fafb; /* on garde blanc au hover aussi */
+  color: #f9fafb;
   background: rgba(249, 250, 251, 0.08);
   box-shadow:
     0 0 22px rgba(0, 0, 0, 0.8),
@@ -688,10 +692,38 @@ brand-carre {
   color: var(--color-accent);
 }
 
-/* Tu peux cacher les icônes desktop sur mobile si besoin */
+/* Hide icônes desktop sur mobile */
 
 @media (max-width: 767px) {
   .navbar-social {
     display: none;
+  }
+}
+
+/* ========== Améliorations layout mobile global ========== */
+@media (max-width: 767px) {
+  /* contenu quasi bord à bord */
+  main {
+    max-width: 100%;
+    margin: 0;
+    padding: 1.5rem 0.5rem 2rem;   /* 8px de chaque côté */
+  }
+
+  .home-page {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 0.5rem;             /* 8px */
+  }
+
+  .contact-page {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  /* sections moins “gonflées” verticalement */
+  section {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }

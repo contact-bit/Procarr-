@@ -1,19 +1,40 @@
 /* src/pages/home/HeroSection.css */
 
+/* Conteneur principal hero */
 .hero {
   max-width: 1120px;
   margin: 0 auto;
   padding: 3.5rem 1.25rem 3rem;
   text-align: left;
+  position: relative;
+  min-height: 50vh;
+  color: var(--text-main);
 }
 
-@media (min-width: 1024px) {
-  .hero {
-    padding-top: 5rem;
-    padding-bottom: 4.25rem;
-  }
+/* Image de fond desktop */
+.hero.hero--bg {
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
 }
 
+/* Overlay sombre (fond seulement) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Contenu texte au-dessus */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+/* Kicker (intro uppercase) */
 .hero-kicker {
   font-size: 0.82rem;
   letter-spacing: 0.18em;
@@ -23,6 +44,7 @@
   display: inline-block;
 }
 
+/* Titre principal */
 .hero-title {
   font-size: 2rem;
   line-height: 1.1;
@@ -38,6 +60,7 @@
   }
 }
 
+/* Paragraphe descriptif */
 .hero-lead-wrapper {
   max-width: 640px;
   margin-top: 0.5rem;
@@ -50,6 +73,7 @@
   color: var(--text-muted);
 }
 
+/* Actions (bouton + note) */
 .hero-actions {
   display: flex;
   flex-direction: column;
@@ -64,17 +88,7 @@
   }
 }
 
-.hero-note {
-  font-size: 0.9rem;
-  color: var(--text-soft);
-}
-
-/* Boutons (tu peux les déplacer plus tard dans un Button.css global) */
-
-/* HeroSection.css */
-
-/* ... tout ce que tu as déjà ... */
-
+/* Bouton principal */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -89,7 +103,6 @@
   white-space: nowrap;
 }
 
-/* bouton devis dans ta DA rouge/noir */
 .btn-primary {
   background: linear-gradient(135deg, #e63932, #7f1d1d);
   color: #f9fafb;
@@ -104,4 +117,46 @@
   box-shadow:
     0 0 30px rgba(230, 57, 50, 0.9),
     0 18px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Note sous bouton */
+.hero-note {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .hero {
+    padding-top: 5rem;
+    padding-bottom: 4.25rem;
+  }
+}
+
+/* Mobile : pas d'image de fond */
+@media (max-width: 768px) {
+  .hero {
+    padding: 2.5rem 1.1rem 2.8rem;
+    min-height: 55vh;
+  }
+
+  /* On enlève l'image sur mobile */
+  .hero.hero--bg {
+    background-image: none !important;
+    background-size: auto;
+    background-position: initial;
+    background-repeat: repeat;
+  }
+
+  .hero-content {
+    padding-top: 0.5rem;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
 }

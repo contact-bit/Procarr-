@@ -61,7 +61,7 @@ const faqs: FaqItem[] = [
         partenaires sélectionnés (maçons, plaquistes, plombiers, électriciens), sous-traitants de
         confiance avec lesquels nous avons l’habitude de travailler. Nous planifions les interventions,
         suivons l’avancement du chantier et assurons les finitions de carrelage pour vous livrer un
-        projet clé en main. [web:40][web:55]
+        projet clé en main.
       </>
     ),
   },

@@ -25,9 +25,6 @@
   max-width: 560px;
 }
 
-/* section-kicker + section-title + section-subtitle
-   viennent déjà de ta DA globale, donc pas besoin de les réécrire ici */
-
 /* Colonne accordéon */
 
 .faq-list {
@@ -109,9 +106,7 @@
   color: var(--text-soft);
 }
 
-/* Icône + / - dans ta DA rouge/noir */
-
-/* Icône chevron dans ta DA rouge/noir */
+/* Icône chevron */
 
 .faq-icon {
   flex-shrink: 0;
@@ -166,19 +161,20 @@
   }
 }
 
-
-
 /* Panel (réponse) */
 
 .faq-panel {
   max-height: 0;
   overflow: hidden;
   padding: 0 1rem;
-  transition: max-height 0.22s ease, padding-bottom 0.22s ease;
+  transition:
+    max-height 0.3s ease,
+    padding-bottom 0.3s ease;
 }
 
+/* hauteur suffisante pour toutes les réponses */
 .faq-item-open .faq-panel {
-  max-height: 260px; /* ajuste si besoin */
+  max-height: 1000px;
   padding-bottom: 0.8rem;
 }
 

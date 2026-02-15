@@ -1,13 +1,19 @@
 /* ========== NAVBAR ========== */
 
+:root {
+  /* même image partout */
+  --navbar-bg-image: url('../../assets/backnav.png');
+}
+
 .navbar-root {
   position: sticky;
   top: 0;
   z-index: 40;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Skip link */
-
 .skip-link {
   position: absolute;
   left: -999px;
@@ -24,8 +30,23 @@
   top: 0.8rem;
 }
 
-/* Barre principale : 100% transparente + flou du fond app */
+/* Image de fond : frise pleine largeur */
+.navbar-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--navbar-bg-image);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
 
+/* Barre principale - transparent + flou */
 .navbar-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -36,14 +57,16 @@
   font-family: var(--font-sans);
   color: var(--color-text);
 
-  background: transparent;              /* on ne pose plus de couleur propre */
-  backdrop-filter: blur(18px);          /* on floute uniquement le fond derrière */
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  background: transparent;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  position: relative;
+  z-index: 2;
 }
 
 /* Zone gauche */
-
 .navbar-left {
   display: flex;
   flex-direction: column;
@@ -57,7 +80,6 @@
 }
 
 /* Logo texte */
-
 .navbar-logo a {
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -112,7 +134,6 @@
 }
 
 /* Nav principale desktop */
-
 .navbar-desktop {
   display: flex;
   align-items: center;
@@ -147,9 +168,6 @@
 }
 
 /* CTA */
-
-/* Bouton "Devis carrelage" – desktop + mobile */
-
 .navbar-cta-link {
   display: inline-flex;
   align-items: center;
@@ -157,19 +175,13 @@
   padding: 0.45rem 1.2rem;
   border-radius: 999px;
 
-  border: 1px solid rgba(248, 250, 252, 0.55);
-  background: radial-gradient(
-    circle at 0 0,
-    rgba(239, 68, 68, 0.26),
-    rgba(15, 23, 42, 0.35)
-  );
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow:
-    0 0 0 1px rgba(15, 15, 18, 0.85),
-    0 10px 24px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 
-  color: #fef2f2 !important;
+  color: #fefefe !important;
   font-size: 0.9rem;
   font-weight: 500;
   white-space: nowrap;
@@ -178,31 +190,21 @@
 }
 
 .navbar-cta-link:hover {
-  background: radial-gradient(
-    circle at 0 0,
-    rgba(239, 68, 68, 0.4),
-    rgba(15, 23, 42, 0.55)
-  );
+  background: rgba(255, 255, 255, 0.12);
   transform: translateY(-1px);
 }
 
-/* Sur mobile, on le rend plus large et plus confortable à cliquer */
-
+/* Sur mobile, CTA plus large */
 @media (max-width: 767px) {
   .navbar-cta-link {
     width: 100%;
     margin-top: 0.2rem;
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
-    box-shadow:
-      0 0 0 1px rgba(15, 15, 18, 0.85),
-      0 14px 32px rgba(0, 0, 0, 0.9); /* un peu plus de glow en bas */
   }
 }
 
-
 /* Réseaux desktop */
-
 .navbar-social {
   display: inline-flex;
   align-items: center;
@@ -217,9 +219,9 @@
   width: 26px;
   height: 26px;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.3);
-  border: 1px solid rgba(248, 250, 252, 0.45);
-  box-shadow: 0 0 0 1px rgba(15, 15, 18, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
 
@@ -229,14 +231,15 @@
   object-fit: contain;
 }
 
-/* Sous-nav : transparente aussi, juste un voile et une bordure */
-
+/* Sous-nav - transparent */
 .navbar-sub {
-  background: rgba(15, 23, 42, 0.05);      /* quasi transparent, juste un léger voile */
-  backdrop-filter: blur(10px);             /* on floute un peu le fond de l’app dessous */
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.7);
-  font-size: 0.82rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  position: relative;
+  z-index: 2;
 }
 
 .navbar-sub-inner {
@@ -258,7 +261,6 @@
 }
 
 /* Burger */
-
 .navbar-burger {
   border: none;
   background: transparent;
@@ -291,18 +293,28 @@
   background-color: var(--color-accent);
 }
 
-/* Menu mobile : même principe, fond ultra léger + blur */
-
+/* Menu mobile avec la même image de fond que la barre */
 .navbar-mobile {
   display: none;
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem 1rem;
   font-size: 0.95rem;
-  background: rgba(5, 6, 8, 0.12);       /* presque transparent */
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-top: 1px solid rgba(36, 27, 31, 0.7);
+
+  /* image + voile sombre pour la lisibilité */
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.95)),
+    var(--navbar-bg-image);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  position: relative;
+  z-index: 3;
 }
 
 .navbar-mobile a {
@@ -312,11 +324,10 @@
 }
 
 /* Bloc mobile : call + réseaux */
-
 .navbar-mobile-social {
   margin-top: 0.9rem;
   padding-top: 0.6rem;
-  border-top: 1px solid rgba(36, 27, 31, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -328,7 +339,7 @@
   flex: 1 1 auto;
   padding: 0.55rem 0.9rem;
   border-radius: 999px;
-  background: rgba(22, 163, 74, 0.32);
+  background: rgba(22, 163, 74, 0.25);
   color: #ecfdf3;
   font-size: 0.9rem;
   font-weight: 500;
@@ -349,8 +360,8 @@
   width: 32px;
   height: 32px;
   border-radius: 999px;
-  background: rgba(5, 6, 8, 0.35);
-  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   overflow: hidden;
 }
 
@@ -361,7 +372,6 @@
 }
 
 /* Responsive */
-
 @media (max-width: 900px) {
   .navbar-inner {
     padding: 0.6rem 1rem;
@@ -388,5 +398,16 @@
 
   .navbar-social {
     display: none;
+  }
+
+  /* Image mobile un peu plus visible */
+  .navbar-bg-image {
+    opacity: 0.4;
+  }
+}
+
+@media (min-width: 1440px) {
+  .navbar-bg-image {
+    opacity: 0.38;
   }
 }

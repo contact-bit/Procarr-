@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import facebookIcon from '../../assets/facebook.png';
 import instagramIcon from '../../assets/instagram.png';
 import linkedinIcon from '../../assets/linkedin.png';
+import backnav from '../../assets/backnav.png';
 import './Navbar.css';
 
 export function Navbar() {
@@ -22,6 +23,13 @@ export function Navbar() {
       <a href="#main-content" className="skip-link">
         Aller au contenu principal
       </a>
+
+      {/* Image de fond discrète */}
+      <div
+        className="navbar-bg-image"
+        style={{ backgroundImage: `url(${backnav})` }}
+        aria-hidden="true"
+      />
 
       {/* Barre principale blur */}
       <div className="navbar-inner">

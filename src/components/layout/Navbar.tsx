@@ -200,9 +200,6 @@ export function Navbar() {
           <NavLink to="/zone-intervention" onClick={close} style={linkStyle}>
             Zone d'intervention
           </NavLink>
-          <NavLink to="/carreleur-blanc" onClick={close} style={linkStyle}> {/* ← NOUVEAU */}
-            Carreleur Blanc
-          </NavLink>
           <NavLink to="/actualites" onClick={close} style={linkStyle}>
             Actualités
           </NavLink>

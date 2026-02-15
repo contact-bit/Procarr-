@@ -133,19 +133,18 @@
   }
 }
 
-/* Mobile : pas d'image de fond */
+/* Mobile : image de fond visible */
 @media (max-width: 768px) {
   .hero {
     padding: 2.5rem 1.1rem 2.8rem;
     min-height: 55vh;
   }
 
-  /* On enlève l'image sur mobile */
   .hero.hero--bg {
-    background-image: none !important;
-    background-size: auto;
-    background-position: initial;
-    background-repeat: repeat;
+    background-image: inherit;              /* reprend l'image définie en desktop */
+    background-size: cover;                 /* plein écran sans déborder */
+    background-position: center;            /* centrée sur mobile */
+    background-repeat: no-repeat;
   }
 
   .hero-content {
@@ -160,3 +159,4 @@
     width: 100%;
   }
 }
+

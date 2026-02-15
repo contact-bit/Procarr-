@@ -125,7 +125,7 @@ const faqs: FaqItem[] = [
           rel="noopener noreferrer"
           className="faq-inline-link"
         >
-          Luminescence Carrelage
+         Luminescence Carrelage
         </a>
         , est une marque fondée par Denis Dussert, également fondateur de Procarré &amp; Fils, spécialisée
         dans le carrelage lumineux à fibre optique et les effets décoratifs intégrés dans la matière.&nbsp;

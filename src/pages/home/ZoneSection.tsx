@@ -22,19 +22,19 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
       <div className="zone-shell">
         {/* Colonne édito */}
         <div className="zone-intro">
-          <span className="section-kicker">Zone d&apos;intervention</span>
+          <span className="section-kicker">Zone d'intervention</span>
           <h2 id="zone-title" className="section-title">
-            Carreleurs à Manosque, intervenant dans le bassin manosquin et en Alpes-de-Haute-Provence (04)
+            Carreleurs à Manosque, intervenant autour de Manosque et en Alpes-de-Haute-Provence (04)
           </h2>
           <p className="section-subtitle">
             Procarré &amp; Fils est une entreprise familiale de carrelage et de rénovation basée à Manosque.
             Nous réalisons des chantiers de carrelage intérieur, de rénovation de salles de bain,
-            de douches à l&apos;italienne, de terrasses carrelées et de rénovation intérieure dans plusieurs
-            communes du bassin manosquin et plus largement des Alpes-de-Haute-Provence (04).
+            de douches à l'italienne, de terrasses carrelées et de rénovation intérieure dans plusieurs
+            communes autour de Manosque et plus largement des Alpes-de-Haute-Provence (04).
           </p>
 
           <p className="zone-text">
-            Pour les projets situés en dehors de ces secteurs, notamment dans le reste du Pays manosquin
+            Pour les projets situés en dehors de ces secteurs, notamment dans le reste autour de Manosque
             et des communes limitrophes, nous étudions chaque demande au cas par cas. Le plus simple est
             de nous décrire votre chantier via la page&nbsp;
             <Link to="/contact" className="zone-link">
@@ -54,7 +54,7 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
           aria-label="Communes où Procarré & Fils intervient en carrelage et rénovation"
         >
           <div className="zone-card-header">
-            <span className="zone-chip">Bassin manosquin</span>
+            <span className="zone-chip">Autour de Manosque</span>
             <p className="zone-card-title">
               Villes et secteurs régulièrement desservis par Procarré &amp; Fils pour vos travaux
               de carrelage et de rénovation intérieure
@@ -74,8 +74,8 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
                   Manosque
                 </a>
                 <span className="zone-item-detail">
-                  Chantiers de carrelage intérieur, salles de bain, douches à l&apos;italienne,
-                  terrasses carrelées et rénovations complètes d&apos;appartements et maisons.
+                  Chantiers de carrelage intérieur, salles de bain, douches à l'italienne,
+                  terrasses carrelées et rénovations complètes d'appartements et maisons.
                 </span>
               </div>
             </li>
@@ -111,7 +111,7 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
                 </a>
                 <span className="zone-item-detail">
                   Travaux de carrelage pour sols, murs, salles de bain et terrasses à Oraison
-                  et dans les villages voisins du Pays manosquin.
+                  et dans les villages voisins autour de Manosque.
                 </span>
               </div>
             </li>
@@ -147,7 +147,7 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
                 </a>
                 <span className="zone-item-detail">
                   Plusieurs réalisations récentes en carrelage, rénovation de salle de bain et
-                  aménagements extérieurs dans ce secteur du bassin manosquin.
+                  aménagements extérieurs dans ce secteur autour de Manosque.
                 </span>
               </div>
             </li>
@@ -167,7 +167,7 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
               réalisations de carrelage et rénovation à Manosque et alentours
             </Link>
             &nbsp;pour voir des exemples de chantiers effectués dans les communes environnantes
-            du bassin manosquin.
+            autour de Manosque.
           </p>
         </aside>
       </div>

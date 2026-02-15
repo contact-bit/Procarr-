@@ -30,7 +30,7 @@ export function WhyUsSection() {
               <Link to="/prestations/terrasses" className="reason-link">
                 terrasses extérieures
               </Link>
-              &nbsp;dans tout le bassin manosquin et en Alpes-de-Haute-Provence.
+              &nbsp;dans tout autour de Manosque et en Alpes-de-Haute-Provence.
               Cette connaissance du terrain local nous permet de vous conseiller au mieux sur les matériaux,
               les contraintes climatiques et les habitudes de vie.
             </p>

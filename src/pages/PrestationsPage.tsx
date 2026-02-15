@@ -16,10 +16,10 @@ export function PrestationsPage() {
           <p className="prestations-hero-text">
             Procarré &amp; Fils est une entreprise familiale de carreleurs basée à Manosque (04).
             Nous réalisons des travaux de carrelage intérieur, de rénovation de salles de bain,
-            de douches à l’italienne, de terrasses carrelées et de préparation de supports,
+            de douches à l'italienne, de terrasses carrelées et de préparation de supports,
             et nous coordonnons également des rénovations intérieures plus complètes grâce à
-            un réseau d’artisans partenaires sélectionnés (maçonnerie, placo, plomberie, électricité)
-            dans tout le bassin manosquin.
+            un réseau d'artisans partenaires sélectionnés (maçonnerie, placo, plomberie, électricité)
+            dans les Alpes-de-Haute-Provence et communes voisines.
           </p>
 
           <div className="prestations-hero-cta">
@@ -28,7 +28,7 @@ export function PrestationsPage() {
             </Link>
             <p className="prestations-hero-note">
               Devis gratuit et sans engagement pour vos projets de carrelage intérieur, salle de bain,
-              terrasse, piscine ou rénovation complète d’appartement et de maison.
+              terrasse, piscine ou rénovation complète d'appartement et de maison.
             </p>
           </div>
 
@@ -36,7 +36,7 @@ export function PrestationsPage() {
             Découvrez aussi nos pages&nbsp;
             <Link to="/a-propos">À propos de Procarré &amp; Fils</Link>,&nbsp;
             <Link to="/realisations">réalisations de chantiers de carrelage et rénovation</Link>&nbsp;et&nbsp;
-            <Link to="/zone-intervention">zone d’intervention autour de Manosque</Link>.
+            <Link to="/zone-intervention">zone d'intervention autour de Manosque</Link>.
           </p>
         </div>
       </section>
@@ -46,10 +46,10 @@ export function PrestationsPage() {
         <div className="container">
           <h2>Travaux de carrelage réalisés par Procarré &amp; Fils à Manosque</h2>
           <p className="prestations-section-intro">
-            Basée à Manosque, l’entreprise Procarré &amp; Fils intervient pour des chantiers de carrelage
+            Basée à Manosque, l'entreprise Procarré &amp; Fils intervient pour des chantiers de carrelage
             de A à Z : préparation des supports, pose du carrelage, joints et finitions. La partie
             carrelage est réalisée sans sous-traitance, directement par notre équipe. Pour les projets
-            de rénovation plus globaux, nous pouvons également coordonner d’autres corps de métier
+            de rénovation plus globaux, nous pouvons également coordonner d'autres corps de métier
             (maçonnerie, placo, plomberie, électricité) via des artisans partenaires sélectionnés,
             afin de vous proposer des rénovations complètes et clé en main en Alpes-de-Haute-Provence.
           </p>
@@ -75,15 +75,15 @@ export function PrestationsPage() {
 
             {/* Salles de bain */}
             <article className="service-card">
-              <h3>Rénovation de salles de bain &amp; douches à l’italienne</h3>
+              <h3>Rénovation de salles de bain &amp; douches à l'italienne</h3>
               <p>
                 Procarré &amp; Fils réalise la création et la rénovation complète de salles de bain :
                 préparation des supports, étanchéité, faïence murale et carrelage au sol.
-                Nous concevons des douches à l’italienne modernes, pratiques et faciles d’entretien,
+                Nous concevons des douches à l'italienne modernes, pratiques et faciles d'entretien,
                 en coordination avec des plombiers partenaires pour la partie plomberie et robinetterie.
               </p>
               <ul className="service-list">
-                <li>Étanchéité sous carrelage (pièces d’eau, douches à l’italienne).</li>
+                <li>Étanchéité sous carrelage (pièces d'eau, douches à l'italienne).</li>
                 <li>Pose de receveurs extra-plats, habillage de baignoires et espaces douche.</li>
                 <li>Carrelage mural, niches, bancs, tablettes et finitions haut de gamme.</li>
               </ul>
@@ -120,13 +120,13 @@ export function PrestationsPage() {
                 <p>
                   Un carrelage durable commence par un support bien préparé. Procarré &amp; Fils
                   réalise les travaux de préparation nécessaires avant la pose : ragréages, chapes,
-                  reprises de niveaux et petites démolitions, afin d’obtenir des surfaces planes
+                  reprises de niveaux et petites démolitions, afin d'obtenir des surfaces planes
                   et adaptées à la pose de carrelage.
                 </p>
                 <ul className="service-list">
                   <li>Ragréages pour rattraper les défauts de planéité des sols.</li>
                   <li>Chapes et reprises de pentes (salles de bain, terrasses, douches).</li>
-                  <li>Dépose d’anciens carrelages et préparation des surfaces à carreler.</li>
+                  <li>Dépose d'anciens carrelages et préparation des surfaces à carreler.</li>
                 </ul>
               </div>
               <div className="service-card-wide-cta">
@@ -145,15 +145,15 @@ export function PrestationsPage() {
                 <p>
                   Pour les projets de rénovation intérieure plus importants (redistribution de pièces,
                   ouverture de cloisons, création de nouvelles salles de bain, modernisation globale
-                  d’un appartement ou d’une maison), Procarré &amp; Fils reste votre interlocuteur unique.
-                  Nous réalisons nous-mêmes la partie carrelage et coordonnons un réseau d’artisans
+                  d'un appartement ou d'une maison), Procarré &amp; Fils reste votre interlocuteur unique.
+                  Nous réalisons nous-mêmes la partie carrelage et coordonnons un réseau d'artisans
                   partenaires sélectionnés (maçons, plaquistes, plombiers, électriciens), sous-traitants
-                  de confiance avec lesquels nous avons l’habitude de travailler.
+                  de confiance avec lesquels nous avons l'habitude de travailler.
                 </p>
                 <ul className="service-list">
                   <li>Organisation et planification des différents corps de métier.</li>
                   <li>Suivi du chantier, respect des délais et coordination sur place.</li>
-                  <li>Finitions de carrelage pour un rendu cohérent dans l’ensemble du logement.</li>
+                  <li>Finitions de carrelage pour un rendu cohérent dans l'ensemble du logement.</li>
                 </ul>
               </div>
             </div>
@@ -161,7 +161,7 @@ export function PrestationsPage() {
         </div>
       </section>
 
-      {/* DÉROULEMENT D’UN CHANTIER */}
+      {/* DÉROULEMENT D'UN CHANTIER */}
       <section className="prestations-process">
         <div className="container">
           <h2>Comment se déroule un chantier de carrelage ou de rénovation avec Procarré &amp; Fils ?</h2>
@@ -172,7 +172,7 @@ export function PrestationsPage() {
               <p>
                 Vous nous présentez votre projet de carrelage ou de rénovation (sols, salle de bain,
                 terrasse, rénovation intérieure) par téléphone ou via la page&nbsp;
-                <Link to="/contact">contact</Link>. Nous convenons ensuite d’un rendez-vous à Manosque
+                <Link to="/contact">contact</Link>. Nous convenons ensuite d'un rendez-vous à Manosque
                 ou dans les communes voisines pour prendre les mesures, comprendre vos besoins
                 et établir un devis détaillé.
               </p>
@@ -210,7 +210,7 @@ export function PrestationsPage() {
           <p>
             Procarré &amp; Fils réalise des chantiers de carrelage et de rénovation intérieure à Manosque
             et dans plusieurs communes des Alpes-de-Haute-Provence (04) : Volx, Oraison, Forcalquier,
-            Sainte-Tulle et les villages du bassin manosquin. Nous intervenons sur des projets de
+            Sainte-Tulle et les villages voisins. Nous intervenons sur des projets de
             rénovation et de construction neuve pour les particuliers et les professionnels.
           </p>
           <p>

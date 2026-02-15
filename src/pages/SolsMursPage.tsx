@@ -51,7 +51,7 @@ export function SolsMursPage() {
               Procarré & Fils est une entreprise familiale de carreleurs basée à
               Manosque, spécialisée dans la <strong>pose de carrelage de sol</strong> et la{' '}
               <strong>pose de carrelage mural</strong> pour les maisons,
-              appartements et locaux professionnels dans tout le bassin manosquin.
+              appartements et locaux professionnels dans les Alpes-de-Haute-Provence et communes voisines.
             </p>
             <div className="hero-cta">
               <Link to="/devis" className="btn btn-primary">
@@ -76,14 +76,14 @@ export function SolsMursPage() {
               Nous réalisons la <strong>pose de carrelage de sol</strong> dans
               toutes les pièces de vie : salons, séjours, cuisines, entrées,
               couloirs, escaliers et pièces techniques. La pose est adaptée aussi
-              bien en construction neuve qu&apos;en rénovation de sol existant.
+              bien en construction neuve qu'en rénovation de sol existant.
             </p>
             <p>
               Procarré &amp; Fils travaille différents types de carreaux de sol :
               grès cérame grand format, carrelage imitation parquet bois,
               carrelage aspect pierre ou béton, carreaux antidérapants pour les
-              zones de passage. L&apos;objectif est d&apos;obtenir un sol
-              esthétique, résistant et facile d&apos;entretien pour votre
+              zones de passage. L'objectif est d'obtenir un sol
+              esthétique, résistant et facile d'entretien pour votre
               intérieur à Manosque et en Alpes-de-Haute-Provence.
             </p>
             <ul className="bullets">
@@ -105,7 +105,7 @@ export function SolsMursPage() {
             <p>
               Nous assurons également la <strong>pose de carrelage mural</strong>{' '}
               pour les cuisines, salles de bain, douches, WC, crédences et murs
-              techniques. Le carrelage mural protège vos murs de l&apos;eau et des
+              techniques. Le carrelage mural protège vos murs de l'eau et des
               projections tout en apportant une finition décorative.
             </p>
             <p>
@@ -133,9 +133,9 @@ export function SolsMursPage() {
             <p>
               Procarré &amp; Fils intervient pour la{' '}
               <strong>rénovation de carrelage de sol</strong> ou de{' '}
-              <strong>carrelage mural</strong> : remplacement d&apos;un ancien
-              carrelage, modernisation d&apos;une cuisine, mise à niveau d&apos;un
-              sol, harmonie après ouverture de cloison ou création d&apos;une
+              <strong>carrelage mural</strong> : remplacement d'un ancien
+              carrelage, modernisation d'une cuisine, mise à niveau d'un
+              sol, harmonie après ouverture de cloison ou création d'une
               nouvelle pièce de vie.
             </p>
             <p>
@@ -158,8 +158,7 @@ export function SolsMursPage() {
               Votre projet de <strong>pose de carrelage de sol</strong> ou de{' '}
               <strong>pose de carrelage mural</strong> se situe à Manosque ou
               dans les environs ? Nous intervenons à Manosque, Volx, Oraison,
-              Forcalquier, Sainte-Tulle et dans plusieurs communes du bassin
-              manosquin en Alpes-de-Haute-Provence (04).
+              Forcalquier, Sainte-Tulle et dans plusieurs communes des Alpes-de-Haute-Provence (04).
             </p>
             <p>
               Pour un chantier situé en dehors de ce secteur, chaque demande est

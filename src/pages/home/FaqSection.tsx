@@ -14,7 +14,7 @@ const faqs: FaqItem[] = [
     answer: (
       <>
         Procarré &amp; Fils intervient principalement à Manosque et dans les communes
-        environnantes du bassin manosquin en Alpes-de-Haute-Provence (04). Pour vérifier
+        environnantes autour de Manosque en Alpes-de-Haute-Provence (04). Pour vérifier
         si nous pouvons intervenir sur votre projet de carrelage ou de rénovation intérieure,
         vous pouvez nous envoyer les informations de votre chantier via la page&nbsp;
         <Link to="/contact" className="faq-inline-link">
@@ -153,7 +153,7 @@ export function FaqSection() {
           <h2 className="section-title">Questions fréquentes sur Procarré &amp; Fils</h2>
           <p className="section-subtitle">
             Quelques réponses pour mieux comprendre nos interventions en carrelage et en rénovation
-            intérieure à Manosque et en Alpes-de-Haute-Provence. [web:40][web:97]
+            intérieure à Manosque et en Alpes-de-Haute-Provence.
           </p>
         </div>
 

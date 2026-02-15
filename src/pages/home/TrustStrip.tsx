@@ -46,7 +46,7 @@ export function TrustStrip() {
             <p className="trust-card-label">Zone d’intervention</p>
             <p className="trust-card-main">Manosque &amp; 04</p>
             <p className="trust-card-detail">
-              Alpes-de-Haute-Provence : Manosque, bassin manosquin et environs.
+              Alpes-de-Haute-Provence : Manosque, autour de Manosque et environs.
             </p>
           </div>
         </div>

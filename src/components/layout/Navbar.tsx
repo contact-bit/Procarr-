@@ -158,9 +158,7 @@ export function Navbar() {
           <NavLink to="/prestations/salles-de-bain" style={linkStyle}>
             Salles de bain & douches à l'italienne
           </NavLink>
-          <NavLink to="/carreleur-blanc" style={linkStyle}> {/* ← NOUVEAU */}
-            Carreleur Blanc & Tomettes
-          </NavLink>
+
         </div>
       </nav>
 

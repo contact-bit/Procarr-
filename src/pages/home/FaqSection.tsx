@@ -118,7 +118,7 @@ const faqs: FaqItem[] = [
     question: 'Proposez-vous des projets de carrelage lumineux ?',
     answer: (
       <>
-        Oui, Procarré &amp; Fils travaille avec le projet&nbsp;
+        Oui. &nbsp;
         <a
           href="https://www.luminescence-carrelage.fr/"
           target="_blank"
@@ -127,12 +127,14 @@ const faqs: FaqItem[] = [
         >
           Luminescence Carrelage
         </a>
-        &nbsp;pour intégrer des solutions lumineuses dans le carrelage (carrelage lumineux
-        à fibre optique, effets décoratifs). Mentionnez-le dans votre demande sur la page&nbsp;
+        , est une marque fondée par Denis Dussert, également fondateur de Procarré &amp; Fils, spécialisée
+        dans le carrelage lumineux à fibre optique et les effets décoratifs intégrés dans la matière.&nbsp;
+        Mentionnez ce type de projet dans votre demande sur la page&nbsp;
         <Link to="/contact" className="faq-inline-link">
           contact
         </Link>
-        &nbsp;pour que nous puissions étudier la faisabilité sur votre projet.
+        &nbsp;afin que nous puissions étudier la faisabilité et vous proposer une solution sur mesure
+        (piscine, salle de bain, terrasse, espace bien-être, etc.).
       </>
     ),
   },

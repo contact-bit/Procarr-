@@ -1,5 +1,6 @@
-/* ========== NAVBAR ========== */
+/* ========== NAVBAR CSS COMPLET - PRÊT À REMPLACER ========== */
 
+/* :root */
 :root {
   --navbar-bg-image: url('../../assets/backnav.png');
 }
@@ -10,6 +11,8 @@
   top: 0;
   z-index: 40;
   position: relative;
+  /* overflow: hidden;  ← PROBLÈME, ça rogne le logo */
+  overflow: visible;        /* ✅ on laisse tout respirer */
 }
 
 /* Skip link */
@@ -23,7 +26,6 @@
   border-radius: 999px;
   z-index: 999;
 }
-
 .skip-link:focus {
   left: 1rem;
   top: 0.8rem;
@@ -44,7 +46,7 @@
   pointer-events: none;
 }
 
-/* Barre principale - TRANSPARENT + PLUS DE FLou */
+/* Barre principale - TRANSPARENT + Flou */
 .navbar-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -56,48 +58,105 @@
   font-family: var(--font-sans);
   color: var(--color-text);
   background: transparent !important;
-  backdrop-filter: blur(12px); /* ← PLUS DE FLou */
+  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   z-index: 2;
 }
 
-/* Zone gauche (logo + baseline) */
+/* ✅ ZONE GAUCHE - ESPACE CORRIGÉ */
 .navbar-left {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.5rem;
   min-width: 0;
+  padding-top: 0.2rem;
+  padding-bottom: 0.1rem;
+}
+
+/* Logo triple */
+.navbar-logo-triple {
+  display: flex !important;
+  align-items: center;
+  gap: 14px !important;
+  flex-wrap: nowrap;
+  position: relative;
+  z-index: 5;
+  margin-bottom: 0.5rem; /* espace entre logo et phrase */
 }
 
 .navbar-baseline {
-  margin: 0;
+  margin: 0 !important;
+  margin-top: 0.1rem !important;
   font-size: 0.78rem;
   color: var(--color-text-muted);
-  max-width: 28rem;
+  max-width: 32rem;
+  line-height: 1.2;
+  padding: 0 4px;
 }
 
-/* Logo texte */
-.navbar-logo a {
+/* 1️⃣ PETIT LOGO.PNG - VISIBLE À 100% */
+.brand-petit-logo {
+  position: relative;
+  z-index: 5;
+  display: inline-block;        /* ✅ inline-block */
+  width: 42px;
+  height: 42px;
+  line-height: 0;               /* ✅ pas de ligne qui rogne */
+  overflow: visible;
+}
+
+.brand-petit-logo img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit;
+  object-fit: contain !important;
+  object-position: center;
+  display: block !important;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25)) drop-shadow(0 0 4px rgba(255,255,255,0.3));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.brand-petit-logo:hover img {
+  transform: scale(1.18) rotate(8deg);
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.35)) drop-shadow(0 0 8px rgba(255,255,255,0.5));
+}
+
+/* 2️⃣ TOMETTE BLANCHE (si utilisée plus tard) */
+.brand-logo-tomete {
+  position: relative;
+  z-index: 5;
+}
+.brand-logo-tomete img {
+  max-width: 62px !important;
+  height: auto !important;
+  border-radius: 12px;
+  object-fit: contain !important;
+  filter: drop-shadow(0 3px 12px rgba(0,0,0,0.2)) drop-shadow(0 0 6px rgba(255,255,255,0.4));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.brand-logo-tomete:hover img {
+  transform: scale(1.12) translateY(-2px);
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.3)) drop-shadow(0 0 12px rgba(255,255,255,0.6));
+}
+
+/* 3️⃣ LOGO TEXTE PROCARRÉ */
+.navbar-logo {
+  display: contents;
+}
+.brand-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.9rem;
   color: var(--color-text);
 }
-
-.brand-logo {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  text-decoration: none;
-}
-
-.brand-logo:hover {
-  text-decoration: none;
-}
-
 .brand-pro {
   color: var(--color-accent);
   font-weight: 800;
@@ -105,7 +164,6 @@
   text-transform: uppercase;
   font-size: 0.95rem;
 }
-
 .brand-carre {
   color: #f5f5f5;
   font-weight: 600;
@@ -113,12 +171,10 @@
   text-transform: uppercase;
   font-size: 0.95rem;
 }
-
 .brand-separator {
   color: rgba(255, 255, 255, 0.35);
   font-size: 0.85rem;
 }
-
 .brand-fils {
   font-size: 0.8rem;
   letter-spacing: 0.16em;
@@ -126,7 +182,6 @@
   font-style: italic;
   color: var(--color-text-muted);
 }
-
 .brand-logo:hover .brand-pro,
 .brand-logo:hover .brand-carre {
   text-shadow: 0 0 10px rgba(230, 57, 50, 0.5);
@@ -140,22 +195,18 @@
   font-size: 0.93rem;
   white-space: nowrap;
 }
-
 .navbar-desktop a {
   position: relative;
   color: var(--color-text-muted);
   text-decoration: none;
   transition: color 0.15s ease;
 }
-
 .navbar-desktop a:hover {
   color: var(--color-text);
 }
-
 .navbar-desktop a.active {
   color: var(--color-accent);
 }
-
 .navbar-desktop a.active::after {
   content: '';
   position: absolute;
@@ -164,6 +215,7 @@
   width: 100%;
   height: 2px;
   border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft));
 }
 
 /* CTA */
@@ -185,7 +237,6 @@
   text-decoration: none;
   letter-spacing: 0.03em;
 }
-
 .navbar-cta-link:hover {
   background: rgba(255, 255, 255, 0.12);
   transform: translateY(-1px);
@@ -198,7 +249,6 @@
   gap: 0.4rem;
   margin-left: 1rem;
 }
-
 .navbar-social a {
   display: inline-flex;
   align-items: center;
@@ -211,23 +261,21 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
-
 .navbar-social img {
   width: 16px;
   height: 16px;
   object-fit: contain;
 }
 
-/* Sous-nav - TRANSPARENT + PLUS DE FLou */
+/* Sous-nav */
 .navbar-sub {
   background: transparent !important;
-  backdrop-filter: blur(10px); /* ← PLUS DE FLou */
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   z-index: 2;
 }
-
 .navbar-sub-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -237,12 +285,10 @@
   gap: 0.9rem 1.5rem;
   background: transparent !important;
 }
-
 .navbar-sub a {
   color: var(--color-text-soft);
   text-decoration: none;
 }
-
 .navbar-sub a:hover {
   color: var(--color-accent);
 }
@@ -257,7 +303,6 @@
   padding: 4px;
   cursor: pointer;
 }
-
 .navbar-burger .bar {
   width: 22px;
   height: 2px;
@@ -265,22 +310,19 @@
   background-color: var(--color-text);
   transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
 }
-
 .navbar-burger .bar-1.open {
   transform: translateY(6px) rotate(45deg);
   background-color: var(--color-accent);
 }
-
 .navbar-burger .bar-2.open {
   opacity: 0;
 }
-
 .navbar-burger .bar-3.open {
   transform: translateY(-6px) rotate(-45deg);
   background-color: var(--color-accent);
 }
 
-/* Menu mobile - COMPLÈTEMENT TRANSPARENT + FLou MAX */
+/* Menu mobile */
 .navbar-mobile {
   display: none;
   flex-direction: column;
@@ -288,7 +330,7 @@
   padding: 0.75rem 1.25rem 1rem;
   font-size: 0.95rem;
   background: transparent !important;
-  backdrop-filter: blur(20px); /* ← FLou MAX */
+  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
@@ -296,7 +338,6 @@
   max-height: calc(100vh - 60px);
   overflow-y: auto;
 }
-
 .navbar-mobile a {
   color: var(--color-text-muted);
   text-decoration: none;
@@ -314,7 +355,6 @@
   gap: 0.8rem;
   flex-wrap: wrap;
 }
-
 .navbar-mobile-call {
   flex: 1 1 auto;
   padding: 0.55rem 0.9rem;
@@ -326,13 +366,11 @@
   text-align: center;
   text-decoration: none;
 }
-
 .navbar-mobile-social-icons {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
 }
-
 .navbar-mobile-social-icons a {
   display: inline-flex;
   align-items: center;
@@ -344,154 +382,101 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
   overflow: hidden;
 }
-
 .navbar-mobile-social-icons img {
   width: 18px;
   height: 18px;
   object-fit: contain;
 }
 
-/* ========== Breakpoints ========== */
-
-/* Tablette / écran intermédiaire */
+/* ========== BREAKPOINTS ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
   .navbar-inner {
     padding: 0.6rem 1rem;
     align-items: flex-start;
     gap: 0.9rem;
   }
-
   .navbar-left {
     max-width: 55%;
   }
-
   .navbar-baseline {
     font-size: 0.72rem;
     margin-top: 0.15rem;
     margin-bottom: 0.35rem;
   }
-
   .navbar-desktop {
     gap: 1rem;
     font-size: 0.88rem;
   }
-
   .navbar-cta-link {
     padding-inline: 0.9rem;
     font-size: 0.86rem;
   }
-
   .navbar-social {
     margin-left: 0.6rem;
   }
 }
 
-/* Mobile */
 @media (max-width: 767px) {
   .navbar-inner {
     padding: 0.55rem 0.9rem;
   }
-
   .navbar-left {
     max-width: 100%;
+    gap: 0.6rem;
+    padding-top: 0.3rem;
   }
-
   .navbar-baseline {
-    font-size: 0.7rem;
-    max-width: 18rem;
-    margin-top: 0.15rem;
-    margin-bottom: 0.45rem;
+    font-size: 0.72rem;
+    max-width: 22rem;
+    margin-top: 0.2rem;
   }
-
   .navbar-desktop,
   .navbar-sub {
     display: none;
   }
-
   .navbar-burger {
     display: flex;
   }
-
   .navbar-mobile {
     display: flex;
   }
-
   .navbar-social {
     display: none;
   }
-
   .navbar-bg-image {
     opacity: 0.4;
   }
-
   .navbar-cta-link {
     width: 100%;
     margin-top: 0.2rem;
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
+
+  /* ✅ MOBILE LOGOS */
+  .navbar-logo-triple {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .brand-petit-logo {
+    width: 38px;
+    height: 38px;
+  }
+  .brand-petit-logo img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .brand-logo-tomete img {
+    max-width: 58px !important;
+  }
 }
 
-/* Très grands écrans */
 @media (min-width: 1440px) {
   .navbar-bg-image {
     opacity: 0.38;
   }
-
   .navbar-inner {
     padding-inline: 1.75rem;
-  }
-}
-
-/* ========== LOGOS TRIPLES ========== */
-.navbar-logo-triple {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.brand-petit-logo img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
-  transition: all 0.3s ease;
-}
-
-.brand-petit-logo:hover img {
-  transform: scale(1.15) rotate(5deg);
-  filter: drop-shadow(0 3px 10px rgba(0,0,0,0.3));
-}
-
-.brand-logo-tomete img {
-  max-width: 60px;
-  height: auto;
-  border-radius: 8px;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
-  transition: all 0.3s ease;
-}
-
-.brand-logo-tomete:hover img {
-  transform: scale(1.1);
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
-}
-
-/* Mobile logos */
-@media (max-width: 767px) {
-  .navbar-logo-triple {
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-  }
-
-  .brand-petit-logo img {
-    width: 35px;
-    height: 35px;
-  }
-
-  .brand-logo-tomete img {
-    max-width: 55px;
   }
 }

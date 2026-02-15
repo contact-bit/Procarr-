@@ -1,13 +1,14 @@
+/* ========== FOOTER CSS COMPLET - VERSION BADGE STYLÉ ========== */
+
 .site-footer {
   border-top: 1px solid rgba(36, 27, 31, 0.7);
   padding: 2.2rem 1.5rem 2.6rem;
-  background: rgba(5, 6, 8, 0.18);         /* comme la navbar */
-  backdrop-filter: blur(24px);             /* comme la navbar */
-  -webkit-backdrop-filter: blur(24px);     /* comme la navbar */
+  background: rgba(5, 6, 8, 0.18);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   color: var(--color-text);
   font-size: 0.9rem;
 }
-
 
 .footer-shell {
   max-width: 1120px;
@@ -23,24 +24,109 @@
   }
 }
 
-/* Logo dans le footer */
-
-.footer-logo {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  margin-bottom: 0.65rem;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  background: radial-gradient(circle at 0 0, rgba(5, 6, 8, 0.9), rgba(5, 6, 8, 0.7));
-  box-shadow:
-    0 0 0 1px rgba(250, 250, 249, 0.16),
-    0 14px 30px rgba(0, 0, 0, 0.85);
-}
+/* ========= LOGO BADGE ========= */
 
 .footer-col-brand {
-  max-width: 340px;
+  max-width: 420px;
 }
+
+/* Badge logo footer ultra stylé */
+.footer-logo {
+  text-decoration: none;
+}
+
+.footer-logo-badge {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.08), transparent 55%),
+    linear-gradient(135deg, rgba(12, 10, 20, 0.95), rgba(12, 12, 18, 0.85));
+  box-shadow:
+    0 0 0 1px rgba(250, 250, 249, 0.18),
+    0 22px 40px rgba(0, 0, 0, 0.9),
+    0 0 45px rgba(239, 68, 68, 0.25);
+  overflow: visible;
+}
+
+/* Ligne logo + texte (image + spans) */
+.footer-logo-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.footer-logo-badge-row > img,
+.footer-logo-badge-row > span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Logo image dans le badge */
+.footer-tomete-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* Texte PRO|CARRÉ & Fils, style neon/gradient */
+
+
+.footer-logo-badge .brand-pro {
+  font-weight: 900;
+}
+
+.footer-logo-badge .brand-carre {
+  font-weight: 700;
+}
+
+.footer-logo-badge .brand-separator {
+  color: rgba(248, 250, 252, 0.55);
+  margin: 0 0.2rem;
+}
+
+.footer-logo-badge .brand-fils {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-style: italic;
+  color: rgba(248, 250, 252, 0.7);
+}
+
+/* Baseline intégrée dans le badge */
+.footer-logo-baseline {
+  margin: 0;
+  margin-top: 0.1rem;
+  max-width: 28rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: rgba(241, 245, 249, 0.78);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Glow animé du gradient */
+@keyframes logoGradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hover : badge qui respire un peu */
+.footer-logo-badge:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(250, 250, 249, 0.22),
+    0 30px 60px rgba(0, 0, 0, 0.95),
+    0 0 60px rgba(248, 250, 252, 0.3);
+}
+
+/* ========= TEXTE & COLONNES ========= */
 
 .footer-title {
   font-size: 0.98rem;
@@ -77,8 +163,6 @@
 .footer-nap-link:hover {
   text-decoration: underline;
 }
-
-/* Colonnes de liens */
 
 .footer-col {
   min-width: 0;
@@ -128,18 +212,65 @@
   color: var(--color-text-soft);
 }
 
-/* Responsive */
+/* ========= RESPONSIVE ========= */
 
 @media (max-width: 960px) {
   .site-footer {
     padding: 2.2rem 1.25rem 2.4rem;
   }
-
   .footer-shell {
     grid-template-columns: minmax(0, 1fr);
   }
-
   .footer-col-brand {
     max-width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  .footer-logo-badge {
+    padding: 0.65rem 1rem;
+    gap: 0.3rem;
+  }
+  .footer-tomete-logo {
+    width: 34px;
+    height: 34px;
+  }
+  .footer-logo-baseline {
+    font-size: 0.76rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-logo-badge {
+    padding: 0.55rem 0.9rem;
+  }
+}
+.footer-petit-logo {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 0;
+  overflow: visible;
+}
+
+.footer-petit-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: contain;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Hover : petit glow + léger scale */
+.footer-logo-badge:hover .footer-petit-logo img {
+  transform: scale(1.03); /* au lieu de 1.06 */
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,0.4))
+    drop-shadow(0 0 6px rgba(239,68,68,0.3));
+}
+
+

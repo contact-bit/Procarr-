@@ -1,11 +1,14 @@
 // src/components/layout/Navbar.tsx
 import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+
 import facebookIcon from '../../assets/facebook.png';
 import instagramIcon from '../../assets/instagram.png';
 import linkedinIcon from '../../assets/linkedin.png';
-import petitLogo from '../../assets/logo.png'; // ← NOUVEAU : petit logo devant
+import petitLogo from '../../assets/logo.png';
 import backnav from '../../assets/backnav.png';
+
 import './Navbar.css';
 
 export function Navbar() {
@@ -14,13 +17,14 @@ export function Navbar() {
   const toggle = () => setOpen(o => !o);
   const close = () => setOpen(false);
 
-  const linkStyle: React.CSSProperties = {
+  const linkStyle: CSSProperties = {
     textDecoration: 'none',
     color: 'inherit',
   };
 
   return (
     <header className="navbar-root" role="banner">
+      {/* Lien d’évitement */}
       <a href="#main-content" className="skip-link">
         Aller au contenu principal
       </a>
@@ -34,43 +38,40 @@ export function Navbar() {
 
       {/* Barre principale blur */}
       <div className="navbar-inner">
-        {/* Logo TRIPLE : petit logo.png + tomette + PROCARRÉ */}
+        {/* Bloc gauche : logo + baseline */}
         <div className="navbar-left">
+          {/* Logo TRIPLE : petit logo + Procarré & Fils + tomette */}
           <div className="navbar-logo-triple">
-            {/* 1. PETIT LOGO.PNG DEVANT ← NOUVEAU */}
-            <Link 
-              to="/" 
-              className="brand-petit-logo" 
-              aria-label="Accueil Procarré & Fils"
+            {/* 1. Petit logo + texte PROCARRÉ & Fils dans le même lien */}
+            <Link
+              to="/"
+              className="brand-logo"
+              aria-label="Procarré & Fils - Carreleur à Manosque"
               title="Procarré & Fils - Carreleur Manosque"
             >
-              <img src={petitLogo} alt="Logo Procarré principal" />
+              <span className="brand-petit-logo">
+                <img src={petitLogo} alt="Logo Procarré principal" />
+              </span>
+              <span className="brand-pro">PRO</span>
+              <span className="brand-carre">CARRÉ</span>
+              <span className="brand-separator">|</span>
+              <span className="brand-fils">&amp; Fils</span>
             </Link>
-            
-            {/* 2. TOMETTE CARRELEUR BLANC */}
+
+            {/* 2. Tomette Carreleur Blanc à droite */}
             <Link
               to="/carreleur-blanc"
               className="brand-logo-tomete"
               aria-label="Carreleur Blanc - Spécialiste tomettes"
               title="Découvrez nos carrelages blancs et tomettes"
             >
-            </Link>
-            
-            {/* 3. LOGO TEXTE ORIGINAL PROCARRÉ */}
-            <Link
-              to="/"
-              className="brand-logo"
-              aria-label="Procarré & Fils - Carreleur à Manosque"
-            >
-              <span className="brand-pro">PRO</span>
-              <span className="brand-carre">CARRÉ</span>
-              <span className="brand-separator">|</span>
-              <span className="brand-fils">&amp; Fils</span>
+              {/* <img src={tometteBlanche} alt="Carreleur Blanc" /> */}
             </Link>
           </div>
-          
+
+          {/* Baseline édito */}
           <p className="navbar-baseline">
-            Procarré & Fils, carreleurs spécialistes en rénovation à Manosque et en Alpes-de-Haute-Provence (04).
+            Procarré &amp; Fils, carreleurs spécialistes en rénovation à Manosque et en Alpes-de-Haute-Provence (04).
           </p>
         </div>
 
@@ -137,7 +138,7 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Sous-nav SEO + lien Carreleur Blanc */}
+      {/* Sous-nav SEO */}
       <nav
         className="navbar-sub"
         aria-label="Navigation secondaire Procarré & Fils"
@@ -153,16 +154,15 @@ export function Navbar() {
             Zone d'intervention Manosque
           </NavLink>
           <NavLink to="/prestations/sols-murs" style={linkStyle}>
-            Carrelage de sols & murs
+            Carrelage de sols &amp; murs
           </NavLink>
           <NavLink to="/prestations/salles-de-bain" style={linkStyle}>
-            Salles de bain & douches à l'italienne
+            Salles de bain &amp; douches à l'italienne
           </NavLink>
-
         </div>
       </nav>
 
-      {/* Menu mobile + lien Carreleur Blanc */}
+      {/* Menu mobile */}
       {open && (
         <nav
           className="navbar-mobile"
@@ -182,14 +182,14 @@ export function Navbar() {
             onClick={close}
             style={linkStyle}
           >
-            Carrelage sols & murs
+            Carrelage sols &amp; murs
           </NavLink>
           <NavLink
             to="/prestations/salles-de-bain"
             onClick={close}
             style={linkStyle}
           >
-            Salles de bain & douches
+            Salles de bain &amp; douches
           </NavLink>
           <NavLink to="/realisations" onClick={close} style={linkStyle}>
             Réalisations
@@ -214,7 +214,7 @@ export function Navbar() {
 
           <div className="navbar-mobile-social">
             <a href="tel:+33600000000" className="navbar-mobile-call">
-              Appeler Procarré & Fils
+              Appeler Procarré &amp; Fils
             </a>
             <div className="navbar-mobile-social-icons">
               <a

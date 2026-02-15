@@ -118,7 +118,7 @@ const faqs: FaqItem[] = [
     question: 'Proposez-vous des projets de carrelage lumineux ?',
     answer: (
       <>
-        Oui, &nbsp;
+        Oui,&nbsp;
         <a
           href="https://www.luminescence-carrelage.fr/"
           target="_blank"

@@ -1,0 +1,316 @@
+/* src/styles/RealisationsPage.css */
+@import '../styles/tokens.css';
+
+/* ================== BASE ================== */
+
+.realisations-page {
+  color: #f9fafb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+}
+
+/* ================== HERO ================== */
+
+.realisations-hero {
+  max-width: 960px;
+  margin: 2.5rem auto 1.5rem;
+  padding: 0 1.25rem;
+  text-align: left;
+}
+
+.realisations-kicker {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fecaca;
+  margin-bottom: 0.4rem;
+}
+
+.realisations-hero h1 {
+  font-size: 2rem;
+  line-height: 1.25;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+}
+
+.realisations-hero p {
+  max-width: 44rem;
+  color: #e5e7eb;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+/* ================== PANNEAU DE FILTRES ================== */
+
+.realisations-filters-panel {
+  max-width: 960px;
+  margin: 0 auto 2rem;
+  padding: 1.4rem 1.25rem 1.6rem;
+  display: grid;
+  gap: 1.1rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(248, 250, 252, 0.14);
+  background: rgba(15, 23, 42, 0.32);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.realisations-filters-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.realisations-filters-summary {
+  margin: 0.1rem 0 0;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.realisations-filters-help {
+  margin: 0;
+  max-width: 22rem;
+  font-size: 0.86rem;
+  color: #cbd5f5;
+}
+
+/* Liste verticale de filtres */
+
+.realisations-filters-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.realisations-filter-item {
+  width: 100%;
+  border: 1px solid rgba(248, 250, 252, 0.14);
+  border-radius: 0.85rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(15, 23, 42, 0.5);
+  color: #e5e7eb;
+  text-align: left;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 0.6rem;
+  row-gap: 0.15rem;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.realisations-filter-item:hover {
+  border-color: rgba(248, 250, 252, 0.3);
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.realisations-filter-item.is-active {
+  border-color: rgba(248, 113, 113, 0.85);
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.45);
+  background: radial-gradient(
+      circle at top left,
+      rgba(248, 113, 113, 0.18),
+      transparent 55%
+    )
+    rgba(15, 23, 42, 0.9);
+}
+
+.realisations-filter-color {
+  grid-row: 1 / span 2;
+  align-self: center;
+  width: 0.45rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  background: #fecaca;
+}
+
+.realisations-filter-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.realisations-filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.realisations-filter-count {
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.realisations-filter-description {
+  font-size: 0.82rem;
+  color: #e5e7eb;
+}
+
+/* ================== LISTE DES BLOCS ================== */
+
+.realisations-content {
+  max-width: 960px;
+  margin: 0 auto 3rem;
+  padding: 0 1.25rem 2.5rem;
+  display: grid;
+  gap: 1.8rem;
+}
+
+/* Bloc chantier dans la DA des blocks APropos */
+
+.realisations-block {
+  border-radius: 1.1rem;
+  padding: 1.6rem 1.5rem;
+  border: 1px solid rgba(248, 250, 252, 0.14);
+  background: rgba(15, 23, 42, 0.32);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Header bloc (titre + sous-titre) */
+
+.realisations-block-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.realisations-block-icon {
+  font-size: 1.3rem;
+  color: #fecaca;
+}
+
+.realisations-block-title {
+  font-size: 1.35rem;
+  margin: 0 0 0.1rem;
+  color: #ffffff;
+}
+
+.realisations-block-meta {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #e5e7eb;
+}
+
+/* Texte descriptif */
+
+.realisations-block-desc {
+  max-width: 44rem;
+  color: #e5e7eb;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  margin: 0 0 1.1rem;
+}
+
+/* Grille interne : galerie + pills */
+
+.realisations-block-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* Galerie */
+
+.realisations-block-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+}
+
+.realisations-thumb-wrapper {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  text-align: left;
+  cursor: zoom-in;
+}
+
+.realisations-thumb {
+  width: 100%;
+  height: 140px;
+  border-radius: 0.9rem;
+  object-fit: cover;
+  display: block;
+}
+
+.realisations-thumb-caption {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: #e5e7eb;
+}
+
+/* Pills côté texte */
+
+.realisations-pills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.realisations-pills li {
+  font-size: 0.86rem;
+  color: #fee2e2;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 250, 252, 0.2);
+  background: radial-gradient(
+      circle at top left,
+      rgba(248, 113, 113, 0.16),
+      transparent 55%
+    )
+    rgba(15, 23, 42, 0.6);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.realisations-pill-dot {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: #fecaca;
+}
+
+/* ================== RESPONSIVE ================== */
+
+@media (max-width: 900px) {
+  .realisations-block-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .realisations-filters-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .realisations-filters-help {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .realisations-hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .realisations-content {
+    padding-bottom: 2rem;
+  }
+
+  .realisations-thumb {
+    height: 120px;
+  }
+}

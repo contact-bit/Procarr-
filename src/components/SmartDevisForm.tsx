@@ -53,10 +53,10 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
     message: '',
   });
 
-  const [role, setRole] = useState(''); // particulier / pro
-  const [projectKind, setProjectKind] = useState(''); // neuf / rénovation
-  const [delay, setDelay] = useState(''); // urgent / 2m / 6m...
-  const [building, setBuilding] = useState(''); // maison / appart...
+  const [role, setRole] = useState('');
+  const [projectKind, setProjectKind] = useState('');
+  const [delay, setDelay] = useState('');
+  const [building, setBuilding] = useState('');
 
   const [interior, setInterior] = useState<InteriorFields>({
     pieceType: '',
@@ -98,7 +98,6 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
     setCommon(prev => ({ ...prev, [name]: value }));
   };
 
-  // Progression ludique (0–100%)
   const progress = useMemo(() => {
     let filled = 0;
     if (common.name) filled++;
@@ -142,16 +141,21 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
     e.preventDefault();
     if (status === 'submitting') return;
 
+    if (!common.name.trim() || !common.email.trim() || !common.message.trim()) {
+      alert('Merci de remplir au minimum votre nom, email et un message.');
+      return;
+    }
+
     setStatus('submitting');
 
     const payload = {
       projectType,
       common,
       meta: {
-        role,         // particulier / professionnel
-        projectKind,  // neuf / rénovation
-        delay,        // urgent / 2m / 6m / ...
-        building,     // maison / appart / bureau...
+        role,
+        projectKind,
+        delay,
+        building,
       },
       interior: projectType === 'interieur' ? interior : undefined,
       exterior: projectType === 'exterieur' ? exterior : undefined,
@@ -161,14 +165,26 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
     };
 
     try {
-      await fetch('/api/devis', {
+      const res = await fetch('http://localhost:3001/api/devis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        console.error('Devis API error:', data);
+        setStatus('idle');
+        alert("Une erreur est survenue lors de l'envoi du devis.");
+        return;
+      }
+
       setStatus('success');
-    } catch {
+    } catch (err) {
+      console.error('Devis fetch error:', err);
       setStatus('idle');
+      alert("Impossible de contacter le serveur de devis.");
     }
   };
 
@@ -198,13 +214,12 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
         <span className="smart-devis-badge">
           Projet&nbsp;:&nbsp;{projectType}
         </span>
-<span className="smart-devis-badge">
-  Devis gratuit &amp; sans engagement
-</span>
-<span className="smart-devis-badge">
-  Intervention autour de Manosque (04)
-</span>
-
+        <span className="smart-devis-badge">
+          Devis gratuit &amp; sans engagement
+        </span>
+        <span className="smart-devis-badge">
+          Intervention autour de Manosque (04)
+        </span>
       </div>
 
       {/* Infos communes */}
@@ -247,7 +262,7 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
         </div>
       </div>
 
-      {/* Profil & type de projet (inspiration concurrent) */}
+      {/* Profil & type de projet */}
       <div className="smart-devis-section">
         <h3>Votre profil & projet</h3>
         <div className="field-row">

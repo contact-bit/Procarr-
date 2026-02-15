@@ -158,7 +158,7 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
             onClick={handleClick}
             className="btn btn-outline-light zone-cta"
           >
-            Vérifier si nous intervenons chez vous
+            Vérifier notre zone d’intervention.
           </button>
 
           <p className="zone-note">

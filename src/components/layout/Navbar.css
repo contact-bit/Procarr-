@@ -1,16 +1,15 @@
 /* ========== NAVBAR ========== */
 
 :root {
-  /* même image partout */
   --navbar-bg-image: url('../../assets/backnav.png');
 }
 
+/* Racine */
 .navbar-root {
   position: sticky;
   top: 0;
   z-index: 40;
   position: relative;
-  overflow: hidden;
 }
 
 /* Skip link */
@@ -30,11 +29,10 @@
   top: 0.8rem;
 }
 
-/* Image de fond : frise pleine largeur */
+/* Image de fond */
 .navbar-bg-image {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   background-image: var(--navbar-bg-image);
@@ -46,7 +44,7 @@
   pointer-events: none;
 }
 
-/* Barre principale - transparent + flou */
+/* Barre principale - TRANSPARENT + PLUS DE FLou */
 .navbar-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -54,29 +52,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
   font-family: var(--font-sans);
   color: var(--color-text);
-
-  background: transparent;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: transparent !important;
+  backdrop-filter: blur(12px); /* ← PLUS DE FLou */
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
   position: relative;
   z-index: 2;
 }
 
-/* Zone gauche */
+/* Zone gauche (logo + baseline) */
 .navbar-left {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.2rem;
+  min-width: 0;
 }
 
 .navbar-baseline {
   margin: 0;
   font-size: 0.78rem;
   color: var(--color-text-muted);
+  max-width: 28rem;
 }
 
 /* Logo texte */
@@ -139,6 +138,7 @@
   align-items: center;
   gap: 1.4rem;
   font-size: 0.93rem;
+  white-space: nowrap;
 }
 
 .navbar-desktop a {
@@ -164,7 +164,6 @@
   width: 100%;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft));
 }
 
 /* CTA */
@@ -174,13 +173,11 @@
   justify-content: center;
   padding: 0.45rem 1.2rem;
   border-radius: 999px;
-
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-
   color: #fefefe !important;
   font-size: 0.9rem;
   font-weight: 500;
@@ -192,16 +189,6 @@
 .navbar-cta-link:hover {
   background: rgba(255, 255, 255, 0.12);
   transform: translateY(-1px);
-}
-
-/* Sur mobile, CTA plus large */
-@media (max-width: 767px) {
-  .navbar-cta-link {
-    width: 100%;
-    margin-top: 0.2rem;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-  }
 }
 
 /* Réseaux desktop */
@@ -231,13 +218,12 @@
   object-fit: contain;
 }
 
-/* Sous-nav - transparent */
+/* Sous-nav - TRANSPARENT + PLUS DE FLou */
 .navbar-sub {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: transparent !important;
+  backdrop-filter: blur(10px); /* ← PLUS DE FLou */
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
   position: relative;
   z-index: 2;
 }
@@ -249,6 +235,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem 1.5rem;
+  background: transparent !important;
 }
 
 .navbar-sub a {
@@ -293,28 +280,21 @@
   background-color: var(--color-accent);
 }
 
-/* Menu mobile avec la même image de fond que la barre */
+/* Menu mobile - COMPLÈTEMENT TRANSPARENT + FLou MAX */
 .navbar-mobile {
   display: none;
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem 1rem;
   font-size: 0.95rem;
-
-  /* image + voile sombre pour la lisibilité */
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.95)),
-    var(--navbar-bg-image);
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: transparent !important;
+  backdrop-filter: blur(20px); /* ← FLou MAX */
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-
   position: relative;
   z-index: 3;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
 }
 
 .navbar-mobile a {
@@ -371,18 +351,58 @@
   object-fit: contain;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+/* ========== Breakpoints ========== */
+
+/* Tablette / écran intermédiaire */
+@media (min-width: 768px) and (max-width: 1024px) {
   .navbar-inner {
     padding: 0.6rem 1rem;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  .navbar-left {
+    max-width: 55%;
   }
 
   .navbar-baseline {
-    display: none;
+    font-size: 0.72rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .navbar-desktop {
+    gap: 1rem;
+    font-size: 0.88rem;
+  }
+
+  .navbar-cta-link {
+    padding-inline: 0.9rem;
+    font-size: 0.86rem;
+  }
+
+  .navbar-social {
+    margin-left: 0.6rem;
   }
 }
 
+/* Mobile */
 @media (max-width: 767px) {
+  .navbar-inner {
+    padding: 0.55rem 0.9rem;
+  }
+
+  .navbar-left {
+    max-width: 100%;
+  }
+
+  .navbar-baseline {
+    font-size: 0.7rem;
+    max-width: 18rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.45rem;
+  }
+
   .navbar-desktop,
   .navbar-sub {
     display: none;
@@ -400,14 +420,78 @@
     display: none;
   }
 
-  /* Image mobile un peu plus visible */
   .navbar-bg-image {
     opacity: 0.4;
   }
+
+  .navbar-cta-link {
+    width: 100%;
+    margin-top: 0.2rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
 }
 
+/* Très grands écrans */
 @media (min-width: 1440px) {
   .navbar-bg-image {
     opacity: 0.38;
+  }
+
+  .navbar-inner {
+    padding-inline: 1.75rem;
+  }
+}
+
+/* ========== LOGOS TRIPLES ========== */
+.navbar-logo-triple {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.brand-petit-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+  transition: all 0.3s ease;
+}
+
+.brand-petit-logo:hover img {
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 3px 10px rgba(0,0,0,0.3));
+}
+
+.brand-logo-tomete img {
+  max-width: 60px;
+  height: auto;
+  border-radius: 8px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+  transition: all 0.3s ease;
+}
+
+.brand-logo-tomete:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+
+/* Mobile logos */
+@media (max-width: 767px) {
+  .navbar-logo-triple {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .brand-petit-logo img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .brand-logo-tomete img {
+    max-width: 55px;
   }
 }

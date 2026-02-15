@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import facebookIcon from '../../assets/facebook.png';
 import instagramIcon from '../../assets/instagram.png';
 import linkedinIcon from '../../assets/linkedin.png';
+import petitLogo from '../../assets/logo.png'; // ← NOUVEAU : petit logo devant
 import backnav from '../../assets/backnav.png';
 import './Navbar.css';
 
@@ -33,9 +34,29 @@ export function Navbar() {
 
       {/* Barre principale blur */}
       <div className="navbar-inner">
-        {/* Logo + baseline courte */}
+        {/* Logo TRIPLE : petit logo.png + tomette + PROCARRÉ */}
         <div className="navbar-left">
-          <div className="navbar-logo">
+          <div className="navbar-logo-triple">
+            {/* 1. PETIT LOGO.PNG DEVANT ← NOUVEAU */}
+            <Link 
+              to="/" 
+              className="brand-petit-logo" 
+              aria-label="Accueil Procarré & Fils"
+              title="Procarré & Fils - Carreleur Manosque"
+            >
+              <img src={petitLogo} alt="Logo Procarré principal" />
+            </Link>
+            
+            {/* 2. TOMETTE CARRELEUR BLANC */}
+            <Link
+              to="/carreleur-blanc"
+              className="brand-logo-tomete"
+              aria-label="Carreleur Blanc - Spécialiste tomettes"
+              title="Découvrez nos carrelages blancs et tomettes"
+            >
+            </Link>
+            
+            {/* 3. LOGO TEXTE ORIGINAL PROCARRÉ */}
             <Link
               to="/"
               className="brand-logo"
@@ -47,9 +68,9 @@ export function Navbar() {
               <span className="brand-fils">&amp; Fils</span>
             </Link>
           </div>
+          
           <p className="navbar-baseline">
-            Pose de carrelage intérieur / extérieur, salles de bain & piscines à Manosque
-            et en Alpes-de-Haute-Provence
+            Procarré & Fils, carreleurs spécialistes en rénovation à Manosque et en Alpes-de-Haute-Provence (04).
           </p>
         </div>
 
@@ -116,31 +137,34 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Sous-nav SEO */}
+      {/* Sous-nav SEO + lien Carreleur Blanc */}
       <nav
         className="navbar-sub"
         aria-label="Navigation secondaire Procarré & Fils"
       >
         <div className="navbar-sub-inner">
           <NavLink to="/a-propos" style={linkStyle}>
-            À propos de l&apos;entreprise
+            À propos de l'entreprise
           </NavLink>
           <NavLink to="/avant-apres" style={linkStyle}>
             Avant / Après chantiers
           </NavLink>
           <NavLink to="/zone-intervention" style={linkStyle}>
-            Zone d&apos;intervention Manosque
+            Zone d'intervention Manosque
           </NavLink>
           <NavLink to="/prestations/sols-murs" style={linkStyle}>
             Carrelage de sols & murs
           </NavLink>
           <NavLink to="/prestations/salles-de-bain" style={linkStyle}>
-            Salles de bain & douches à l&apos;italienne
+            Salles de bain & douches à l'italienne
+          </NavLink>
+          <NavLink to="/carreleur-blanc" style={linkStyle}> {/* ← NOUVEAU */}
+            Carreleur Blanc & Tomettes
           </NavLink>
         </div>
       </nav>
 
-      {/* Menu mobile */}
+      {/* Menu mobile + lien Carreleur Blanc */}
       {open && (
         <nav
           className="navbar-mobile"
@@ -176,7 +200,10 @@ export function Navbar() {
             Avant / Après
           </NavLink>
           <NavLink to="/zone-intervention" onClick={close} style={linkStyle}>
-            Zone d&apos;intervention
+            Zone d'intervention
+          </NavLink>
+          <NavLink to="/carreleur-blanc" onClick={close} style={linkStyle}> {/* ← NOUVEAU */}
+            Carreleur Blanc
           </NavLink>
           <NavLink to="/actualites" onClick={close} style={linkStyle}>
             Actualités
@@ -192,7 +219,7 @@ export function Navbar() {
 
           <div className="navbar-mobile-social">
             <a href="tel:+33600000000" className="navbar-mobile-call">
-              Appeler Procarré &amp; Fils
+              Appeler Procarré & Fils
             </a>
             <div className="navbar-mobile-social-icons">
               <a

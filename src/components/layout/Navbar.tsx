@@ -71,7 +71,7 @@ export function Navbar() {
 
           {/* Baseline édito */}
           <p className="navbar-baseline">
-            Procarré &amp; Fils, carreleurs spécialistes en rénovation à Manosque
+            Procarré &amp; Fils, artisans carreleurs spécialistes en rénovation à Manosque
             et en Alpes-de-Haute-Provence (04).
           </p>
         </div>
@@ -90,8 +90,8 @@ export function Navbar() {
           <NavLink to="/realisations" style={linkStyle}>
             Réalisations
           </NavLink>
-          <NavLink to="/actualites" style={linkStyle}>
-            Actualités
+          <NavLink to="/contact" style={linkStyle}>
+            Contact
           </NavLink>
           <NavLink to="/devis" style={linkStyle} className="navbar-cta-link">
             Demander un devis
@@ -147,6 +147,9 @@ export function Navbar() {
         <div className="navbar-sub-inner">
           <NavLink to="/a-propos" style={linkStyle}>
             À propos de l'entreprise
+          </NavLink>
+                    <NavLink to="/actualites" onClick={close} style={linkStyle}>
+            Actualités
           </NavLink>
           <NavLink to="/avant-apres" style={linkStyle}>
             Avant / Après chantiers
@@ -211,8 +214,9 @@ export function Navbar() {
           <NavLink to="/zone-intervention" onClick={close} style={linkStyle}>
             Zone d'intervention
           </NavLink>
-          <NavLink to="/actualites" onClick={close} style={linkStyle}>
-            Actualités
+
+          <NavLink to="/contact" onClick={close} style={linkStyle}>
+            Contact
           </NavLink>
           <NavLink
             to="/devis"

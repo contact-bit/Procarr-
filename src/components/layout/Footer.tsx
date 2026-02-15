@@ -142,8 +142,7 @@ export function Footer() {
             </li>
           </ul>
           <p className="footer-text-small">
-            Site carrelage Manosque : tomettes, salles de bain, terrasses PACA.
-          </p>
+Artisan carreleur à Manosque (04) pour vos travaux de carrelage, salles de bain, terrasses et rénovations en Alpes-de-Haute-Provence.           </p>
           <p className="footer-copy">
             © {year} Procarré &amp; Fils – Artisan carreleur Manosque (04). Tous droits réservés.
           </p>

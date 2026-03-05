@@ -81,7 +81,7 @@ export function ServicesSection() {
             <div className="service-card-header">
               <span className="service-tag">Rénovation complète</span>
               <h3 className="service-title">
-                Chantiers de rénovation globale, gros œuvre, placo, plomberie, électricité
+                Chantiers de rénovation globale, second œuvre, placo, plomberie, électricité
               </h3>
             </div>
             <p className="service-text">

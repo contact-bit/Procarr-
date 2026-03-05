@@ -52,7 +52,7 @@ const faqs: FaqItem[] = [
   },
   {
     question:
-      'Comment se passent vos rénovations complètes (gros œuvre, placo, plomberie, électricité) ?',
+      'Comment se passent vos rénovations complètes (second œuvre, placo, plomberie, électricité) ?',
     answer: (
       <>
         Pour les projets de rénovation complète (ouverture de cloisons, création de nouvelles pièces,

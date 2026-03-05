@@ -57,7 +57,7 @@ export function ProcessSection() {
                 terrasses extérieures
               </Link>
               , en tenant compte de l’usage, de l’esthétique et de l’entretien. Selon le projet, nous
-              planifions aussi les interventions de notre réseau d’artisans (gros œuvre, cloisonnement,
+              planifions aussi les interventions de notre réseau d’artisans (second œuvre, cloisonnement,
               plomberie, électricité). Nous préparons les supports (démolition si nécessaire, ragréage,
               chape, étanchéité, calepinage) pour garantir une pose durable, plane et conforme aux règles
               de l’art.

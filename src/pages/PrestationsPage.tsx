@@ -9,13 +9,12 @@ export function PrestationsPage() {
       <section className="prestations-hero">
         <div className="container">
           <p className="prestations-kicker">Carreleur spécialiste & rénovation à Manosque – Procarré &amp; Fils</p>
-          <h1>intérieur et extérieur
-            Prestations de carrelage intérieur, salles de bain, terrasses, piscines et rénovation 
+          <h1>Prestations de carrelage intérieur et extérieur, salles de bain, terrasses, piscines et rénovation 
             en Alpes-de-Haute-Provence (04)
           </h1>
           <p className="prestations-hero-text">
             Procarré &amp; Fils est une entreprise familiale de carreleurs basée à Manosque (04).
-            Nous réalisons des travaux de carrelage intérieur, de rénovation de salles de bain,
+            Nous réalisons des travaux de carrelage intérieur et extérieur, de rénovation de salles de bain,
             de douches à l'italienne, de terrasses carrelées et de préparation de supports,
             et nous coordonnons également des rénovations intérieur et extérieur plus complètes grâce à
             un réseau d'artisans partenaires sélectionnés (maçonnerie, placo, plomberie, électricité)
@@ -27,7 +26,7 @@ export function PrestationsPage() {
               Demander un devis gratuit de carrelage ou de rénovation à Manosque
             </Link>
             <p className="prestations-hero-note">
-              Devis gratuit et sans engagement pour vos projets de carrelage intérieur, salle de bain,
+              Devis gratuit et sans engagement pour vos projets de carrelage intérieur et extérieur, salle de bain,
               terrasse, piscine ou rénovation complète d'appartement et de maison.
             </p>
           </div>
@@ -57,7 +56,7 @@ export function PrestationsPage() {
           <div className="prestations-grid">
             {/* Intérieur */}
             <article className="service-card">
-              <h3>Carrelage de sols et murs intérieurs</h3>
+              <h3>Carrelage de sols et murs intérieurs et extérieurs</h3>
               <p>
                 Nous posons du carrelage pour salons, séjours, cuisines, couloirs, pièces de vie
                 et locaux professionnels. Procarré &amp; Fils travaille sur des projets neufs
@@ -69,7 +68,7 @@ export function PrestationsPage() {
                 <li>Solutions adaptées aux zones de passage intensif et aux locaux professionnels.</li>
               </ul>
               <Link to="/prestations/sols-murs" className="btn-secondary">
-                En savoir plus sur le carrelage intérieur
+                En savoir plus sur le carrelage intérieur et extérieur
               </Link>
             </article>
 

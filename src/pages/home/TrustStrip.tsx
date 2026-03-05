@@ -12,7 +12,7 @@ export function TrustStrip() {
           </h2>
           <p className="trust-lead">
             Procarré &amp; Fils est une entreprise familiale spécialisée carrelage basée à Manosque.
-            Depuis plus de vingt ans, nous pilotons vos chantiers complets grâce à notre réseau d’artisans :
+            Depuis plus de vingt-cinq ans, nous pilotons vos chantiers complets grâce à notre réseau d’artisans :
             carrelage sols/murs, salles de bain, terrasses, mais aussi gros œuvre, placo, plomberie et électricité.
           </p>
         </div>
@@ -22,7 +22,7 @@ export function TrustStrip() {
             <p className="trust-card-label">Spécialité</p>
             <p className="trust-card-main">Carrelage expert</p>
             <p className="trust-card-detail">
-              +20 ans de poses de qualité : sols, murs, salles de bain, terrasses à Manosque et 04.
+              +25 ans de poses de qualité : sols, murs, salles de bain, terrasses à Manosque et 04.
             </p>
           </div>
 

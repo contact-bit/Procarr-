@@ -24,7 +24,7 @@ export function AProposPage() {
         <p>
           Procarré &amp; Fils est une entreprise familiale spécialisée dans la pose de carrelage
           et la rénovation d&apos;espaces intérieurs et extérieurs à Manosque et en
-          Alpes-de-Haute-Provence. Avec plus de 30 ans d&apos;expérience, nous accompagnons
+          Alpes-de-Haute-Provence. Avec plus de 40 ans d&apos;expérience, nous accompagnons
           particuliers, professionnels et architectes sur des projets sur mesure, du carrelage
           seul jusqu&apos;à la rénovation complète coordonnée avec notre réseau d&apos;artisans
           partenaires.

@@ -20,9 +20,9 @@ export function WhyUsSection() {
 
         <div className="whyus-grid">
           <article className="reason-card">
-            <h3 className="reason-title">Entreprise familiale locale, +20 ans d’expérience</h3>
+            <h3 className="reason-title">Entreprise familiale locale, +25 ans d’expérience</h3>
             <p className="reason-text">
-              Implantée à Manosque depuis plus de vingt ans, Procarré &amp; Fils accompagne les projets de&nbsp;
+              Implantée à Manosque depuis plus de vingt-cinq ans, Procarré &amp; Fils accompagne les projets de&nbsp;
               <Link to="/prestations/sols-interieurs" className="reason-link">
                 carrelage intérieur
               </Link>

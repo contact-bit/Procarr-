@@ -39,7 +39,7 @@ export function ReviewsSection() {
                   “Prestation de qualité, travail soigné et nettoyage à chaque phase du chantier.”
                 </p>
                 <p className="reviews-timeline-meta">
-                  Avis laissé après une rénovation intérieure en 2025
+                  Avis laissé après une rénovation intérieur et extérieur en 2025
                 </p>
               </div>
             </article>

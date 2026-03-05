@@ -16,7 +16,7 @@ export function TeamSection() {
         <p className="section-subtitle">
           Denis Dussert et ses fils Sébastien et Laurent, artisans carreleurs basés à Manosque,
           interviennent ensemble sur vos chantiers de carrelage, de rénovation de salle de bain,
-          de terrasses et de rénovation intérieure en Alpes-de-Haute-Provence.
+          de terrasses et de rénovation intérieur et extérieur en Alpes-de-Haute-Provence.
         </p>
       </div>
 

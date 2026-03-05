@@ -13,7 +13,7 @@ export function WhyUsSection() {
           </h2>
           <p className="section-subtitle">
             Entreprise familiale de carreleurs à Manosque, Procarré &amp; Fils met son expérience en pose de carrelage
-            et en rénovation intérieure au service de vos projets de sols, murs, salles de bain, terrasses et
+            et en rénovation intérieur et extérieur au service de vos projets de sols, murs, salles de bain, terrasses et
             rénovations complètes en Alpes-de-Haute-Provence (04).
           </p>
         </header>

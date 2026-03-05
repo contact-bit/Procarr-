@@ -29,7 +29,7 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
           <p className="section-subtitle">
             Procarré &amp; Fils est une entreprise familiale de carrelage et de rénovation basée à Manosque.
             Nous réalisons des chantiers de carrelage intérieur, de rénovation de salles de bain,
-            de douches à l'italienne, de terrasses carrelées et de rénovation intérieure dans plusieurs
+            de douches à l'italienne, de terrasses carrelées et de rénovation intérieur et extérieur dans plusieurs
             communes autour de Manosque et plus largement des Alpes-de-Haute-Provence (04).
           </p>
 
@@ -57,7 +57,7 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
             <span className="zone-chip">Autour de Manosque</span>
             <p className="zone-card-title">
               Villes et secteurs régulièrement desservis par Procarré &amp; Fils pour vos travaux
-              de carrelage et de rénovation intérieure
+              de carrelage et de rénovation intérieur et extérieur
             </p>
           </div>
 
@@ -93,7 +93,7 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
                 </a>
                 <span className="zone-item-detail">
                   Projets de carrelage pour pièces de vie, cuisines, escaliers et rénovations
-                  intérieures partielles ou complètes dans la commune de Volx.
+                  intérieur et extérieur partielles ou complètes dans la commune de Volx.
                 </span>
               </div>
             </li>

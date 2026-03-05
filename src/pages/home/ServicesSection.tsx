@@ -9,11 +9,11 @@ export function ServicesSection() {
         <header className="services-intro section-header-center">
           <span className="section-kicker">Nos expertises</span>
           <h2 id="services-title" className="section-title">
-            Spécialiste carrelage et rénovation intérieure à Manosque (04)
+            Spécialiste carrelage et rénovation intérieur et extérieur à Manosque (04)
           </h2>
           <p className="section-subtitle">
             Procarré &amp; Fils est une entreprise familiale spécialisée dans la pose de carrelage
-            et la rénovation intérieure à Manosque, dans le département des Alpes-de-Haute-Provence (04).
+            et la rénovation intérieur et extérieur à Manosque, dans le département des Alpes-de-Haute-Provence (04).
             Nous intervenons pour des travaux de carrelage, de rénovation de salle de bain, de création
             de douche à l’italienne, d’aménagement de cuisine, de terrasses carrelées et de chantiers
             complets de rénovation grâce à un réseau d’artisans du bâtiment qualifiés : maçons, plaquistes,
@@ -86,7 +86,7 @@ export function ServicesSection() {
             </div>
             <p className="service-text">
               Au-delà de notre cœur de métier, le carrelage, nous coordonnons des chantiers complets de
-              rénovation intérieure à Manosque et dans le 04 : ouverture ou modification de cloisons,
+              rénovation intérieur et extérieur à Manosque et dans le 04 : ouverture ou modification de cloisons,
               création de nouvelles pièces, redistribution d’espaces, mise en place de faux plafonds,
               isolation, doublage en placo, mises aux normes électriques et travaux de plomberie.
               Nous travaillons avec un réseau d’artisans partenaires de confiance (maçonnerie, placo,
@@ -105,7 +105,7 @@ export function ServicesSection() {
               contact
             </Link>
             &nbsp;ou demandez un devis. Nous étudions les projets de carrelage sur mesure et
-            de rénovation intérieure pour les particuliers et les professionnels dans tout le 04.
+            de rénovation intérieur et extérieur pour les particuliers et les professionnels dans tout le 04.
           </p>
         </div>
       </div>

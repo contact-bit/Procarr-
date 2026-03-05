@@ -34,7 +34,7 @@ export function AProposPage() {
           <span><LuHammer /> Carrelage intérieur &amp; extérieur</span>
           <span><LuHammer /> Rénovation de salles de bain</span>
           <span><LuHammer /> Terrasses &amp; piscines</span>
-          <span><LuNetwork /> Rénovation intérieure coordonnée</span>
+          <span><LuNetwork /> Rénovation intérieur et extérieur coordonnée</span>
         </div>
       </section>
 
@@ -159,7 +159,7 @@ export function AProposPage() {
           </p>
           <p>
             Vous avez un projet de carrelage, de rénovation de salle de bain, de terrasse
-            ou de rénovation intérieure plus globale à Manosque et alentours ?
+            ou de rénovation intérieur et extérieur plus globale à Manosque et alentours ?
             Contactez Procarré &amp; Fils pour échanger sur votre projet, bénéficier de conseils
             personnalisés et obtenir un devis gratuit et sans engagement.
           </p>

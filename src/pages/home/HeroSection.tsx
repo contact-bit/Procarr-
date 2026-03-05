@@ -19,7 +19,7 @@ export function HeroSection() {
         <p className="hero-kicker">Carreleur spécialiste à Manosque (04)</p>
 
         <h1 className="hero-title">
-          Procarré : votre carreleur expert pour tous vos travaux de rénovation intérieure
+          Procarré : votre carreleur expert pour tous vos travaux de rénovation intérieur et extérieur
         </h1>
 
         <div className="hero-lead-wrapper">

@@ -109,7 +109,7 @@ export function ZoneInterventionPage() {
           </p>
           <p>
             Que vous souhaitiez créer une terrasse carrelée autour de votre piscine, moderniser une
-            salle de bain, refaire les sols de votre maison ou lancer une rénovation intérieure plus
+            salle de bain, refaire les sols de votre maison ou lancer une rénovation intérieur et extérieur plus
             globale, nous étudions votre projet et pouvons, si besoin, coordonner d'autres corps
             de métier grâce à notre réseau d'artisans partenaires (maçonnerie, placo, plomberie,
             électricité).

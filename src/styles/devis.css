@@ -2,13 +2,40 @@
    PAGE DEVIS
    ========================= */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
 .devis-page {
   min-height: 100vh;
-  padding: 4rem 1.5rem 5rem;
+  width: 100%;
   max-width: 1200px;
+  padding: 4rem 1.5rem 5rem;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  .devis-page {
+    overflow-x: hidden;
+  }
 }
 
 /* ---------- Hero ---------- */
@@ -16,6 +43,9 @@
 .devis-hero {
   text-align: center;
   margin-bottom: 3rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .devis-hero h1 {
@@ -23,6 +53,7 @@
   letter-spacing: 0.06em;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .devis-hero p {
@@ -30,6 +61,7 @@
   margin: 0 auto;
   color: #6b7280;
   font-size: 0.98rem;
+  overflow-wrap: anywhere;
 }
 
 /* =========================
@@ -37,14 +69,25 @@
    ========================= */
 
 .devis-step-headline {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   text-align: center;
   margin-bottom: 1.75rem;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  .devis-step-headline {
+    overflow-x: hidden;
+  }
 }
 
 .devis-step-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
   padding: 0.15rem 0.7rem;
   border-radius: 999px;
   font-size: 0.75rem;
@@ -58,6 +101,7 @@
 .devis-step-headline h2 {
   font-size: 1.2rem;
   margin-bottom: 0.35rem;
+  overflow-wrap: anywhere;
 }
 
 .devis-step-headline p {
@@ -65,6 +109,8 @@
   margin: 0 auto;
   font-size: 0.9rem;
   color: #9ca3af;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .devis-step-arrow {
@@ -75,6 +121,7 @@
   border-top: 9px solid rgba(248, 113, 113, 0.85);
   margin: 1rem auto 0;
   animation: devis-arrow-bounce 1.2s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 @keyframes devis-arrow-bounce {
@@ -95,6 +142,9 @@
   display: grid;
   gap: 1rem;
   margin-bottom: 2.5rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -105,6 +155,9 @@
 
 .devis-project-card {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   border-radius: 1rem;
   padding: 0.9rem 0.7rem;
   background: rgba(15, 23, 42, 0.88);
@@ -131,35 +184,37 @@
 .devis-project-card.selected {
   border-color: #f97373;
   box-shadow: 0 18px 40px rgba(248, 113, 113, 0.35);
-  background: radial-gradient(
-      circle at top left,
-      rgba(248, 113, 113, 0.22),
-      rgba(15, 23, 42, 0.96)
-    );
+  background:
+    radial-gradient(circle at top left, rgba(248, 113, 113, 0.22), rgba(15, 23, 42, 0.96));
 }
 
 .devis-project-emoji {
   font-size: 1.6rem;
+  line-height: 1;
 }
 
 .devis-project-label {
   font-weight: 600;
   font-size: 0.95rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .devis-project-hint {
   font-size: 0.8rem;
   color: #9ca3af;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* Pulse sur la première carte tant qu'aucun choix n'est fait */
 
 .devis-project-card[data-highlight='true']::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: -2px;
   border-radius: inherit;
-  border: 1px solid rgba(248, 113, 113, 0.0);
+  border: 1px solid rgba(248, 113, 113, 0);
   pointer-events: none;
   animation: devis-pulse 1.4s ease-out infinite;
 }
@@ -189,6 +244,9 @@
 .devis-grid {
   display: grid;
   gap: 2rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (min-width: 900px) {
@@ -203,6 +261,9 @@
    ========================= */
 
 .devis-card {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   background: rgba(15, 23, 42, 0.95);
   border-radius: 1.25rem;
   padding: 1.75rem 1.5rem;
@@ -214,22 +275,21 @@
 .devis-card h2 {
   font-size: 1.3rem;
   margin-bottom: 0.75rem;
+  overflow-wrap: anywhere;
 }
 
 .devis-card-text {
   font-size: 0.95rem;
   color: #e5e7eb;
   margin-bottom: 1.1rem;
+  overflow-wrap: anywhere;
 }
 
 /* Variante secondaire (rénovation générale) */
 
 .devis-card-secondary {
-  background: radial-gradient(
-      circle at top left,
-      rgba(248, 113, 113, 0.18),
-      rgba(15, 23, 42, 0.98)
-    );
+  background:
+    radial-gradient(circle at top left, rgba(248, 113, 113, 0.18), rgba(15, 23, 42, 0.98));
   border-color: rgba(248, 113, 113, 0.55);
 }
 
@@ -248,10 +308,11 @@
   position: relative;
   padding-left: 1.2rem;
   margin-bottom: 0.4rem;
+  overflow-wrap: anywhere;
 }
 
 .devis-list li::before {
-  content: "▸";
+  content: '▸';
   position: absolute;
   left: 0;
   top: 0.05rem;
@@ -264,6 +325,9 @@
 
 .devis-form-wrapper {
   margin-top: 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 /* SmartDevisForm layout */
@@ -272,11 +336,15 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .smart-devis-section {
   padding: 0.75rem 0;
   border-top: 1px solid rgba(148, 163, 184, 0.25);
+  min-width: 0;
 }
 
 .smart-devis-section:first-of-type {
@@ -294,6 +362,7 @@
 .smart-devis-section .field-row {
   display: grid;
   gap: 0.9rem;
+  min-width: 0;
 }
 
 @media (min-width: 640px) {
@@ -313,6 +382,7 @@
 .devis-card .devis-form-wrapper .select,
 .devis-card .devis-form-wrapper .textarea {
   width: 100%;
+  max-width: 100%;
   min-height: 44px;
   padding: 0.6rem 0.75rem;
   font-size: 0.95rem;
@@ -333,6 +403,7 @@
 .devis-card .devis-form-wrapper .btn-primary {
   margin-top: 0.5rem;
   width: 100%;
+  max-width: 100%;
 }
 
 /* =========================
@@ -401,15 +472,24 @@
 .smart-devis-success-text {
   font-size: 0.9rem;
   color: #d1d5db;
+  overflow-wrap: anywhere;
 }
 
 /* =========================
    MOBILE
    ========================= */
 
+@media (max-width: 767px) {
+  .devis-project-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
   .devis-page {
     padding-top: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .devis-card {
@@ -418,5 +498,9 @@
 
   .devis-hero h1 {
     font-size: 1.8rem;
+  }
+
+  .devis-project-picker {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,44 +1,64 @@
 // src/pages/PrestationsPage.tsx
 import { Link } from 'react-router-dom';
+import prestationImg from '../assets/prestation.png';
 import './PrestationsPage.css';
 
 export function PrestationsPage() {
   return (
     <div id="main-content" className="prestations-page">
+
       {/* HERO */}
-      <section className="prestations-hero">
-        <div className="container">
-          <p className="prestations-kicker">Carreleur spécialiste & rénovation à Manosque – Procarré &amp; Fils</p>
-          <h1>Prestations de carrelage intérieur et extérieur, salles de bain, terrasses, piscines et rénovation 
-            en Alpes-de-Haute-Provence (04)
-          </h1>
-          <p className="prestations-hero-text">
-            Procarré &amp; Fils est une entreprise familiale de carreleurs basée à Manosque (04).
-            Nous réalisons des travaux de carrelage intérieur et extérieur, de rénovation de salles de bain,
-            de douches à l'italienne, de terrasses carrelées et de préparation de supports,
-            et nous coordonnons également des rénovations intérieur et extérieur plus complètes grâce à
-            un réseau d'artisans partenaires sélectionnés (maçonnerie, placo, plomberie, électricité)
-            dans les Alpes-de-Haute-Provence et communes voisines.
-          </p>
+{/* HERO */}
+<section className="prestations-hero">
 
-          <div className="prestations-hero-cta">
-            <Link to="/devis" className="btn-primary btn-large prestations-hero-btn">
-              Demander un devis gratuit de carrelage ou de rénovation à Manosque
-            </Link>
-            <p className="prestations-hero-note">
-              Devis gratuit et sans engagement pour vos projets de carrelage intérieur et extérieur, salle de bain,
-              terrasse, piscine ou rénovation complète d'appartement et de maison.
-            </p>
-          </div>
+  {/* IMAGE TOP */}
+  <div className="prestations-hero-image-wrapper">
+    <img
+      src={prestationImg}
+      alt="Prestations de carrelage Procarré & Fils"
+      className="prestations-hero-image"
+      loading="eager"
+    />
+  </div>
 
-          <p className="prestations-hero-links">
-            Découvrez aussi nos pages&nbsp;
-            <Link to="/a-propos">À propos de Procarré &amp; Fils</Link>,&nbsp;
-            <Link to="/realisations">réalisations de chantiers de carrelage et rénovation</Link>&nbsp;et&nbsp;
-            <Link to="/zone-intervention">zone d'intervention autour de Manosque</Link>.
-          </p>
-        </div>
-      </section>
+  {/* CONTENU */}
+  <div className="container">
+    <p className="prestations-kicker">
+      Carreleur spécialiste & rénovation à Manosque – Procarré &amp; Fils
+    </p>
+
+    <h1>
+      Prestations de carrelage intérieur et extérieur, salles de bain,
+      terrasses, piscines et rénovation en Alpes-de-Haute-Provence (04)
+    </h1>
+
+    <p className="prestations-hero-text">
+      Procarré &amp; Fils est une entreprise familiale de carreleurs basée à Manosque (04).
+      Nous réalisons des travaux de carrelage intérieur et extérieur, de rénovation de salles de bain,
+      de douches à l'italienne, de terrasses carrelées et de préparation de supports,
+      et nous coordonnons également des rénovations intérieur et extérieur plus complètes grâce à
+      un réseau d'artisans partenaires sélectionnés.
+    </p>
+
+    <div className="prestations-hero-cta">
+      <Link to="/devis" className="btn-primary btn-large prestations-hero-btn">
+        Demander un devis gratuit
+      </Link>
+
+      <p className="prestations-hero-note">
+        Devis gratuit et sans engagement.
+      </p>
+    </div>
+
+    <p className="prestations-hero-links">
+      Découvrez aussi nos pages&nbsp;
+      <Link to="/a-propos">À propos</Link>,&nbsp;
+      <Link to="/realisations">réalisations</Link>&nbsp;et&nbsp;
+      <Link to="/zone-intervention">zone d'intervention</Link>.
+    </p>
+  </div>
+
+</section>
 
       {/* BLOCS PRINCIPAUX */}
       <section className="prestations-section">

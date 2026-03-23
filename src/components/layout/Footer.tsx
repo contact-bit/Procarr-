@@ -1,7 +1,6 @@
 // src/components/layout/Footer.tsx
 import './Footer.css';
 import { Link } from 'react-router-dom';
-import logoIcon from '../../assets/logo.png';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -17,9 +16,6 @@ export function Footer() {
   aria-label="Procarré & Fils - Carreleur à Manosque"
 >
   <div className="footer-logo-badge-row">
-    <span className="footer-petit-logo">
-      <img src={logoIcon} alt="Logo Procarré principal" />
-    </span>
     <span className="brand-pro">PRO</span>
     <span className="brand-carre">CARRÉ</span>
     <span className="brand-separator">|</span>

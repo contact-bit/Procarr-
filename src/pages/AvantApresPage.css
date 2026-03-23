@@ -1,0 +1,123 @@
+/* ===== RESET GLOBAL (ANTI BUG MOBILE) ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* 🔥 bloque scroll horizontal */
+}
+
+/* empêche tout élément de dépasser */
+img,
+video,
+canvas {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== CONTAINER ===== */
+.avant-apres {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+  color: #ffffff;
+
+  overflow-x: hidden; /* sécurité */
+}
+
+/* ===== HERO ===== */
+.avant-apres__hero {
+  margin-bottom: 3rem;
+  max-width: 100%;
+}
+
+.avant-apres__title {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+
+  word-break: break-word; /* 🔥 évite débordement texte */
+}
+
+.avant-apres__subtitle {
+  display: block;
+  color: #9ca3af;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  font-weight: 400;
+  margin-top: 0.4rem;
+}
+
+.avant-apres__text {
+  max-width: 600px;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ===== GRID ===== */
+.avant-apres__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+/* ===== CARD ===== */
+.avant-apres__card {
+  width: 100%;
+  max-width: 100%;
+
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1.2rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+
+  overflow: hidden; /* 🔥 très important */
+  position: relative;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.avant-apres__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== TEXT ===== */
+.avant-apres__card-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.avant-apres__card-text {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ===== SLIDER FIX (TRÈS IMPORTANT) ===== */
+.avant-apres__card > * {
+  max-width: 100%;
+}
+
+/* ===== MOBILE HARD FIX ===== */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* ===== MOBILE : remonter légèrement le HERO ===== */
+@media (max-width: 768px) {
+  .avant-apres__hero {
+    margin-top: -15%; /* ajuste ici (-0.5rem à -2rem selon rendu) */
+  }
+}

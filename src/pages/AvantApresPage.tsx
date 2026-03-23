@@ -1,112 +1,154 @@
-// src/pages/AvantApresPage.tsx
-import terrasseBefore from '../assets/terrasse-piscine-before.webp';
-import terrasseAfter from '../assets/terrasse-piscine-after.webp';
-import sdbBefore from '../assets/sdb-renovation-before.webp';
-import sdbAfter from '../assets/sdb-renovation-after.webp';
-import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
+import "./AvantApresPage.css";
+import { BeforeAfterSlider } from "../components/BeforeAfterSlider";
+
+// Projet 1
+import projet1Before from "../assets/imagesmodulavantapres/1/12.jpg";
+import projet1After from "../assets/imagesmodulavantapres/1/11.jpg";
+
+// Projet 2
+import projet2Before from "../assets/imagesmodulavantapres/2/IMG_4732(1).jpg";
+import projet2After from "../assets/imagesmodulavantapres/2/IMG_4767.jpg";
+
+// Projet 3
+import projet3Before from "../assets/imagesmodulavantapres/3/IMG_4856(1).jpg";
+import projet3After from "../assets/imagesmodulavantapres/3/IMG_5323(1).jpg";
+
+// Projet 4
+import projet4Before from "../assets/imagesmodulavantapres/4/IMG_5015.jpg";
+import projet4After from "../assets/imagesmodulavantapres/4/IMG_6235(2).jpg";
+
+// Projet 5
+import projet5Before from "../assets/imagesmodulavantapres/5/IMG_6230.jpg";
+import projet5After from "../assets/imagesmodulavantapres/5/IMG_6468.jpg";
+
+// Projet 6
+import projet6Before from "../assets/imagesmodulavantapres/6/IMG_6932(2).jpg";
+import projet6After from "../assets/imagesmodulavantapres/6/IMG_6970.jpg";
+
+// Projet 7
+import projet7Before from "../assets/imagesmodulavantapres/7/IMG_7524(1).jpg";
+import projet7After from "../assets/imagesmodulavantapres/7/IMG_7811.jpg";
+
+// Projet 8
+import projet8Before from "../assets/imagesmodulavantapres/8/IMG_7834(1).jpg";
+import projet8After from "../assets/imagesmodulavantapres/8/IMG_8061(1).jpg";
+
+// Projet 9
+import projet9Before from "../assets/imagesmodulavantapres/9/IMG_7839.jpg";
+import projet9After from "../assets/imagesmodulavantapres/9/IMG_8070(1).jpg";
+
+// Projet 10
+import projet10Before from "../assets/imagesmodulavantapres/10/IMG_8560(1).jpg";
+import projet10After from "../assets/imagesmodulavantapres/10/IMG_8629(1).jpg";
 
 export function AvantApresPage() {
+  const projets = [
+    
+
+    {
+      title: "Création douche à l’italienne",
+      text: "Aménagement complet avec pose d’un carrelage effet marbre et finitions soignées.",
+      beforeSrc: projet3Before,
+      afterSrc: projet3After,
+      alt: "Avant après création douche à l’italienne",
+    },
+    {
+      title: "Aménagement plage de piscine",
+      text: "Préparation du support et pose d’un carrelage extérieur autour de la piscine.",
+      beforeSrc: projet4Before,
+      afterSrc: projet4After,
+      alt: "Avant après aménagement plage de piscine",
+    },
+    {
+      title: "Pose de carrelage intérieur",
+      text: "Préparation du support et pose d’un carrelage pour un rendu chaleureux et durable.",
+      beforeSrc: projet5Before,
+      afterSrc: projet5After,
+      alt: "Avant après pose de carrelage intérieur",
+    },
+    {
+      title: "Rénovation de sol intérieur",
+      text: "Remplacement du revêtement avec pose de carrelage et finition décorative hexagonale.",
+      beforeSrc: projet6Before,
+      afterSrc: projet6After,
+      alt: "Avant après rénovation de sol intérieur",
+    },
+    {
+      title: "Rénovation salle de bain",
+      text: "Reprise complète avec pose de carrelage et installation d’une baignoire moderne.",
+      beforeSrc: projet7Before,
+      afterSrc: projet7After,
+      alt: "Avant après rénovation salle de bain",
+    },
+    {
+      title: "Création terrasse extérieure",
+      text: "Préparation de la dalle et pose d’un carrelage pour un espace extérieur durable.",
+      beforeSrc: projet8Before,
+      afterSrc: projet8After,
+      alt: "Avant après création terrasse extérieure",
+    },
+    {
+      title: "Terrasse extérieure carrelée",
+      text: "Réalisation d’une terrasse avec pose d’un carrelage grand format et finitions soignées.",
+      beforeSrc: projet9Before,
+      afterSrc: projet9After,
+      alt: "Avant après terrasse extérieure carrelée",
+    },
+    {
+      title: "Création douche à l’italienne",
+      text: "Mise en œuvre complète avec pose de carrelage mural et sol hexagonal.",
+      beforeSrc: projet10Before,
+      afterSrc: projet10After,
+      alt: "Avant après création douche à l’italienne",
+    },
+        {
+      title: "Escalier extérieur",
+      text: "Création et habillage d’un escalier avec finition carrelée.",
+      beforeSrc: projet2Before,
+      afterSrc: projet2After,
+      alt: "Avant après escalier extérieur",
+    },
+    {
+      title: "Aménagement entrée extérieure",
+      text: "Préparation du terrain et pose d’un carrelage pour une entrée propre et durable.",
+      beforeSrc: projet1Before,
+      afterSrc: projet1After,
+      alt: "Avant après aménagement entrée extérieure",
+    },
+  ];
+
   return (
-    <div style={{ color: '#ffffff' }}>
-      <section style={{ padding: '2rem 0' }}>
-        <h1
-          style={{
-            fontSize: '2rem',
-            marginBottom: '0.75rem',
-            color: '#ffffff',
-          }}
-        >
-          Avant / Après : transformations de vos espaces
+    <div className="avant-apres">
+      <section className="avant-apres__hero">
+        <h1 className="avant-apres__title">
+          Avant / Après
+          <span className="avant-apres__subtitle">
+            Transformations réelles de nos chantiers
+          </span>
         </h1>
-        <p
-          style={{
-            maxWidth: '40rem',
-            color: '#e5e7eb',
-            fontSize: '0.98rem',
-            lineHeight: 1.6,
-          }}
-        >
+
+        <p className="avant-apres__text">
           Faites glisser le curseur pour découvrir la transformation de vos
-          terrasses, abords de piscine, salles de bains et cuisines après
-          l&apos;intervention de Procarré &amp; Fils.
+          espaces.
         </p>
       </section>
 
-      <section
-        style={{
-          padding: '1rem 0 2.5rem',
-          display: 'grid',
-          gap: '3rem',
-        }}
-      >
-        {/* Terrasse / piscine */}
-        <article>
-          <h2
-            style={{
-              fontSize: '1.25rem',
-              marginBottom: '0.5rem',
-              color: '#ffffff',
-            }}
-          >
-            Terrasse carrelée autour de piscine – création complète
-          </h2>
-          <p
-            style={{
-              maxWidth: '40rem',
-              color: '#e5e7eb',
-              marginBottom: '1rem',
-              fontSize: '0.95rem',
-              lineHeight: 1.6,
-            }}
-          >
-            Sur ce chantier, Procarré &amp; Fils est intervenu dès la
-            préparation du terrain pour créer une terrasse carrelée autour
-            d&apos;une piscine. Après le terrassement et la mise en forme, nous
-            avons réalisé la préparation des supports puis la pose d&apos;un
-            carrelage extérieur aspect bois, adapté aux abords de piscine.
-          </p>
+      <section className="avant-apres__grid">
+        {projets.map((projet, index) => (
+          <article className="avant-apres__card" key={index}>
+            <div style={{ marginBottom: "1rem" }}>
+              <h2 className="avant-apres__card-title">{projet.title}</h2>
+              <p className="avant-apres__card-text">{projet.text}</p>
+            </div>
 
-          <BeforeAfterSlider
-            beforeSrc={terrasseBefore}
-            afterSrc={terrasseAfter}
-            alt="Avant après terrasse carrelée autour de piscine à Manosque"
-            initialPosition={60}
-          />
-        </article>
-
-        {/* Salle de bain */}
-        <article>
-          <h2
-            style={{
-              fontSize: '1.25rem',
-              marginBottom: '0.5rem',
-              color: '#ffffff',
-            }}
-          >
-            Rénovation complète de salle de bain
-          </h2>
-          <p
-            style={{
-              maxWidth: '40rem',
-              color: '#e5e7eb',
-              marginBottom: '1rem',
-              fontSize: '0.95rem',
-              lineHeight: 1.6,
-            }}
-          >
-            Ancienne salle de bain entièrement déposée, reprise des supports et
-            création d&apos;un nouvel espace avec carrelage grand format sur les
-            murs et le sol. Intégration d&apos;une baignoire îlot et robinetterie
-            murale pour un rendu contemporain et épuré.
-          </p>
-
-          <BeforeAfterSlider
-            beforeSrc={sdbBefore}
-            afterSrc={sdbAfter}
-            alt="Avant après rénovation complète de salle de bain"
-            initialPosition={60}
-          />
-        </article>
+            <BeforeAfterSlider
+              beforeSrc={projet.beforeSrc}
+              afterSrc={projet.afterSrc}
+              alt={projet.alt}
+              initialPosition={60}
+            />
+          </article>
+        ))}
       </section>
     </div>
   );

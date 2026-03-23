@@ -388,3 +388,41 @@
     justify-content: center;
   }
 }
+
+
+
+
+/* IMAGE HERO (FIX COMPLET)
+-------------------------------------------------- */
+.prestations-hero-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 🔥 supprime les espaces fantômes */
+  line-height: 0;
+  font-size: 0;
+
+  margin-bottom: 1.8rem;
+  overflow: hidden;
+}
+
+.prestations-hero-image {
+  display: block;
+
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+
+  /* 🔥 important selon ton image */
+  object-fit: contain;
+
+  border-radius: 16px;
+
+  /* 🔥 supprime les espaces inline */
+  vertical-align: middle;
+
+  /* 🔥 améliore rendu */
+  image-rendering: auto;
+}

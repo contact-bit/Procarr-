@@ -175,3 +175,42 @@
     padding: 3rem 0;
   }
 }
+
+/* IMAGE HERO (PETITE & CENTRÉE) */
+.page-hero-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+}
+
+.page-hero-image {
+  width: 100%;
+  max-width:89%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 16px;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .page-hero-image {
+    max-width: 100%;
+      margin-top: -13%;
+
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .page-hero-image {
+    max-width: 55%; /* 🔥 plus responsive que px */
+  }
+}
+
+@media (min-width: 1600px) {
+  .page-hero-image {
+    max-width: 45%;
+  }
+}

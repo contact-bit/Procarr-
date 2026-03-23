@@ -1,31 +1,60 @@
-/* src/pages/ZoneInterventionPage.css */
-
+/* =========================================================
+   PAGE
+========================================================= */
 .zone-page {
   color: #f9fafb;
+  overflow-x: hidden; /* 🔥 sécurité anti scroll horizontal */
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 .zone-hero {
-  padding: 3rem 0 2.5rem;
+  padding: 1.5rem 0 2.5rem;
 }
 
-.zone-hero .container {
+/* IMAGE HERO */
+.zone-hero-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+}
+
+.zone-hero-image {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 16px;
+
+  /* petit effet premium */
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* CONTAINER GLOBAL */
+.zone-hero .container,
+.zone-list .container,
+.zone-map .container,
+.zone-text .container {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 1.25rem;
 }
 
+/* TEXTE HERO */
 .zone-kicker {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #fecaca;
   margin-bottom: 0.4rem;
 }
 
 .zone-hero h1 {
-  font-size: 2rem;
+  font-size: clamp(1.7rem, 2.5vw, 2rem);
   line-height: 1.25;
   margin-bottom: 0.8rem;
   color: #ffffff;
@@ -44,33 +73,31 @@
   font-size: 0.92rem;
 }
 
-/* LISTE COMMUNES */
+/* =========================================================
+   LISTE COMMUNES
+========================================================= */
 .zone-list {
-  padding: 2.5rem 0 2.5rem;
-}
-
-.zone-list .container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 2.5rem 0;
 }
 
 .zone-list h2 {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   margin-bottom: 0.7rem;
   color: #ffffff;
 }
 
 .zone-intro {
-  font-size: 0.96rem;
+  font-size: 0.95rem;
   color: #e5e7eb;
   margin-bottom: 1.2rem;
 }
 
+/* GRID ULTRA PROPRE */
 .zone-ul {
   list-style: none;
   padding: 0;
   margin: 0 0 1.4rem;
+
   display: grid;
   gap: 0.75rem;
 }
@@ -78,12 +105,21 @@
 .zone-ul li {
   font-size: 0.95rem;
   line-height: 1.6;
-  padding: 0.9rem 1rem;
+
+  padding: 0.95rem 1.05rem;
   border-radius: 0.9rem;
-  border: 1px solid rgba(248, 250, 252, 0.16);
-  background: rgba(15, 23, 42, 0.32);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(248, 250, 252, 0.14);
+  background: rgba(15, 23, 42, 0.35);
+
+  backdrop-filter: blur(12px);
+
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.zone-ul li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(248, 250, 252, 0.3);
 }
 
 .zone-ul li strong {
@@ -95,19 +131,89 @@
   color: #d1d5db;
 }
 
-/* TEXTE SEO + FAQ */
+/* =========================================================
+   MAP
+========================================================= */
+.zone-map {
+  padding: 2.5rem 0 3rem;
+}
+
+.zone-map h2 {
+  font-size: 1.55rem;
+  margin-bottom: 0.6rem;
+  color: #ffffff;
+}
+
+.zone-map-text,
+.zone-map-note {
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  margin-top: 0.7rem;
+}
+
+/* MAP WRAPPER */
+.zone-map-frame {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+
+  border-radius: 1rem;
+  overflow: hidden;
+
+  margin-top: 1.3rem;
+
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.75);
+}
+
+/* RATIO SAFE */
+.zone-map-frame::before {
+  content: '';
+  display: block;
+  padding-bottom: 56.25%;
+}
+
+/* IFRAME */
+.zone-map-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 1;
+}
+
+/* CERCLE PROPRE */
+.zone-map-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 70%;
+  height: 70%;
+
+  border-radius: 50%;
+
+  border: 3px solid rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 0 0 4px rgba(15, 23, 42, 0.9),
+    0 0 60px rgba(255, 255, 255, 0.25);
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* =========================================================
+   TEXTE SEO
+========================================================= */
 .zone-text {
   padding: 2.5rem 0 3rem;
 }
 
-.zone-text .container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
-}
-
 .zone-text h2 {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   margin-bottom: 0.7rem;
   color: #ffffff;
 }
@@ -122,14 +228,19 @@
   margin-top: 0.7rem;
 }
 
+/* =========================================================
+   FAQ
+========================================================= */
 .zone-faq {
   margin-top: 1.6rem;
+
   padding: 1.4rem 1.3rem;
+
   border-radius: 1rem;
-  border: 1px solid rgba(248, 250, 252, 0.16);
-  background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(248, 250, 252, 0.14);
+
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(14px);
 }
 
 .zone-faq h3 {
@@ -142,10 +253,7 @@
   margin-bottom: 0.9rem;
 }
 
-.zone-faq h3:last-of-type + p:last-of-type {
-  margin-bottom: 0;
-}
-
+/* CTA */
 .zone-cta {
   margin-top: 1.6rem;
   font-size: 0.96rem;
@@ -155,94 +263,53 @@
 .zone-cta a {
   color: #fecaca;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .zone-cta a:hover {
   text-decoration: underline;
 }
 
-/* Responsive */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 @media (max-width: 767px) {
+  .zone-hero {
+    padding-top: 1rem;
+  }
+
+  .zone-hero-image {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
   .zone-hero h1 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
 
   .zone-list,
-  .zone-text {
-    padding: 2.2rem 0;
+  .zone-text,
+  .zone-map {
+    padding: 2.1rem 0;
+  }
+
+  .zone-ul li {
+    padding: 0.85rem 0.9rem;
   }
 }
-/* CARTE GOOGLE MAPS */
-.zone-map {
-  padding: 2.5rem 0 3rem;
-}
 
-.zone-map .container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
-}
+/* PETITS ÉCRANS */
+@media (max-width: 480px) {
+  .zone-kicker {
+    font-size: 0.72rem;
+  }
 
-.zone-map h2 {
-  font-size: 1.6rem;
-  margin-bottom: 0.6rem;
-  color: #ffffff;
-}
+  .zone-hero h1 {
+    font-size: 1.45rem;
+  }
 
-.zone-map-text,
-.zone-map-note {
-  font-size: 0.95rem;
-  color: #e5e7eb;
-  margin-top: 0.7rem;
-}
-
-/* wrapper responsive 16/9 */
-.zone-map-frame {
-  position: relative;
-  width: 100%;
-  max-width: 960px;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
-  margin-top: 1.3rem;
-}
-
-/* cercle de zone d’intervention */
-.zone-map-circle {
-  position: absolute;
-  inset: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  height: 70%;
-  border-radius: 999px;
-  border: 3px solid rgba(248, 250, 252, 0.9);
-  box-shadow:
-    0 0 0 4px rgba(15, 23, 42, 0.9),
-    0 0 60px rgba(248, 250, 252, 0.35);
-  pointer-events: none;
-  z-index: 2;
-}
-
-
-
-
-.zone-map-frame::before {
-  content: '';
-  display: block;
-  padding-bottom: 56.25%; /* 16:9 */
-}
-
-.zone-map-frame iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-/* Responsive complément carte */
-@media (max-width: 767px) {
-  .zone-map {
-    padding: 2.2rem 0 2.6rem;
+  .zone-hero p,
+  .zone-text p {
+    font-size: 0.9rem;
   }
 }

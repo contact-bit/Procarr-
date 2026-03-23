@@ -19,29 +19,32 @@ body,
 /* Empêche le scroll horizontal global */
 html,
 body {
+  width: 100%;
   max-width: 100%;
   overflow-x: hidden;
 }
+
+/* Corps de page */
 
 body {
   font-family: var(--font-sans);
   line-height: 1.5;
   color: var(--color-text); /* blanc ou très clair dans tokens.css */
-  /* Fond global unique */
   background: radial-gradient(circle at top, #1b0b0c 0, #050608 42%, #050608 100%);
   -webkit-font-smoothing: antialiased;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  position: relative;
 }
 
 /* Calque glow global qui suit la souris */
+
 .glow-layer {
   position: fixed;
   inset: 0;
   z-index: -1;  /* Sous tout */
   pointer-events: none;  /* N'interfère pas avec clics/touch */
 }
-
 
 /* Liens */
 
@@ -97,12 +100,15 @@ main {
   padding: var(--space-xl) 1rem var(--space-2xl);
 }
 
-/* Sécurisation mobile globale */
+/* Sécurisation mobile globale + wrappers */
 .app,
 main,
 section,
-.hero-slider-wrapper {
+.hero-slider-wrapper,
+.home-page,
+.contact-page {
   max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ========== Inputs globaux ========== */
@@ -268,7 +274,7 @@ section,
 /* ========== Hero slider ========== */
 
 .hero-slider-wrapper {
-  position: relative; /* important pour l’overlay */
+  position: relative;
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
@@ -363,18 +369,6 @@ section,
     0 0 30px rgba(248, 113, 113, 0.95);
 }
 
-/* mobile : un peu plus haut pour ne pas coller au bord */
-@media (max-width: 767px) {
-  .hero-slider-cta-overlay {
-    padding-bottom: 1.5rem;
-  }
-
-  .hero-slider-cta-overlay .hero-slider-cta {
-    padding: 0.7rem 1.6rem;
-    font-size: 0.9rem;
-  }
-}
-
 /* ========== Logo texte ========== */
 
 .brand-logo {
@@ -396,7 +390,7 @@ section,
   font-size: 0.95rem;
 }
 
-brand-carre {
+.brand-carre {
   color: #f5f5f5; /* clair */
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -533,10 +527,9 @@ brand-carre {
   background-image: url('../assets/back3.png');
   background-repeat: no-repeat;
   background-position: top right;
-  background-size:  auto;
+  background-size: auto;
   opacity: 0.6;
   pointer-events: none;
-
   -webkit-mask-image: radial-gradient(
     ellipse at 80% 20%,
     rgba(0, 0, 0, 1) 30%,
@@ -624,7 +617,6 @@ brand-carre {
   font-size: 0.95rem;
   font-weight: 500;
   white-space: nowrap;
-
   color: #f9fafb; /* texte blanc */
   border: 1px solid rgba(249, 250, 251, 0.7);
   background: transparent;

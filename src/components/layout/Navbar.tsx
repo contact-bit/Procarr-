@@ -1,264 +1,309 @@
-// src/components/layout/Navbar.tsx
-import { useState } from 'react';
-import type { CSSProperties } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect, useId, useRef, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { FiChevronDown, FiFileText, FiX } from 'react-icons/fi';
 
 import facebookIcon from '../../assets/facebook.png';
 import instagramIcon from '../../assets/instagram.png';
 import linkedinIcon from '../../assets/linkedin.png';
-import petitLogo from '../../assets/logo.png';
-import backnav from '../../assets/backnav.png';
 
 import './Navbar.css';
 
+const MAIN_LINKS = [
+  { to: '/', label: 'Accueil' },
+  { to: '/prestations', label: 'Prestations' },
+  { to: '/realisations', label: 'Réalisations' },
+  { to: '/contact', label: 'Contact' },
+];
+
+const EXPLORE_LINKS = [
+  { to: '/a-propos', label: 'À propos' },
+  { to: '/actualites', label: 'Actualités' },
+  { to: '/avant-apres', label: 'Avant / Après' },
+  { to: '/zone-intervention', label: 'Zone d’intervention' },
+];
+
+const SERVICE_LINKS = [
+  { to: '/prestations/sols-murs', label: 'Sols & murs' },
+  { to: '/prestations/salles-de-bain', label: 'Salle de bain' },
+];
+
+const SUB_LINKS = [...EXPLORE_LINKS, ...SERVICE_LINKS];
+
+const SOCIAL_LINKS = [
+  {
+    href: 'https://www.facebook.com/procarre/',
+    label: 'Facebook',
+    icon: facebookIcon,
+  },
+  {
+    href: 'https://www.instagram.com/',
+    label: 'Instagram',
+    icon: instagramIcon,
+  },
+  {
+    href: 'https://www.linkedin.com/',
+    label: 'LinkedIn',
+    icon: linkedinIcon,
+  },
+];
+
+type MobileSection = 'explore' | 'services' | null;
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [openSection, setOpenSection] = useState<MobileSection>(null);
 
-  const toggle = () => setOpen(o => !o);
-  const close = () => setOpen(false);
+  const location = useLocation();
+  const mobileMenuId = useId();
+  const burgerRef = useRef<HTMLButtonElement | null>(null);
 
-  const linkStyle: CSSProperties = {
-    textDecoration: 'none',
-    color: 'inherit',
+  const close = () => {
+    setOpen(false);
+    setOpenSection(null);
   };
 
+  const toggle = () => setOpen((prev) => !prev);
+
+  const toggleSection = (section: Exclude<MobileSection, null>) => {
+    setOpenSection((prev) => (prev === section ? null : section));
+  };
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    close();
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = open ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        close();
+        burgerRef.current?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
   return (
-    <header className="navbar-root" role="banner">
-      {/* Lien d’évitement */}
-      <a href="#main-content" className="skip-link">
-        Aller au contenu principal
-      </a>
+    <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`} role="banner">
+      <div className="navbar-pattern" aria-hidden="true" />
 
-      {/* Image de fond discrète */}
-      <div
-        className="navbar-bg-image"
-        style={{ backgroundImage: `url(${backnav})` }}
-        aria-hidden="true"
-      />
-
-      {/* Barre principale blur */}
       <div className="navbar-inner">
-        {/* Bloc gauche : logo + baseline */}
-        <div className="navbar-left">
-          {/* Logo TRIPLE : petit logo + Procarré & Fils + tomette */}
-          <div className="navbar-logo-triple">
-            {/* 1. Petit logo + texte PROCARRÉ & Fils dans le même lien */}
-            <Link
-              to="/"
-              className="brand-logo"
-              aria-label="Procarré & Fils - Carreleur à Manosque"
-              title="Procarré & Fils - Carreleur Manosque"
-            >
-              <span className="brand-petit-logo">
-                <img src={petitLogo} alt="Logo Procarré principal" />
-              </span>
-              <span className="brand-pro">PRO</span>
-              <span className="brand-carre">CARRÉ</span>
-              <span className="brand-separator">|</span>
-              <span className="brand-fils">&amp; Fils</span>
-            </Link>
+        <Link to="/" className="brand" aria-label="Procarré & Fils - Accueil">
+          <span className="brand-line">
+            <span className="pro">PRO</span>
+            <span className="carre">CARRÉ</span>
+            <span className="separator">|</span>
+            <span className="fils">&amp; Fils</span>
+          </span>
+        </Link>
 
-            {/* 2. Tomette Carreleur Blanc à droite (optionnel) */}
-            <Link
-              to="/carreleur-blanc"
-              className="brand-logo-tomete"
-              aria-label="Carreleur Blanc - Spécialiste tomettes"
-              title="Découvrez nos carrelages blancs et tomettes"
-            >
-              {/* <img src={tometteBlanche} alt="Carreleur Blanc" /> */}
-            </Link>
-          </div>
-
-          {/* Baseline édito */}
-          <p className="navbar-baseline">
-            Procarré &amp; Fils, artisans carreleurs spécialistes en rénovation à Manosque
-            et en Alpes-de-Haute-Provence (04).
-          </p>
-        </div>
-
-        {/* Nav principale desktop */}
-        <nav
-          className="navbar-desktop"
-          aria-label="Navigation principale Procarré & Fils"
-        >
-          <NavLink to="/" style={linkStyle}>
-            Accueil
-          </NavLink>
-          <NavLink to="/prestations" style={linkStyle}>
-            Prestations
-          </NavLink>
-          <NavLink to="/realisations" style={linkStyle}>
-            Réalisations
-          </NavLink>
-          <NavLink to="/contact" style={linkStyle}>
-            Contact
-          </NavLink>
-          <NavLink to="/devis" style={linkStyle} className="navbar-cta-link">
-            Demander un devis
-          </NavLink>
-
-          <div className="navbar-social">
-            <a
-              href="https://www.facebook.com/procarre/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook Procarré & Fils"
-            >
-              <img src={facebookIcon} alt="Facebook Procarré & Fils" />
-            </a>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram Procarré & Fils"
-            >
-              <img src={instagramIcon} alt="Instagram Procarré & Fils" />
-            </a>
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Procarré & Fils"
-            >
-              <img src={linkedinIcon} alt="LinkedIn Procarré & Fils" />
-            </a>
-          </div>
+        <nav className="nav-links" aria-label="Navigation principale">
+          {MAIN_LINKS.map((link) => (
+            <NavLink key={link.to} to={link.to} onClick={close}>
+              {link.label}
+            </NavLink>
+          ))}
         </nav>
 
-        {/* Burger mobile */}
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-          aria-expanded={open}
-          className="navbar-burger"
-        >
-          <span className={open ? 'bar bar-1 open' : 'bar bar-1'} />
-          <span className={open ? 'bar bar-2 open' : 'bar bar-2'} />
-          <span className={open ? 'bar bar-3 open' : 'bar bar-3'} />
-        </button>
+        <div className="navbar-right">
+          <Link to="/devis" className="cta">
+            <FiFileText size={16} />
+            Devis gratuit
+          </Link>
+
+          <div className="social" aria-label="Réseaux sociaux">
+            {SOCIAL_LINKS.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={item.label}
+              >
+                <img src={item.icon} alt="" aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+
+          <button
+            ref={burgerRef}
+            type="button"
+            className={`burger ${open ? 'open' : ''}`}
+            onClick={toggle}
+            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={open}
+            aria-controls={mobileMenuId}
+            aria-haspopup="dialog"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
 
-      {/* Sous-nav SEO */}
-      <nav
-        className="navbar-sub"
-        aria-label="Navigation secondaire Procarré & Fils"
-      >
-        <div className="navbar-sub-inner">
-          <NavLink to="/a-propos" style={linkStyle}>
-            À propos de l'entreprise
+      <nav className="subnav" aria-label="Navigation secondaire">
+        {SUB_LINKS.map((link) => (
+          <NavLink key={link.to} to={link.to}>
+            {link.label}
           </NavLink>
-                    <NavLink to="/actualites" onClick={close} style={linkStyle}>
-            Actualités
-          </NavLink>
-          <NavLink to="/avant-apres" style={linkStyle}>
-            Avant / Après chantiers
-          </NavLink>
-          <NavLink to="/zone-intervention" style={linkStyle}>
-            Zone d'intervention Manosque
-          </NavLink>
-          <NavLink to="/prestations/sols-murs" style={linkStyle}>
-            Carrelage de sols &amp; murs
-          </NavLink>
-          <NavLink to="/prestations/salles-de-bain" style={linkStyle}>
-            Salles de bain &amp; douches à l'italienne
-          </NavLink>
-          <NavLink to="/prestations/preparation-supports" style={linkStyle}>
-            Préparation supports
-          </NavLink>
-        </div>
+        ))}
       </nav>
 
-      {/* Menu mobile */}
       {open && (
-        <nav
-          className="navbar-mobile"
-          aria-label="Navigation mobile Procarré & Fils"
-        >
-          <NavLink to="/" onClick={close} style={linkStyle}>
-            Accueil
-          </NavLink>
-          <NavLink to="/a-propos" onClick={close} style={linkStyle}>
-            À propos
-          </NavLink>
-          <NavLink to="/prestations" onClick={close} style={linkStyle}>
-            Prestations
-          </NavLink>
-          <NavLink
-            to="/prestations/sols-murs"
+        <div className="mobile-shell">
+          <button
+            type="button"
+            className="mobile-overlay"
+            aria-label="Fermer le menu"
             onClick={close}
-            style={linkStyle}
-          >
-            Carrelage sols &amp; murs
-          </NavLink>
-          <NavLink
-            to="/prestations/salles-de-bain"
-            onClick={close}
-            style={linkStyle}
-          >
-            Salles de bain &amp; douches
-          </NavLink>
-          <NavLink
-            to="/prestations/preparation-supports"
-            onClick={close}
-            style={linkStyle}
-          >
-            Préparation supports &amp; petite maçonnerie
-          </NavLink>
-          <NavLink to="/realisations" onClick={close} style={linkStyle}>
-            Réalisations
-          </NavLink>
-          <NavLink to="/avant-apres" onClick={close} style={linkStyle}>
-            Avant / Après
-          </NavLink>
-          <NavLink to="/zone-intervention" onClick={close} style={linkStyle}>
-            Zone d'intervention
-          </NavLink>
+          />
 
-          <NavLink to="/contact" onClick={close} style={linkStyle}>
-            Contact
-          </NavLink>
-          <NavLink
-            to="/devis"
-            onClick={close}
-            style={linkStyle}
-            className="navbar-cta-link"
+          <nav
+            id={mobileMenuId}
+            className="mobile"
+            aria-label="Menu mobile"
+            aria-modal="true"
+            role="dialog"
           >
-            Demander un devis
-          </NavLink>
+            <div className="mobile-top">
+              <Link
+                to="/"
+                className="mobile-brand"
+                onClick={close}
+                aria-label="Procarré & Fils - Accueil"
+              >
+                <span className="brand-line">
+                  <span className="pro">PRO</span>
+                  <span className="carre">CARRÉ</span>
+                  <span className="separator">|</span>
+                  <span className="fils">&amp; Fils</span>
+                </span>
+              </Link>
 
-          <div className="navbar-mobile-social">
-            <a href="tel:+33600000000" className="navbar-mobile-call">
-              Appeler Procarré &amp; Fils
-            </a>
-            <div className="navbar-mobile-social-icons">
-              <a
-                href="https://www.facebook.com/procarre/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook Procarré & Fils"
+              <button
+                type="button"
+                className="mobile-close"
+                onClick={() => {
+                  close();
+                  burgerRef.current?.focus();
+                }}
+                aria-label="Fermer le menu"
               >
-                <img src={facebookIcon} alt="Facebook Procarré & Fils" />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram Procarré & Fils"
-              >
-                <img src={instagramIcon} alt="Instagram Procarré & Fils" />
-              </a>
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn Procarré & Fils"
-              >
-                <img src={linkedinIcon} alt="LinkedIn Procarré & Fils" />
-              </a>
+                <FiX size={22} />
+              </button>
             </div>
-          </div>
-        </nav>
+
+            <p className="mobile-intro">
+              Artisanat soigné, finitions haut de gamme et accompagnement sur mesure.
+            </p>
+
+            <div className="mobile-actions">
+              <Link to="/devis" onClick={close} className="cta mobile-cta primary">
+                <FiFileText size={16} />
+                Demander un devis
+              </Link>
+
+              <Link to="/contact" onClick={close} className="mobile-secondary-cta">
+                Nous contacter
+              </Link>
+            </div>
+
+            <div className="mobile-main-links">
+              {MAIN_LINKS.map((link) => (
+                <NavLink key={link.to} to={link.to} onClick={close} className="mobile-main-link">
+                  {link.label}
+                </NavLink>
+              ))}
+            </div>
+
+            <div className="mobile-accordion-group">
+              <div className="mobile-accordion">
+                <button
+                  type="button"
+                  className={`mobile-accordion-trigger ${openSection === 'explore' ? 'is-open' : ''}`}
+                  onClick={() => toggleSection('explore')}
+                  aria-expanded={openSection === 'explore'}
+                >
+                  <span>Explorer</span>
+                  <FiChevronDown size={18} />
+                </button>
+
+                {openSection === 'explore' && (
+                  <div className="mobile-accordion-panel">
+                    {EXPLORE_LINKS.map((link) => (
+                      <NavLink key={link.to} to={link.to} onClick={close}>
+                        {link.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="mobile-accordion">
+                <button
+                  type="button"
+                  className={`mobile-accordion-trigger ${openSection === 'services' ? 'is-open' : ''}`}
+                  onClick={() => toggleSection('services')}
+                  aria-expanded={openSection === 'services'}
+                >
+                  <span>Prestations</span>
+                  <FiChevronDown size={18} />
+                </button>
+
+                {openSection === 'services' && (
+                  <div className="mobile-accordion-panel">
+                    {SERVICE_LINKS.map((link) => (
+                      <NavLink key={link.to} to={link.to} onClick={close}>
+                        {link.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="mobile-bottom">
+              <span className="mobile-title">Réseaux sociaux</span>
+
+              <div className="mobile-social" aria-label="Réseaux sociaux">
+                {SOCIAL_LINKS.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={item.label}
+                  >
+                    <img src={item.icon} alt="" aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </nav>
+        </div>
       )}
     </header>
   );

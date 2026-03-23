@@ -1,31 +1,51 @@
 /* src/pages/prestations/SolsMursPage.css */
 
-/* plus de fond spécifique sur la page */
+/* =========================
+   PAGE
+========================= */
 .sols-murs-page {
   min-height: 100vh;
-  /* on laisse la couleur / image définie par le layout global */
   color: #f5f5f7;
 }
 
-/* container standard */
+/* =========================
+   CONTAINER
+========================= */
 .sols-murs-page .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* HERO – sans fond, juste spacing */
+/* =========================
+   HERO
+========================= */
 .sols-murs-page .page-hero {
   padding: 4.5rem 0 3.5rem;
 }
 
+/* IMAGE HERO (CORRIGÉ - LIÉ AU TSX) */
+.sols-hero-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  margin-top: -5%;
+}
+
+.sols-hero-image {
+  width: 100%;
+  max-width: 280px; /* 🔥 petite propre */
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
 .sols-murs-page .page-hero-inner {
-  /* on enlève les backgrounds/blur */
   padding: 0;
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
 }
 
 .sols-murs-page .page-kicker {
@@ -46,24 +66,24 @@
   color: #ffb3b3;
 }
 
-/* sections génériques, sans fond ni bordure */
+/* =========================
+   SECTIONS
+========================= */
 .sols-murs-page section {
   padding: 3.5rem 0;
-  border: none;
 }
 
-/* blocs “inner” sans carte ni blur */
+/* =========================
+   BLOCS
+========================= */
 .sols-murs-page .inner,
 .sols-murs-page .cta-box {
   padding: 0;
-  background: none;
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
 }
 
-/* texte / listes / CTA gardés */
+/* =========================
+   TEXTES
+========================= */
 .sols-murs-page h2 {
   font-size: clamp(1.5rem, 3vw, 2rem);
   margin-bottom: 1.2rem;
@@ -78,6 +98,9 @@
   color: rgba(245, 245, 247, 0.9);
 }
 
+/* =========================
+   CTA
+========================= */
 .sols-murs-page .hero-cta {
   display: flex;
   flex-wrap: wrap;
@@ -96,7 +119,6 @@
   border: 1px solid transparent;
   text-decoration: none;
   transition: all 0.18s ease-out;
-  cursor: pointer;
 }
 
 .sols-murs-page .btn-primary {
@@ -111,7 +133,9 @@
   border-color: rgba(245, 245, 247, 0.4);
 }
 
-/* listes */
+/* =========================
+   LISTES
+========================= */
 .sols-murs-page .bullets {
   margin-top: 1.4rem;
   padding-left: 1.4rem;
@@ -136,7 +160,9 @@
   background: #ff4d4d;
 }
 
-/* responsive */
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 768px) {
   .sols-murs-page .page-hero {
     padding: 3.5rem 0 2.8rem;
@@ -149,5 +175,9 @@
 
   .sols-murs-page .btn {
     width: 100%;
+  }
+
+  .sols-hero-image {
+    max-width: 100%;
   }
 }

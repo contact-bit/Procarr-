@@ -1,9 +1,11 @@
-// src/pages/devis/page.tsx
 import '../../styles/devis.css';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { GlowBackground } from '../../components/GlowBackground';
 import { SmartDevisForm } from '../../components/SmartDevisForm';
 import { FiHome, FiSun, FiDroplet, FiCoffee, FiTool } from 'react-icons/fi';
+
+type ProjectType = 'interieur' | 'exterieur' | 'sdb' | 'cuisine' | 'renov';
 
 const PROJECT_TYPES = [
   {
@@ -36,10 +38,10 @@ const PROJECT_TYPES = [
     icon: FiTool,
     hint: 'Rénov globale, ouverture de cloisons',
   },
-];
+] as const;
 
 const SIDE_TEXT: Record<
-  'interieur' | 'exterieur' | 'sdb' | 'cuisine' | 'renov',
+  ProjectType,
   { title: string; intro: string; bullets: string[]; note: string }
 > = {
   interieur: {
@@ -104,15 +106,52 @@ const SIDE_TEXT: Record<
   },
 };
 
-export function DevisPage() {
-  const [selectedProject, setSelectedProject] = useState<
-    'interieur' | 'exterieur' | 'sdb' | 'cuisine' | 'renov' | null
-  >(null);
+function mapQueryTypeToProjectType(queryType: string | null): ProjectType {
+  switch (queryType) {
+    case 'carrelage-interieur':
+      return 'interieur';
+    case 'terrasse-exterieur':
+      return 'exterieur';
+    case 'salle-de-bain':
+      return 'sdb';
+    case 'cuisine':
+      return 'cuisine';
+    case 'renovation-complete':
+      return 'renov';
+    default:
+      return 'interieur';
+  }
+}
 
-  const currentProject = selectedProject
-    ? PROJECT_TYPES.find(p => p.id === selectedProject)
-    : null;
-  const side = selectedProject ? SIDE_TEXT[selectedProject] : null;
+export function DevisPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const initialProject = useMemo<ProjectType>(() => {
+    return mapQueryTypeToProjectType(searchParams.get('type'));
+  }, [searchParams]);
+
+  const [selectedProject, setSelectedProject] = useState<ProjectType>(initialProject);
+
+  useEffect(() => {
+    setSelectedProject(mapQueryTypeToProjectType(searchParams.get('type')));
+  }, [searchParams]);
+
+  const currentProject = PROJECT_TYPES.find((p) => p.id === selectedProject) ?? null;
+  const side = SIDE_TEXT[selectedProject];
+
+  const handleProjectChange = (projectId: ProjectType) => {
+    setSelectedProject(projectId);
+
+    const reverseMap: Record<ProjectType, string> = {
+      interieur: 'carrelage-interieur',
+      exterieur: 'terrasse-exterieur',
+      sdb: 'salle-de-bain',
+      cuisine: 'cuisine',
+      renov: 'renovation-complete',
+    };
+
+    setSearchParams({ type: reverseMap[projectId] });
+  };
 
   return (
     <>
@@ -122,11 +161,11 @@ export function DevisPage() {
           <h1>Devis carrelage et travaux de rénovation à Manosque</h1>
           <p>
             Remplissez ce formulaire en deux étapes pour obtenir un devis gratuit et personnalisé
-            pour vos travaux de carrelage ou de rénovation à Manosque et dans les Alpes-de-Haute-Provence.
+            pour vos travaux de carrelage ou de rénovation à Manosque et dans les
+            Alpes-de-Haute-Provence.
           </p>
         </section>
 
-        {/* Étape 1 : choix du type de projet */}
         <section className="devis-step-headline">
           <span className="devis-step-badge">Étape 1</span>
           <h2>Sélectionnez le type de projet à carreler</h2>
@@ -142,16 +181,13 @@ export function DevisPage() {
           {PROJECT_TYPES.map((p, index) => {
             const Icon = p.icon;
             const isSelected = selectedProject === p.id;
+
             return (
               <button
                 key={p.id}
                 type="button"
-                className={
-                  isSelected
-                    ? 'devis-project-card selected'
-                    : 'devis-project-card'
-                }
-                onClick={() => setSelectedProject(p.id as any)}
+                className={isSelected ? 'devis-project-card selected' : 'devis-project-card'}
+                onClick={() => handleProjectChange(p.id)}
                 data-highlight={selectedProject === null && index === 0}
               >
                 <span className="devis-project-emoji">
@@ -164,14 +200,7 @@ export function DevisPage() {
           })}
         </section>
 
-
-
-
-
-
-
-        {/* Étape 2 : formulaire + bloc descriptif uniquement après sélection */}
-        {selectedProject && currentProject && side && (
+        {currentProject && side && (
           <section className="devis-grid">
             <div className="devis-card">
               <h2>
@@ -179,6 +208,7 @@ export function DevisPage() {
                   ? 'Devis rénovation complète'
                   : 'Devis carrelage ' + currentProject.label.toLowerCase()}
               </h2>
+
               <p className="devis-card-text">
                 Votre projet sélectionné : <strong>{currentProject.label}</strong>. Décrivez votre
                 chantier le plus précisément possible pour recevoir une estimation réaliste des
@@ -194,7 +224,7 @@ export function DevisPage() {
               <h2>{side.title}</h2>
               <p className="devis-card-text">{side.intro}</p>
               <ul className="devis-list">
-                {side.bullets.map(b => (
+                {side.bullets.map((b) => (
                   <li key={b}>{b}</li>
                 ))}
               </ul>

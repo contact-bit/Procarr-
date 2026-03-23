@@ -56,8 +56,8 @@
   position: absolute;
   top: -64px;
   right: -40px;
-  width: 440px;
-  height: 320px;
+  width: 600px;   /* ↓ plus petit */
+  height: 220px;  /* ↓ plus petit */
   background-image: url('/src/assets/backnavbar.png');
   background-size: contain;
   background-repeat: no-repeat;

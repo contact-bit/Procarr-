@@ -86,8 +86,6 @@ import img4499 from '../assets/imageschantierrealisations/chantier Pierrevert re
 import img4500 from '../assets/imageschantierrealisations/chantier Pierrevert reno sdb/IMG_4500.jpg';
 import img4501 from '../assets/imageschantierrealisations/chantier Pierrevert reno sdb/IMG_4501.jpg';
 
-import img7705 from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_7705.jpg';
-import img7710 from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_7710(1).jpg';
 import img7996b from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_7996.jpg';
 import img7997 from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_7997.jpg';
 import img8002 from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_8002.jpg';
@@ -329,8 +327,6 @@ const REALISATIONS: Realisation[] = [
       { src: img8002, label: 'Travaux en cours autour de la piscine' },
       { src: img7997, label: 'Reprise des pentes' },
       { src: img7996b, label: 'Réalisation de la chape mortier' },
-      { src: img7710, label: 'Remplacement des margelles' },
-      { src: img7705, label: 'Préparation du support' },
     ],
     highlights: [
       'Reprise des pentes',

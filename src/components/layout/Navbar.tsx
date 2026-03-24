@@ -36,12 +36,12 @@ const SOCIAL_LINKS = [
     icon: facebookIcon,
   },
   {
-    href: 'https://www.instagram.com/',
+    href: 'https://www.instagram.com/procarre_carrelage/',
     label: 'Instagram',
     icon: instagramIcon,
   },
   {
-    href: 'https://www.linkedin.com/',
+   href: 'https://fr.linkedin.com/in/denis-dussert-683821376',
     label: 'LinkedIn',
     icon: linkedinIcon,
   },

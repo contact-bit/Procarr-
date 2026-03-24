@@ -8,9 +8,7 @@
 
 /* HERO
 -------------------------------------------------- */
-.prestations-hero {
-  padding: 3.5rem 0 2.5rem;
-}
+
 
 .prestations-hero .container {
   max-width: 960px;
@@ -361,9 +359,7 @@
 }
 
 @media (max-width: 767px) {
-  .prestations-hero {
-    padding: 2.8rem 0 2.1rem;
-  }
+
 
   .prestations-hero h1 {
     font-size: 1.8rem;

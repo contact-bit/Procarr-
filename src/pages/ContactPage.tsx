@@ -82,28 +82,29 @@ export function ContactPage() {
   const isDisabled = status === 'submitting';
 
   return (
-    <div className="contact-page">
+    <div className="contact-page" style={{ margin: 0, padding: 0 }}>
       {/* Intro */}
-      <section style={{ padding: '2rem 0' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>
+      <section style={{ padding: '0.4rem 0 1.2rem' }}>
+        <h1 style={{ fontSize: '2rem', margin: '0 0 0.6rem 0' }}>
           Contactez Procarré &amp; Fils
         </h1>
-        <p style={{ maxWidth: '36rem', color: '#4b5563' }}>
+
+        <p style={{ maxWidth: '36rem', color: '#4b5563', margin: 0 }}>
           Une question, un projet de carrelage ou de rénovation ? Envoyez-nous
           un message et nous reviendrons vers vous rapidement pour en parler.
         </p>
       </section>
 
-      {/* Grille contact : formulaire + coordonnées */}
+      {/* Grille contact */}
       <section className="contact-grid">
-        {/* Colonne gauche : formulaire */}
+        {/* Formulaire */}
         <div className="contact-left">
           {status === 'success' ? (
             <div>
-              <p style={{ color: '#16a34a', marginBottom: '0.75rem' }}>
+              <p style={{ color: '#16a34a', margin: '0 0 0.6rem 0' }}>
                 Merci, votre message a bien été envoyé.
               </p>
-              <p style={{ fontSize: '0.9rem', color: '#4b5563' }}>
+              <p style={{ fontSize: '0.9rem', color: '#4b5563', margin: 0 }}>
                 Nous vous recontacterons dans les meilleurs délais.
               </p>
             </div>
@@ -119,7 +120,7 @@ export function ContactPage() {
                   className="input"
                 />
                 {errors.name && (
-                  <p style={{ color: '#b91c1c', fontSize: '0.8rem' }}>
+                  <p style={{ color: '#b91c1c', fontSize: '0.8rem', margin: 0 }}>
                     {errors.name}
                   </p>
                 )}
@@ -136,7 +137,7 @@ export function ContactPage() {
                   className="input"
                 />
                 {errors.email && (
-                  <p style={{ color: '#b91c1c', fontSize: '0.8rem' }}>
+                  <p style={{ color: '#b91c1c', fontSize: '0.8rem', margin: 0 }}>
                     {errors.email}
                   </p>
                 )}
@@ -175,7 +176,7 @@ export function ContactPage() {
                   className="textarea"
                 />
                 {errors.message && (
-                  <p style={{ color: '#b91c1c', fontSize: '0.8rem' }}>
+                  <p style={{ color: '#b91c1c', fontSize: '0.8rem', margin: 0 }}>
                     {errors.message}
                   </p>
                 )}
@@ -194,22 +195,25 @@ export function ContactPage() {
           )}
         </div>
 
-        {/* Colonne droite : coordonnées */}
+        {/* Coordonnées */}
         <div className="contact-right">
-          <h2 style={{ fontSize: '1.2rem', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontSize: '1.2rem', margin: '0 0 0.6rem 0' }}>
             Coordonnées
           </h2>
-          <p>
+
+          <p style={{ margin: 0 }}>
             Procarré &amp; Fils
             <br />
             04100 Manosque
           </p>
-          <p style={{ marginTop: '0.75rem' }}>
+
+          <p style={{ margin: '0.6rem 0' }}>
             Téléphone : <strong>à compléter</strong>
             <br />
             Email : <strong>à compléter</strong>
           </p>
-          <p style={{ marginTop: '0.75rem' }}>
+
+          <p style={{ margin: 0 }}>
             Intervention à Manosque et en Alpes-de-Haute-Provence pour vos
             projets de carrelage, rénovation et petits travaux de maçonnerie.
           </p>
@@ -218,4 +222,3 @@ export function ContactPage() {
     </div>
   );
 }
-

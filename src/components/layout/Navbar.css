@@ -1,6 +1,8 @@
 /* =========================================================
    TOKENS
 ========================================================= */
+
+
 :root {
   --nav-bg: rgba(15, 15, 15, 0.041);
   --nav-bg-scrolled: rgba(10, 10, 10, 0.84);
@@ -31,10 +33,10 @@
 ========================================================= */
 .navbar {
   position: sticky;
-  top: 0;
   z-index: 100;
-  min-height: 244px;
-  padding: 28px 12px 24px;
+  top: 0;
+  min-height: 90px; /* 🔥 réduit MASSIVEMENT */
+  padding: 12px 12px 10px; /* 🔥 réduit */
   isolation: isolate;
   display: flex;
   flex-direction: column;
@@ -54,8 +56,8 @@
 ========================================================= */
 .navbar-pattern {
   position: absolute;
-  top: -64px;
-  right: -40px;
+  top: -21px;
+  right: -21px;
   width: 600px;   /* ↓ plus petit */
   height: 220px;  /* ↓ plus petit */
   background-image: url('/src/assets/backnavbar.png');
@@ -64,7 +66,6 @@
   background-position: top right;
   opacity: 0.55;
   pointer-events: none;
-  z-index: 0;
 }
 
 /* =========================================================
@@ -125,34 +126,34 @@
 .brand-line {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 8px; /* un peu plus d’air */
 }
 
 .pro {
   color: var(--nav-accent);
   font-weight: 800;
-  font-size: 1.02rem;
+  font-size: 1.6rem; /* 🔥 agrandi */
   letter-spacing: 0.18em;
 }
 
 .carre {
   color: #fff;
-  font-weight: 600;
-  font-size: 1.02rem;
+  font-weight: 700;
+  font-size: 1.6rem; /* 🔥 agrandi */
   letter-spacing: 0.16em;
 }
 
 .separator {
   color: rgba(255, 255, 255, 0.22);
+  font-size: 1.2rem;
 }
 
 .fils {
-  font-size: 0.64rem;
+  font-size: 0.85rem; /* un peu plus lisible */
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
 }
-
 /* =========================================================
    MAIN NAV LINKS
 ========================================================= */
@@ -395,9 +396,12 @@
   inset: 0;
   border: 0;
   padding: 0;
-  background: rgba(8, 8, 8, 0.58);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+
+  backdrop-filter: none; /* 🔥 enlève le voile */
+  -webkit-backdrop-filter: none;
+
+  background: transparent; /* 🔥 sécurité */
+
   cursor: pointer;
 }
 
@@ -406,29 +410,40 @@
 ========================================================= */
 .mobile {
   position: absolute;
-  top: 0;
-  right: 0;
   width: min(92vw, 420px);
   height: 100%;
   padding: 20px 18px 24px;
   overflow-y: auto;
-  background: linear-gradient(180deg, rgba(22, 22, 22, 0.98), rgba(10, 10, 10, 0.98));
+
+  /* 🔥 FIX ICI */
+  background: rgba(15, 15, 15, 0.65); /* laisse passer l'image */
+
   border-left: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: -18px 0 40px rgba(0, 0, 0, 0.32);
+
   display: flex;
   flex-direction: column;
   gap: 18px;
+
+  backdrop-filter: blur(10px); /* 🔥 effet premium */
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .mobile::before {
   content: "";
   position: absolute;
-  inset: 0;
+
+  top: -30px;     /* 🔥 monte */
+  right: -20px;   /* 🔥 décale à droite */
+
+  width: 300px;
+  height: 300px;
+
   pointer-events: none;
   background-image: url('/src/assets/backnavbar.png');
   background-repeat: no-repeat;
-  background-position: top right;
-  background-size: 300px;
+  background-size: contain;
+
   opacity: 0.1;
 }
 
@@ -728,7 +743,7 @@
     height: 260px;
     top: -18px;
     right: -6px;
-    opacity: 0.14;
+    opacity: 0.55;
   }
 
   .navbar-inner {
@@ -753,17 +768,16 @@
 ========================================================= */
 @media (max-width: 560px) {
   .navbar {
-    min-height: 233px;
-    padding: 10px 10px 34px;
+    min-height: 134px;
+    padding: 10px 10px 10px;
     overflow: hidden;
   }
 
   .navbar-pattern {
     width: 300px;
-    height: 220px;
+    height:100%;
     top: -10px;
     right: -4px;
-    opacity: 0.12;
   }
 
   .navbar-inner {
@@ -775,30 +789,39 @@
   }
 
   .pro,
-  .carre {
-    font-size: 0.86rem;
-    letter-spacing: 0.12em;
-  }
+.carre {
+  font-size: 1.45rem; /* 🔥 agrandi (avant 0.86) */
+  letter-spacing: 0.14em;
+}
 
-  .separator {
-    display: none;
-  }
+.separator {
+  display: none;
+}
 
-  .fils {
-    font-size: 0.54rem;
-    letter-spacing: 0.1em;
-  }
+.fils {
+  font-size: 0.75rem; /* 🔥 un peu plus lisible */
+  letter-spacing: 0.12em;
+}
 
-  .mobile {
-    width: 100%;
-    padding: 16px 14px 20px;
-    gap: 16px;
-  }
+.brand-line {
+  gap: 7px; /* évite que ça colle */
+}
+
+.mobile {
+  width: 100%;
+  padding: 16px 14px 20px;
+  gap: 16px;
+}
+
+@media (max-width: 560px) {
 
   .mobile::before {
-    background-size: 260px;
-    opacity: 0.11;
+    top: -30px;
+    right: -20px;
+    width: 260px;
+    height: 260px;
   }
+}
 
   .mobile-top {
     gap: 12px;
@@ -843,7 +866,6 @@
     height: 14px;
   }
 }
-
 /* =========================================================
    REDUCED MOTION
 ========================================================= */

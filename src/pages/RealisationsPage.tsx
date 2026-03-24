@@ -13,15 +13,12 @@ import img8074 from '../assets/imageschantierrealisations/chantier esparons beto
 import img8076 from '../assets/imageschantierrealisations/chantier esparons beton ciré/IMG_8076.jpg';
 import img8077 from '../assets/imageschantierrealisations/chantier esparons beton ciré/IMG_8077.jpg';
 import img8078 from '../assets/imageschantierrealisations/chantier esparons beton ciré/IMG_8078.jpg';
-
 import img7326 from '../assets/imageschantierrealisations/chantier Forcalquier dalle sur plot/IMG_7326(1).jpg';
 import img7554 from '../assets/imageschantierrealisations/chantier Forcalquier dalle sur plot/IMG_7554(1).jpg';
 import img7570 from '../assets/imageschantierrealisations/chantier Forcalquier dalle sur plot/IMG_7570(1).jpg';
-
 import img7258 from '../assets/imageschantierrealisations/chantier greoux les termes vestiaires/IMG_7258.jpg';
 import img7259 from '../assets/imageschantierrealisations/chantier greoux les termes vestiaires/IMG_7259.jpg';
 import img7260 from '../assets/imageschantierrealisations/chantier greoux les termes vestiaires/IMG_7260.jpg';
-
 import img4446 from '../assets/imageschantierrealisations/chantier la palud beton ciré/IMG_4446.jpg';
 import img4447 from '../assets/imageschantierrealisations/chantier la palud beton ciré/IMG_4447.jpg';
 import img5094 from '../assets/imageschantierrealisations/chantier la palud beton ciré/IMG_5094.jpg';
@@ -33,13 +30,11 @@ import img5200 from '../assets/imageschantierrealisations/chantier la palud beto
 import img5205 from '../assets/imageschantierrealisations/chantier la palud beton ciré/IMG_5205(1).jpg';
 import img5236 from '../assets/imageschantierrealisations/chantier la palud beton ciré/IMG_5236.jpg';
 import img5240 from '../assets/imageschantierrealisations/chantier la palud beton ciré/IMG_5240.jpg';
-
 import img6932 from '../assets/imageschantierrealisations/chantier Mane tomette bois/IMG_6932(2).jpg';
 import img6970 from '../assets/imageschantierrealisations/chantier Mane tomette bois/IMG_6970.jpg';
 import img6972 from '../assets/imageschantierrealisations/chantier Mane tomette bois/IMG_6972.jpg';
 import img7201 from '../assets/imageschantierrealisations/chantier Mane tomette bois/IMG_7201.jpg';
 import img7204 from '../assets/imageschantierrealisations/chantier Mane tomette bois/IMG_7204.jpg';
-
 import img7820 from '../assets/imageschantierrealisations/chantier Manosque beton chappe betinna/IMG_7820.jpg';
 import img7823 from '../assets/imageschantierrealisations/chantier Manosque beton chappe betinna/IMG_7823(1).jpg';
 import img7834 from '../assets/imageschantierrealisations/chantier Manosque beton chappe betinna/IMG_7834(1).jpg';
@@ -54,7 +49,6 @@ import img8062 from '../assets/imageschantierrealisations/chantier Manosque beto
 import img8070 from '../assets/imageschantierrealisations/chantier Manosque beton chappe betinna/IMG_8070(1).jpg';
 import img8071b from '../assets/imageschantierrealisations/chantier Manosque beton chappe betinna/IMG_8071(1).jpg';
 import img8071c from '../assets/imageschantierrealisations/chantier Manosque beton chappe betinna/IMG_8071(2).jpg';
-
 import img9556 from '../assets/imageschantierrealisations/chantier manosque escalier/IMG_9556(1).jpg';
 import img9592 from '../assets/imageschantierrealisations/chantier manosque escalier/IMG_9592(1).jpg';
 import img9593 from '../assets/imageschantierrealisations/chantier manosque escalier/IMG_9593.jpg';
@@ -63,12 +57,10 @@ import img9598 from '../assets/imageschantierrealisations/chantier manosque esca
 import img9601 from '../assets/imageschantierrealisations/chantier manosque escalier/IMG_9601.jpg';
 import img9893 from '../assets/imageschantierrealisations/chantier manosque escalier/IMG_9893(1).jpg';
 import img9899 from '../assets/imageschantierrealisations/chantier manosque escalier/IMG_9899(1).jpg';
-
 import img4804 from '../assets/imageschantierrealisations/chantier manosque hôpital de manosque/IMG_4804(1).jpg';
 import img4805 from '../assets/imageschantierrealisations/chantier manosque hôpital de manosque/IMG_4805(1).jpg';
 import img4806 from '../assets/imageschantierrealisations/chantier manosque hôpital de manosque/IMG_4806(1).jpg';
 import img4807 from '../assets/imageschantierrealisations/chantier manosque hôpital de manosque/IMG_4807(1).jpg';
-
 import img8644 from '../assets/imageschantierrealisations/chantier manosque pose immitation bois/IMG_8644.jpg';
 import img8645 from '../assets/imageschantierrealisations/chantier manosque pose immitation bois/IMG_8645.jpg';
 import img8869 from '../assets/imageschantierrealisations/chantier manosque pose immitation bois/IMG_8869(1).jpg';
@@ -76,33 +68,26 @@ import img8881 from '../assets/imageschantierrealisations/chantier manosque pose
 import img8882 from '../assets/imageschantierrealisations/chantier manosque pose immitation bois/IMG_8882.jpg';
 import img8918 from '../assets/imageschantierrealisations/chantier manosque pose immitation bois/IMG_8918.jpg';
 import img8919 from '../assets/imageschantierrealisations/chantier manosque pose immitation bois/IMG_8919.jpg';
-
 import img4886 from '../assets/imageschantierrealisations/chantier Pierrevert chappe/IMG_4886.jpg';
 import img4887 from '../assets/imageschantierrealisations/chantier Pierrevert chappe/IMG_4887.jpg';
 import img4891 from '../assets/imageschantierrealisations/chantier Pierrevert chappe/IMG_4891.jpg';
 import img4908 from '../assets/imageschantierrealisations/chantier Pierrevert chappe/IMG_4908(1).jpg';
-
 import img4499 from '../assets/imageschantierrealisations/chantier Pierrevert reno sdb/IMG_4499.jpg';
 import img4500 from '../assets/imageschantierrealisations/chantier Pierrevert reno sdb/IMG_4500.jpg';
 import img4501 from '../assets/imageschantierrealisations/chantier Pierrevert reno sdb/IMG_4501.jpg';
-
 import img7996b from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_7996.jpg';
 import img7997 from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_7997.jpg';
 import img8002 from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_8002.jpg';
 import img8003 from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_8003.jpg';
 import img8004 from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_8004.jpg';
 import img8005 from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_8005.jpg';
-
 import img5015 from '../assets/imageschantierrealisations/chantier Reillanne beton piscine/IMG_5015.jpg';
 import img6201 from '../assets/imageschantierrealisations/chantier Reillanne beton piscine/IMG_6201(3).jpg';
 import img6235 from '../assets/imageschantierrealisations/chantier Reillanne beton piscine/IMG_6235(2).jpg';
-
 import img3998 from '../assets/imageschantierrealisations/chantier Reillanne calade/IMG_3998(2).jpg';
 import img4001 from '../assets/imageschantierrealisations/chantier Reillanne calade/IMG_4001(2).jpg';
 import img4002 from '../assets/imageschantierrealisations/chantier Reillanne calade/IMG_4002(3).jpg';
 import img4025 from '../assets/imageschantierrealisations/chantier Reillanne calade/IMG_4025(1).jpg';
-
-
 import img3077 from '../assets/imageschantierrealisations/chantier Reillanne tomette et terre cuite/IMG_3077.jpg';
 import img3103 from '../assets/imageschantierrealisations/chantier Reillanne tomette et terre cuite/IMG_3103.jpg';
 import img3134 from '../assets/imageschantierrealisations/chantier Reillanne tomette et terre cuite/IMG_3134(1).jpg';
@@ -115,37 +100,29 @@ import img4507 from '../assets/imageschantierrealisations/chantier Reillanne tom
 import img4509 from '../assets/imageschantierrealisations/chantier Reillanne tomette et terre cuite/IMG_4509.jpg';
 import img4512 from '../assets/imageschantierrealisations/chantier Reillanne tomette et terre cuite/IMG_4512.jpg';
 import img4516 from '../assets/imageschantierrealisations/chantier Reillanne tomette et terre cuite/IMG_4516(1).jpg';
-
 import img4517 from '../assets/imageschantierrealisations/chantier Reillanne travertin multiformat/IMG_4517.jpg';
 import img4550 from '../assets/imageschantierrealisations/chantier Reillanne travertin multiformat/IMG_4550.jpg';
 import img4552 from '../assets/imageschantierrealisations/chantier Reillanne travertin multiformat/IMG_4552.jpg';
 import img4587 from '../assets/imageschantierrealisations/chantier Reillanne travertin multiformat/IMG_4587(1).jpg';
 import img4601 from '../assets/imageschantierrealisations/chantier Reillanne travertin multiformat/IMG_4601(1).jpg';
-
-
 import img5108 from '../assets/imageschantierrealisations/chantier réno sdb/IMG_5108(1).jpg';
 import img5132 from '../assets/imageschantierrealisations/chantier réno sdb/IMG_5132(2).jpg';
 import img5133 from '../assets/imageschantierrealisations/chantier réno sdb/IMG_5133(2).jpg';
-
 import img4856 from '../assets/imageschantierrealisations/chantier sdb benjamin/IMG_4856(1).jpg';
 import img5315 from '../assets/imageschantierrealisations/chantier sdb benjamin/IMG_5315(1).jpg';
 import img5323 from '../assets/imageschantierrealisations/chantier sdb benjamin/IMG_5323(1).jpg';
-
 import img5607 from '../assets/imageschantierrealisations/chantier Valensole sdb grand format/IMG_5607(1).jpg';
 import img5619 from '../assets/imageschantierrealisations/chantier Valensole sdb grand format/IMG_5619.jpg';
 import img5633 from '../assets/imageschantierrealisations/chantier Valensole sdb grand format/IMG_5633(1).jpg';
-
 import img5401 from '../assets/imageschantierrealisations/chantier villeneuve beton ciré/IMG_5401.jpg';
 import img5404 from '../assets/imageschantierrealisations/chantier villeneuve beton ciré/IMG_5404(1).jpg';
 import img5406 from '../assets/imageschantierrealisations/chantier villeneuve beton ciré/IMG_5406(1).jpg';
 import img5457 from '../assets/imageschantierrealisations/chantier villeneuve beton ciré/IMG_5457.jpg';
 import img5462 from '../assets/imageschantierrealisations/chantier villeneuve beton ciré/IMG_5462(1).jpg';
 import img5465 from '../assets/imageschantierrealisations/chantier villeneuve beton ciré/IMG_5465.jpg';
-
 import img6359 from '../assets/imageschantierrealisations/chantier villeneuve piscine bali/IMG_6359.jpg';
 import img6360 from '../assets/imageschantierrealisations/chantier villeneuve piscine bali/IMG_6360.jpg';
 import img6361 from '../assets/imageschantierrealisations/chantier villeneuve piscine bali/IMG_6361.jpg';
-
 import img5849 from '../assets/imageschantierrealisations/chantier villeneuve tour de piscine/IMG_5849.jpg';
 import img5850 from '../assets/imageschantierrealisations/chantier villeneuve tour de piscine/IMG_5850.jpg';
 import img5851 from '../assets/imageschantierrealisations/chantier villeneuve tour de piscine/IMG_5851.jpg';
@@ -153,7 +130,6 @@ import img5853 from '../assets/imageschantierrealisations/chantier villeneuve to
 import img5854 from '../assets/imageschantierrealisations/chantier villeneuve tour de piscine/IMG_5854(1).jpg';
 import img5855 from '../assets/imageschantierrealisations/chantier villeneuve tour de piscine/IMG_5855.jpg';
 import img5856 from '../assets/imageschantierrealisations/chantier villeneuve tour de piscine/IMG_5856.jpg';
-
 import img5470 from '../assets/imageschantierrealisations/chantier volx beton ciré/IMG_5470.jpg';
 import img5471 from '../assets/imageschantierrealisations/chantier volx beton ciré/IMG_5471.jpg';
 import img5603 from '../assets/imageschantierrealisations/chantier volx beton ciré/IMG_5603(1).jpg';

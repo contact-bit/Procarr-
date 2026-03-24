@@ -1,14 +1,23 @@
 /* src/pages/AProposPage.css */
 
+/* ===== RESET HARD ===== */
 .apropos-page {
   color: #f9fafb;
+  margin: 0;
+  padding: 0;
 }
 
-/* Image d'intro */
+/* supprime TOUT espace du premier enfant */
+.apropos-page > *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* ===== IMAGE INTRO (FULL COLLÉ) ===== */
 .apropos-image-wrapper {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem 0;
+  padding: 0; /* 🔥 ZERO */
 }
 
 .apropos-image {
@@ -18,118 +27,133 @@
   object-fit: cover;
 }
 
-/* Hero texte */
+/* ===== HERO TEXTE (ultra compact) ===== */
 .apropos-hero {
   max-width: 960px;
-  margin: 2.5rem auto 1.5rem;
+  margin: 0.8rem auto 1.2rem; /* 🔥 très réduit */
   padding: 0 1.25rem;
   text-align: left;
 }
 
+/* ===== TYPO ===== */
 .apropos-kicker {
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #fecaca;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .apropos-hero h1 {
   font-size: 2rem;
   line-height: 1.25;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
   color: #ffffff;
 }
 
 .apropos-hero p {
   max-width: 44rem;
   color: #e5e7eb;
-  font-size: 0.98rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-/* Tags / chips sous le texte */
+/* ===== TAGS ===== */
 .apropos-tags {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
 .apropos-tags span {
-  padding: 0.3rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 999px;
   border: 1px solid rgba(248, 250, 252, 0.18);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #f9fafb;
   background: rgba(15, 23, 42, 0.4);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
-/* Contenu */
+/* ===== CONTENT ===== */
 .apropos-content {
   max-width: 960px;
   margin: 0 auto 3rem;
-  padding: 1rem 1.25rem 2.5rem;
+  padding: 0.8rem 1.25rem 2rem;
   display: grid;
-  gap: 2rem;
+  gap: 1.6rem;
 }
 
+/* ===== CARDS ===== */
 .apropos-block {
   border-radius: 1.1rem;
-  padding: 1.6rem 1.5rem;
+  padding: 1.4rem 1.3rem;
   border: 1px solid rgba(248, 250, 252, 0.14);
   background: rgba(15, 23, 42, 0.32);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 }
 
 .apropos-block h2 {
-  font-size: 1.35rem;
-  margin-bottom: 0.6rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
   color: #ffffff;
 }
 
 .apropos-block p {
   max-width: 44rem;
   color: #e5e7eb;
-  font-size: 0.96rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.apropos-block p + p {
-  margin-top: 0.75rem;
-}
-
-/* Bloc réseau artisans en mode grid + pills */
+/* ===== GRID ===== */
 .apropos-block-grid {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
-  gap: 1.5rem;
-  align-items: flex-start;
+  gap: 1.2rem;
 }
 
+/* ===== PILLS ===== */
 .apropos-pills {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .apropos-pills li {
-  font-size: 0.86rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
   color: #fee2e2;
-  padding: 0.45rem 0.85rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 999px;
   border: 1px solid rgba(248, 250, 252, 0.2);
   background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.16), transparent 55%)
     rgba(15, 23, 42, 0.6);
 }
 
-/* Responsive */
+/* ===== HEADER ===== */
+.apropos-block-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.apropos-icon {
+  font-size: 1.3rem;
+  color: #fecaca;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .apropos-block-grid {
     grid-template-columns: 1fr;
@@ -137,36 +161,11 @@
 }
 
 @media (max-width: 767px) {
+  .apropos-hero {
+    margin: 0.6rem auto 1rem; /* 🔥 encore plus serré */
+  }
+
   .apropos-hero h1 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
-
-  .apropos-content {
-    padding-bottom: 2rem;
-  }
-}
-.apropos-tags span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-/* Header d’article avec icône */
-.apropos-block-header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.6rem;
-}
-
-.apropos-icon {
-  font-size: 1.4rem;
-  color: #fecaca;
-}
-
-/* Pills avec icônes */
-.apropos-pills li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
 }

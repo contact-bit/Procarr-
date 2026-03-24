@@ -18,8 +18,31 @@ function loadFacebookSdk() {
 }
 
 const videos = [
-  "https://www.facebook.com/watch/?v=926964669767686",
-  // ajoute ici tes liens
+ "https://www.facebook.com/reel/2114936318931170",
+  "https://www.facebook.com/reel/1293270525376525",
+ "https://www.facebook.com/reel/1359255314681007",
+ "https://www.facebook.com/reel/4071116746473539",
+  "https://www.facebook.com/reel/1510989456572418",
+  "https://www.facebook.com/reel/606918982385505",
+  "https://www.facebook.com/reel/701972798846473",
+  "https://www.facebook.com/reel/4185048048480922",
+  "https://www.facebook.com/reel/1500790664163070",
+  "https://www.facebook.com/reel/1530936958332643",
+  "https://www.facebook.com/reel/1505159674146977",
+  "https://www.facebook.com/reel/1358437519073193",
+  "https://www.facebook.com/reel/846078798315640",
+  "https://www.facebook.com/reel/1546857273309223",
+  "https://www.facebook.com/reel/736878412402440",
+  "https://www.facebook.com/reel/1189645602175820",
+  "https://www.facebook.com/reel/1243930370929737",
+  "https://www.facebook.com/reel/926964669767686",
+  "https://www.facebook.com/reel/1371781084633532",
+  "https://www.facebook.com/reel/1394637375768603",
+  "https://www.facebook.com/reel/2489530688254314",
+  "https://www.facebook.com/reel/825185990596472",
+  "https://www.facebook.com/reel/1480661793403260",
+  "https://www.facebook.com/reel/2797996503685890",
+
 ];
 
 export function ActualitesPage() {
@@ -28,7 +51,6 @@ export function ActualitesPage() {
   useEffect(() => {
     loadFacebookSdk();
 
-    // 🔥 observe seulement quand visible (perf++)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -39,7 +61,7 @@ export function ActualitesPage() {
           }
         });
       },
-      { rootMargin: '200px' } // charge avant d’arriver
+      { rootMargin: '200px' }
     );
 
     const cards = containerRef.current?.querySelectorAll('.reseaux-card');
@@ -47,6 +69,9 @@ export function ActualitesPage() {
 
     return () => observer.disconnect();
   }, []);
+
+  // ✅ inversion propre
+  const orderedVideos = [...videos].reverse();
 
   return (
     <div id="main-content" className="reseaux-page">
@@ -62,28 +87,33 @@ export function ActualitesPage() {
 
       <section className="reseaux-grid-section">
         <div ref={containerRef} className="container reseaux-grid">
-          {videos.map((url, index) => (
-            <article className="reseaux-card" key={index}>
-              
-              {/* 🔥 skeleton loading */}
-              <div className="fb-skeleton" />
+          {orderedVideos.map((url, index) => {
+            const embedUrl = url.includes('/reel/')
+              ? url.replace('/reel/', '/watch/?v=')
+              : url;
 
-              <div
-                className="fb-video"
-                data-href={url}
-                data-width="auto"
-                data-show-text="false"
-              >
-                <blockquote
-                  cite={url}
-                  className="fb-xfbml-parse-ignore"
+            return (
+              <article className="reseaux-card" key={index}>
+                
+                <div className="fb-skeleton" />
+
+                <div
+                  className="fb-video"
+                  data-href={embedUrl}
+                  data-width="auto"
+                  data-show-text="false"
                 >
-                  <a href={url}>Voir la vidéo</a>
-                </blockquote>
-              </div>
+                  <blockquote
+                    cite={embedUrl}
+                    className="fb-xfbml-parse-ignore"
+                  >
+                    <a href={embedUrl}>Voir la vidéo</a>
+                  </blockquote>
+                </div>
 
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </section>
     </div>

@@ -37,8 +37,8 @@ export function Footer() {
               04100 Manosque – Alpes-de-Haute-Provence
             </span>
 
-            <a href="tel:+33600000000" className="footer-nap-link">
-              Tél. 06 00 00 00 00
+            <a href="tel:+336 03 12 30 65" className="footer-nap-link">
+              Tél. 06 03 12 30 65
             </a>
 
             <a href="mailto:contact@procarre.fr" className="footer-nap-link">

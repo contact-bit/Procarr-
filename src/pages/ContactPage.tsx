@@ -208,9 +208,9 @@ export function ContactPage() {
           </p>
 
           <p style={{ margin: '0.6rem 0' }}>
-            Téléphone : <strong>à compléter</strong>
+            Téléphone : <strong>06 03 12 30 65</strong>
             <br />
-            Email : <strong>à compléter</strong>
+            Email : <strong>contact@procarre.fr</strong>
           </p>
 
           <p style={{ margin: 0 }}>

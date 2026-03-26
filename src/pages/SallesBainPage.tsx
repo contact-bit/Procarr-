@@ -87,7 +87,7 @@ areaServed: [
         reprise des pentes, pose du nouveau carrelage et finitions. La salle
         de bain est une pièce très exposée à l&apos;humidité, c&apos;est pourquoi nous
         utilisons des matériaux adaptés et des systèmes d&apos;étanchéité
-        conformes aux recommandations des fabricants.[web:45][web:51]
+        conformes aux recommandations des fabricants.
       </p>
       <p>
         Selon votre projet, nous pouvons moderniser une salle de bain

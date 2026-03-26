@@ -2,7 +2,6 @@
    TOKENS
 ========================================================= */
 
-
 :root {
   --nav-bg: rgba(15, 15, 15, 0.041);
   --nav-bg-scrolled: rgba(10, 10, 10, 0.84);
@@ -28,6 +27,7 @@
   --container: 1380px;
 }
 
+
 /* =========================================================
    NAVBAR GLOBAL
 ========================================================= */
@@ -35,8 +35,8 @@
   position: sticky;
   z-index: 100;
   top: 0;
-  min-height: 90px; /* 🔥 réduit MASSIVEMENT */
-  padding: 12px 12px 10px; /* 🔥 réduit */
+  min-height: 90px;
+  padding: 12px 12px 10px;
   isolation: isolate;
   display: flex;
   flex-direction: column;
@@ -51,6 +51,7 @@
   box-shadow: var(--nav-shadow-scrolled);
 }
 
+
 /* =========================================================
    BACKGROUND PATTERN
 ========================================================= */
@@ -58,8 +59,8 @@
   position: absolute;
   top: -21px;
   right: -21px;
-  width: 600px;   /* ↓ plus petit */
-  height: 220px;  /* ↓ plus petit */
+  width: 600px;
+  height: 220px;
   background-image: url('/src/assets/backnavbar.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -67,6 +68,7 @@
   opacity: 0.55;
   pointer-events: none;
 }
+
 
 /* =========================================================
    INNER CONTAINER
@@ -101,12 +103,14 @@
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background:rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
   opacity: 0.85;
 }
 
+
 /* =========================================================
-   BRAND
+   BRAND (LOGO TEXTE)
+   -> À réutiliser IDENTIQUE en navbar + footer
 ========================================================= */
 .brand,
 .mobile-brand {
@@ -116,6 +120,8 @@
   text-decoration: none;
   color: #fff;
   transition: transform var(--transition), opacity var(--transition);
+  display: inline-flex;
+  align-items: center;
 }
 
 .brand:hover,
@@ -123,37 +129,44 @@
   transform: translateY(-1px);
 }
 
+/* Ligne principale logo */
 .brand-line {
   display: flex;
   align-items: baseline;
-  gap: 8px; /* un peu plus d’air */
+  line-height: 1;
+  gap: 6px;
 }
 
-.pro {
-  color: var(--nav-accent);
-  font-weight: 800;
-  font-size: 1.6rem; /* 🔥 agrandi */
-  letter-spacing: 0.18em;
-}
-
-.carre {
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.6rem; /* 🔥 agrandi */
-  letter-spacing: 0.16em;
-}
-
-.separator {
-  color: rgba(255, 255, 255, 0.22);
-  font-size: 1.2rem;
-}
-
-.fils {
-  font-size: 0.85rem; /* un peu plus lisible */
-  letter-spacing: 0.18em;
+/* PRO */
+.brand-pro {
+  color: #e02b20 !important;
+  font-size: 1.9rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
 }
+
+/* carré */
+.brand-carre {
+  position: relative !important;
+  color: #ffffff !important;
+  font-size: 1.7rem !important;
+  font-weight: 400 !important;
+  margin-left: -2px !important;
+  text-transform: lowercase !important;
+}
+
+/* & Fils */
+.brand-bottom {
+  display: block;
+  font-size: 0.9rem !important;
+  margin-left: 0;
+  margin-top: 2px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
 /* =========================================================
    MAIN NAV LINKS
 ========================================================= */
@@ -200,6 +213,7 @@
   transform: scaleX(1);
 }
 
+
 /* =========================================================
    RIGHT SIDE
 ========================================================= */
@@ -210,6 +224,7 @@
   align-items: center;
   gap: 10px;
 }
+
 
 /* =========================================================
    CTA
@@ -256,6 +271,7 @@
   background: linear-gradient(180deg, #f5534b, #cf2f28);
   box-shadow: 0 16px 30px rgba(230, 57, 50, 0.24);
 }
+
 
 /* =========================================================
    SOCIAL
@@ -307,6 +323,7 @@
   height: 21px;
 }
 
+
 /* =========================================================
    SUBNAV
 ========================================================= */
@@ -335,6 +352,7 @@
 .subnav a.active {
   color: rgba(255, 255, 255, 0.84);
 }
+
 
 /* =========================================================
    BURGER
@@ -382,6 +400,7 @@
   transform: rotate(-45deg) translateY(-5px);
 }
 
+
 /* =========================================================
    MOBILE SHELL
 ========================================================= */
@@ -396,14 +415,12 @@
   inset: 0;
   border: 0;
   padding: 0;
-
-  backdrop-filter: none; /* 🔥 enlève le voile */
+  backdrop-filter: none;
   -webkit-backdrop-filter: none;
-
-  background: transparent; /* 🔥 sécurité */
-
+  background: transparent;
   cursor: pointer;
 }
+
 
 /* =========================================================
    MOBILE PANEL
@@ -414,38 +431,30 @@
   height: 100%;
   padding: 20px 18px 24px;
   overflow-y: auto;
-
-  /* 🔥 FIX ICI */
-  background: rgba(15, 15, 15, 0.65); /* laisse passer l'image */
-
+  background: rgba(15, 15, 15, 0.65);
   border-left: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: -18px 0 40px rgba(0, 0, 0, 0.32);
-
   display: flex;
   flex-direction: column;
   gap: 18px;
-
-  backdrop-filter: blur(10px); /* 🔥 effet premium */
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
 .mobile::before {
   content: "";
   position: absolute;
-
-  top: -30px;     /* 🔥 monte */
-  right: -20px;   /* 🔥 décale à droite */
-
+  top: -30px;
+  right: -20px;
   width: 300px;
   height: 300px;
-
   pointer-events: none;
   background-image: url('/src/assets/backnavbar.png');
   background-repeat: no-repeat;
   background-size: contain;
-
   opacity: 0.1;
 }
+
 
 /* =========================================================
    MOBILE TOP
@@ -500,6 +509,7 @@
   max-width: 34ch;
 }
 
+
 /* =========================================================
    MOBILE ACTIONS
 ========================================================= */
@@ -540,6 +550,7 @@
   color: #fff;
 }
 
+
 /* =========================================================
    MOBILE MAIN LINKS
 ========================================================= */
@@ -574,6 +585,7 @@
   transform: translateY(-1px);
   box-shadow: var(--nav-shadow-panel);
 }
+
 
 /* =========================================================
    MOBILE ACCORDION
@@ -649,6 +661,7 @@
   transform: translateX(2px);
 }
 
+
 /* =========================================================
    MOBILE BOTTOM
 ========================================================= */
@@ -690,6 +703,7 @@
   height: 15px;
 }
 
+
 /* =========================================================
    FOCUS
 ========================================================= */
@@ -710,6 +724,7 @@
   box-shadow: 0 0 0 3px rgba(230, 57, 50, 0.28);
 }
 
+
 /* =========================================================
    LARGE TABLET
 ========================================================= */
@@ -727,6 +742,7 @@
     gap: 18px;
   }
 }
+
 
 /* =========================================================
    MOBILE / TABLET
@@ -761,7 +777,14 @@
   .burger {
     display: inline-flex;
   }
+
+  /* Logo IDENTIQUE, juste léger scale pour tout le bloc */
+  .brand,
+  .mobile-brand {
+    transform-origin: left center;
+  }
 }
+
 
 /* =========================================================
    SMALL MOBILE
@@ -775,7 +798,7 @@
 
   .navbar-pattern {
     width: 300px;
-    height:100%;
+    height: 100%;
     top: -10px;
     right: -4px;
   }
@@ -788,32 +811,25 @@
     gap: 4px;
   }
 
-  .pro,
-.carre {
-  font-size: 1.45rem; /* 🔥 agrandi (avant 0.86) */
-  letter-spacing: 0.14em;
-}
+  /* On réduit un peu mais PRO / carré / bottom gardent les mêmes ratios */
+  .brand-pro {
+    font-size: 1.7rem !important;
+  }
 
-.separator {
-  display: none;
-}
+  .brand-carre {
+    font-size: 1.55rem !important;
+  }
 
-.fils {
-  font-size: 0.75rem; /* 🔥 un peu plus lisible */
-  letter-spacing: 0.12em;
-}
+  .brand-bottom {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.16em;
+  }
 
-.brand-line {
-  gap: 7px; /* évite que ça colle */
-}
-
-.mobile {
-  width: 100%;
-  padding: 16px 14px 20px;
-  gap: 16px;
-}
-
-@media (max-width: 560px) {
+  .mobile {
+    width: 100%;
+    padding: 16px 14px 20px;
+    gap: 16px;
+  }
 
   .mobile::before {
     top: -30px;
@@ -821,7 +837,6 @@
     width: 260px;
     height: 260px;
   }
-}
 
   .mobile-top {
     gap: 12px;
@@ -866,6 +881,8 @@
     height: 21px;
   }
 }
+
+
 /* =========================================================
    REDUCED MOTION
 ========================================================= */

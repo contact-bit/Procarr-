@@ -10,7 +10,7 @@
 }
 
 /* =========================================================
-   SLIDER WRAPPER
+   SLIDER
 ========================================================= */
 .home-hero__slider {
   position: relative;
@@ -23,14 +23,13 @@
 }
 
 /* =========================================================
-   OVERLAY CINÉMA
+   OVERLAY
 ========================================================= */
 .home-hero__shade {
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-
   background:
     linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 35%),
     linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%);
@@ -42,35 +41,22 @@
 .home-hero__swiper {
   width: 100%;
   height: 100%;
-
-  transform: translateZ(0);
-  backface-visibility: hidden;
-
-  --swiper-pagination-color: #e63932;
-  --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.35);
-  --swiper-pagination-bullet-size: 8px;
 }
 
 /* =========================================================
-   SLIDE
-========================================================= */
-.home-hero__slide {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-/* =========================================================
-   IMAGE WRAPPER
+   IMAGE
 ========================================================= */
 .home-hero__image-wrapper {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
-/* 🎬 ZOOM CINÉMA */
+.home-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .swiper-slide-active .home-hero__image {
   animation: heroZoom 7s ease-out forwards;
 }
@@ -81,157 +67,91 @@
 }
 
 /* =========================================================
-   IMAGE (NET)
-========================================================= */
-.home-hero__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  will-change: transform;
-}
-
-/* =========================================================
-   NAVIGATION MODERNE (SANS ROND)
+   NAV
 ========================================================= */
 .hero-nav {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 90px;
-  z-index: 10;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
-
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.25),
-    transparent
-  );
-
+  background: linear-gradient(to right, rgba(0,0,0,0.25), transparent);
   opacity: 0.4;
-  transition: all 0.3s ease;
+  transition: 0.3s;
+  z-index: 10;
 }
 
-.hero-nav-prev {
-  left: 0;
-}
+.hero-nav-prev { left: 0; }
 
 .hero-nav-next {
   right: 0;
-  background: linear-gradient(
-    to left,
-    rgba(0,0,0,0.25),
-    transparent
-  );
+  background: linear-gradient(to left, rgba(0,0,0,0.25), transparent);
 }
 
-/* apparition au hover */
 .home-hero__slider:hover .hero-nav {
   opacity: 1;
 }
 
 /* =========================================================
-   ARROW CLEAN (FIX FINAL)
-========================================================= */
-.arrow-line {
-  width: 26px;
-  height: 26px;
-  position: relative;
-}
-
-.arrow-line::before,
-.arrow-line::after {
-  content: "";
-  position: absolute;
-
-  width: 16px;
-  height: 2px;
-
-  background: rgba(255,255,255,0.9);
-  border-radius: 2px;
-
-  transition: all 0.3s ease;
-}
-
-/* gauche */
-.hero-nav-prev .arrow-line::before {
-  transform: rotate(-45deg);
-  top: 6px;
-  left: 4px;
-}
-
-.hero-nav-prev .arrow-line::after {
-  transform: rotate(45deg);
-  top: 14px;
-  left: 4px;
-}
-
-/* droite */
-.hero-nav-next .arrow-line::before {
-  transform: rotate(45deg);
-  top: 6px;
-  left: 6px;
-}
-
-.hero-nav-next .arrow-line::after {
-  transform: rotate(-45deg);
-  top: 14px;
-  left: 6px;
-}
-
-/* micro interaction */
-.hero-nav-prev:hover .arrow-line {
-  transform: translateX(-6px);
-}
-
-.hero-nav-next:hover .arrow-line {
-  transform: translateX(6px);
-}
-
-/* =========================================================
-   BRAND
+   🔥 LOGO HERO CLEAN (FIX TOTAL)
 ========================================================= */
 .home-hero__brand {
   position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-  z-index: 4;
+  top: 14px;
+  left: 14px;
 
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
+  padding: 5px 8px;
 
-  padding: 0.7rem 0.95rem;
+  background: rgba(20,20,20,0.35);
+  backdrop-filter: blur(4px);
+
   border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.25);
 
-  background: rgba(14, 14, 14, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  backdrop-filter: blur(10px);
+  z-index: 5;
 }
 
-.home-hero__brand-pro {
-  color: #e63932;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+/* structure */
+.footer-logo-badge-row {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
 }
 
-.home-hero__brand-carre {
+.brand-top {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 3px;
+}
+
+/* PRO */
+.brand-proe {
+  color: #e02b20;
+  font-size: 0.7rem !important;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* carré */
+.brand-carree {
+  position: relative;
   color: #fff;
-  font-weight: 600;
+  font-size: 0.7rem !important;
+  margin-left: -1px;
+  text-transform: lowercase;
 }
 
-.home-hero__brand-fils {
-  color: rgba(255, 255, 255, 0.64);
-  font-size: 0.62rem;
+
+
+/* & Fils 👉 FIX ICI */
+.brand-bottome {
+  font-size: 0.42rem !important;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.7);
 }
 
 /* =========================================================
@@ -244,63 +164,16 @@
   transform: translateX(-50%);
   z-index: 5;
   width: min(100% - 32px, 420px);
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
 }
 
 .home-hero__cta {
-  pointer-events: auto;
   width: 100%;
   min-height: 56px;
-
   border-radius: 999px;
-  border: 1px solid rgba(230, 57, 50, 0.7);
-
-  background: rgba(20, 10, 10, 0.85);
-  backdrop-filter: blur(8px);
-
+  border: 1px solid rgba(230,57,50,0.7);
+  background: rgba(20,10,10,0.85);
   color: #fff;
   font-weight: 600;
-
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.home-hero__cta:hover {
-  transform: translateY(-2px);
-  background: rgba(30, 10, 10, 0.95);
-}
-
-/* =========================================================
-   PAGINATION
-========================================================= */
-.home-hero__swiper .swiper-pagination {
-  bottom: 16px !important;
-  z-index: 6;
-}
-
-.home-hero__swiper .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background: rgba(255,255,255,0.45);
-  opacity: 1;
-  transition: all 0.3s ease;
-}
-
-.home-hero__swiper .swiper-pagination-bullet-active {
-  width: 26px;
-  border-radius: 999px;
-  background: #e63932;
-}
-
-/* =========================================================
-   TABLET
-========================================================= */
-@media (max-width: 900px) {
-  .home-hero__slider {
-    height: 380px;
-  }
 }
 
 /* =========================================================
@@ -324,13 +197,22 @@
     display: block;
     margin-bottom: 12px;
   }
-}
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-@media (prefers-reduced-motion: reduce) {
-  .home-hero__image {
-    animation: none;
+  .home-hero__brande {
+    top: 8px;
+    left: 8px;
+    padding: 4px 6px;
+  }
+
+  .brand-pro {
+    font-size: 0.6rem;
+  }
+
+  .brand-carre {
+    font-size: 0.55rem;
+  }
+
+  .brand-bottom {
+    font-size: 0.38rem;
   }
 }

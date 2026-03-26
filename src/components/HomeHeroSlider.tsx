@@ -75,7 +75,6 @@ export function HomeHeroSlider() {
 
   return (
     <section className="home-hero">
-
       {/* CTA MOBILE */}
       <div className="home-hero__cta-mobile">
         <button className="home-hero__cta" onClick={goToQuote}>
@@ -84,26 +83,28 @@ export function HomeHeroSlider() {
       </div>
 
       <div className="home-hero__slider">
-
         {/* OVERLAY CINEMA */}
         <div className="home-hero__shade" />
 
         {/* NAVIGATION (fixée toujours visible) */}
         <div className="hero-nav hero-nav-prev">
-  <span className="arrow-line" />
-</div>
-
-<div className="hero-nav hero-nav-next">
-  <span className="arrow-line" />
-</div>
-
-        {/* BRAND */}
-        <div className="home-hero__brand">
-          <span className="home-hero__brand-pro">PRO</span>
-          <span className="home-hero__brand-carre">CARRÉ</span>
-          <span className="home-hero__brand-separator">|</span>
-          <span className="home-hero__brand-fils">&amp; Fils</span>
+          <span className="arrow-line" />
         </div>
+
+        <div className="hero-nav hero-nav-next">
+          <span className="arrow-line" />
+        </div>
+
+        {/* BRAND (logo tampon, moitié plus petit via CSS .home-hero__brand) */}
+<div className="home-hero__brand">
+  <div className="footer-logo-badge-row">
+    <div className="brand-tope">
+      <span className="brand-proe">PRO</span>
+      <span className="brand-carree">carré</span>
+    </div>
+    <div className="brand-bottome">&amp; Fils</div>
+  </div>
+</div>
 
         {/* CTA DESKTOP */}
         <div className="home-hero__actions">
@@ -140,7 +141,6 @@ export function HomeHeroSlider() {
             </SwiperSlide>
           ))}
         </Swiper>
-
       </div>
     </section>
   );

@@ -41,7 +41,7 @@ const SOCIAL_LINKS = [
     icon: instagramIcon,
   },
   {
-   href: 'https://fr.linkedin.com/in/denis-dussert-683821376',
+    href: 'https://fr.linkedin.com/in/denis-dussert-683821376',
     label: 'LinkedIn',
     icon: linkedinIcon,
   },
@@ -110,13 +110,13 @@ export function Navbar() {
       <div className="navbar-pattern" aria-hidden="true" />
 
       <div className="navbar-inner">
+        {/* LOGO DESKTOP + MOBILE (même markup / mêmes classes) */}
         <Link to="/" className="brand" aria-label="Procarré & Fils - Accueil">
-          <span className="brand-line">
-            <span className="pro">PRO</span>
-            <span className="carre">CARRÉ</span>
-            <span className="separator">|</span>
-            <span className="fils">&amp; Fils</span>
-          </span>
+          <div className="brand-line">
+            <span className="brand-pro">PRO</span>
+            <span className="brand-carre">carré</span>
+          </div>
+          <span className="brand-bottom">&amp; Fils</span>
         </Link>
 
         <nav className="nav-links" aria-label="Navigation principale">
@@ -189,18 +189,18 @@ export function Navbar() {
             role="dialog"
           >
             <div className="mobile-top">
+              {/* On réutilise exactement le même logo, avec une classe supplémentaire si tu veux cibler en CSS */}
               <Link
                 to="/"
-                className="mobile-brand"
+                className="brand mobile-brand"
                 onClick={close}
                 aria-label="Procarré & Fils - Accueil"
               >
-                <span className="brand-line">
-                  <span className="pro">PRO</span>
-                  <span className="carre">CARRÉ</span>
-                  <span className="separator">|</span>
-                  <span className="fils">&amp; Fils</span>
-                </span>
+                <div className="brand-line">
+                  <span className="brand-pro">PRO</span>
+                  <span className="brand-carre">carré</span>
+                </div>
+                <span className="brand-bottom">&amp; Fils</span>
               </Link>
 
               <button
@@ -233,7 +233,12 @@ export function Navbar() {
 
             <div className="mobile-main-links">
               {MAIN_LINKS.map((link) => (
-                <NavLink key={link.to} to={link.to} onClick={close} className="mobile-main-link">
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  onClick={close}
+                  className="mobile-main-link"
+                >
                   {link.label}
                 </NavLink>
               ))}
@@ -243,7 +248,9 @@ export function Navbar() {
               <div className="mobile-accordion">
                 <button
                   type="button"
-                  className={`mobile-accordion-trigger ${openSection === 'explore' ? 'is-open' : ''}`}
+                  className={`mobile-accordion-trigger ${
+                    openSection === 'explore' ? 'is-open' : ''
+                  }`}
                   onClick={() => toggleSection('explore')}
                   aria-expanded={openSection === 'explore'}
                 >
@@ -265,7 +272,9 @@ export function Navbar() {
               <div className="mobile-accordion">
                 <button
                   type="button"
-                  className={`mobile-accordion-trigger ${openSection === 'services' ? 'is-open' : ''}`}
+                  className={`mobile-accordion-trigger ${
+                    openSection === 'services' ? 'is-open' : ''
+                  }`}
                   onClick={() => toggleSection('services')}
                   aria-expanded={openSection === 'services'}
                 >

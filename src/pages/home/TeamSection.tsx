@@ -1,6 +1,6 @@
 // src/pages/home/TeamSection.tsx
 import './TeamSection.css';
-import equipe from '../../assets/denisdussertsebastien.png';
+import equipe from '../../assets/image00003.jpeg';
 import facebookIcon from '../../assets/facebook.png';
 import instagramIcon from '../../assets/instagram.png';
 import linkedinIcon from '../../assets/linkedin.png';

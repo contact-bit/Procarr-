@@ -1,6 +1,6 @@
 // src/pages/AProposPage.tsx
 import { LuHammer, LuUsers, LuNetwork, LuCheck } from 'react-icons/lu';
-import aproposImg from '../assets/apropos.webp';
+import aproposImg from '../assets/image00004.jpeg';
 import './AProposPage.css';
 
 export function AProposPage() {

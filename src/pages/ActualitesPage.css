@@ -154,3 +154,33 @@
     margin-top: 0.2rem; /* 🔥 supprime espace mobile */
   }
 }
+.zone-trucks {
+  position: relative;
+  margin-top: 60px;
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.zone-trucks-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.2)
+  );
+}
+
+.zone-trucks-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+  max-width: 500px;
+  color: white;
+}

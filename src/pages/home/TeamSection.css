@@ -56,7 +56,6 @@
 .team-photo-wrapper {
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
 }
 
 .team-photo {

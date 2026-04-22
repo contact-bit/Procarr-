@@ -1,6 +1,6 @@
 // src/pages/ZoneInterventionPage.tsx
 import './ZoneInterventionPage.css';
-import zoneImg from '../assets/zoneintervention.jpg';
+import zoneImg from '../assets/image000022.jpg';
 
 export function ZoneInterventionPage() {
   return (

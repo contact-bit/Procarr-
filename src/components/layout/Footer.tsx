@@ -41,8 +41,8 @@ export function Footer() {
               Tél. 06 03 12 30 65
             </a>
 
-            <a href="mailto:contact@procarre.fr" className="footer-nap-link">
-              contact@procarre.fr
+            <a href="mailto:procarre.dussert@wanadoo.fr" className="footer-nap-link">
+              procarre.dussert@wanadoo.fr
             </a>
           </div>
         </div>

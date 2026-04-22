@@ -210,7 +210,7 @@ const res = await fetch('/api/contact', {
           <p style={{ margin: '0.6rem 0' }}>
             Téléphone : <strong>06 03 12 30 65</strong>
             <br />
-            Email : <strong>contact@procarre.fr</strong>
+            Email : <strong>procarre.dussert@wanadoo.fr</strong>
           </p>
 
           <p style={{ margin: 0 }}>

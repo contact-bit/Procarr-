@@ -1,4 +1,3 @@
-// src/pages/ContactPage.tsx
 import { useState } from 'react';
 
 type ContactFormState = {
@@ -21,12 +20,10 @@ export function ContactPage() {
   });
 
   const [errors, setErrors] = useState<ContactErrors>({});
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>(
-    'idle',
-  );
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
@@ -54,27 +51,47 @@ export function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();          // 🔥 bloque le submit HTML
+    e.stopPropagation();         // 🔥 empêche comportement natif
+
+    console.log('SUBMIT TRIGGERED'); // debug
+
     if (!validate()) return;
 
     setStatus('submitting');
 
     try {
-const res = await fetch('/api/contact', {
-          method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch('/api/contact', {
+        method: 'POST', // 🔥 IMPORTANT
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(form),
       });
 
+      console.log('STATUS:', res.status);
+
       if (!res.ok) {
+        const txt = await res.text();
+        console.error('API ERROR:', txt);
         setStatus('idle');
         return;
       }
 
       setStatus('success');
+
+      // reset form (optionnel)
+      setForm({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+
     } catch (err) {
-      console.error(err);
+      console.error('FETCH ERROR:', err);
       setStatus('idle');
     }
   };
@@ -82,141 +99,61 @@ const res = await fetch('/api/contact', {
   const isDisabled = status === 'submitting';
 
   return (
-    <div className="contact-page" style={{ margin: 0, padding: 0 }}>
-      {/* Intro */}
+    <div className="contact-page">
       <section style={{ padding: '0.4rem 0 1.2rem' }}>
-        <h1 style={{ fontSize: '2rem', margin: '0 0 0.6rem 0' }}>
-          Contactez Procarré &amp; Fils
-        </h1>
-
-        <p style={{ maxWidth: '36rem', color: '#4b5563', margin: 0 }}>
-          Une question, un projet de carrelage ou de rénovation ? Envoyez-nous
-          un message et nous reviendrons vers vous rapidement pour en parler.
-        </p>
+        <h1>Contactez Procarré &amp; Fils</h1>
       </section>
 
-      {/* Grille contact */}
       <section className="contact-grid">
-        {/* Formulaire */}
         <div className="contact-left">
           {status === 'success' ? (
-            <div>
-              <p style={{ color: '#16a34a', margin: '0 0 0.6rem 0' }}>
-                Merci, votre message a bien été envoyé.
-              </p>
-              <p style={{ fontSize: '0.9rem', color: '#4b5563', margin: 0 }}>
-                Nous vous recontacterons dans les meilleurs délais.
-              </p>
-            </div>
+            <p style={{ color: 'green' }}>
+              Message envoyé ✔️
+            </p>
           ) : (
-            <form onSubmit={handleSubmit} className="contact-form">
-              <div>
-                <input
-                  name="name"
-                  placeholder="Nom complet*"
-                  value={form.name}
-                  onChange={handleChange}
-                  maxLength={80}
-                  className="input"
-                />
-                {errors.name && (
-                  <p style={{ color: '#b91c1c', fontSize: '0.8rem', margin: 0 }}>
-                    {errors.name}
-                  </p>
-                )}
-              </div>
+            <form onSubmit={handleSubmit} noValidate> {/* 🔥 important */}
+              
+              <input
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Nom*"
+              />
 
-              <div>
-                <input
-                  name="email"
-                  type="email"
-                  placeholder="Email*"
-                  value={form.email}
-                  onChange={handleChange}
-                  maxLength={120}
-                  className="input"
-                />
-                {errors.email && (
-                  <p style={{ color: '#b91c1c', fontSize: '0.8rem', margin: 0 }}>
-                    {errors.email}
-                  </p>
-                )}
-              </div>
+              <input
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="Email*"
+              />
 
-              <div>
-                <input
-                  name="phone"
-                  placeholder="Téléphone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  maxLength={25}
-                  className="input"
-                />
-              </div>
+              <input
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="Téléphone"
+              />
 
-              <div>
-                <input
-                  name="subject"
-                  placeholder="Objet de votre demande"
-                  value={form.subject}
-                  onChange={handleChange}
-                  maxLength={120}
-                  className="input"
-                />
-              </div>
+              <input
+                name="subject"
+                value={form.subject}
+                onChange={handleChange}
+                placeholder="Objet"
+              />
 
-              <div>
-                <textarea
-                  name="message"
-                  placeholder="Votre message*"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={5}
-                  maxLength={2000}
-                  className="textarea"
-                />
-                {errors.message && (
-                  <p style={{ color: '#b91c1c', fontSize: '0.8rem', margin: 0 }}>
-                    {errors.message}
-                  </p>
-                )}
-              </div>
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                placeholder="Message*"
+              />
 
-              <button
-                type="submit"
-                disabled={isDisabled}
-                className="btn btn-primary"
-              >
-                {status === 'submitting'
-                  ? 'Envoi en cours...'
-                  : 'Envoyer mon message'}
+              <button type="submit" disabled={isDisabled}>
+                {isDisabled ? 'Envoi...' : 'Envoyer'}
               </button>
+
             </form>
           )}
-        </div>
-
-        {/* Coordonnées */}
-        <div className="contact-right">
-          <h2 style={{ fontSize: '1.2rem', margin: '0 0 0.6rem 0' }}>
-            Coordonnées
-          </h2>
-
-          <p style={{ margin: 0 }}>
-            Procarré &amp; Fils
-            <br />
-            04100 Manosque
-          </p>
-
-          <p style={{ margin: '0.6rem 0' }}>
-            Téléphone : <strong>06 03 12 30 65</strong>
-            <br />
-            Email : <strong>procarre.dussert@wanadoo.fr</strong>
-          </p>
-
-          <p style={{ margin: 0 }}>
-            Intervention à Manosque et en Alpes-de-Haute-Provence pour vos
-            projets de carrelage, rénovation et petits travaux de maçonnerie.
-          </p>
         </div>
       </section>
     </div>

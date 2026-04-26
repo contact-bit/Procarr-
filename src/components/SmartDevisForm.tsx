@@ -11,37 +11,6 @@ type CommonFields = {
   message: string;
 };
 
-type InteriorFields = {
-  pieceType: string;
-  surface: string;
-  solType: string;
-};
-
-type ExteriorFields = {
-  supportType: string;
-  surface: string;
-  exposure: string;
-};
-
-type BathroomFields = {
-  hasWalkInShower: string;
-  wallsSurface: string;
-  floorSurface: string;
-  waterproofing: string;
-};
-
-type KitchenFields = {
-  credenceLength: string;
-  floorSurface: string;
-  furnitureState: string;
-};
-
-type RenovFields = {
-  rooms: string;
-  globalSurface: string;
-  structuralChanges: string;
-};
-
 type SmartDevisFormProps = {
   projectType: 'interieur' | 'exterieur' | 'sdb' | 'cuisine' | 'renov';
 };
@@ -60,37 +29,6 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
   const [delay, setDelay] = useState('');
   const [building, setBuilding] = useState('');
 
-  const [interior, setInterior] = useState<InteriorFields>({
-    pieceType: '',
-    surface: '',
-    solType: '',
-  });
-
-  const [exterior, setExterior] = useState<ExteriorFields>({
-    supportType: '',
-    surface: '',
-    exposure: '',
-  });
-
-  const [bathroom, setBathroom] = useState<BathroomFields>({
-    hasWalkInShower: '',
-    wallsSurface: '',
-    floorSurface: '',
-    waterproofing: '',
-  });
-
-  const [kitchen, setKitchen] = useState<KitchenFields>({
-    credenceLength: '',
-    floorSurface: '',
-    furnitureState: '',
-  });
-
-  const [renov, setRenov] = useState<RenovFields>({
-    rooms: '',
-    globalSurface: '',
-    structuralChanges: '',
-  });
-
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const handleCommonChange = (
@@ -100,6 +38,7 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
     setCommon(prev => ({ ...prev, [name]: value }));
   };
 
+  // ✅ progression simple (cohérente avec ton vrai form)
   const progress = useMemo(() => {
     let filled = 0;
     if (common.name) filled++;
@@ -107,36 +46,11 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
     if (common.city) filled++;
     if (role) filled++;
     if (projectKind) filled++;
-
-    if (projectType === 'interieur') {
-      if (interior.pieceType) filled++;
-      if (interior.surface) filled++;
-    } else if (projectType === 'exterieur') {
-      if (exterior.surface) filled++;
-      if (exterior.supportType) filled++;
-    } else if (projectType === 'sdb') {
-      if (bathroom.floorSurface) filled++;
-      if (bathroom.wallsSurface) filled++;
-    } else if (projectType === 'cuisine') {
-      if (kitchen.credenceLength) filled++;
-      if (kitchen.floorSurface) filled++;
-    } else if (projectType === 'renov') {
-      if (renov.rooms) filled++;
-      if (renov.globalSurface) filled++;
-    }
+    if (delay) filled++;
+    if (building) filled++;
 
     return Math.min(100, (filled / 7) * 100);
-  }, [
-    common,
-    role,
-    projectKind,
-    interior,
-    exterior,
-    bathroom,
-    kitchen,
-    renov,
-    projectType,
-  ]);
+  }, [common, role, projectKind, delay, building]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -149,25 +63,23 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
 
     setStatus('submitting');
 
-const payload = {
-  name: common.name,
-  email: common.email,
-  phone: common.phone,
-  city: common.city,
-  message: common.message,
-  projectType,
-  budget: '',
-  surface:
-    interior.surface ||
-    exterior.surface ||
-    bathroom.floorSurface ||
-    kitchen.floorSurface ||
-    renov.globalSurface ||
-    '',
-};
+    // ✅ PAYLOAD ALIGNÉ AVEC TON FORM (IMPORTANT)
+    const payload = {
+      name: common.name,
+      email: common.email,
+      phone: common.phone,
+      city: common.city,
+      message: common.message,
+
+      projectType,
+
+      role,
+      projectKind,
+      delay,
+      building,
+    };
 
     try {
-      // ✅ FIX: plus de localhost → route relative Vercel
       const res = await fetch('/api/devis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -205,7 +117,7 @@ const payload = {
 
   return (
     <form className="smart-devis-form" onSubmit={handleSubmit}>
-      {/* Barre de progression + badges */}
+      {/* Barre de progression */}
       <div className="smart-devis-progress">
         <div
           className="smart-devis-progress-bar"
@@ -213,6 +125,7 @@ const payload = {
         />
       </div>
 
+      {/* Badges */}
       <div className="smart-devis-badges">
         <span className="smart-devis-badge">
           Projet&nbsp;:&nbsp;{projectType}
@@ -228,6 +141,7 @@ const payload = {
       {/* Infos communes */}
       <div className="smart-devis-section">
         <h3>Vos coordonnées</h3>
+
         <div className="field-row">
           <input
             name="name"
@@ -245,6 +159,7 @@ const payload = {
             onChange={handleCommonChange}
           />
         </div>
+
         <div className="field-row">
           <input
             name="email"
@@ -265,9 +180,10 @@ const payload = {
         </div>
       </div>
 
-      {/* Profil & type de projet */}
+      {/* Profil & projet */}
       <div className="smart-devis-section">
         <h3>Votre profil & projet</h3>
+
         <div className="field-row">
           <select
             className="select"
@@ -278,6 +194,7 @@ const payload = {
             <option value="particulier">Particulier</option>
             <option value="professionnel">Professionnel</option>
           </select>
+
           <select
             className="select"
             value={projectKind}
@@ -288,6 +205,7 @@ const payload = {
             <option value="renovation">Rénovation</option>
           </select>
         </div>
+
         <div className="field-row">
           <select
             className="select"
@@ -301,6 +219,7 @@ const payload = {
             <option value="plus-6">Plus de 6 mois</option>
             <option value="pas-de-date">Pas de date fixée</option>
           </select>
+
           <select
             className="select"
             value={building}
@@ -315,11 +234,7 @@ const payload = {
         </div>
       </div>
 
-      {/* --- TES BLOCS SPECIFIQUES (inchangés) --- */}
-      {/* interieur / exterieur / sdb / cuisine / renov */}
-      {/* (je les laisse tels quels comme dans ton code) */}
-
-      {/* Message libre */}
+      {/* Message */}
       <div className="smart-devis-section">
         <h3>Détails complémentaires</h3>
         <textarea
@@ -338,9 +253,10 @@ const payload = {
         className="btn btn-primary smart-devis-submit"
         disabled={status === 'submitting'}
       >
-        {status === 'submitting' ? 'Envoi en cours...' : 'Envoyer ma demande de devis'}
+        {status === 'submitting'
+          ? 'Envoi en cours...'
+          : 'Envoyer ma demande de devis'}
       </button>
     </form>
   );
 }
-

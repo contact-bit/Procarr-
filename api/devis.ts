@@ -26,23 +26,20 @@ export default async function handler(req, res) {
     const body =
       typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
 
-    console.log('BODY RECEIVED:', JSON.stringify(body, null, 2));
-
-    // 🔐 SANITIZE
+    // 🔐 SANITIZE (UNIQUEMENT CE QUE TON FORM ENVOIE)
     const name = sanitize(body?.name);
     const email = sanitize(body?.email);
     const phone = sanitize(body?.phone);
     const city = sanitize(body?.city);
     const message = sanitize(body?.message);
+
     const projectType = sanitize(body?.projectType);
+    const role = sanitize(body?.role);
+    const projectKind = sanitize(body?.projectKind);
+    const delay = sanitize(body?.delay);
+    const building = sanitize(body?.building);
 
-    const interior = body?.interior || {};
-    const exterior = body?.exterior || {};
-    const bathroom = body?.bathroom || {};
-    const kitchen = body?.kitchen || {};
-    const renov = body?.renov || {};
-
-    // 🛑 VALIDATION GLOBALE
+    // ✅ VALIDATION
     if (!name || !email || !message || !projectType) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
@@ -67,98 +64,19 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Message too long' });
     }
 
-    // 🔐 ENV CHECK
     if (
       !process.env.RESEND_API_KEY ||
       !process.env.FROM_EMAIL ||
       !process.env.TO_EMAIL
     ) {
-      console.error('Missing env');
       return res.status(500).json({ error: 'Server misconfigured' });
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    // 🎯 VALIDATION PAR TYPE
-    let warnings = [];
-
-    function safe(v) {
-      return sanitize(v) || '-';
-    }
-
-    let details = '';
-
-    switch (projectType) {
-      case 'interieur':
-        if (!interior.surface) warnings.push('Surface manquante');
-        details = `
-          <h3>Carrelage intérieur</h3>
-          <ul>
-            <li><strong>Pièce :</strong> ${safe(interior.pieceType)}</li>
-            <li><strong>Surface :</strong> ${safe(interior.surface)}</li>
-            <li><strong>Sol actuel :</strong> ${safe(interior.solType)}</li>
-          </ul>
-        `;
-        break;
-
-      case 'exterieur':
-        if (!exterior.surface) warnings.push('Surface manquante');
-        details = `
-          <h3>Terrasse / extérieur</h3>
-          <ul>
-            <li><strong>Surface :</strong> ${safe(exterior.surface)}</li>
-            <li><strong>Support :</strong> ${safe(exterior.supportType)}</li>
-            <li><strong>Exposition :</strong> ${safe(exterior.exposure)}</li>
-          </ul>
-        `;
-        break;
-
-      case 'sdb':
-        if (!bathroom.floorSurface) warnings.push('Surface sol manquante');
-        details = `
-          <h3>Salle de bain</h3>
-          <ul>
-            <li><strong>Douche :</strong> ${safe(bathroom.hasWalkInShower)}</li>
-            <li><strong>Sol :</strong> ${safe(bathroom.floorSurface)}</li>
-            <li><strong>Murs :</strong> ${safe(bathroom.wallsSurface)}</li>
-            <li><strong>Étanchéité :</strong> ${safe(bathroom.waterproofing)}</li>
-          </ul>
-        `;
-        break;
-
-      case 'cuisine':
-        details = `
-          <h3>Cuisine</h3>
-          <ul>
-            <li><strong>Crédence :</strong> ${safe(kitchen.credenceLength)}</li>
-            <li><strong>Sol :</strong> ${safe(kitchen.floorSurface)}</li>
-            <li><strong>Meubles :</strong> ${safe(kitchen.furnitureState)}</li>
-          </ul>
-        `;
-        break;
-
-      case 'renov':
-        details = `
-          <h3>Rénovation complète</h3>
-          <ul>
-            <li><strong>Pièces :</strong> ${safe(renov.rooms)}</li>
-            <li><strong>Surface :</strong> ${safe(renov.globalSurface)}</li>
-            <li><strong>Travaux :</strong> ${safe(renov.structuralChanges)}</li>
-          </ul>
-        `;
-        break;
-    }
-
-    // ⚠️ WARNINGS visibles dans le mail
-    let warningBlock = '';
-    if (warnings.length > 0) {
-      warningBlock = `
-        <div style="background:#fff3cd;padding:10px;border-radius:6px;margin:10px 0;">
-          ⚠️ <strong>Données incomplètes :</strong>
-          <ul>${warnings.map(w => `<li>${w}</li>`).join('')}</ul>
-        </div>
-      `;
-    }
+    // ✅ helper pour afficher uniquement si rempli
+    const field = (label, value) =>
+      value ? `<li><strong>${label} :</strong> ${value}</li>` : '';
 
     const { error } = await resend.emails.send({
       from: process.env.FROM_EMAIL,
@@ -169,19 +87,24 @@ export default async function handler(req, res) {
         <div style="font-family:Arial;padding:20px">
           <h2>Nouvelle demande de devis</h2>
 
-          <h3>Client</h3>
+          <h3>Vos coordonnées</h3>
           <ul>
-            <li><strong>Nom :</strong> ${name}</li>
-            <li><strong>Email :</strong> ${email}</li>
-            <li><strong>Téléphone :</strong> ${phone || '-'}</li>
-            <li><strong>Ville :</strong> ${city || '-'}</li>
+            ${field('Nom', name)}
+            ${field('Email', email)}
+            ${field('Téléphone', phone)}
+            ${field('Ville', city)}
           </ul>
 
-          ${warningBlock}
+          <h3>Votre profil & projet</h3>
+          <ul>
+            ${field('Type de projet', projectType)}
+            ${field('Profil', role)}
+            ${field('Nature du projet', projectKind)}
+            ${field('Délai', delay)}
+            ${field('Bâtiment', building)}
+          </ul>
 
-          ${details}
-
-          <h3>Message</h3>
+          <h3>Détails complémentaires</h3>
           <p>${message.replace(/\n/g, '<br/>')}</p>
 
           <hr/>

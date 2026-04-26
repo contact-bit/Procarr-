@@ -64,20 +64,18 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
     setStatus('submitting');
 
     // ✅ PAYLOAD ALIGNÉ AVEC TON FORM (IMPORTANT)
-    const payload = {
-      name: common.name,
-      email: common.email,
-      phone: common.phone,
-      city: common.city,
-      message: common.message,
-
-      projectType,
-
-      role,
-      projectKind,
-      delay,
-      building,
-    };
+const payload = {
+  name: common.name,
+  email: common.email,
+  phone: common.phone,
+  city: common.city,
+  message: common.message,
+  projectType,
+  role,
+  projectKind,
+  delay,
+  building,
+};
 
     try {
       const res = await fetch('/api/devis', {

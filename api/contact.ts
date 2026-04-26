@@ -1,54 +1,62 @@
 import { Resend } from 'resend';
 
 export default async function handler(req, res) {
-  console.log("METHOD:", req.method);
-
+  // Autoriser seulement POST
   if (req.method !== 'POST') {
-    return res.status(405).send('Method Not Allowed');
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   try {
-    console.log("RAW BODY:", req.body);
-
+    // Parse body propre (Vercel compatible)
     const body =
       typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
 
-    console.log("PARSED BODY:", body);
-
     const { name, email, phone, subject, message } = body || {};
 
+    // Validation
     if (!name || !email || !message) {
-      console.log("VALIDATION FAILED");
       return res.status(400).json({ error: 'Missing fields' });
     }
 
-    console.log("ENV:", {
-      key: process.env.RESEND_API_KEY ? "OK" : "MISSING",
-      from: process.env.FROM_EMAIL,
-      to: process.env.TO_EMAIL,
-    });
+    // Vérif env (sécurité)
+    if (
+      !process.env.RESEND_API_KEY ||
+      !process.env.FROM_EMAIL ||
+      !process.env.TO_EMAIL
+    ) {
+      console.error('Missing environment variables');
+      return res.status(500).json({ error: 'Server misconfigured' });
+    }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev', // 🔥 TEMPORAIRE POUR TEST
+    const { error } = await resend.emails.send({
+      from: process.env.FROM_EMAIL, // ✅ ton vrai domaine
       to: process.env.TO_EMAIL,
-      reply_to: email,
-      subject: subject || `Test ${name}`,
-      html: `<p>${message}</p>`,
+      replyTo: email, // ✅ corrigé
+      subject: subject
+        ? `Contact Procarré - ${subject}`
+        : `Nouveau message - ${name}`,
+      html: `
+        <h2>Nouveau message contact</h2>
+        <p><strong>Nom :</strong> ${name}</p>
+        <p><strong>Email :</strong> ${email}</p>
+        <p><strong>Téléphone :</strong> ${phone || '-'}</p>
+        <p><strong>Objet :</strong> ${subject || '-'}</p>
+        <p><strong>Message :</strong></p>
+        <p>${message.replace(/\n/g, '<br/>')}</p>
+      `,
     });
 
-    console.log("RESEND RESULT:", { data, error });
-
     if (error) {
-      console.error("RESEND ERROR:", error);
-      return res.status(500).json({ error: error.message });
+      console.error('Resend error:', error);
+      return res.status(500).json({ error: 'Email failed' });
     }
 
     return res.status(200).json({ ok: true });
 
   } catch (err) {
-    console.error("CATCH ERROR:", err);
-    return res.status(500).json({ error: 'Server crash' });
+    console.error('Server error:', err);
+    return res.status(500).json({ error: 'Server error' });
   }
 }

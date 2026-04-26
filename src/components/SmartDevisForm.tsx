@@ -149,21 +149,22 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
 
     setStatus('submitting');
 
-    const payload = {
-      projectType,
-      common,
-      meta: {
-        role,
-        projectKind,
-        delay,
-        building,
-      },
-      interior: projectType === 'interieur' ? interior : undefined,
-      exterior: projectType === 'exterieur' ? exterior : undefined,
-      bathroom: projectType === 'sdb' ? bathroom : undefined,
-      kitchen: projectType === 'cuisine' ? kitchen : undefined,
-      renov: projectType === 'renov' ? renov : undefined,
-    };
+const payload = {
+  name: common.name,
+  email: common.email,
+  phone: common.phone,
+  city: common.city,
+  message: common.message,
+  projectType,
+  budget: '',
+  surface:
+    interior.surface ||
+    exterior.surface ||
+    bathroom.floorSurface ||
+    kitchen.floorSurface ||
+    renov.globalSurface ||
+    '',
+};
 
     try {
       // ✅ FIX: plus de localhost → route relative Vercel
@@ -325,6 +326,7 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
           name="message"
           className="textarea"
           rows={4}
+          required
           placeholder="Précisez les délais souhaités, le style de carrelage, les contraintes (accès, étage, etc.)."
           value={common.message}
           onChange={handleCommonChange}

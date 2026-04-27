@@ -1,127 +1,197 @@
-import { Resend } from 'resend';
+// src/pages/api/devis.ts
 
-const ALLOWED_PROJECTS = ['interieur', 'exterieur', 'sdb', 'cuisine', 'renov'];
+import type { NextApiRequest, NextApiResponse } from "next";
+import { Resend } from "resend";
 
-function sanitize(str = '') {
-  return String(str)
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// ---------------- CONFIG ----------------
+const ALLOWED_PROJECTS = ["interieur", "exterieur", "sdb", "cuisine", "renov"] as const;
+
+// ---------------- UTILS ----------------
+function sanitize(input: unknown = ""): string {
+  return String(input)
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
     .trim();
 }
 
-function isValidEmail(email) {
+function normalize(input: unknown = ""): string {
+  return sanitize(input).toLowerCase();
+}
+
+function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function isValidPhone(phone) {
-  return !phone || /^[0-9\s+().-]{6,20}$/.test(phone);
-}
+// ---------------- HANDLER ----------------
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const requestId = Math.random().toString(36).slice(2, 8);
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method Not Allowed" });
   }
 
   try {
     const body =
-      typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+      typeof req.body === "string" ? JSON.parse(req.body) : req.body;
 
-    // 🔐 SANITIZE (UNIQUEMENT CE QUE TON FORM ENVOIE)
+    // ---------- SANITIZE ----------
     const name = sanitize(body?.name);
     const email = sanitize(body?.email);
     const phone = sanitize(body?.phone);
     const city = sanitize(body?.city);
     const message = sanitize(body?.message);
 
-    const projectType = sanitize(body?.projectType);
+    const projectTypeRaw = normalize(body?.projectType);
+    const projectType = ALLOWED_PROJECTS.includes(
+      projectTypeRaw as any
+    )
+      ? projectTypeRaw
+      : "interieur";
+
     const role = sanitize(body?.role);
     const projectKind = sanitize(body?.projectKind);
     const delay = sanitize(body?.delay);
     const building = sanitize(body?.building);
 
-    // ✅ VALIDATION
-    if (!name || !email || !message || !projectType) {
-      return res.status(400).json({ error: 'Missing required fields' });
+    console.log(`[${requestId}] NEW LEAD`, {
+      name,
+      email,
+      projectType,
+    });
+
+    // ---------- VALIDATION ----------
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        error: "Nom, email et message obligatoires",
+      });
     }
 
     if (!isValidEmail(email)) {
-      return res.status(400).json({ error: 'Invalid email' });
+      return res.status(400).json({ error: "Email invalide" });
     }
 
-    if (!isValidPhone(phone)) {
-      return res.status(400).json({ error: 'Invalid phone' });
-    }
+    // ---------- SUBJECT ----------
+    const subject = `Nouvelle demande de devis - ${name}`;
 
-    if (!ALLOWED_PROJECTS.includes(projectType)) {
-      return res.status(400).json({ error: 'Invalid project type' });
-    }
+    // ---------- VERSION TEXTE (ANTI-SPAM) ----------
+    const text = `
+Nouvelle demande de devis
 
-    if (message.length < 5) {
-      return res.status(400).json({ error: 'Message too short' });
-    }
+Nom: ${name}
+Email: ${email}
+Téléphone: ${phone || "-"}
+Ville: ${city || "-"}
 
-    if (message.length > 2000) {
-      return res.status(400).json({ error: 'Message too long' });
-    }
+Type de projet: ${projectType}
+Profil: ${role || "-"}
+Nature du projet: ${projectKind || "-"}
+Délai: ${delay || "-"}
+Bâtiment: ${building || "-"}
 
-    if (
-      !process.env.RESEND_API_KEY ||
-      !process.env.FROM_EMAIL ||
-      !process.env.TO_EMAIL
-    ) {
-      return res.status(500).json({ error: 'Server misconfigured' });
-    }
+Message:
+${message}
+`;
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    // ---------- VERSION HTML ----------
+    const html = `
+<!DOCTYPE html>
+<html lang="fr">
+<body style="margin:0;background:#f5f5f5;font-family:Arial">
 
-    // ✅ helper pour afficher uniquement si rempli
-    const field = (label, value) =>
-      value ? `<li><strong>${label} :</strong> ${value}</li>` : '';
+<table width="100%" style="padding:20px">
+<tr><td align="center">
 
+<table width="600" style="background:#fff;border-radius:8px">
+
+<tr>
+<td style="background:#111;color:#fff;padding:20px;text-align:center">
+<h1 style="margin:0">Procarre</h1>
+<p style="margin:5px 0 0;font-size:12px;color:#ccc">
+Nouvelle demande de devis
+</p>
+</td>
+</tr>
+
+<tr>
+<td style="padding:25px;color:#333;font-size:14px;line-height:1.6">
+
+<p>Bonjour,</p>
+
+<p>
+Vous avez reçu une nouvelle demande de devis depuis votre site
+<strong>procarre.fr</strong>.
+</p>
+
+<h3>Coordonnées</h3>
+<p>
+<strong>Nom :</strong> ${name}<br/>
+<strong>Email :</strong> ${email}<br/>
+<strong>Téléphone :</strong> ${phone || "-"}<br/>
+<strong>Ville :</strong> ${city || "-"}
+</p>
+
+<h3>Projet</h3>
+<p>
+<strong>Type :</strong> ${projectType}<br/>
+<strong>Profil :</strong> ${role || "-"}<br/>
+<strong>Projet :</strong> ${projectKind || "-"}<br/>
+<strong>Délai :</strong> ${delay || "-"}<br/>
+<strong>Bâtiment :</strong> ${building || "-"}
+</p>
+
+<h3>Message</h3>
+<p style="background:#f9f9f9;padding:10px;border-radius:6px">
+${message.replace(/\n/g, "<br/>")}
+</p>
+
+<p style="margin-top:20px">
+Vous pouvez répondre directement à cet email pour contacter le client.
+</p>
+
+</td>
+</tr>
+
+<tr>
+<td style="background:#eee;padding:10px;text-align:center;font-size:12px;color:#777">
+procarre.fr • ${new Date().toLocaleString()}
+</td>
+</tr>
+
+</table>
+
+</td></tr>
+</table>
+
+</body>
+</html>
+`;
+
+    // ---------- ENVOI ----------
     const { error } = await resend.emails.send({
-      from: process.env.FROM_EMAIL,
+      from: "Procarre <contact@procarre.fr>", // ✅ PARFAIT
       to: process.env.TO_EMAIL,
       replyTo: email,
-      subject: `📩 Nouveau devis - ${name}`,
-      html: `
-        <div style="font-family:Arial;padding:20px">
-          <h2>Nouvelle demande de devis</h2>
-
-          <h3>Vos coordonnées</h3>
-          <ul>
-            ${field('Nom', name)}
-            ${field('Email', email)}
-            ${field('Téléphone', phone)}
-            ${field('Ville', city)}
-          </ul>
-
-          <h3>Votre profil & projet</h3>
-          <ul>
-            ${field('Type de projet', projectType)}
-            ${field('Profil', role)}
-            ${field('Nature du projet', projectKind)}
-            ${field('Délai', delay)}
-            ${field('Bâtiment', building)}
-          </ul>
-
-          <h3>Détails complémentaires</h3>
-          <p>${message.replace(/\n/g, '<br/>')}</p>
-
-          <hr/>
-          <p style="font-size:12px;color:#777">procarre.fr</p>
-        </div>
-      `,
+      subject,
+      text, // 🔥 IMPORTANT
+      html,
     });
 
     if (error) {
-      console.error('Resend error:', error);
-      return res.status(500).json({ error: 'Email failed' });
+      console.error(`[${requestId}] EMAIL ERROR`, error);
+      return res.status(500).json({ error: "Email failed" });
     }
+
+    console.log(`[${requestId}] SUCCESS`);
 
     return res.status(200).json({ ok: true });
 
   } catch (err) {
-    console.error('Server error:', err);
-    return res.status(500).json({ error: 'Server error' });
+    console.error("SERVER ERROR:", err);
+    return res.status(500).json({ error: "Server error" });
   }
 }

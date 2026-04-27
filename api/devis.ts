@@ -154,7 +154,7 @@ ${message}
 
     // ---------- ENVOI ----------
     const { error } = await resend.emails.send({
-      from: `Procarre <${process.env.FROM_EMAIL}>`, // 🔥 IMPORTANT
+      from: 'onboarding@resend.dev', // 🔥 IMPORTANT
       to: process.env.TO_EMAIL,
       replyTo: email,
       subject,

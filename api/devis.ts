@@ -34,6 +34,11 @@ export default async function handler(req, res) {
     const body =
       typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
 
+    if (!body) {
+      console.error(`[${requestId}] EMPTY BODY`);
+      return res.status(400).json({ error: 'Empty body' });
+    }
+
     console.log(`[${requestId}] RAW`, body);
 
     // ---------- SANITIZE ----------
@@ -43,11 +48,10 @@ export default async function handler(req, res) {
     const city = sanitize(body?.city);
     const message = sanitize(body?.message);
 
-    // 🔥 important : normalisation
     const projectTypeRaw = normalize(body?.projectType);
     const projectType = ALLOWED_PROJECTS.includes(projectTypeRaw)
       ? projectTypeRaw
-      : 'interieur'; // fallback SAFE
+      : 'interieur';
 
     const role = sanitize(body?.role);
     const projectKind = sanitize(body?.projectKind);
@@ -98,7 +102,8 @@ export default async function handler(req, res) {
 
     const subject = `Nouvelle demande de devis - ${name}`;
 
-    // 🔥 VERSION TEXTE (IMPORTANT DELIVERABILITY)
+    const safeMessage = message || '';
+
     const text = `
 Nouvelle demande de devis
 
@@ -114,12 +119,11 @@ Délai: ${delay || '-'}
 Bâtiment: ${building || '-'}
 
 Message:
-${message}
+${safeMessage}
 `;
 
     const html = `
 <div style="font-family:Arial;padding:20px;color:#333">
-  
   <p>Bonjour,</p>
 
   <p>Vous avez reçu une nouvelle demande de devis depuis votre site.</p>
@@ -142,29 +146,32 @@ ${message}
   </ul>
 
   <h3>Message</h3>
-  <p>${message.replace(/\n/g, '<br/>')}</p>
+  <p>${safeMessage.replace(/\n/g, '<br/>')}</p>
 
   <hr/>
   <p style="font-size:12px;color:#777">
     Email automatique - procarre.fr
   </p>
-
 </div>
 `;
 
     // ---------- ENVOI ----------
-    const { error } = await resend.emails.send({
-      from: 'onboarding@resend.dev', // 🔥 IMPORTANT
+    const result = await resend.emails.send({
+      from: process.env.FROM_EMAIL, // ✅ domaine validé
       to: process.env.TO_EMAIL,
-      replyTo: email,
+      reply_to: isValidEmail(email) ? email : undefined, // ✅ safe
       subject,
-      text, // 🔥 CRUCIAL anti-spam
+      text,
       html,
     });
 
-    if (error) {
-      console.error(`[${requestId}] RESEND ERROR`, error);
-      return res.status(500).json({ error: 'Email failed' });
+    console.log(`[${requestId}] RESEND RESULT`, result);
+
+    if (result.error) {
+      console.error(`[${requestId}] RESEND ERROR`, result.error);
+      return res.status(500).json({
+        error: result.error.message || 'Email failed',
+      });
     }
 
     console.log(`[${requestId}] SUCCESS`);
@@ -173,6 +180,8 @@ ${message}
 
   } catch (err) {
     console.error(`[${requestId}] SERVER ERROR`, err);
-    return res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({
+      error: err?.message || 'Server error',
+    });
   }
 }

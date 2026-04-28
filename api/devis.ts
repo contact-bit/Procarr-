@@ -97,61 +97,86 @@ export default async function handler(req, res) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     // ---------- TEMPLATE ----------
-    const field = (label, value) =>
-      value ? `<li><strong>${label} :</strong> ${value}</li>` : '';
+  const field = (label, value) =>
+  value ? `<tr><td style="padding:6px 0;"><strong>${label}</strong></td><td style="padding:6px 0;">${value}</td></tr>` : '';
 
-    const subject = `Nouvelle demande de devis - ${name}`;
+const subject = `Demande de devis reçue – ${name}`;
 
-    const safeMessage = message || '';
+const safeMessage = message || '';
 
-    const text = `
-Nouvelle demande de devis
+// ---------- TEXTE (IMPORTANT) ----------
+const text = `
+Bonjour,
 
-Nom: ${name}
-Email: ${email}
-Téléphone: ${phone || '-'}
-Ville: ${city || '-'}
+Vous avez reçu une nouvelle demande de devis via votre site procarre.fr.
 
-Type: ${projectType}
-Profil: ${role || '-'}
-Projet: ${projectKind || '-'}
-Délai: ${delay || '-'}
-Bâtiment: ${building || '-'}
+Informations du client :
 
-Message:
+Nom : ${name}
+Email : ${email}
+Téléphone : ${phone || '-'}
+Ville : ${city || '-'}
+
+Détails du projet :
+
+Type : ${projectType}
+Profil : ${role || '-'}
+Nature du projet : ${projectKind || '-'}
+Délai : ${delay || '-'}
+Bâtiment : ${building || '-'}
+
+Message du client :
 ${safeMessage}
+
+---
+
+Ce message a été envoyé depuis le formulaire de contact du site procarre.fr.
+Vous pouvez répondre directement à cet email pour contacter le client.
 `;
 
-    const html = `
-<div style="font-family:Arial;padding:20px;color:#333">
+// ---------- HTML ----------
+const html = `
+<div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:auto;padding:20px;color:#333;line-height:1.5">
+
   <p>Bonjour,</p>
 
-  <p>Vous avez reçu une nouvelle demande de devis depuis votre site.</p>
+  <p>
+    Une nouvelle demande de devis a été envoyée depuis votre site 
+    <strong>procarre.fr</strong>.
+  </p>
 
-  <h3>Coordonnées</h3>
-  <ul>
+  <h3 style="margin-top:25px;">Informations du client</h3>
+  <table style="width:100%;border-collapse:collapse;">
     ${field('Nom', name)}
     ${field('Email', email)}
-    ${field('Téléphone', phone)}
-    ${field('Ville', city)}
-  </ul>
+    ${field('Téléphone', phone || '-')}
+    ${field('Ville', city || '-')}
+  </table>
 
-  <h3>Projet</h3>
-  <ul>
+  <h3 style="margin-top:25px;">Détails du projet</h3>
+  <table style="width:100%;border-collapse:collapse;">
     ${field('Type de projet', projectType)}
-    ${field('Profil', role)}
-    ${field('Nature du projet', projectKind)}
-    ${field('Délai', delay)}
-    ${field('Bâtiment', building)}
-  </ul>
+    ${field('Profil', role || '-')}
+    ${field('Nature du projet', projectKind || '-')}
+    ${field('Délai', delay || '-')}
+    ${field('Bâtiment', building || '-')}
+  </table>
 
-  <h3>Message</h3>
-  <p>${safeMessage.replace(/\n/g, '<br/>')}</p>
-
-  <hr/>
-  <p style="font-size:12px;color:#777">
-    Email automatique - procarre.fr
+  <h3 style="margin-top:25px;">Message</h3>
+  <p style="background:#f6f6f6;padding:12px;border-radius:6px;">
+    ${safeMessage.replace(/\n/g, '<br/>')}
   </p>
+
+  <p style="margin-top:30px;">
+    Vous pouvez répondre directement à cet email pour contacter le client.
+  </p>
+
+  <hr style="margin:30px 0;border:none;border-top:1px solid #eee;" />
+
+  <p style="font-size:12px;color:#777;">
+    Email envoyé automatiquement depuis le formulaire du site procarre.fr.
+  </p>
+
 </div>
 `;
 

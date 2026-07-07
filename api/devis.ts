@@ -184,7 +184,7 @@ const html = `
     const result = await resend.emails.send({
       from: process.env.FROM_EMAIL, // ✅ domaine validé
       to: process.env.TO_EMAIL,
-      reply_to: isValidEmail(email) ? email : undefined, // ✅ safe
+      replyTo: isValidEmail(email) ? email : undefined, // ✅ safe
       subject,
       text,
       html,

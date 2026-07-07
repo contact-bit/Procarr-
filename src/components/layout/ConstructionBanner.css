@@ -1,0 +1,102 @@
+.construction-banner {
+  position: relative;
+  z-index: 120;
+  width: 100%;
+  padding: 10px 14px 0;
+}
+
+.construction-banner__inner {
+  width: min(1380px, 100%);
+  margin: 0 auto;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 18% 50%, rgba(230, 57, 50, 0.28), transparent 34%),
+    linear-gradient(135deg, rgba(18, 14, 15, 0.96), rgba(68, 18, 17, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.construction-banner__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.construction-banner__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #e63932;
+  box-shadow: 0 0 0 5px rgba(230, 57, 50, 0.18);
+}
+
+.construction-banner__text {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.construction-banner__text strong {
+  color: #fff;
+  font-weight: 750;
+}
+
+.construction-banner__phone {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  color: #fff;
+  font-weight: 800;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e63932, #b91f1a);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 28px rgba(230, 57, 50, 0.28);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.construction-banner__phone:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .construction-banner {
+    padding: 8px 10px 0;
+  }
+
+  .construction-banner__inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .construction-banner__text {
+    font-size: 0.88rem;
+  }
+
+  .construction-banner__phone {
+    width: 100%;
+    min-height: 40px;
+  }
+}

@@ -1,5 +1,20 @@
 import { Resend } from 'resend';
 
+function getRecipients() {
+  return String(process.env.TO_EMAIL || '')
+    .split(',')
+    .map(email => email.trim())
+    .filter(Boolean);
+}
+
+function getErrorMessage(error) {
+  if (!error) return 'Email failed';
+  if (typeof error === 'string') return error;
+  if (error.message) return error.message;
+  if (error.error) return error.error;
+  return JSON.stringify(error);
+}
+
 export default async function handler(req, res) {
   // Autoriser seulement POST
   if (req.method !== 'POST') {
@@ -29,14 +44,31 @@ export default async function handler(req, res) {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
+    const recipients = getRecipients();
+
+    if (recipients.length === 0) {
+      console.error('TO_EMAIL is empty');
+      return res.status(500).json({ error: 'Server misconfigured' });
+    }
 
     const { error } = await resend.emails.send({
       from: process.env.FROM_EMAIL, // ✅ ton vrai domaine
-      to: process.env.TO_EMAIL,
+      to: recipients,
       replyTo: email, // ✅ corrigé
       subject: subject
         ? `Contact Procarré - ${subject}`
         : `Nouveau message - ${name}`,
+      text: `
+Nouveau message contact
+
+Nom : ${name}
+Email : ${email}
+Téléphone : ${phone || '-'}
+Objet : ${subject || '-'}
+
+Message :
+${message}
+      `.trim(),
       html: `
         <h2>Nouveau message contact</h2>
         <p><strong>Nom :</strong> ${name}</p>
@@ -49,14 +81,18 @@ export default async function handler(req, res) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
-      return res.status(500).json({ error: 'Email failed' });
+      const details = getErrorMessage(error);
+      console.error('Resend error:', JSON.stringify(error));
+      return res.status(500).json({ error: 'Email failed', details });
     }
 
     return res.status(200).json({ ok: true });
 
   } catch (err) {
     console.error('Server error:', err);
-    return res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({
+      error: 'Server error',
+      details: err?.message || 'Unexpected server error',
+    });
   }
 }

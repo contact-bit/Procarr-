@@ -22,6 +22,21 @@ function isValidPhone(phone) {
   return !phone || /^[0-9\s+().-]{6,20}$/.test(phone);
 }
 
+function getRecipients() {
+  return String(process.env.TO_EMAIL || '')
+    .split(',')
+    .map(email => email.trim())
+    .filter(Boolean);
+}
+
+function getErrorMessage(error) {
+  if (!error) return 'Email failed';
+  if (typeof error === 'string') return error;
+  if (error.message) return error.message;
+  if (error.error) return error.error;
+  return JSON.stringify(error);
+}
+
 // ---------------- HANDLER ----------------
 export default async function handler(req, res) {
   const requestId = Math.random().toString(36).slice(2, 8);
@@ -95,6 +110,12 @@ export default async function handler(req, res) {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
+    const recipients = getRecipients();
+
+    if (recipients.length === 0) {
+      console.error(`[${requestId}] TO_EMAIL EMPTY`);
+      return res.status(500).json({ error: 'Server misconfigured' });
+    }
 
     // ---------- TEMPLATE ----------
   const field = (label, value) =>
@@ -183,7 +204,7 @@ const html = `
     // ---------- ENVOI ----------
     const result = await resend.emails.send({
       from: process.env.FROM_EMAIL, // ✅ domaine validé
-      to: process.env.TO_EMAIL,
+      to: recipients,
       replyTo: isValidEmail(email) ? email : undefined, // ✅ safe
       subject,
       text,
@@ -195,7 +216,8 @@ const html = `
     if (result.error) {
       console.error(`[${requestId}] RESEND ERROR`, result.error);
       return res.status(500).json({
-        error: result.error.message || 'Email failed',
+        error: 'Email failed',
+        details: getErrorMessage(result.error),
       });
     }
 

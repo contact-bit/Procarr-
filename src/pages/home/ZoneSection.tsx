@@ -157,6 +157,10 @@ export function ZoneSection({ onOpenDevis }: ZoneSectionProps) {
             type="button"
             onClick={handleClick}
             className="btn btn-outline-light zone-cta"
+            data-analytics-event="cta_click"
+            data-analytics-label="verifier_zone_intervention"
+            data-analytics-location="home_zone"
+            data-analytics-destination="/devis"
           >
             Vérifier notre zone d’intervention.
           </button>

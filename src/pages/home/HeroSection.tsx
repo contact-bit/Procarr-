@@ -36,6 +36,10 @@ export function HeroSection() {
             type="button"
             onClick={() => navigate('/devis')}
             className="btn btn-primary hero-cta"
+            data-analytics-event="cta_click"
+            data-analytics-label="demander_un_devis_gratuit"
+            data-analytics-location="home_hero"
+            data-analytics-destination="/devis"
           >
             Demander un devis gratuit
           </button>

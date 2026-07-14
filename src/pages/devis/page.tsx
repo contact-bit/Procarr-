@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { GlowBackground } from '../../components/GlowBackground';
 import { SmartDevisForm } from '../../components/SmartDevisForm';
 import { FiHome, FiSun, FiDroplet, FiCoffee, FiTool } from 'react-icons/fi';
+import { trackEvent } from '../../analytics/analytics';
 
 type ProjectType = 'interieur' | 'exterieur' | 'sdb' | 'cuisine' | 'renov';
 
@@ -140,6 +141,11 @@ export function DevisPage() {
   const side = SIDE_TEXT[selectedProject];
 
   const handleProjectChange = (projectId: ProjectType) => {
+    trackEvent('select_project_type', {
+      project_type: projectId,
+      previous_project_type: selectedProject,
+      form_name: 'demande_devis',
+    });
     setSelectedProject(projectId);
 
     const reverseMap: Record<ProjectType, string> = {

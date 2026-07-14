@@ -33,14 +33,6 @@ function isValidPhone(phone) {
   return !phone || /^[0-9\s+().-]{6,20}$/.test(phone);
 }
 
-function getErrorMessage(error) {
-  if (!error) return 'Email failed';
-  if (typeof error === 'string') return error;
-  if (error.message) return error.message;
-  if (error.error) return error.error;
-  return JSON.stringify(error);
-}
-
 // ---------------- HANDLER ----------------
 export default async function handler(req, res) {
   const requestId = Math.random().toString(36).slice(2, 8);

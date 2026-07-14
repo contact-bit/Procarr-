@@ -168,6 +168,10 @@ export function FaqSection() {
                   type="button"
                   className="faq-trigger"
                   onClick={() => toggle(index)}
+                  data-analytics-event="faq_interaction"
+                  data-analytics-label={item.question}
+                  data-analytics-location="home_faq"
+                  data-analytics-destination={isOpen ? 'close' : 'open'}
                   aria-expanded={isOpen}
                   aria-controls={`faq-panel-${index}`}
                 >

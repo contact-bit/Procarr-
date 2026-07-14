@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { trackEvent } from '../analytics/analytics';
 
 type ContactFormState = {
   name: string;
@@ -41,6 +42,7 @@ function validateField(field: keyof ContactFormState, rawValue: string): string 
 }
 
 export function ContactPage() {
+  const formStarted = useRef(false);
   const [form, setForm] = useState<ContactFormState>({
     name: '',
     email: '',
@@ -87,12 +89,23 @@ export function ContactPage() {
 
     const nextErrors = validate();
     if (Object.keys(nextErrors).length > 0) {
+      trackEvent('form_error', {
+        form_name: 'contact',
+        error_type: 'validation',
+        invalid_field_count: Object.keys(nextErrors).length,
+      });
       setFormError('Vérifiez les champs indiqués avant d’envoyer votre message.');
       return;
     }
 
     setFormError('');
     setStatus('submitting');
+
+    trackEvent('form_submit_attempt', {
+      form_name: 'contact',
+      has_phone: Boolean(form.phone.trim()),
+      has_subject: Boolean(form.subject.trim()),
+    });
 
     const payload = {
       name: form.name.trim(),
@@ -112,6 +125,11 @@ export function ContactPage() {
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
+        trackEvent('form_error', {
+          form_name: 'contact',
+          error_type: 'server',
+          http_status: res.status,
+        });
         setStatus('idle');
         if (data?.fieldErrors && typeof data.fieldErrors === 'object') {
           setErrors(data.fieldErrors as ContactErrors);
@@ -124,8 +142,18 @@ export function ContactPage() {
         return;
       }
 
+      trackEvent('generate_lead', {
+        form_name: 'contact',
+        lead_type: 'contact_message',
+        has_phone: Boolean(form.phone.trim()),
+        has_subject: Boolean(form.subject.trim()),
+      });
       setStatus('success');
     } catch (error) {
+      trackEvent('form_error', {
+        form_name: 'contact',
+        error_type: 'network',
+      });
       console.error('Contact fetch error:', error);
       setStatus('idle');
       setFormError('Impossible de contacter le serveur. Vérifiez votre connexion puis réessayez.');
@@ -154,7 +182,18 @@ export function ContactPage() {
               <p>Nous vous recontacterons dans les meilleurs délais.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="contact-form" noValidate>
+            <form
+              onSubmit={handleSubmit}
+              onFocusCapture={(event) => {
+                if (formStarted.current || !(event.target instanceof HTMLElement)) return;
+                if (!event.target.matches('input, textarea')) return;
+
+                formStarted.current = true;
+                trackEvent('form_start', { form_name: 'contact' });
+              }}
+              className="contact-form"
+              noValidate
+            >
               <div className="form-field">
                 <label htmlFor="contact-name">Nom complet <span aria-hidden="true">*</span></label>
                 <input

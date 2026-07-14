@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
+import type { Swiper as SwiperInstance } from 'swiper';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useEffect } from 'react';
 
@@ -45,7 +46,7 @@ export function HomeHeroSlider() {
   const navigate = useNavigate();
   const goToQuote = () => navigate('/devis');
 
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperInstance | null>(null);
   const cycle = useRef(0);
 
   // 🔥 AUTOPLAY CINÉMA + BURST RAPIDE
@@ -77,7 +78,14 @@ export function HomeHeroSlider() {
     <section className="home-hero">
       {/* CTA MOBILE */}
       <div className="home-hero__cta-mobile">
-        <button className="home-hero__cta" onClick={goToQuote}>
+        <button
+          className="home-hero__cta"
+          onClick={goToQuote}
+          data-analytics-event="cta_click"
+          data-analytics-label="demander_un_devis_gratuit"
+          data-analytics-location="home_slider_mobile"
+          data-analytics-destination="/devis"
+        >
           Demander un devis gratuit
         </button>
       </div>
@@ -108,7 +116,14 @@ export function HomeHeroSlider() {
 
         {/* CTA DESKTOP */}
         <div className="home-hero__actions">
-          <button className="home-hero__cta" onClick={goToQuote}>
+          <button
+            className="home-hero__cta"
+            onClick={goToQuote}
+            data-analytics-event="cta_click"
+            data-analytics-label="demander_un_devis_gratuit"
+            data-analytics-location="home_slider_desktop"
+            data-analytics-destination="/devis"
+          >
             Demander un devis gratuit
           </button>
         </div>

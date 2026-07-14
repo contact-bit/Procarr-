@@ -79,7 +79,12 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    close();
+    const frame = window.requestAnimationFrame(() => {
+      setOpen(false);
+      setOpenSection(null);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, [location.pathname]);
 
   useEffect(() => {

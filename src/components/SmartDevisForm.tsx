@@ -1,8 +1,9 @@
 // src/components/SmartDevisForm.tsx
 "use client";
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { trackEvent } from '../analytics/analytics';
 
 type CommonFields = {
   name: string;
@@ -48,6 +49,7 @@ type SmartDevisFormProps = {
 };
 
 export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
+  const formStarted = useRef(false);
   const [common, setCommon] = useState<CommonFields>({
     name: '',
     email: '',
@@ -113,6 +115,12 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
     });
 
     if (Object.keys(nextErrors).length > 0) {
+      trackEvent('form_error', {
+        form_name: 'demande_devis',
+        error_type: 'validation',
+        invalid_field_count: Object.keys(nextErrors).length,
+        project_type: projectType,
+      });
       setErrors(nextErrors);
       setErrorMessage('Vérifiez les champs indiqués avant d’envoyer votre demande.');
       return;
@@ -120,6 +128,16 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
 
     setErrorMessage('');
     setStatus('submitting');
+
+    trackEvent('form_submit_attempt', {
+      form_name: 'demande_devis',
+      project_type: projectType,
+      project_kind: projectKind,
+      customer_role: role,
+      project_delay: delay,
+      building_type: building,
+      has_phone: Boolean(phone),
+    });
 
     // ✅ PAYLOAD ALIGNÉ AVEC TON FORM (IMPORTANT)
 const payload = {
@@ -146,6 +164,12 @@ const payload = {
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
+        trackEvent('form_error', {
+          form_name: 'demande_devis',
+          error_type: 'server',
+          http_status: res.status,
+          project_type: projectType,
+        });
         console.error('Devis API error:', data);
         setStatus('idle');
         if (data?.fieldErrors && typeof data.fieldErrors === 'object') {
@@ -159,8 +183,22 @@ const payload = {
         return;
       }
 
+      trackEvent('generate_lead', {
+        form_name: 'demande_devis',
+        project_type: projectType,
+        project_kind: projectKind,
+        customer_role: role,
+        project_delay: delay,
+        building_type: building,
+        has_phone: Boolean(phone),
+      });
       setStatus('success');
     } catch (err) {
+      trackEvent('form_error', {
+        form_name: 'demande_devis',
+        error_type: 'network',
+        project_type: projectType,
+      });
       console.error('Devis fetch error:', err);
       setStatus('idle');
       setErrorMessage('Impossible de contacter le serveur de devis. Merci de réessayer.');
@@ -180,7 +218,21 @@ const payload = {
   }
 
   return (
-    <form className="smart-devis-form" onSubmit={handleSubmit} noValidate>
+    <form
+      className="smart-devis-form"
+      onSubmit={handleSubmit}
+      onFocusCapture={(event) => {
+        if (formStarted.current || !(event.target instanceof HTMLElement)) return;
+        if (!event.target.matches('input, select, textarea')) return;
+
+        formStarted.current = true;
+        trackEvent('form_start', {
+          form_name: 'demande_devis',
+          project_type: projectType,
+        });
+      }}
+      noValidate
+    >
       {/* Barre de progression */}
       <div className="smart-devis-progress">
         <div

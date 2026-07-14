@@ -940,6 +940,9 @@ function FilterPanel({
                 type="button"
                 className={`realisations-filter-item ${isActive ? 'is-active' : ''}`}
                 onClick={() => onFilterChange(key)}
+                data-analytics-event="portfolio_filter"
+                data-analytics-label={key}
+                data-analytics-location="realisations_filters"
                 aria-pressed={isActive}
                 aria-label={`${label} : ${count} chantier${count > 1 ? 's' : ''}`}
               >
@@ -1003,6 +1006,10 @@ function RealisationBlock({
             type="button"
             className="realisations-main-image-wrapper"
             onClick={() => onImageClick(selectedImageIndex)}
+            data-analytics-event="portfolio_image_open"
+            data-analytics-label={rea.slug}
+            data-analytics-location="realisations_gallery"
+            data-analytics-destination={String(selectedImageIndex + 1)}
             aria-label={`Ouvrir l’image : ${selectedImage.label}`}
           >
             <img
@@ -1025,6 +1032,10 @@ function RealisationBlock({
                   type="button"
                   className={`realisations-thumb-item ${isActive ? 'is-active' : ''}`}
                   onClick={() => setSelectedImageIndex(index)}
+                  data-analytics-event="portfolio_image_select"
+                  data-analytics-label={rea.slug}
+                  data-analytics-location="realisations_gallery"
+                  data-analytics-destination={String(index + 1)}
                   aria-label={`Afficher l’image : ${img.label}`}
                   aria-pressed={isActive}
                 >

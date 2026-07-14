@@ -578,8 +578,86 @@ section,
 
 .contact-form {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
   max-width: 32rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.form-field label {
+  color: var(--color-text);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.form-optional,
+.form-required-note,
+.form-field-meta {
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+  font-weight: 400;
+}
+
+.form-field-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.form-field-error,
+.form-submit-error {
+  margin: 0;
+  color: #fecaca;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.form-submit-error {
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  border-radius: 0.5rem;
+  background: rgba(127, 29, 29, 0.22);
+}
+
+.form-field :is(input, textarea, select)[aria-invalid='true'] {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.3);
+}
+
+.form-required-note {
+  margin: -0.35rem 0 0;
+}
+
+.form-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form-success {
+  padding: 1rem;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: 0.75rem;
+  background: rgba(20, 83, 45, 0.16);
+}
+
+.form-success p {
+  margin: 0;
+}
+
+.form-success-title {
+  color: #86efac;
+  font-weight: 700;
+  margin-bottom: 0.4rem !important;
 }
 
 .contact-right {

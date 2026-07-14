@@ -5,10 +5,20 @@ const CLIENT_EMAIL = 'procarre.dussert@wanadoo.fr';
 
 // ---------------- UTILS ----------------
 function sanitize(str = '') {
+  return String(str).trim();
+}
+
+function sanitizeSingleLine(str = '') {
+  return sanitize(str).replace(/[\r\n]+/g, ' ');
+}
+
+function escapeHtml(str = '') {
   return String(str)
+    .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .trim();
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 function normalize(str = '') {
@@ -48,13 +58,17 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Empty body' });
     }
 
+    if (sanitize(body?.website)) {
+      return res.status(200).json({ ok: true });
+    }
+
     console.log(`[${requestId}] RAW`, body);
 
     // ---------- SANITIZE ----------
-    const name = sanitize(body?.name);
-    const email = sanitize(body?.email);
-    const phone = sanitize(body?.phone);
-    const city = sanitize(body?.city);
+    const name = sanitizeSingleLine(body?.name);
+    const email = sanitizeSingleLine(body?.email).toLowerCase();
+    const phone = sanitizeSingleLine(body?.phone);
+    const city = sanitizeSingleLine(body?.city);
     const message = sanitize(body?.message);
 
     const projectTypeRaw = normalize(body?.projectType);
@@ -62,10 +76,10 @@ export default async function handler(req, res) {
       ? projectTypeRaw
       : 'interieur';
 
-    const role = sanitize(body?.role);
-    const projectKind = sanitize(body?.projectKind);
-    const delay = sanitize(body?.delay);
-    const building = sanitize(body?.building);
+    const role = sanitizeSingleLine(body?.role);
+    const projectKind = sanitizeSingleLine(body?.projectKind);
+    const delay = sanitizeSingleLine(body?.delay);
+    const building = sanitizeSingleLine(body?.building);
 
     console.log(`[${requestId}] CLEAN`, {
       name,
@@ -74,24 +88,33 @@ export default async function handler(req, res) {
     });
 
     // ---------- VALIDATION ----------
-    if (!name || !email || !message) {
-      return res.status(400).json({ error: 'Nom, email et message requis' });
+    const fieldErrors = {};
+
+    if (!name) fieldErrors.name = 'Merci d’indiquer votre nom.';
+    else if (name.length < 2) fieldErrors.name = 'Votre nom doit contenir au moins 2 caractères.';
+    else if (name.length > 80) fieldErrors.name = 'Votre nom est trop long.';
+
+    if (!email) fieldErrors.email = 'Merci d’indiquer votre email.';
+    else if (email.length > 120 || !isValidEmail(email)) {
+      fieldErrors.email = 'Saisissez une adresse email valide.';
     }
 
-    if (!isValidEmail(email)) {
-      return res.status(400).json({ error: 'Email invalide' });
+    if (!isValidPhone(phone)) fieldErrors.phone = 'Saisissez un numéro de téléphone valide.';
+    if (city.length > 100) fieldErrors.city = 'Le nom de la ville est trop long.';
+
+    if (!message) fieldErrors.message = 'Merci de décrire votre projet.';
+    else if (message.length < 5) fieldErrors.message = 'Ajoutez quelques détails (5 caractères minimum).';
+    else if (message.length > 2000) fieldErrors.message = 'Votre message ne doit pas dépasser 2 000 caractères.';
+
+    if ([role, projectKind, delay, building].some(value => value.length > 80)) {
+      return res.status(400).json({ error: 'Une des options sélectionnées est invalide.' });
     }
 
-    if (!isValidPhone(phone)) {
-      return res.status(400).json({ error: 'Téléphone invalide' });
-    }
-
-    if (message.length < 5) {
-      return res.status(400).json({ error: 'Message trop court' });
-    }
-
-    if (message.length > 2000) {
-      return res.status(400).json({ error: 'Message trop long' });
+    if (Object.keys(fieldErrors).length > 0) {
+      return res.status(400).json({
+        error: 'Vérifiez les champs indiqués avant l’envoi.',
+        fieldErrors,
+      });
     }
 
     if (
@@ -99,13 +122,13 @@ export default async function handler(req, res) {
       !process.env.FROM_EMAIL
     ) {
       console.error(`[${requestId}] ENV ERROR`);
-      return res.status(500).json({ error: 'Server misconfigured' });
+      return res.status(500).json({ error: 'Le service d’envoi est temporairement indisponible.' });
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
     // ---------- TEMPLATE ----------
   const field = (label, value) =>
-  value ? `<tr><td style="padding:6px 0;"><strong>${label}</strong></td><td style="padding:6px 0;">${value}</td></tr>` : '';
+  value ? `<tr><td style="padding:6px 0;"><strong>${label}</strong></td><td style="padding:6px 0;">${escapeHtml(value)}</td></tr>` : '';
 
 const subject = `Demande de devis reçue – ${name}`;
 
@@ -171,7 +194,7 @@ const html = `
 
   <h3 style="margin-top:25px;">Message</h3>
   <p style="background:#f6f6f6;padding:12px;border-radius:6px;">
-    ${safeMessage.replace(/\n/g, '<br/>')}
+    ${escapeHtml(safeMessage).replace(/\n/g, '<br/>')}
   </p>
 
   <p style="margin-top:30px;">
@@ -201,9 +224,8 @@ const html = `
 
     if (result.error) {
       console.error(`[${requestId}] RESEND ERROR`, result.error);
-      return res.status(500).json({
-        error: 'Email failed',
-        details: getErrorMessage(result.error),
+      return res.status(502).json({
+        error: 'La demande n’a pas pu être envoyée. Merci de réessayer dans quelques instants.',
       });
     }
 
@@ -214,7 +236,7 @@ const html = `
   } catch (err) {
     console.error(`[${requestId}] SERVER ERROR`, err);
     return res.status(500).json({
-      error: err?.message || 'Server error',
+      error: 'Une erreur inattendue est survenue. Merci de réessayer.',
     });
   }
 }

@@ -1,5 +1,6 @@
 // src/pages/ContactPage.tsx
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type ContactFormState = {
   name: string;
@@ -191,6 +192,11 @@ export function ContactPage() {
                   ? 'Envoi en cours...'
                   : 'Envoyer mon message'}
               </button>
+              <p className="form-privacy-note">
+                PROCARRE utilise vos informations uniquement pour répondre à votre demande. Les
+                champs marqués d’un astérisque sont nécessaires pour pouvoir vous recontacter.{' '}
+                <Link to="/politique-de-confidentialite">En savoir plus sur vos données.</Link>
+              </p>
             </form>
           )}
         </div>
@@ -210,7 +216,7 @@ export function ContactPage() {
           <p style={{ margin: '0.6rem 0' }}>
             Téléphone : <strong>06 03 12 30 65</strong>
             <br />
-            Email : <strong>contact@procarre.fr</strong>
+            Email : <strong>procarre.dussert@wanadoo.fr</strong>
           </p>
 
           <p style={{ margin: 0 }}>

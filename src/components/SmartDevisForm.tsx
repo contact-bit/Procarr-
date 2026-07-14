@@ -2,6 +2,7 @@
 "use client";
 
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type CommonFields = {
   name: string;
@@ -255,6 +256,11 @@ const payload = {
           ? 'Envoi en cours...'
           : 'Envoyer ma demande de devis'}
       </button>
+      <p className="form-privacy-note">
+        PROCARRE traite vos informations afin d’étudier votre projet, vous recontacter et préparer
+        un devis. Les champs marqués d’un astérisque sont nécessaires au traitement de la demande.{' '}
+        <Link to="/politique-de-confidentialite">Consulter notre politique de confidentialité.</Link>
+      </p>
     </form>
   );
 }

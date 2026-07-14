@@ -181,6 +181,14 @@
   z-index: 1;
 }
 
+.zone-map-frame > .external-content-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  min-height: 0;
+  border-radius: inherit;
+}
+
 .zone-map-circle {
   position: absolute;
   top: 50%;
@@ -250,7 +258,7 @@
 }
 
 .zone-cta a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* =========================================================

@@ -1,8 +1,12 @@
 // src/pages/ZoneInterventionPage.tsx
 import './ZoneInterventionPage.css';
 import zoneImg from '../assets/image000022.jpg';
+import { useCookieConsent } from '../consent/CookieConsentContext';
+import { ExternalContentPlaceholder } from '../consent/ExternalContentPlaceholder';
 
 export function ZoneInterventionPage() {
+  const { preferences } = useCookieConsent();
+
   return (
     <div id="main-content" className="zone-page">
 
@@ -95,16 +99,24 @@ export function ZoneInterventionPage() {
           </p>
 
           <div className="zone-map-frame">
-            <div className="zone-map-circle" aria-hidden="true" />
-
-            <iframe
-              title="Carte de la zone d'intervention Procarré & Fils autour de Manosque"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1425062.528!2d5.8!3d43.8!3m2!1i1024!2i768!4f5!3m3!1m2!1s0x12cbe8c5a5b6b1f3%3A0x40819a5fd8fcdf0!2sManosque!5e0!3m2!1sfr!2sfr!4v1700000000000"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              style={{ border: 0 }}
-              allowFullScreen
-            />
+            {preferences.externalMedia ? (
+              <>
+                <div className="zone-map-circle" aria-hidden="true" />
+                <iframe
+                  title="Carte de la zone d'intervention Procarré & Fils autour de Manosque"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1425062.528!2d5.8!3d43.8!3m2!1i1024!2i768!4f5!3m3!1m2!1s0x12cbe8c5a5b6b1f3%3A0x40819a5fd8fcdf0!2sManosque!5e0!3m2!1sfr!2sfr!4v1700000000000"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                />
+              </>
+            ) : (
+              <ExternalContentPlaceholder
+                title="Carte Google Maps désactivée"
+                description="Google Maps peut déposer des cookies et traiter des informations sur votre navigation. Autorisez les contenus externes pour afficher la carte."
+              />
+            )}
           </div>
 
           <p className="zone-map-note">

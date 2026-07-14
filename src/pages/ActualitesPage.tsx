@@ -1,6 +1,8 @@
 // src/pages/ActualitesPage.tsx
 import { useEffect, useRef } from 'react';
 import './ActualitesPage.css';
+import { useCookieConsent } from '../consent/CookieConsentContext';
+import { ExternalContentPlaceholder } from '../consent/ExternalContentPlaceholder';
 
 const FB_SCRIPT_ID = 'facebook-jssdk';
 
@@ -47,16 +49,22 @@ const videos = [
 
 export function ActualitesPage() {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const { preferences } = useCookieConsent();
 
   useEffect(() => {
+    if (!preferences.externalMedia) return;
+
     loadFacebookSdk();
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if ((window as any).FB?.XFBML?.parse) {
-              (window as any).FB.XFBML.parse(entry.target);
+            const facebookWindow = window as Window & {
+              FB?: { XFBML?: { parse: (element?: Element) => void } };
+            };
+            if (facebookWindow.FB?.XFBML?.parse) {
+              facebookWindow.FB.XFBML.parse(entry.target);
             }
           }
         });
@@ -67,8 +75,15 @@ export function ActualitesPage() {
     const cards = containerRef.current?.querySelectorAll('.reseaux-card');
     cards?.forEach((card) => observer.observe(card));
 
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      observer.disconnect();
+      document.getElementById(FB_SCRIPT_ID)?.remove();
+      document.getElementById('fb-root')?.remove();
+
+      const facebookWindow = window as Window & { FB?: unknown };
+      delete facebookWindow.FB;
+    };
+  }, [preferences.externalMedia]);
 
   // ✅ inversion propre
   const orderedVideos = [...videos].reverse();
@@ -86,35 +101,39 @@ export function ActualitesPage() {
       </section>
 
       <section className="reseaux-grid-section">
-        <div ref={containerRef} className="container reseaux-grid">
-          {orderedVideos.map((url, index) => {
-            const embedUrl = url.includes('/reel/')
-              ? url.replace('/reel/', '/watch/?v=')
-              : url;
+        {preferences.externalMedia ? (
+          <div ref={containerRef} className="container reseaux-grid">
+            {orderedVideos.map((url, index) => {
+              const embedUrl = url.includes('/reel/')
+                ? url.replace('/reel/', '/watch/?v=')
+                : url;
 
-            return (
-              <article className="reseaux-card" key={index}>
-                
-                <div className="fb-skeleton" />
+              return (
+                <article className="reseaux-card" key={index}>
+                  <div className="fb-skeleton" />
 
-                <div
-                  className="fb-video"
-                  data-href={embedUrl}
-                  data-width="auto"
-                  data-show-text="false"
-                >
-                  <blockquote
-                    cite={embedUrl}
-                    className="fb-xfbml-parse-ignore"
+                  <div
+                    className="fb-video"
+                    data-href={embedUrl}
+                    data-width="auto"
+                    data-show-text="false"
                   >
-                    <a href={embedUrl}>Voir la vidéo</a>
-                  </blockquote>
-                </div>
-
-              </article>
-            );
-          })}
-        </div>
+                    <blockquote cite={embedUrl} className="fb-xfbml-parse-ignore">
+                      <a href={embedUrl}>Voir la vidéo sur Facebook</a>
+                    </blockquote>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="container">
+            <ExternalContentPlaceholder
+              title="Vidéos Facebook désactivées"
+              description="Facebook peut déposer des cookies et traiter des informations sur votre navigation. Autorisez les contenus externes pour afficher les vidéos."
+            />
+          </div>
+        )}
       </section>
     </div>
   );

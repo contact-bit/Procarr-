@@ -808,7 +808,7 @@ function getSiteUrl() {
   if (typeof window !== 'undefined' && window.location?.origin) {
     return window.location.origin;
   }
-  return 'https://www.procarre-et-fils.fr';
+  return 'https://procarre.fr';
 }
 
 function getPageUrl() {

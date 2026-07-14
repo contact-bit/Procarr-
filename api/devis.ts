@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 
 const ALLOWED_PROJECTS = ['interieur', 'exterieur', 'sdb', 'cuisine', 'renov'];
+const CLIENT_EMAIL = 'procarre.dussert@wanadoo.fr';
 
 // ---------------- UTILS ----------------
 function sanitize(str = '') {
@@ -20,13 +21,6 @@ function isValidEmail(email) {
 
 function isValidPhone(phone) {
   return !phone || /^[0-9\s+().-]{6,20}$/.test(phone);
-}
-
-function getRecipients() {
-  return String(process.env.TO_EMAIL || '')
-    .split(',')
-    .map(email => email.trim())
-    .filter(Boolean);
 }
 
 function getErrorMessage(error) {
@@ -102,21 +96,13 @@ export default async function handler(req, res) {
 
     if (
       !process.env.RESEND_API_KEY ||
-      !process.env.FROM_EMAIL ||
-      !process.env.TO_EMAIL
+      !process.env.FROM_EMAIL
     ) {
       console.error(`[${requestId}] ENV ERROR`);
       return res.status(500).json({ error: 'Server misconfigured' });
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const recipients = getRecipients();
-
-    if (recipients.length === 0) {
-      console.error(`[${requestId}] TO_EMAIL EMPTY`);
-      return res.status(500).json({ error: 'Server misconfigured' });
-    }
-
     // ---------- TEMPLATE ----------
   const field = (label, value) =>
   value ? `<tr><td style="padding:6px 0;"><strong>${label}</strong></td><td style="padding:6px 0;">${value}</td></tr>` : '';
@@ -204,7 +190,7 @@ const html = `
     // ---------- ENVOI ----------
     const result = await resend.emails.send({
       from: process.env.FROM_EMAIL, // ✅ domaine validé
-      to: recipients,
+      to: [CLIENT_EMAIL],
       replyTo: isValidEmail(email) ? email : undefined, // ✅ safe
       subject,
       text,

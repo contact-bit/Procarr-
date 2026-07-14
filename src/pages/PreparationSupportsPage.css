@@ -167,8 +167,7 @@
 }
 
 .preparation-supports-page .section-cta a:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 /* Responsive */

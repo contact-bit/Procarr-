@@ -1,9 +1,11 @@
 // src/components/layout/Footer.tsx
 import './Footer.css';
 import { Link } from 'react-router-dom';
+import { useCookieConsent } from '../../consent/CookieConsentContext';
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const { openSettings } = useCookieConsent();
 
   return (
     <footer className="site-footer" aria-labelledby="footer-title">
@@ -149,6 +151,11 @@ export function Footer() {
 
             <li>
               <Link to="/actualites">Actualités carrelage</Link>
+            </li>
+            <li>
+              <button type="button" className="footer-cookie-button" onClick={openSettings}>
+                Gérer les cookies
+              </button>
             </li>
           </ul>
 

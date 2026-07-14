@@ -1,11 +1,6 @@
 import { Resend } from 'resend';
 
-function getRecipients() {
-  return String(process.env.TO_EMAIL || '')
-    .split(',')
-    .map(email => email.trim())
-    .filter(Boolean);
-}
+const CLIENT_EMAIL = 'procarre.dussert@wanadoo.fr';
 
 function getErrorMessage(error) {
   if (!error) return 'Email failed';
@@ -36,24 +31,16 @@ export default async function handler(req, res) {
     // Vérif env (sécurité)
     if (
       !process.env.RESEND_API_KEY ||
-      !process.env.FROM_EMAIL ||
-      !process.env.TO_EMAIL
+      !process.env.FROM_EMAIL
     ) {
       console.error('Missing environment variables');
       return res.status(500).json({ error: 'Server misconfigured' });
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const recipients = getRecipients();
-
-    if (recipients.length === 0) {
-      console.error('TO_EMAIL is empty');
-      return res.status(500).json({ error: 'Server misconfigured' });
-    }
-
     const { error } = await resend.emails.send({
       from: process.env.FROM_EMAIL, // ✅ ton vrai domaine
-      to: recipients,
+      to: [CLIENT_EMAIL],
       replyTo: email, // ✅ corrigé
       subject: subject
         ? `Contact Procarré - ${subject}`

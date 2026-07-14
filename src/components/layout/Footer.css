@@ -138,7 +138,7 @@
 }
 
 .footer-nap-link:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* ========= COLONNES ========= */
@@ -170,7 +170,20 @@
 
 .footer-links a:hover {
   color: var(--color-accent);
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+.footer-cookie-button {
+  padding: 0;
+  border: 0;
+  color: var(--color-text-muted);
+  font-size: inherit;
+  text-align: left;
+}
+
+.footer-cookie-button:hover {
+  color: var(--color-accent);
+  text-decoration: none;
 }
 
 .footer-text-small {
@@ -187,6 +200,12 @@
   margin-top: 0.6rem;
   font-size: 0.8rem;
   color: var(--color-text-soft);
+}
+
+.footer-credit {
+  margin: 0.3rem 0 0;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* ========= RESPONSIVE ========= */

@@ -15,6 +15,8 @@ import { TerrassesPage } from '../pages/TerrassesPage';
 import { PreparationSupportsPage } from '../pages/PreparationSupportsPage';
 import { ScrollToTop } from './ScrollToTop';
 import { ActualitesPage } from '../pages/ActualitesPage';
+import { MentionsLegalesPage } from '../pages/MentionsLegalesPage';
+import { PolitiqueConfidentialitePage } from '../pages/PolitiqueConfidentialitePage';
 export function AppRouter() {
   return (
     <Layout>
@@ -36,6 +38,11 @@ export function AppRouter() {
 
         {/* Actualités */}
         <Route path="/actualites" element={<ActualitesPage />} />
+        <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+        <Route
+          path="/politique-de-confidentialite"
+          element={<PolitiqueConfidentialitePage />}
+        />
 
         <Route
           path="*"

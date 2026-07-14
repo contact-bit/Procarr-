@@ -31,12 +31,14 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
   const [building, setBuilding] = useState('');
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleCommonChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setCommon(prev => ({ ...prev, [name]: value }));
+    setErrorMessage('');
   };
 
   // ✅ progression simple (cohérente avec ton vrai form)
@@ -57,20 +59,41 @@ export function SmartDevisForm({ projectType }: SmartDevisFormProps) {
     e.preventDefault();
     if (status === 'submitting') return;
 
-    if (!common.name.trim() || !common.email.trim() || !common.message.trim()) {
-      alert('Merci de remplir au minimum votre nom, email et un message.');
+    const name = common.name.trim();
+    const email = common.email.trim();
+    const phone = common.phone.trim();
+    const message = common.message.trim();
+
+    if (!name || !email || !message) {
+      setErrorMessage('Merci de remplir votre nom, votre email et votre message.');
       return;
     }
 
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErrorMessage('Merci de saisir une adresse email valide.');
+      return;
+    }
+
+    if (phone && !/^[0-9\s+().-]{6,20}$/.test(phone)) {
+      setErrorMessage('Merci de saisir un numéro de téléphone valide.');
+      return;
+    }
+
+    if (message.length < 5) {
+      setErrorMessage('Merci de détailler votre demande avec au moins 5 caractères.');
+      return;
+    }
+
+    setErrorMessage('');
     setStatus('submitting');
 
     // ✅ PAYLOAD ALIGNÉ AVEC TON FORM (IMPORTANT)
 const payload = {
-  name: common.name,
-  email: common.email,
-  phone: common.phone,
-  city: common.city,
-  message: common.message,
+  name,
+  email,
+  phone,
+  city: common.city.trim(),
+  message,
   projectType,
   role,
   projectKind,
@@ -90,7 +113,11 @@ const payload = {
       if (!res.ok) {
         console.error('Devis API error:', data);
         setStatus('idle');
-        alert("Une erreur est survenue lors de l'envoi du devis.");
+        setErrorMessage(
+          typeof data?.error === 'string'
+            ? data.error
+            : "Une erreur est survenue lors de l'envoi du devis.",
+        );
         return;
       }
 
@@ -98,7 +125,7 @@ const payload = {
     } catch (err) {
       console.error('Devis fetch error:', err);
       setStatus('idle');
-      alert("Impossible de contacter le serveur de devis.");
+      setErrorMessage('Impossible de contacter le serveur de devis. Merci de réessayer.');
     }
   };
 
@@ -256,6 +283,11 @@ const payload = {
           ? 'Envoi en cours...'
           : 'Envoyer ma demande de devis'}
       </button>
+      {errorMessage && (
+        <p className="smart-devis-error" role="alert">
+          {errorMessage}
+        </p>
+      )}
       <p className="form-privacy-note">
         PROCARRE traite vos informations afin d’étudier votre projet, vous recontacter et préparer
         un devis. Les champs marqués d’un astérisque sont nécessaires au traitement de la demande.{' '}

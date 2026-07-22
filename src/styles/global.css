@@ -798,7 +798,8 @@ section,
   }
 }
 .page-loading {
-  min-height: 45vh;
+  min-height: 100vh;
+  min-height: 100svh;
   display: grid;
   place-items: center;
   padding: 4rem 1.25rem;

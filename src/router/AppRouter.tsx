@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from '../components/layout/Layout';
+import { HomePage } from '../pages/HomePage';
 import { ScrollToTop } from './ScrollToTop';
 
-const HomePage = lazy(() => import('../pages/HomePage').then(module => ({ default: module.HomePage })));
 const AProposPage = lazy(() => import('../pages/AProposPage').then(module => ({ default: module.AProposPage })));
 const PrestationsPage = lazy(() => import('../pages/PrestationsPage').then(module => ({ default: module.PrestationsPage })));
 const RealisationsPage = lazy(() => import('../pages/RealisationsPage').then(module => ({ default: module.RealisationsPage })));

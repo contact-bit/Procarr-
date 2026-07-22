@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
+import { Pagination, Navigation, EffectFade } from 'swiper/modules';
 import type { Swiper as SwiperInstance } from 'swiper';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useEffect } from 'react';
@@ -49,29 +49,45 @@ export function HomeHeroSlider() {
   const swiperRef = useRef<SwiperInstance | null>(null);
   const cycle = useRef(0);
 
-  // 🔥 AUTOPLAY CINÉMA + BURST RAPIDE
   useEffect(() => {
-    const interval = setInterval(() => {
+    let interval: number | undefined;
+    const burstTimeouts: number[] = [];
+    const interactionEvents: Array<keyof WindowEventMap> = ['pointerdown', 'keydown', 'scroll'];
+
+    const advanceSlider = () => {
       const swiper = swiperRef.current;
       if (!swiper) return;
 
       cycle.current++;
 
-      // 👉 tous les 6 cycles → burst rapide (3 slides)
       if (cycle.current % 6 === 0) {
         swiper.params.speed = 500;
-
         swiper.slideNext();
-        setTimeout(() => swiper.slideNext(), 220);
-        setTimeout(() => swiper.slideNext(), 440);
+        burstTimeouts.push(window.setTimeout(() => swiper.slideNext(), 220));
+        burstTimeouts.push(window.setTimeout(() => swiper.slideNext(), 440));
       } else {
-        // 👉 transition lente propre
         swiper.params.speed = 1300;
         swiper.slideNext();
       }
-    }, 4000);
+    };
 
-    return () => clearInterval(interval);
+    const startAutoplay = () => {
+      if (interval !== undefined) return;
+      interval = window.setInterval(advanceSlider, 4000);
+      interactionEvents.forEach(eventName => window.removeEventListener(eventName, startAutoplay));
+    };
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      interactionEvents.forEach(eventName => {
+        window.addEventListener(eventName, startAutoplay, { once: true, passive: true });
+      });
+    }
+
+    return () => {
+      if (interval !== undefined) window.clearInterval(interval);
+      burstTimeouts.forEach(timeout => window.clearTimeout(timeout));
+      interactionEvents.forEach(eventName => window.removeEventListener(eventName, startAutoplay));
+    };
   }, []);
 
   return (
@@ -129,7 +145,7 @@ export function HomeHeroSlider() {
         </div>
 
         <Swiper
-          modules={[Autoplay, Pagination, Navigation, EffectFade]}
+          modules={[Pagination, Navigation, EffectFade]}
           className="home-hero__swiper"
           loop
           effect="fade"

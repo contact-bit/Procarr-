@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, EffectFade } from 'swiper/modules';
 import type { Swiper as SwiperInstance } from 'swiper';
 import { useNavigate } from 'react-router-dom';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -42,12 +42,32 @@ const slides = [
   img3134, img4552, img5851,
 ];
 
+const emptySlideImage = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+
 export function HomeHeroSlider() {
   const navigate = useNavigate();
   const goToQuote = () => navigate('/devis');
 
   const swiperRef = useRef<SwiperInstance | null>(null);
   const cycle = useRef(0);
+  const [loadedSlides, setLoadedSlides] = useState<Set<number>>(
+    () => new Set([0, 1, slides.length - 1]),
+  );
+
+  const makeAdjacentSlidesAvailable = (activeIndex: number) => {
+    const indexes = [
+      activeIndex,
+      (activeIndex + 1) % slides.length,
+      (activeIndex - 1 + slides.length) % slides.length,
+    ];
+
+    setLoadedSlides(current => {
+      if (indexes.every(index => current.has(index))) return current;
+      const next = new Set(current);
+      indexes.forEach(index => next.add(index));
+      return next;
+    });
+  };
 
   useEffect(() => {
     let interval: number | undefined;
@@ -150,7 +170,11 @@ export function HomeHeroSlider() {
           loop
           effect="fade"
           speed={1200}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+            makeAdjacentSlidesAvailable(swiper.realIndex);
+          }}
+          onSlideChange={(swiper) => makeAdjacentSlidesAvailable(swiper.realIndex)}
           navigation={{
             prevEl: '.hero-nav-prev',
             nextEl: '.hero-nav-next',
@@ -163,8 +187,8 @@ export function HomeHeroSlider() {
             <SwiperSlide key={index} className="home-hero__slide">
               <div className="home-hero__image-wrapper">
                 <img
-                  src={src}
-                  alt="Réalisation Procarré & Fils"
+                  src={loadedSlides.has(index) ? src : emptySlideImage}
+                  alt={loadedSlides.has(index) ? 'Réalisation Procarré & Fils' : ''}
                   className="home-hero__image"
                   loading={index === 0 ? 'eager' : 'lazy'}
                   fetchPriority={index === 0 ? 'high' : 'auto'}

@@ -17,13 +17,14 @@ export function CookieConsentManager() {
       {!hasChoice && !settingsOpen && (
         <aside className="cookie-banner" aria-label="Choix des cookies">
           <div className="cookie-banner-copy">
+            <span className="cookie-banner-kicker">Votre confidentialité</span>
             <p className="cookie-banner-message">
-              <strong>Un site qui s’améliore avec vous</strong>
+              <strong>Aidez-nous à améliorer votre expérience</strong>
               <span>
-                Avec votre accord, nous mesurons l’utilisation du site et affichons les contenus
-                externes. Aucun suivi publicitaire.
+                Nous utilisons, avec votre accord, des statistiques de visite et des contenus externes.
+                Aucun cookie publicitaire.
               </span>{' '}
-              <Link to="/politique-de-confidentialite">Notre politique de confidentialité</Link>
+              <Link to="/politique-de-confidentialite">En savoir plus</Link>
             </p>
           </div>
           <div className="cookie-banner-actions">

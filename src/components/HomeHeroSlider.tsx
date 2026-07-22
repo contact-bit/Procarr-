@@ -13,6 +13,7 @@ import './HomeHeroSlider.css';
 
 // ===== IMAGES HERO =====
 import intro1 from '../assets/optimized/july-2026/piscine-villeneuve-6359.webp';
+import intro1Mobile from '../assets/optimized/july-2026/piscine-villeneuve-6359-960.webp';
 import intro3 from '../assets/optimized/july-2026/piscine-villeneuve-6361.webp';
 import intro2 from '../assets/optimized/july-2026/piscine-esparons-8078.webp';
 import intro4 from '../assets/optimized/july-2026/piscine-la-palud-5236.webp';
@@ -188,6 +189,8 @@ export function HomeHeroSlider() {
               <div className="home-hero__image-wrapper">
                 <img
                   src={loadedSlides.has(index) ? src : emptySlideImage}
+                  srcSet={index === 0 ? `${intro1Mobile} 960w, ${intro1} 1707w` : undefined}
+                  sizes={index === 0 ? '100vw' : undefined}
                   alt={loadedSlides.has(index) ? 'Réalisation Procarré & Fils' : ''}
                   className="home-hero__image"
                   loading={index === 0 ? 'eager' : 'lazy'}

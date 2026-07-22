@@ -30,3 +30,8 @@ for (const [source, destination, maxWidth = 1920] of images) {
     .webp({ quality: 80, effort: 6 })
     .toFile(output);
 }
+
+await sharp(path.join(outputDir, 'piscine-villeneuve-6359.webp'))
+  .resize({ width: 960, fit: 'inside', withoutEnlargement: true })
+  .webp({ quality: 76, effort: 6 })
+  .toFile(path.join(outputDir, 'piscine-villeneuve-6359-960.webp'));

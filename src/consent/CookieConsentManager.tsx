@@ -18,17 +18,20 @@ export function CookieConsentManager() {
         <aside className="cookie-banner" aria-label="Choix des cookies">
           <div className="cookie-banner-copy">
             <p className="cookie-banner-message">
-              <strong>Cookies</strong>
-              <span>Audience et contenus externes, avec votre accord.</span>{' '}
-              <Link to="/politique-de-confidentialite">En savoir plus</Link>
+              <strong>Un site qui s’améliore avec vous</strong>
+              <span>
+                Avec votre accord, nous mesurons l’utilisation du site et affichons les contenus
+                externes. Aucun suivi publicitaire.
+              </span>{' '}
+              <Link to="/politique-de-confidentialite">Notre politique de confidentialité</Link>
             </p>
           </div>
           <div className="cookie-banner-actions">
-            <button type="button" className="cookie-button cookie-button-primary" onClick={acceptAll}>
-              Tout accepter
+            <button type="button" className="cookie-button cookie-button-choice" onClick={acceptAll}>
+              J’accepte
             </button>
-            <button type="button" className="cookie-button" onClick={rejectAll}>
-              Tout refuser
+            <button type="button" className="cookie-button cookie-button-choice" onClick={rejectAll}>
+              Je refuse
             </button>
             <button type="button" className="cookie-button cookie-button-text" onClick={openSettings}>
               Personnaliser

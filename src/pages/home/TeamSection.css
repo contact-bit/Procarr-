@@ -14,6 +14,17 @@
   text-align: center;
 }
 
+.section-header-left {
+  margin-right: auto;
+  margin-left: 0;
+  text-align: left;
+}
+
+.section-header-left .section-subtitle {
+  margin-right: auto;
+  margin-left: 0;
+}
+
 .section-kicker {
   display: inline-block;
   font-size: 0.78rem;

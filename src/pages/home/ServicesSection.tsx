@@ -6,7 +6,7 @@ export function ServicesSection() {
   return (
     <section className="services-section" aria-labelledby="services-title">
       <div className="services-shell">
-        <header className="services-intro section-header-center">
+        <header className="services-intro section-header-left">
           <span className="section-kicker">Nos expertises</span>
           <h2 id="services-title" className="section-title">
             Spécialiste carrelage et rénovation intérieur et extérieur à Manosque (04)

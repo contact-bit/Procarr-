@@ -31,7 +31,7 @@ export function ReviewsSection() {
   return (
     <section className="reviews-section" aria-labelledby="reviews-title">
       <div className="reviews-shell">
-        <header className="reviews-intro section-header-center">
+        <header className="reviews-intro section-header-left">
           <span className="section-kicker">Avis Google</span>
           <h2 id="reviews-title" className="section-title">
             La satisfaction de nos clients, chantier après chantier

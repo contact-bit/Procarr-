@@ -1,12 +1,11 @@
 // src/pages/home/TeamSection.tsx
 import './TeamSection.css';
 import equipe from '../../assets/optimized/july-2026/equipe-procarre.webp';
-import facebookIcon from '../../assets/facebook.png';
 
 export function TeamSection() {
   return (
     <section className="team-section">
-      <div className="team-header section-header section-header-center">
+      <div className="team-header section-header section-header-left">
         <span className="section-kicker">L&apos;équipe</span>
         <h2 className="section-title">
           Procarré &amp; Fils, carreleurs à Manosque en famille
@@ -71,16 +70,6 @@ export function TeamSection() {
               incluent de la rénovation complète. Il s&apos;occupe également de l&apos;animation des
               réseaux sociaux et de la mise en avant des réalisations de l&apos;entreprise.
             </p>
-            <div className="team-socials">
-              <a
-                href="https://www.facebook.com/procarre"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Page Facebook Procarré & Fils"
-              >
-                <img src={facebookIcon} alt="Facebook Procarré & Fils" />
-              </a>
-            </div>
           </div>
         </div>
       </div>

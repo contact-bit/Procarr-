@@ -358,6 +358,7 @@
    BURGER
 ========================================================= */
 .burger {
+  position: relative;
   display: none;
   width: 42px;
   height: 42px;
@@ -366,8 +367,6 @@
   background: rgba(255, 255, 255, 0.04);
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 4px;
   cursor: pointer;
   transition:
     background var(--transition),
@@ -381,15 +380,29 @@
 }
 
 .burger span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 17px;
   height: 1.8px;
   border-radius: 999px;
   background: #fff;
-  transition: transform var(--transition), opacity var(--transition);
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  transition: top var(--transition), transform var(--transition), opacity var(--transition);
+}
+
+.burger span:nth-child(1) {
+  top: calc(50% - 6px);
+}
+
+.burger span:nth-child(3) {
+  top: calc(50% + 6px);
 }
 
 .burger.open span:nth-child(1) {
-  transform: rotate(45deg) translateY(5px);
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .burger.open span:nth-child(2) {
@@ -397,7 +410,8 @@
 }
 
 .burger.open span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-5px);
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 

@@ -1,6 +1,7 @@
 // src/pages/prestations/SolsMursPage.tsx
 import { Link } from 'react-router-dom';
 import './SolsMursPage.css';
+import { BUSINESS_PHONE_E164 } from '../config/contact';
 
 export function SolsMursPage() {
   return (
@@ -23,7 +24,7 @@ export function SolsMursPage() {
                 postalCode: '04100',
                 addressCountry: 'FR',
               },
-              telephone: '+33600000000',
+              telephone: BUSINESS_PHONE_E164,
               areaServed: [
                 'Manosque',
                 'Volx',

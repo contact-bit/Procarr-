@@ -1,169 +1,87 @@
-// src/pages/home/ReviewsSection.tsx
 import './ReviewsSection.css';
 
-// ✅ TYPE PROPRE (fix TS)
-type Review = {
+type GoogleReview = {
   name: string;
+  date: string;
   text: string;
-  isNew?: boolean;
-  meta?: string;
 };
 
-// ✅ DATA
-const reviews: Review[] = [
+const googleReviews: GoogleReview[] = [
   {
-    name: "Thierry Hachette",
-    text: "J'ai fait appel à ProCarré pour renouveler le carrelage de ma maison, et je suis très satisfait : du devis à la finition, tout a été parfait !",
-    isNew: true,
-    meta: "Avis Google • ★★★★★"
+    name: 'Brigitte Barlet',
+    date: 'Il y a 2 mois',
+    text: 'Carrelage de notre terrasse avec carrelage sur plots. Très contents du résultat. Équipe sérieuse, au top, respect des délais. Travail impeccable. Nous recommandons cette entreprise familiale.',
   },
   {
-    name: "Julien Valenza",
-    text: "Rénovation complète d’un appartement, prestation de qualité, rapidité d’exécution. Chantier irréprochable. À recommander à 100%.",
-    isNew: true,
-    meta: "Avis Google • ★★★★★"
+    name: 'Guillaume Bourjac',
+    date: 'Il y a 3 mois',
+    text: 'Toujours un plaisir de travailler avec Procarré ! Une équipe dynamique et un professionnalisme constant. Un grand merci tout particulier à Denis pour ses conseils avisés qui font toute la différence. Je recommande vivement.',
   },
   {
-    name: "Bruno SARRADE",
-    text: "Entreprise familiale exceptionnelle. Professionnalisme et qualité remarquables. Équipe fiable et méticuleuse.",
-    meta: "Client vérifié"
+    name: 'Thierry Hachette',
+    date: 'Il y a 4 mois',
+    text: "J'ai fait appel à ProCarré pour renouveler le carrelage de ma maison, et je suis très satisfait de la prestation fournie : du devis à la finition, tout a été parfait !",
   },
-  {
-    name: "Jean-Luc Freudenreich",
-    text: "Travail soigné avec nettoyage à chaque phase du chantier. Très satisfait de la prestation.",
-    meta: "Client vérifié"
-  },
-  {
-    name: "Muriel Laurent",
-    text: "Équipe sérieuse, ponctuelle, soignée et professionnelle. Je recommande les yeux fermés.",
-    meta: "Client vérifié"
-  }
 ];
+
+const googleBusinessUrl =
+  'https://www.google.com/maps/place/Procarre/@43.8339842,5.8028141,17z/data=!4m8!3m7!1s0x12cbcdcd45cfccd1:0xf4b63c3debf405e2!8m2!3d43.8339842!4d5.8028141!9m1!1b1!16s%2Fg%2F113df6wml';
 
 export function ReviewsSection() {
   return (
     <section className="reviews-section" aria-labelledby="reviews-title">
       <div className="reviews-shell">
-
-        {/* HEADER */}
         <header className="reviews-intro section-header-center">
-          <span className="section-kicker">Avis clients</span>
+          <span className="section-kicker">Avis Google</span>
           <h2 id="reviews-title" className="section-title">
-            Ce que disent nos clients à Manosque
+            La satisfaction de nos clients, chantier après chantier
           </h2>
           <p className="section-subtitle">
-            Une entreprise familiale de carrelage et de rénovation recommandée pour la qualité du travail,
-            le sérieux sur le chantier et les finitions soignées à Manosque et en Alpes-de-Haute-Provence.
+            Découvrez les retours laissés par nos clients après leurs travaux de carrelage et de rénovation.
           </p>
         </header>
 
-        {/* 🔥 BANDEAU GOOGLE */}
-        <div className="reviews-ribbon">
-          <div className="reviews-ribbon-left">
-            <span className="reviews-ribbon-label">Google</span>
-            <span className="reviews-ribbon-score">5 / 5</span>
-            <span className="reviews-ribbon-stars">★★★★★</span>
-          </div>
-        </div>
+        <a
+          className="reviews-google-summary"
+          href={googleBusinessUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Consulter les 11 avis de Procarré sur Google"
+        >
+          <span className="reviews-google-mark" aria-hidden="true">G</span>
+          <span className="reviews-google-label">Google</span>
+          <strong className="reviews-google-score">5,0 / 5</strong>
+          <span className="reviews-google-stars" aria-label="5 étoiles sur 5">★★★★★</span>
+          <span className="reviews-google-count">11 avis</span>
+        </a>
 
-        {/* 🔥 GRID AVIS */}
         <div className="reviews-grid">
-          {reviews.map((review, index) => (
-            <div key={index} className="review-card">
-
-              <div className="review-header">
-                <div className="review-avatar">
-                  {review.name.charAt(0)}
-                </div>
-
+          {googleReviews.map((review) => (
+            <article key={review.name} className="review-card">
+              <div className="review-card-top">
                 <div>
-                  <div className="review-name">
-                    {review.name}
-                    {review.isNew && (
-                      <span className="review-badge">Nouveau</span>
-                    )}
-                  </div>
-
-                  {/* ✅ SAFE TS */}
-                  {review.meta && (
-                    <div className="review-meta">{review.meta}</div>
-                  )}
+                  <h3 className="review-name">{review.name}</h3>
+                  <p className="review-date">Avis Google · {review.date}</p>
                 </div>
               </div>
 
-              <div className="review-stars">★★★★★</div>
-              <p className="review-text">{review.text}</p>
-
-            </div>
+              <div className="review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+              <p className="review-text">« {review.text} »</p>
+            </article>
           ))}
         </div>
 
-        {/* LAYOUT EXISTANT */}
-        <div className="reviews-layout-modern">
-          <aside className="reviews-quote-block">
-            <div className="reviews-quote-symbol">“</div>
-            <p className="reviews-quote-text">
-              “Entreprise très professionnelle, travail de carrelage soigné, délais respectés
-              et chantier propre. Nous recommandons Procarré &amp; Fils pour nos travaux autour de Manosque.”
-            </p>
-            <p className="reviews-quote-meta">
-              Avis client vérifié, chantier de carrelage et rénovation à Manosque
-            </p>
-          </aside>
-
-          <div className="reviews-timeline">
-            <div className="reviews-timeline-line" />
-
-            <article className="reviews-timeline-item">
-              <span className="reviews-timeline-dot" />
-              <div className="reviews-timeline-content">
-                <p className="reviews-timeline-text">
-                  “Prestation de qualité, travail soigné et nettoyage à chaque phase du chantier.”
-                </p>
-                <p className="reviews-timeline-meta">
-                  Rénovation intérieur / extérieur – 2025
-                </p>
-              </div>
-            </article>
-
-            <article className="reviews-timeline-item">
-              <span className="reviews-timeline-dot" />
-              <div className="reviews-timeline-content">
-                <p className="reviews-timeline-text">
-                  “Équipe sérieuse et ponctuelle, finitions impeccables sur salle de bain et terrasse.”
-                </p>
-                <p className="reviews-timeline-meta">
-                  Chantier Alpes-de-Haute-Provence
-                </p>
-              </div>
-            </article>
-
-            <article className="reviews-timeline-item">
-              <span className="reviews-timeline-dot" />
-              <div className="reviews-timeline-content">
-                <p className="reviews-timeline-text">
-                  “Devis clair, conseils pertinents et résultat conforme à notre projet.”
-                </p>
-                <p className="reviews-timeline-meta">
-                  Rénovation pièce de vie
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        {/* FOOTER */}
         <div className="reviews-footer">
           <a
-            href="https://www.google.com/search?q=Procarre+Avis"
+            href={googleBusinessUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="reviews-footer-link"
           >
-            Voir tous les avis sur Google →
+            Voir tous les avis sur Google
+            <span aria-hidden="true">→</span>
           </a>
         </div>
-
       </div>
     </section>
   );

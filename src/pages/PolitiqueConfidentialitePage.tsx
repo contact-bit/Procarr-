@@ -1,4 +1,8 @@
 import { Helmet } from 'react-helmet-async';
+import {
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_HREF,
+} from '../config/contact';
 import './LegalPage.css';
 
 export function PolitiqueConfidentialitePage() {
@@ -45,7 +49,7 @@ export function PolitiqueConfidentialitePage() {
             <strong>PROCARRE – SARL</strong><br />
             302 chemin des Vannades, 04100 Manosque, France<br />
             E-mail : <a href="mailto:procarre.dussert@wanadoo.fr">procarre.dussert@wanadoo.fr</a><br />
-            Téléphone : <a href="tel:+33603123065">06 03 12 30 65</a>
+            Téléphone : <a href={BUSINESS_PHONE_HREF}>{BUSINESS_PHONE_DISPLAY}</a>
           </address>
         </section>
 

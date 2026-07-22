@@ -797,3 +797,11 @@ section,
     padding-right: 0.5rem;
   }
 }
+.page-loading {
+  min-height: 45vh;
+  display: grid;
+  place-items: center;
+  padding: 4rem 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}

@@ -41,6 +41,24 @@
 .home-hero__swiper {
   width: 100%;
   height: 100%;
+  --swiper-pagination-color: #e63932;
+  --swiper-pagination-bullet-inactive-color: #3f3f46;
+  --swiper-pagination-bullet-inactive-opacity: 0.82;
+}
+
+.home-hero__swiper .swiper-pagination-bullet {
+  width: 9px;
+  height: 9px;
+  background: #3f3f46;
+  opacity: 0.82;
+  transition: transform 180ms ease, opacity 180ms ease, background-color 180ms ease;
+}
+
+.home-hero__swiper .swiper-pagination-bullet-active {
+  background: #e63932;
+  opacity: 1;
+  transform: scale(1.2);
+  box-shadow: 0 0 0 3px rgba(230, 57, 50, 0.28);
 }
 
 /* =========================================================

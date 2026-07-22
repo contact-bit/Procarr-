@@ -1,7 +1,9 @@
 import './ConstructionBanner.css';
 
-const PHONE_DISPLAY = '06 03 12 30 65';
-const PHONE_HREF = 'tel:+33603123065';
+import {
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_HREF,
+} from '../../config/contact';
 
 export function ConstructionBanner() {
   return (
@@ -18,8 +20,8 @@ export function ConstructionBanner() {
           </p>
         </div>
 
-        <a className="construction-banner__phone" href={PHONE_HREF}>
-          Appeler le {PHONE_DISPLAY}
+        <a className="construction-banner__phone" href={BUSINESS_PHONE_HREF}>
+          Appeler le {BUSINESS_PHONE_DISPLAY}
         </a>
       </div>
     </aside>

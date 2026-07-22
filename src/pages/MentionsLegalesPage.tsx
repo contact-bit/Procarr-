@@ -1,4 +1,8 @@
 import { Helmet } from 'react-helmet-async';
+import {
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_HREF,
+} from '../config/contact';
 import { Link } from 'react-router-dom';
 import './LegalPage.css';
 
@@ -35,7 +39,7 @@ export function MentionsLegalesPage() {
             SIRET du siège : 441 248 184 00026<br />
             RCS Manosque : 441 248 184<br />
             Numéro de TVA intracommunautaire : FR17 441248184<br />
-            Téléphone : <a href="tel:+33603123065">06 03 12 30 65</a><br />
+            Téléphone : <a href={BUSINESS_PHONE_HREF}>{BUSINESS_PHONE_DISPLAY}</a><br />
             E-mail :{' '}
             <a href="mailto:procarre.dussert@wanadoo.fr">
               procarre.dussert@wanadoo.fr

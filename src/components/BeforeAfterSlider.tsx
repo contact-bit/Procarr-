@@ -98,6 +98,8 @@ export function BeforeAfterSlider({
       <img
         src={afterSrc}
         alt={`${alt} après`}
+        loading="lazy"
+        decoding="async"
         style={imageStyle}
         draggable={false}
       />
@@ -106,6 +108,8 @@ export function BeforeAfterSlider({
       <img
         src={beforeSrc}
         alt={`${alt} avant`}
+        loading="lazy"
+        decoding="async"
         draggable={false}
         style={{
           ...imageStyle,

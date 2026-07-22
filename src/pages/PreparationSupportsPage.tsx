@@ -1,6 +1,7 @@
 // src/pages/prestations/PreparationSupportsPage.tsx
 import { Link } from 'react-router-dom';
 import './PreparationSupportsPage.css';
+import { BUSINESS_PHONE_E164 } from '../config/contact';
 
 export function PreparationSupportsPage() {
   return (
@@ -23,7 +24,7 @@ export function PreparationSupportsPage() {
                 postalCode: '04100',
                 addressCountry: 'FR',
               },
-              telephone: '+33600000000',
+              telephone: BUSINESS_PHONE_E164,
               areaServed: [
                 'Manosque',
                 'Volx',

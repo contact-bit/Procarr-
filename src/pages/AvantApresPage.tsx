@@ -2,44 +2,44 @@ import "./AvantApresPage.css";
 import { BeforeAfterSlider } from "../components/BeforeAfterSlider";
 
 // Projet 1
-import projet1Before from "../assets/imagesmodulavantapres/1/12.jpg";
-import projet1After from "../assets/imagesmodulavantapres/1/11.jpg";
+import projet1Before from "../assets/optimized/avant-apres/projet1Before.webp";
+import projet1After from "../assets/optimized/avant-apres/projet1After.webp";
 
 // Projet 2
-import projet2Before from "../assets/imagesmodulavantapres/2/IMG_4732(1).jpg";
-import projet2After from "../assets/imagesmodulavantapres/2/IMG_4767.jpg";
+import projet2Before from "../assets/optimized/avant-apres/projet2Before.webp";
+import projet2After from "../assets/optimized/avant-apres/projet2After.webp";
 
 // Projet 3
-import projet3Before from "../assets/imagesmodulavantapres/3/IMG_4856(1).jpg";
-import projet3After from "../assets/imagesmodulavantapres/3/IMG_5323(1).jpg";
+import projet3Before from "../assets/optimized/avant-apres/projet3Before.webp";
+import projet3After from "../assets/optimized/avant-apres/projet3After.webp";
 
 // Projet 4
-import projet4Before from "../assets/imagesmodulavantapres/4/IMG_5015.jpg";
-import projet4After from "../assets/imagesmodulavantapres/4/IMG_6235(2).jpg";
+import projet4Before from "../assets/optimized/avant-apres/projet4Before.webp";
+import projet4After from "../assets/optimized/avant-apres/projet4After.webp";
 
 // Projet 5
-import projet5Before from "../assets/imagesmodulavantapres/5/IMG_6230.jpg";
-import projet5After from "../assets/imagesmodulavantapres/5/IMG_6468.jpg";
+import projet5Before from "../assets/optimized/avant-apres/projet5Before.webp";
+import projet5After from "../assets/optimized/avant-apres/projet5After.webp";
 
 // Projet 6
-import projet6Before from "../assets/imagesmodulavantapres/6/IMG_6932(2).jpg";
-import projet6After from "../assets/imagesmodulavantapres/6/IMG_6970.jpg";
+import projet6Before from "../assets/optimized/avant-apres/projet6Before.webp";
+import projet6After from "../assets/optimized/avant-apres/projet6After.webp";
 
 // Projet 7
-import projet7Before from "../assets/imagesmodulavantapres/7/IMG_7524(1).jpg";
-import projet7After from "../assets/imagesmodulavantapres/7/IMG_7811.jpg";
+import projet7Before from "../assets/optimized/avant-apres/projet7Before.webp";
+import projet7After from "../assets/optimized/avant-apres/projet7After.webp";
 
 // Projet 8
-import projet8Before from "../assets/imagesmodulavantapres/8/IMG_7834(1).jpg";
-import projet8After from "../assets/imagesmodulavantapres/8/IMG_8061(1).jpg";
+import projet8Before from "../assets/optimized/avant-apres/projet8Before.webp";
+import projet8After from "../assets/optimized/avant-apres/projet8After.webp";
 
 // Projet 9
-import projet9Before from "../assets/imagesmodulavantapres/9/IMG_7839.jpg";
-import projet9After from "../assets/imagesmodulavantapres/9/IMG_8070(1).jpg";
+import projet9Before from "../assets/optimized/avant-apres/projet9Before.webp";
+import projet9After from "../assets/optimized/avant-apres/projet9After.webp";
 
 // Projet 10
-import projet10Before from "../assets/imagesmodulavantapres/10/IMG_8560(1).jpg";
-import projet10After from "../assets/imagesmodulavantapres/10/IMG_8629(1).jpg";
+import projet10Before from "../assets/optimized/avant-apres/projet10Before.webp";
+import projet10After from "../assets/optimized/avant-apres/projet10After.webp";
 
 export function AvantApresPage() {
   const projets = [

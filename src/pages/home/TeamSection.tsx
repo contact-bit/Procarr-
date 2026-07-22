@@ -1,9 +1,7 @@
 // src/pages/home/TeamSection.tsx
 import './TeamSection.css';
-import equipe from '../../assets/image00003.jpeg';
+import equipe from '../../assets/optimized/july-2026/equipe-procarre.webp';
 import facebookIcon from '../../assets/facebook.png';
-import instagramIcon from '../../assets/instagram.png';
-import linkedinIcon from '../../assets/linkedin.png';
 
 export function TeamSection() {
   return (
@@ -26,6 +24,10 @@ export function TeamSection() {
             src={equipe}
             alt="Denis et Sébastien Dussert, artisans carreleurs Procarré & Fils à Manosque"
             className="team-photo"
+            loading="lazy"
+            decoding="async"
+            width={1707}
+            height={1280}
           />
         </div>
 
@@ -47,16 +49,6 @@ export function TeamSection() {
               , autour de solutions de carrelage lumineux à fibre optique, alliant innovation
               et savoir-faire artisanal à Manosque.
             </p>
-            <div className="team-socials">
-              <a
-                href="https://www.linkedin.com/in/denis-dussert"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Profil LinkedIn de Denis Dussert"
-              >
-                <img src={linkedinIcon} alt="LinkedIn Denis Dussert" />
-              </a>
-            </div>
           </div>
 
           {/* Sébastien */}
@@ -68,16 +60,6 @@ export function TeamSection() {
               une partie de l&apos;organisation des chantiers, du suivi client et de la préparation
               des devis.
             </p>
-            <div className="team-socials">
-              <a
-                href="https://www.linkedin.com/in/sebastien-dussert"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Profil LinkedIn de Sébastien Dussert"
-              >
-                <img src={linkedinIcon} alt="LinkedIn Sébastien Dussert" />
-              </a>
-            </div>
           </div>
 
           {/* Laurent */}
@@ -91,28 +73,12 @@ export function TeamSection() {
             </p>
             <div className="team-socials">
               <a
-                href="https://www.linkedin.com/in/laurent-dussert"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Profil LinkedIn de Laurent Dussert"
-              >
-                <img src={linkedinIcon} alt="LinkedIn Laurent Dussert" />
-              </a>
-              <a
                 href="https://www.facebook.com/procarre"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Page Facebook Procarré & Fils"
               >
                 <img src={facebookIcon} alt="Facebook Procarré & Fils" />
-              </a>
-              <a
-                href="https://www.instagram.com/procarre_carrelage"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Compte Instagram Procarré & Fils"
-              >
-                <img src={instagramIcon} alt="Instagram Procarré & Fils" />
               </a>
             </div>
           </div>

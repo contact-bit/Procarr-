@@ -1,6 +1,6 @@
 // src/pages/PrestationsPage.tsx
 import { Link } from 'react-router-dom';
-import prestationImg from '../assets/prestation.png';
+import prestationImg from '../assets/optimized/july-2026/prestations-procarre.webp';
 import './PrestationsPage.css';
 
 export function PrestationsPage() {
@@ -18,6 +18,9 @@ export function PrestationsPage() {
       alt="Prestations de carrelage Procarré & Fils"
       className="prestations-hero-image"
       loading="eager"
+      fetchPriority="high"
+      width={1400}
+      height={467}
     />
   </div>
 

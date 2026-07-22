@@ -59,7 +59,7 @@
   background: rgba(15, 23, 42, 0.4);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 1rem;
+  padding: 0;
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -67,7 +67,7 @@
   transform: translate3d(0,0,0);
   backface-visibility: hidden;
 
-  min-height: 280px;
+  min-height: 320px;
 
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
@@ -80,51 +80,12 @@
 /* =========================================================
    FACEBOOK EMBED FIX
 ========================================================= */
-.reseaux-card .fb-video,
-.reseaux-card .fb-post {
+.reseaux-video-frame {
   width: 100% !important;
-}
-
-.reseaux-card iframe {
-  width: 100% !important;
-  min-height: 280px;
-  border-radius: 12px;
-
-  transform: translate3d(0,0,0);
-  backface-visibility: hidden;
-
-  position: relative;
-  z-index: 2;
-}
-
-/* =========================================================
-   SKELETON
-========================================================= */
-.fb-skeleton {
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0.04),
-    rgba(255,255,255,0.08),
-    rgba(255,255,255,0.04)
-  );
-
-  background-size: 200% 100%;
-  animation: skeleton 1.2s linear infinite;
-
-  z-index: 1;
-}
-
-@keyframes skeleton {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-.reseaux-card iframe + .fb-skeleton {
-  display: none;
+  height: 100%;
+  min-height: 500px;
+  border: 0;
+  border-radius: 18px;
 }
 
 /* =========================================================

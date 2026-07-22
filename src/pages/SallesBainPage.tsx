@@ -1,10 +1,29 @@
 /* src/pages/prestations/SallesBainPage.tsx */
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import './SallesBainPage.css';
-import img5132 from '../assets/imageschantierrealisations/chantier sdb benjamin/IMG_5323(1).jpg';
+import img5132 from '../assets/optimized/july-2026/salle-de-bain-5323.webp';
+import { BUSINESS_PHONE_E164 } from '../config/contact';
 
 export function SallesBainPage() {
 return ( <div id="main-content" className="prestations-page salles-bain-page">
+<Helmet>
+  <title>Rénovation salle de bain à Manosque | Procarré</title>
+  <meta
+    name="description"
+    content="Rénovation de salle de bain et création de douche à l’italienne à Manosque : carrelage, étanchéité et finitions. Demandez un devis gratuit."
+  />
+  <link rel="canonical" href="https://procarre.fr/prestations/salles-de-bain" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Rénovation salle de bain à Manosque | Procarré" />
+  <meta
+    property="og:description"
+    content="Salle de bain, douche à l’italienne, carrelage et étanchéité autour de Manosque."
+  />
+  <meta property="og:url" content="https://procarre.fr/prestations/salles-de-bain" />
+  <meta name="twitter:card" content="summary" />
+</Helmet>
 {/* Schema SEO */}
 <script
 type="application/ld+json"
@@ -23,7 +42,7 @@ addressRegion: 'Alpes-de-Haute-Provence',
 postalCode: '04100',
 addressCountry: 'FR',
 },
-telephone: '+33600000000',
+telephone: BUSINESS_PHONE_E164,
 areaServed: [
 'Manosque',
 'Volx',
@@ -46,6 +65,9 @@ areaServed: [
         alt="Rénovation salle de bain carrelée avec douche à l'italienne à Manosque"
         className="page-hero-image"
         loading="eager"
+        fetchPriority="high"
+        width={1707}
+        height={1280}
       />
     </div>
 
@@ -62,7 +84,7 @@ areaServed: [
         dépose de l&apos;ancien carrelage, préparation des supports,
         étanchéité sous carrelage, pose de carrelage au sol et aux murs,
         création de douche à l&apos;italienne et finitions soignées en
-        Alpes-de-Haute-Provence.[web:40][web:44][web:54]
+        Alpes-de-Haute-Provence.
       </p>
       <div className="hero-cta">
         <Link to="/devis" className="btn btn-primary">
@@ -110,17 +132,17 @@ areaServed: [
         Création de <strong>douche à l&apos;italienne</strong> étanche
       </h2>
       <p>
-        La <strong>douce à l&apos;italienne carrelée</strong> demande une
+        La <strong>douche à l&apos;italienne carrelée</strong> demande une
         étanchéité irréprochable : pentes vers la bonde, natte ou système
         d&apos;étanchéité sous carrelage, traitement des angles et des jonctions
-        sol/mur avant la pose du carrelage.[web:40][web:42][web:50]
+        sol/mur avant la pose du carrelage.
       </p>
       <p>
         Nous réalisons la forme de pente adaptée au receveur à carreler ou au
         sol maçonné, posons une natte ou une membrane d&apos;étanchéité, puis
         collons le carrelage avec un mortier-colle adapté aux pièces humides.
         Les joints sont hydrofuges pour limiter les infiltrations et assurer
-        la durabilité dans le temps.[web:41][web:53]
+        la durabilité dans le temps.
       </p>
       <ul className="bullets">
         <li>Respect des pentes vers la bonde ou le caniveau.</li>
@@ -140,7 +162,7 @@ areaServed: [
         Nous vous conseillons sur le <strong>carrelage mural de salle de bain</strong>{' '}
         et sur le carrelage de sol : formats, textures, finition mate ou
         brillante, mosaïque pour l&apos;espace douche, frises décoratives
-        pour personnaliser la pièce.[web:48][web:54]
+        pour personnaliser la pièce.
       </p>
       <p>
         L&apos;agencement de la salle de bain est étudié pour optimiser

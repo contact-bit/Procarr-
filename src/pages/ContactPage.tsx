@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { BUSINESS_PHONE_DISPLAY } from '../config/contact';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '../analytics/analytics';
 
@@ -327,7 +328,7 @@ export function ContactPage() {
           <h2 style={{ fontSize: '1.2rem', margin: '0 0 0.6rem 0' }}>Coordonnées</h2>
           <p style={{ margin: 0 }}>Procarré &amp; Fils<br />04100 Manosque</p>
           <p style={{ margin: '0.6rem 0' }}>
-            Téléphone : <strong>06 03 12 30 65</strong><br />
+            Téléphone : <strong>{BUSINESS_PHONE_DISPLAY}</strong><br />
             Email : <strong>procarre.dussert@wanadoo.fr</strong>
           </p>
           <p style={{ margin: 0 }}>

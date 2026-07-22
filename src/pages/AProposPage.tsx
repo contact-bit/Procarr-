@@ -1,6 +1,6 @@
 // src/pages/AProposPage.tsx
 import { LuHammer, LuUsers, LuNetwork, LuCheck } from 'react-icons/lu';
-import aproposImg from '../assets/image00004.jpeg';
+import aproposImg from '../assets/optimized/july-2026/a-propos-procarre.webp';
 import './AProposPage.css';
 
 export function AProposPage() {
@@ -12,6 +12,10 @@ export function AProposPage() {
           src={aproposImg}
           alt="Artisans Procarré & Fils en train de poser du carrelage"
           className="apropos-image"
+          loading="eager"
+          fetchPriority="high"
+          width={1600}
+          height={1200}
         />
       </section>
 

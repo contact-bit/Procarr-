@@ -2,6 +2,10 @@
 import './Footer.css';
 import { Link } from 'react-router-dom';
 import { useCookieConsent } from '../../consent/CookieConsentContext';
+import {
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_HREF,
+} from '../../config/contact';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -39,8 +43,8 @@ export function Footer() {
               04100 Manosque – Alpes-de-Haute-Provence
             </span>
 
-            <a href="tel:+336 03 12 30 65" className="footer-nap-link">
-              Tél. 06 03 12 30 65
+            <a href={BUSINESS_PHONE_HREF} className="footer-nap-link">
+              Tél. {BUSINESS_PHONE_DISPLAY}
             </a>
 
             <a href="mailto:procarre.dussert@wanadoo.fr" className="footer-nap-link">

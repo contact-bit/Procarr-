@@ -1,6 +1,6 @@
 // src/pages/ZoneInterventionPage.tsx
 import './ZoneInterventionPage.css';
-import zoneImg from '../assets/image000022.jpg';
+import zoneImg from '../assets/optimized/july-2026/zone-intervention-procarre.webp';
 import { useCookieConsent } from '../consent/CookieConsentContext';
 import { ExternalContentPlaceholder } from '../consent/ExternalContentPlaceholder';
 
@@ -18,6 +18,9 @@ export function ZoneInterventionPage() {
             alt="Zone d'intervention Procarré & Fils autour de Manosque"
             className="zone-hero-image"
             loading="eager"
+            fetchPriority="high"
+            width={1400}
+            height={409}
           />
         </div>
 

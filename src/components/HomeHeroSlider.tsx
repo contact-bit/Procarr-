@@ -12,27 +12,27 @@ import 'swiper/css/effect-fade';
 import './HomeHeroSlider.css';
 
 // ===== IMAGES HERO =====
-import intro1 from '../assets/imageschantierrealisations/chantier villeneuve piscine bali/IMG_6359.jpg';
-import intro3 from '../assets/imageschantierrealisations/chantier villeneuve piscine bali/IMG_6361.jpg';
-import intro2 from '../assets/imageschantierrealisations/chantier esparons beton ciré/IMG_8078.jpg';
-import intro4 from '../assets/imageschantierrealisations/chantier la palud beton ciré/IMG_5236.jpg';
-import intro5 from '../assets/imageschantierrealisations/chantier sdb benjamin/IMG_5323(1).jpg';
-import intro6 from '../assets/imageschantierrealisations/chantier Valensole sdb grand format/IMG_5607(1).jpg';
+import intro1 from '../assets/optimized/july-2026/piscine-villeneuve-6359.webp';
+import intro3 from '../assets/optimized/july-2026/piscine-villeneuve-6361.webp';
+import intro2 from '../assets/optimized/july-2026/piscine-esparons-8078.webp';
+import intro4 from '../assets/optimized/july-2026/piscine-la-palud-5236.webp';
+import intro5 from '../assets/optimized/july-2026/salle-de-bain-5323.webp';
+import intro6 from '../assets/optimized/july-2026/salle-de-bain-valensole-5607.webp';
 
-// ===== NOUVELLES =====
-import img7259 from '../assets/imageschantierrealisations/chantier greoux les termes vestiaires/IMG_7259.jpg';
-import img6970 from '../assets/imageschantierrealisations/chantier Mane tomette bois/IMG_6970.jpg';
-import img7996 from '../assets/imageschantierrealisations/chantier Manosque beton chappe betinna/IMG_7996(1).jpg';
-import img9899 from '../assets/imageschantierrealisations/chantier manosque escalier/IMG_9899(1).jpg';
-import img4807 from '../assets/imageschantierrealisations/chantier manosque hôpital de manosque/IMG_4807(1).jpg';
-import img8869 from '../assets/imageschantierrealisations/chantier manosque pose immitation bois/IMG_8869(1).jpg';
-import img4501 from '../assets/imageschantierrealisations/chantier Pierrevert reno sdb/IMG_4501.jpg';
-import img7996b from '../assets/imageschantierrealisations/chantier Pierrevert tour de piscine/IMG_7996.jpg';
-import img6201 from '../assets/imageschantierrealisations/chantier Reillanne beton piscine/IMG_6201(3).jpg';
-import img4025 from '../assets/imageschantierrealisations/chantier Reillanne calade/IMG_4025(1).jpg';
-import img3134 from '../assets/imageschantierrealisations/chantier Reillanne tomette et terre cuite/IMG_3134(1).jpg';
-import img4552 from '../assets/imageschantierrealisations/chantier Reillanne travertin multiformat/IMG_4552.jpg';
-import img5851 from '../assets/imageschantierrealisations/chantier villeneuve tour de piscine/IMG_5851.jpg';
+// ===== RÉALISATIONS OPTIMISÉES =====
+import img7259 from '../assets/optimized/realisations/img7259.webp';
+import img6970 from '../assets/optimized/realisations/img6970.webp';
+import img7996 from '../assets/optimized/realisations/img7996.webp';
+import img9899 from '../assets/optimized/realisations/img9899.webp';
+import img4807 from '../assets/optimized/realisations/img4807.webp';
+import img8869 from '../assets/optimized/realisations/img8869.webp';
+import img4501 from '../assets/optimized/realisations/img4501.webp';
+import img7996b from '../assets/optimized/realisations/img7996b.webp';
+import img6201 from '../assets/optimized/realisations/img6201.webp';
+import img4025 from '../assets/optimized/realisations/img4025.webp';
+import img3134 from '../assets/optimized/realisations/img3134.webp';
+import img4552 from '../assets/optimized/realisations/img4552.webp';
+import img5851 from '../assets/optimized/realisations/img5851.webp';
 
 // ===== SLIDES =====
 const slides = [
@@ -150,7 +150,10 @@ export function HomeHeroSlider() {
                   src={src}
                   alt="Réalisation Procarré & Fils"
                   className="home-hero__image"
-                  loading={index < 2 ? 'eager' : 'lazy'}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={index === 0 ? 'high' : 'auto'}
+                  width={1707}
+                  height={1280}
                 />
               </div>
             </SwiperSlide>

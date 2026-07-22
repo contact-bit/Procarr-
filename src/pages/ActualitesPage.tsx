@@ -1,23 +1,7 @@
 // src/pages/ActualitesPage.tsx
-import { useEffect, useRef } from 'react';
 import './ActualitesPage.css';
 import { useCookieConsent } from '../consent/CookieConsentContext';
 import { ExternalContentPlaceholder } from '../consent/ExternalContentPlaceholder';
-
-const FB_SCRIPT_ID = 'facebook-jssdk';
-
-function loadFacebookSdk() {
-  if (document.getElementById(FB_SCRIPT_ID)) return;
-
-  const script = document.createElement('script');
-  script.id = FB_SCRIPT_ID;
-  script.async = true;
-  script.defer = true;
-  script.crossOrigin = 'anonymous';
-  script.src =
-    'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v21.0';
-  document.body.appendChild(script);
-}
 
 const videos = [
  "https://www.facebook.com/reel/2114936318931170",
@@ -48,42 +32,7 @@ const videos = [
 ];
 
 export function ActualitesPage() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const { preferences } = useCookieConsent();
-
-  useEffect(() => {
-    if (!preferences.externalMedia) return;
-
-    loadFacebookSdk();
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const facebookWindow = window as Window & {
-              FB?: { XFBML?: { parse: (element?: Element) => void } };
-            };
-            if (facebookWindow.FB?.XFBML?.parse) {
-              facebookWindow.FB.XFBML.parse(entry.target);
-            }
-          }
-        });
-      },
-      { rootMargin: '200px' }
-    );
-
-    const cards = containerRef.current?.querySelectorAll('.reseaux-card');
-    cards?.forEach((card) => observer.observe(card));
-
-    return () => {
-      observer.disconnect();
-      document.getElementById(FB_SCRIPT_ID)?.remove();
-      document.getElementById('fb-root')?.remove();
-
-      const facebookWindow = window as Window & { FB?: unknown };
-      delete facebookWindow.FB;
-    };
-  }, [preferences.externalMedia]);
 
   // ✅ inversion propre
   const orderedVideos = [...videos].reverse();
@@ -102,26 +51,24 @@ export function ActualitesPage() {
 
       <section className="reseaux-grid-section">
         {preferences.externalMedia ? (
-          <div ref={containerRef} className="container reseaux-grid">
+          <div className="container reseaux-grid">
             {orderedVideos.map((url, index) => {
-              const embedUrl = url.includes('/reel/')
-                ? url.replace('/reel/', '/watch/?v=')
-                : url;
+              const embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+                url,
+              )}&show_text=false&width=500`;
 
               return (
                 <article className="reseaux-card" key={index}>
-                  <div className="fb-skeleton" />
-
-                  <div
-                    className="fb-video"
-                    data-href={embedUrl}
-                    data-width="auto"
-                    data-show-text="false"
-                  >
-                    <blockquote cite={embedUrl} className="fb-xfbml-parse-ignore">
-                      <a href={embedUrl}>Voir la vidéo sur Facebook</a>
-                    </blockquote>
-                  </div>
+                  <iframe
+                    className="reseaux-video-frame"
+                    src={embedUrl}
+                    title={`Vidéo chantier Procarré ${index + 1}`}
+                    width="500"
+                    height="500"
+                    loading={index < 3 ? 'eager' : 'lazy'}
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
                 </article>
               );
             })}
@@ -130,7 +77,7 @@ export function ActualitesPage() {
           <div className="container">
             <ExternalContentPlaceholder
               title="Vidéos Facebook désactivées"
-              description="Facebook peut déposer des cookies et traiter des informations sur votre navigation. Autorisez les contenus externes pour afficher les vidéos."
+              description="Autorisez les contenus externes pour afficher les aperçus et lire les vidéos Facebook."
             />
           </div>
         )}

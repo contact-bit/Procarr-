@@ -3,8 +3,6 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FiChevronDown, FiFileText, FiX } from 'react-icons/fi';
 
 import facebookIcon from '../../assets/facebook.png';
-import instagramIcon from '../../assets/instagram.png';
-import linkedinIcon from '../../assets/linkedin.png';
 
 import './Navbar.css';
 
@@ -34,16 +32,6 @@ const SOCIAL_LINKS = [
     href: 'https://www.facebook.com/procarre/',
     label: 'Facebook',
     icon: facebookIcon,
-  },
-  {
-    href: 'https://www.instagram.com/procarre_carrelage/',
-    label: 'Instagram',
-    icon: instagramIcon,
-  },
-  {
-    href: 'https://fr.linkedin.com/in/denis-dussert-683821376',
-    label: 'LinkedIn',
-    icon: linkedinIcon,
   },
 ];
 

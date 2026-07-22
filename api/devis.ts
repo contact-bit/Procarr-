@@ -3,16 +3,34 @@ import { Resend } from 'resend';
 const ALLOWED_PROJECTS = ['interieur', 'exterieur', 'sdb', 'cuisine', 'renov'];
 const CLIENT_EMAIL = 'procarre.dussert@wanadoo.fr';
 
+type ApiRequest = {
+  method?: string;
+  body?: unknown;
+};
+
+type ApiResponse = {
+  status(code: number): ApiResponse;
+  json(payload: unknown): ApiResponse;
+};
+
+type DevisBody = Record<string, unknown>;
+
+function parseBody(rawBody: unknown): DevisBody | null {
+  const parsed = typeof rawBody === 'string' ? JSON.parse(rawBody) : rawBody;
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return null;
+  return parsed as DevisBody;
+}
+
 // ---------------- UTILS ----------------
-function sanitize(str = '') {
+function sanitize(str: unknown = '') {
   return String(str).trim();
 }
 
-function sanitizeSingleLine(str = '') {
+function sanitizeSingleLine(str: unknown = '') {
   return sanitize(str).replace(/[\r\n]+/g, ' ');
 }
 
-function escapeHtml(str = '') {
+function escapeHtml(str: unknown = '') {
   return String(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -21,20 +39,20 @@ function escapeHtml(str = '') {
     .replace(/'/g, '&#039;');
 }
 
-function normalize(str = '') {
+function normalize(str: unknown = '') {
   return sanitize(str).toLowerCase();
 }
 
-function isValidEmail(email) {
+function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function isValidPhone(phone) {
+function isValidPhone(phone: string) {
   return !phone || /^[0-9\s+().-]{6,20}$/.test(phone);
 }
 
 // ---------------- HANDLER ----------------
-export default async function handler(req, res) {
+export default async function handler(req: ApiRequest, res: ApiResponse) {
   const requestId = Math.random().toString(36).slice(2, 8);
 
   if (req.method !== 'POST') {
@@ -42,8 +60,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const body =
-      typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    const body = parseBody(req.body);
 
     if (!body) {
       console.error(`[${requestId}] EMPTY BODY`);
@@ -53,8 +70,6 @@ export default async function handler(req, res) {
     if (sanitize(body?.website)) {
       return res.status(200).json({ ok: true });
     }
-
-    console.log(`[${requestId}] RAW`, body);
 
     // ---------- SANITIZE ----------
     const name = sanitizeSingleLine(body?.name);
@@ -73,14 +88,8 @@ export default async function handler(req, res) {
     const delay = sanitizeSingleLine(body?.delay);
     const building = sanitizeSingleLine(body?.building);
 
-    console.log(`[${requestId}] CLEAN`, {
-      name,
-      email,
-      projectType,
-    });
-
     // ---------- VALIDATION ----------
-    const fieldErrors = {};
+    const fieldErrors: Record<string, string> = {};
 
     if (!name) fieldErrors.name = 'Merci d’indiquer votre nom.';
     else if (name.length < 2) fieldErrors.name = 'Votre nom doit contenir au moins 2 caractères.';
@@ -119,7 +128,7 @@ export default async function handler(req, res) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
     // ---------- TEMPLATE ----------
-  const field = (label, value) =>
+  const field = (label: string, value: string) =>
   value ? `<tr><td style="padding:6px 0;"><strong>${label}</strong></td><td style="padding:6px 0;">${escapeHtml(value)}</td></tr>` : '';
 
 const subject = `Demande de devis reçue – ${name}`;
@@ -212,16 +221,12 @@ const html = `
       html,
     });
 
-    console.log(`[${requestId}] RESEND RESULT`, result);
-
     if (result.error) {
       console.error(`[${requestId}] RESEND ERROR`, result.error);
       return res.status(502).json({
         error: 'La demande n’a pas pu être envoyée. Merci de réessayer dans quelques instants.',
       });
     }
-
-    console.log(`[${requestId}] SUCCESS`);
 
     return res.status(200).json({ ok: true });
 

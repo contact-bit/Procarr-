@@ -4,15 +4,34 @@ const CLIENT_EMAIL = 'procarre.dussert@wanadoo.fr';
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[0-9\s+().-]{6,20}$/;
 
-function clean(value = '') {
+type ApiRequest = {
+  method?: string;
+  body?: unknown;
+};
+
+type ApiResponse = {
+  setHeader(name: string, value: string): void;
+  status(code: number): ApiResponse;
+  json(payload: unknown): ApiResponse;
+};
+
+type ContactBody = Record<string, unknown>;
+
+function parseBody(rawBody: unknown): ContactBody | null {
+  const parsed = typeof rawBody === 'string' ? JSON.parse(rawBody) : rawBody;
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return null;
+  return parsed as ContactBody;
+}
+
+function clean(value: unknown = '') {
   return String(value).trim();
 }
 
-function cleanSingleLine(value = '') {
+function cleanSingleLine(value: unknown = '') {
   return clean(value).replace(/[\r\n]+/g, ' ');
 }
 
-function escapeHtml(value = '') {
+function escapeHtml(value: unknown = '') {
   return String(value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -21,22 +40,25 @@ function escapeHtml(value = '') {
     .replace(/'/g, '&#039;');
 }
 
-function getErrorMessage(error) {
+function getErrorMessage(error: unknown) {
   if (!error) return 'Email failed';
   if (typeof error === 'string') return error;
-  if (error.message) return error.message;
-  if (error.error) return error.error;
+  if (error instanceof Error) return error.message;
+  if (typeof error === 'object') {
+    if ('message' in error && typeof error.message === 'string') return error.message;
+    if ('error' in error && typeof error.error === 'string') return error.error;
+  }
   return JSON.stringify(error);
 }
 
-export default async function handler(req, res) {
+export default async function handler(req: ApiRequest, res: ApiResponse) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Méthode non autorisée.' });
   }
 
   try {
-    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    const body = parseBody(req.body);
 
     if (!body) {
       return res.status(400).json({ error: 'Le formulaire est vide.' });
@@ -53,7 +75,7 @@ export default async function handler(req, res) {
     const subject = cleanSingleLine(body.subject);
     const message = clean(body.message);
 
-    const fieldErrors = {};
+    const fieldErrors: Record<string, string> = {};
 
     if (!name) fieldErrors.name = 'Merci d’indiquer votre nom.';
     else if (name.length < 2) fieldErrors.name = 'Votre nom doit contenir au moins 2 caractères.';

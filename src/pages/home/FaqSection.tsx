@@ -165,6 +165,7 @@ export function FaqSection() {
             return (
               <div className={`faq-item ${isOpen ? 'faq-item-open' : ''}`} key={index}>
                 <button
+                  id={`faq-trigger-${index}`}
                   type="button"
                   className="faq-trigger"
                   onClick={() => toggle(index)}
@@ -188,7 +189,8 @@ export function FaqSection() {
                   id={`faq-panel-${index}`}
                   className="faq-panel"
                   role="region"
-                  aria-hidden={!isOpen}
+                  aria-labelledby={`faq-trigger-${index}`}
+                  hidden={!isOpen}
                 >
                   <p className="faq-answer">{item.answer}</p>
                 </div>

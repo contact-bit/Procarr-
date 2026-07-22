@@ -1,0 +1,27 @@
+# Procarré & Fils
+
+> Entreprise familiale de carrelage et de rénovation basée à Manosque, dans les Alpes-de-Haute-Provence. Procarré & Fils intervient pour les sols, les murs, les salles de bain, les douches à l'italienne, les terrasses et les rénovations complètes.
+
+## Services
+
+- [Prestations](https://procarre.fr/prestations): Présentation de l'ensemble des travaux de carrelage et de rénovation proposés.
+- [Carrelage de sols et murs](https://procarre.fr/prestations/sols-murs): Pose et rénovation de carrelage intérieur.
+- [Salles de bain](https://procarre.fr/prestations/salles-de-bain): Rénovation de salles de bain et création de douches à l'italienne.
+- [Terrasses](https://procarre.fr/prestations/terrasses): Pose de carrelage extérieur, terrasses et abords de piscine.
+- [Préparation des supports](https://procarre.fr/prestations/preparation-supports): Préparation des sols et murs avant la pose du carrelage.
+
+## Réalisations
+
+- [Chantiers réalisés](https://procarre.fr/realisations): Galerie des travaux de carrelage et de rénovation réalisés par Procarré & Fils.
+- [Avant et après](https://procarre.fr/avant-apres): Comparaisons visuelles de chantiers avant et après intervention.
+- [Actualités](https://procarre.fr/actualites): Vidéos et nouvelles réalisations de l'entreprise.
+
+## Entreprise et zone d'intervention
+
+- [À propos](https://procarre.fr/a-propos): Présentation de l'entreprise familiale et de son expérience.
+- [Zone d'intervention](https://procarre.fr/zone-intervention): Interventions à Manosque et dans les Alpes-de-Haute-Provence, avec étude possible des projets dans les départements 83, 84 et 05.
+
+## Contact
+
+- [Demander un devis](https://procarre.fr/devis): Formulaire de demande de devis gratuit.
+- [Contacter Procarré & Fils](https://procarre.fr/contact): Coordonnées et formulaire de contact.

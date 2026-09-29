@@ -234,3 +234,16 @@
     font-size: 0.38rem;
   }
 }
+
+.home-hero__brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-hero__alveoles {
+  display: block;
+  width: 20px;
+  height: 24px;
+  flex-shrink: 0;
+}

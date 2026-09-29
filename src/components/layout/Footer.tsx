@@ -21,6 +21,7 @@ export function Footer() {
             className="brand footer-logo"
             aria-label="Procarré & Fils - Carreleur à Manosque"
           >
+            <img className="brand-alveoles" src="/vite.svg" alt="" aria-hidden="true" width="33" height="40" />
             <div className="brand-line">
               <span className="brand-pro">PRO</span>
               <span className="brand-carre">carré</span>

@@ -142,6 +142,7 @@ export function HomeHeroSlider() {
 
         {/* BRAND (logo tampon, moitié plus petit via CSS .home-hero__brand) */}
 <div className="home-hero__brand">
+  <img className="home-hero__alveoles" src="/vite.svg" alt="" aria-hidden="true" width="20" height="24" />
   <div className="footer-logo-badge-row">
     <div className="brand-tope">
       <span className="brand-proe">PRO</span>

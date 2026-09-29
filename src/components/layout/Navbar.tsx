@@ -105,6 +105,7 @@ export function Navbar() {
       <div className="navbar-inner">
         {/* LOGO DESKTOP + MOBILE (même markup / mêmes classes) */}
         <Link to="/" className="brand" aria-label="Procarré & Fils - Accueil">
+          <img className="brand-alveoles" src="/vite.svg" alt="" aria-hidden="true" width="33" height="40" />
           <div className="brand-line">
             <span className="brand-pro">PRO</span>
             <span className="brand-carre">carré</span>
@@ -189,6 +190,7 @@ export function Navbar() {
                 onClick={close}
                 aria-label="Procarré & Fils - Accueil"
               >
+                <img className="brand-alveoles" src="/vite.svg" alt="" aria-hidden="true" width="33" height="40" />
                 <div className="brand-line">
                   <span className="brand-pro">PRO</span>
                   <span className="brand-carre">carré</span>

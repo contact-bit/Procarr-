@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { isTestRequest, reportSubmission } from './_hd-monitor';
 
 const ALLOWED_PROJECTS = ['interieur', 'exterieur', 'sdb', 'cuisine', 'renov'];
 const CLIENT_EMAIL = 'procarre.dussert@wanadoo.fr';
@@ -6,6 +7,7 @@ const CLIENT_EMAIL = 'procarre.dussert@wanadoo.fr';
 type ApiRequest = {
   method?: string;
   body?: unknown;
+  headers?: Record<string, string | string[] | undefined>;
 };
 
 type ApiResponse = {
@@ -228,6 +230,7 @@ const html = `
       });
     }
 
+    await reportSubmission({ form: 'devis', emailId: result.data?.id, test: isTestRequest(req.headers) });
     return res.status(200).json({ ok: true });
 
   } catch (err) {

@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { isTestRequest, reportSubmission } from './_hd-monitor';
 
 const CLIENT_EMAIL = 'procarre.dussert@wanadoo.fr';
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -7,6 +8,7 @@ const PHONE_PATTERN = /^[0-9\s+().-]{6,20}$/;
 type ApiRequest = {
   method?: string;
   body?: unknown;
+  headers?: Record<string, string | string[] | undefined>;
 };
 
 type ApiResponse = {
@@ -115,7 +117,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
     const safeSubject = escapeHtml(subject || '-');
     const safeMessage = escapeHtml(message).replace(/\n/g, '<br/>');
 
-    const { error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: process.env.FROM_EMAIL,
       to: [CLIENT_EMAIL],
       replyTo: email,
@@ -149,6 +151,7 @@ ${message}
       });
     }
 
+    await reportSubmission({ form: 'contact', emailId: data?.id, test: isTestRequest(req.headers) });
     return res.status(200).json({ ok: true });
   } catch (error) {
     console.error('Contact API server error:', error);

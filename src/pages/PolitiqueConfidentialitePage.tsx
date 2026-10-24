@@ -123,7 +123,7 @@ export function PolitiqueConfidentialitePage() {
             <li>
               <strong>HDConnects</strong>, notre prestataire web, pour la supervision technique du site
               et la mesure d’audience sans cookie, avec ses sous-traitants d’hébergement Vercel Inc.
-              et Neon Inc. ;
+              et Neon Inc. (base de données hébergée à Francfort, Allemagne) ;
             </li>
             <li><strong>Google</strong>, lorsque vous autorisez Google Maps, YouTube ou Google Analytics ;</li>
             <li><strong>Meta Platforms</strong>, lorsque vous autorisez l’affichage des publications Facebook.</li>
@@ -134,7 +134,7 @@ export function PolitiqueConfidentialitePage() {
         <section className="legal-section">
           <h2>5. Transferts hors de l’Union européenne</h2>
           <p>
-            Certains de nos prestataires, notamment Vercel, Neon, Resend, Google et Meta, peuvent traiter
+            Certains de nos prestataires, notamment Vercel, Resend, Google et Meta, peuvent traiter
             des données aux États-Unis. Ils prévoient des garanties contractuelles et mécanismes
             reconnus par la réglementation applicable, notamment les clauses contractuelles types
             de la Commission européenne et, lorsqu’il est applicable, le cadre de protection des
@@ -144,6 +144,11 @@ export function PolitiqueConfidentialitePage() {
             Le choix de la région européenne de Resend permet l’expédition des e-mails depuis
             l’Irlande, mais certaines métadonnées et données de compte peuvent rester traitées aux
             États-Unis.
+          </p>
+          <p>
+            Les statistiques de la mesure d’audience sans cookie sont stockées dans l’Union
+            européenne, à Francfort (Allemagne), chez Neon. Elles transitent par les serveurs de
+            Vercel, déjà mentionnés ci-dessus.
           </p>
         </section>
 

@@ -66,9 +66,12 @@ export function PolitiqueConfidentialitePage() {
           <p>
             Lors de votre navigation, une mesure d’audience sans cookie enregistre de façon anonyme
             la page consultée (sans paramètres d’adresse), la date, le site d’où vous venez (son nom
-            de domaine uniquement) et la catégorie d’appareil (mobile, tablette ou ordinateur,
-            déduite de la largeur de l’écran). Aucune adresse IP ni aucun identifiant de visiteur
-            n’est conservé.
+            de domaine uniquement), la catégorie d’appareil (mobile, tablette ou ordinateur,
+            déduite de la largeur de l’écran) et une localisation approximative limitée au pays, à
+            la région et à la ville, déduite de l’adresse IP au moment de la visite. L’adresse IP
+            elle-même n’est ni conservée ni transmise, et aucun identifiant de visiteur n’est
+            enregistré. Dans les statistiques, les villes comptant très peu de visites sont
+            regroupées.
           </p>
           <p>
             Les champs signalés comme obligatoires sont nécessaires pour traiter votre demande.

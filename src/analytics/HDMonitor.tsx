@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { isHDMonitorOptedOut } from './hdMonitorPrivacy';
 
 /**
  * Supervision HDConnects : compte les pages vues (chargement + navigations internes).
  * Aucun cookie, aucun identifiant de visiteur, aucune IP, aucun paramètre d'URL :
- * ne dépend donc pas du consentement cookies (contrairement à GA4).
+ * exemptée de consentement (CNIL), avec droit d'opposition (politique de confidentialité).
  * Les envois passent par /_hd/e, relayé vers le monitor par vercel.json.
  */
 
 // Identifiant public du site dans le monitor (ce n'est pas un secret).
 const SITE_KEY = import.meta.env.VITE_HD_SITE_KEY?.trim() || 'hd_pk_iUoOdO4XQpzyI-CN';
 const ENDPOINT = '/_hd/e';
-
 // Partagé entre les montages : React.StrictMode monte deux fois en développement.
 let lastPath: string | null = null;
 let lastAt = 0;
@@ -39,6 +39,7 @@ export function HDMonitor() {
     const host = window.location.hostname;
     // Uniquement en production : ni localhost, ni prévisualisations Vercel.
     if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.vercel.app')) return;
+    if (isHDMonitorOptedOut()) return;
 
     const now = Date.now();
     if (pathname === lastPath && now - lastAt < 1500) return;

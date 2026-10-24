@@ -3,6 +3,7 @@ import {
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_HREF,
 } from '../config/contact';
+import { HDMonitorOptOut } from '../analytics/HDMonitorOptOut';
 import './LegalPage.css';
 
 export function PolitiqueConfidentialitePage() {
@@ -24,7 +25,7 @@ export function PolitiqueConfidentialitePage() {
           Cette politique explique de manière transparente quelles données sont traitées lorsque
           vous consultez procarre.fr ou nous adressez une demande.
         </p>
-        <span className="legal-updated">Dernière mise à jour : 14 juillet 2026</span>
+        <span className="legal-updated">Dernière mise à jour : 24 octobre 2026</span>
       </header>
 
       <div className="legal-summary" aria-label="Résumé de la politique de confidentialité">
@@ -63,6 +64,13 @@ export function PolitiqueConfidentialitePage() {
             <li>les informations techniques nécessaires à la sécurité et au fonctionnement du site.</li>
           </ul>
           <p>
+            Lors de votre navigation, une mesure d’audience sans cookie enregistre de façon anonyme
+            la page consultée (sans paramètres d’adresse), la date, le site d’où vous venez (son nom
+            de domaine uniquement) et la catégorie d’appareil (mobile, tablette ou ordinateur,
+            déduite de la largeur de l’écran). Aucune adresse IP ni aucun identifiant de visiteur
+            n’est conservé.
+          </p>
+          <p>
             Les champs signalés comme obligatoires sont nécessaires pour traiter votre demande.
             À défaut, nous ne pourrons pas vous répondre.
           </p>
@@ -90,6 +98,17 @@ export function PolitiqueConfidentialitePage() {
             Analytics ne dépose pas de cookies. Google Analytics peut en déposer et n’est chargé
             qu’après votre consentement.
           </p>
+          <p>
+            Indépendamment de votre choix sur les cookies, notre prestataire web HDConnects mesure
+            la fréquentation du site pour notre compte, sans cookie et sans identifiant : il compte
+            les pages consultées afin de produire des statistiques anonymes et de surveiller le bon
+            fonctionnement du site. Ces données ne sont ni croisées avec d’autres sources, ni
+            utilisées pour suivre votre navigation sur d’autres sites. Conformément aux
+            recommandations de la CNIL, cette mesure strictement limitée ne requiert pas votre
+            consentement ; elle repose sur notre intérêt légitime à connaître l’audience de notre
+            site. Vous pouvez vous y opposer à tout moment :
+          </p>
+          <HDMonitorOptOut />
         </section>
 
         <section className="legal-section">
@@ -100,7 +119,12 @@ export function PolitiqueConfidentialitePage() {
           </p>
           <ul>
             <li><strong>Vercel Inc.</strong>, pour l’hébergement du site et la mesure d’audience ;</li>
-            <li><strong>Plus Five Five, Inc. (Resend)</strong>, pour l’acheminement des messages envoyés par les formulaires.</li>
+            <li><strong>Plus Five Five, Inc. (Resend)</strong>, pour l’acheminement des messages envoyés par les formulaires ;</li>
+            <li>
+              <strong>HDConnects</strong>, notre prestataire web, pour la supervision technique du site
+              et la mesure d’audience sans cookie, avec ses sous-traitants d’hébergement Vercel Inc.
+              et Neon Inc. ;
+            </li>
             <li><strong>Google</strong>, lorsque vous autorisez Google Maps, YouTube ou Google Analytics ;</li>
             <li><strong>Meta Platforms</strong>, lorsque vous autorisez l’affichage des publications Facebook.</li>
           </ul>
@@ -110,7 +134,7 @@ export function PolitiqueConfidentialitePage() {
         <section className="legal-section">
           <h2>5. Transferts hors de l’Union européenne</h2>
           <p>
-            Certains de nos prestataires, notamment Vercel, Resend, Google et Meta, peuvent traiter
+            Certains de nos prestataires, notamment Vercel, Neon, Resend, Google et Meta, peuvent traiter
             des données aux États-Unis. Ils prévoient des garanties contractuelles et mécanismes
             reconnus par la réglementation applicable, notamment les clauses contractuelles types
             de la Commission européenne et, lorsqu’il est applicable, le cadre de protection des
@@ -139,6 +163,10 @@ export function PolitiqueConfidentialitePage() {
               Les données techniques de sécurité sont conservées pour une durée proportionnée à
               la finalité poursuivie.
             </li>
+            <li>
+              Les données de la mesure d’audience sans cookie sont conservées au maximum 25 mois,
+              puis supprimées automatiquement.
+            </li>
           </ul>
         </section>
 
@@ -158,6 +186,11 @@ export function PolitiqueConfidentialitePage() {
           <p>
             Votre choix, qu’il s’agisse d’une acceptation ou d’un refus, est conservé pendant six
             mois. À l’issue de cette période, le site vous demandera de l’exprimer à nouveau.
+          </p>
+          <p>
+            La mesure d’audience de HDConnects (voir « Mesure d’audience » ci-dessus) ne dépose aucun
+            cookie. Si vous vous y opposez, ce choix est mémorisé dans le stockage local de votre
+            navigateur ; le signal « Global Privacy Control » de votre navigateur est également respecté.
           </p>
         </section>
 

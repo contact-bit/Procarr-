@@ -132,6 +132,22 @@
   color: #fff;
 }
 
+.legal-optout-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-accent-soft);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.legal-optout-button:hover,
+.legal-optout-button:focus-visible {
+  color: #fff;
+}
+
 .legal-address {
   margin: 0;
   font-style: normal;
